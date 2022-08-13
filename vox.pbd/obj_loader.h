@@ -9,10 +9,10 @@
 #include <array>
 #include <string>
 
-#include "vox.pbd/logger.h"
+#include "vox.base/logging.h"
 #include "vox.pbd/string_tools.h"
 
-namespace Utilities {
+namespace vox::utility {
 /** \brief Struct to store the position and normal indices
  */
 struct MeshFaceIndices {
@@ -136,4 +136,4 @@ public:
         filestream.close();
     }
 };
-}  // namespace Utilities
+}  // namespace vox::utility

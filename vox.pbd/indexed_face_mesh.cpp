@@ -6,7 +6,7 @@
 
 #include "vox.pbd/indexed_face_mesh.h"
 
-using namespace Utilities;
+using namespace vox::utility;
 
 IndexedFaceMesh &IndexedFaceMesh::operator=(IndexedFaceMesh const &other) {
     m_numPoints = other.m_numPoints;
@@ -100,7 +100,7 @@ void IndexedFaceMesh::addUVIndex(const unsigned int index) { m_uvIndices.push_ba
 void IndexedFaceMesh::buildNeighbors() {
     typedef std::vector<unsigned int> PEdges;
 
-    PEdges *pEdges = new PEdges[numVertices()];
+    auto *pEdges = new PEdges[numVertices()];
 
     // build vertex-face structure
     m_verticesFaces.clear();  // to delete old pointers
@@ -112,8 +112,8 @@ void IndexedFaceMesh::buildNeighbors() {
 
     m_edges.clear();
 
-    unsigned int *v = new unsigned int[m_verticesPerFace];
-    unsigned int *edges = new unsigned int[m_verticesPerFace * 2];
+    auto *v = new unsigned int[m_verticesPerFace];
+    auto *edges = new unsigned int[m_verticesPerFace * 2];
     for (unsigned int i = 0; i < numFaces(); i++) {
         m_facesEdges[i].resize(m_verticesPerFace);
         for (unsigned int j = 0u; j < m_verticesPerFace; j++) v[j] = m_indices[m_verticesPerFace * i + j];
@@ -129,8 +129,8 @@ void IndexedFaceMesh::buildNeighbors() {
             // add vertex-face connection
             const unsigned int vIndex = m_indices[m_verticesPerFace * i + j];
             bool found = false;
-            for (unsigned int k = 0; k < m_verticesFaces[vIndex].size(); k++) {
-                if (m_verticesFaces[vIndex][k] == i) {
+            for (unsigned int k : m_verticesFaces[vIndex]) {
+                if (k == i) {
                     found = true;
                     break;
                 }
@@ -180,8 +180,7 @@ void IndexedFaceMesh::buildNeighbors() {
 
     // check for boundary
     m_closed = true;
-    for (unsigned int i = 0; i < (unsigned int)m_edges.size(); i++) {
-        Edge &e = m_edges[i];
+    for (auto &e : m_edges) {
         if (e.m_face[1] == 0xffffffff) {
             m_closed = false;
             break;

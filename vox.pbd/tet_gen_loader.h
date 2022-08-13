@@ -11,7 +11,7 @@
 
 #include "vox.pbd/common.h"
 
-namespace Utilities {
+namespace vox::utility {
 class tet_gen_loader {
 public:
     static void loadTetFile(const std::string &filename,
@@ -25,4 +25,4 @@ public:
                              std::vector<Vector3r> &vertices,
                              std::vector<unsigned int> &tets);
 };
-}  // namespace Utilities
+}  // namespace vox::utility

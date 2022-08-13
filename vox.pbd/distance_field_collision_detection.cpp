@@ -11,7 +11,7 @@
 #include "vox.pbd/id_factory.h"
 
 using namespace vox;
-using namespace Utilities;
+using namespace vox::utility;
 
 int DistanceFieldCollisionDetection::DistanceFieldCollisionBox::TYPE_ID = IDFactory::getId();
 int DistanceFieldCollisionDetection::DistanceFieldCollisionSphere::TYPE_ID = IDFactory::getId();
@@ -23,7 +23,7 @@ int DistanceFieldCollisionDetection::DistanceFieldCollisionObjectWithoutGeometry
 
 DistanceFieldCollisionDetection::DistanceFieldCollisionDetection() : CollisionDetection() {}
 
-DistanceFieldCollisionDetection::~DistanceFieldCollisionDetection() {}
+DistanceFieldCollisionDetection::~DistanceFieldCollisionDetection() = default;
 
 void DistanceFieldCollisionDetection::collisionDetection(SimulationModel &model) {
     model.resetContacts();
@@ -38,8 +38,8 @@ void DistanceFieldCollisionDetection::collisionDetection(SimulationModel &model)
         for (unsigned int k = 0; k < m_collisionObjects.size(); k++) {
             CollisionDetection::CollisionObject *co2 = m_collisionObjects[k];
             if ((i != k)) {
-                // ToDo: self collisions for deformables
-                coPairs.push_back({i, k});
+                // ToDo: self collisions for deformable
+                coPairs.emplace_back(i, k);
             }
         }
     }
@@ -57,12 +57,11 @@ void DistanceFieldCollisionDetection::collisionDetection(SimulationModel &model)
     {
 // Update BVHs
 #pragma omp for schedule(static)
-        for (int i = 0; i < (int)m_collisionObjects.size(); i++) {
-            CollisionDetection::CollisionObject *co = m_collisionObjects[i];
+        for (auto co : m_collisionObjects) {
             updateAABB(model, co);
             if (isDistanceFieldCollisionObject(co)) {
                 if (co->m_bodyType == CollisionDetection::CollisionObject::TriangleModelCollisionObjectType) {
-                    DistanceFieldCollisionObject *sco = (DistanceFieldCollisionObject *)co;
+                    auto *sco = (DistanceFieldCollisionObject *)co;
 
                     TriangleModel *tm = triModels[co->m_bodyIndex];
                     const unsigned int offset = tm->getIndexOffset();
@@ -76,7 +75,7 @@ void DistanceFieldCollisionDetection::collisionDetection(SimulationModel &model)
                     const IndexedTetMesh &mesh = tm->getParticleMesh();
                     const unsigned int numVert = mesh.numVertices();
 
-                    DistanceFieldCollisionObject *sco = (DistanceFieldCollisionObject *)co;
+                    auto *sco = (DistanceFieldCollisionObject *)co;
                     sco->m_bvh.init(&pd.getPosition(offset), numVert);
                     sco->m_bvhTets.updateVertices(&pd.getPosition(offset));
                     sco->m_bvhTets0.updateVertices(&pd.getPosition(offset));
@@ -88,8 +87,7 @@ void DistanceFieldCollisionDetection::collisionDetection(SimulationModel &model)
         }
 
 #pragma omp for schedule(static)
-        for (int i = 0; i < (int)coPairs.size(); i++) {
-            std::pair<unsigned int, unsigned int> &coPair = coPairs[i];
+        for (auto &coPair : coPairs) {
             CollisionDetection::CollisionObject *co1 = m_collisionObjects[coPair.first];
             CollisionDetection::CollisionObject *co2 = m_collisionObjects[coPair.second];
 
@@ -152,23 +150,17 @@ void DistanceFieldCollisionDetection::collisionDetection(SimulationModel &model)
         }
     }
 
-    for (unsigned int i = 0; i < contacts_mt.size(); i++) {
-        for (unsigned int j = 0; j < contacts_mt[i].size(); j++) {
-            if (contacts_mt[i][j].m_type == 1)
-                addParticleRigidBodyContact(contacts_mt[i][j].m_index1, contacts_mt[i][j].m_index2,
-                                            contacts_mt[i][j].m_cp1, contacts_mt[i][j].m_cp2,
-                                            contacts_mt[i][j].m_normal, contacts_mt[i][j].m_dist,
-                                            contacts_mt[i][j].m_restitution, contacts_mt[i][j].m_friction);
-            else if (contacts_mt[i][j].m_type == 0)
-                addRigidBodyContact(contacts_mt[i][j].m_index1, contacts_mt[i][j].m_index2, contacts_mt[i][j].m_cp1,
-                                    contacts_mt[i][j].m_cp2, contacts_mt[i][j].m_normal, contacts_mt[i][j].m_dist,
-                                    contacts_mt[i][j].m_restitution, contacts_mt[i][j].m_friction);
-            else if (contacts_mt[i][j].m_type == 2) {
-                addParticleSolidContact(contacts_mt[i][j].m_index1, contacts_mt[i][j].m_index2,
-                                        contacts_mt[i][j].m_elementIndex2, contacts_mt[i][j].m_bary2,
-                                        contacts_mt[i][j].m_cp1, contacts_mt[i][j].m_cp2, contacts_mt[i][j].m_normal,
-                                        contacts_mt[i][j].m_dist, contacts_mt[i][j].m_restitution,
-                                        contacts_mt[i][j].m_friction);
+    for (auto &i : contacts_mt) {
+        for (auto &j : i) {
+            if (j.m_type == 1)
+                addParticleRigidBodyContact(j.m_index1, j.m_index2, j.m_cp1, j.m_cp2, j.m_normal, j.m_dist,
+                                            j.m_restitution, j.m_friction);
+            else if (j.m_type == 0)
+                addRigidBodyContact(j.m_index1, j.m_index2, j.m_cp1, j.m_cp2, j.m_normal, j.m_dist, j.m_restitution,
+                                    j.m_friction);
+            else if (j.m_type == 2) {
+                addParticleSolidContact(j.m_index1, j.m_index2, j.m_elementIndex2, j.m_bary2, j.m_cp1, j.m_cp2,
+                                        j.m_normal, j.m_dist, j.m_restitution, j.m_friction);
             }
         }
     }
@@ -400,7 +392,7 @@ void DistanceFieldCollisionDetection::collisionDetectionSolidSolid(const Particl
                         unsigned int cp_tetIndex;
                         Vector3r cp_bary;
 
-                        // transform closest point on surface back to the reference
+                        // transform the closest point on surface back to the reference
                         // space of the tet model
                         const Vector3r cp0 = (tm2->getInitialR() * cp_l + tm2->getInitialX());
 
@@ -465,8 +457,7 @@ void DistanceFieldCollisionDetection::addCollisionBox(const unsigned int bodyInd
                                                       const Vector3r &box,
                                                       const bool testMesh,
                                                       const bool invertSDF) {
-    DistanceFieldCollisionDetection::DistanceFieldCollisionBox *cf =
-            new DistanceFieldCollisionDetection::DistanceFieldCollisionBox();
+    auto *cf = new DistanceFieldCollisionDetection::DistanceFieldCollisionBox();
     cf->m_bodyIndex = bodyIndex;
     cf->m_bodyType = bodyType;
     // distance function requires 0.5*box
@@ -485,8 +476,7 @@ void DistanceFieldCollisionDetection::addCollisionSphere(const unsigned int body
                                                          const Real radius,
                                                          const bool testMesh,
                                                          const bool invertSDF) {
-    DistanceFieldCollisionDetection::DistanceFieldCollisionSphere *cs =
-            new DistanceFieldCollisionDetection::DistanceFieldCollisionSphere();
+    auto *cs = new DistanceFieldCollisionDetection::DistanceFieldCollisionSphere();
     cs->m_bodyIndex = bodyIndex;
     cs->m_bodyType = bodyType;
     cs->m_radius = radius;
@@ -504,8 +494,7 @@ void DistanceFieldCollisionDetection::addCollisionTorus(const unsigned int bodyI
                                                         const Vector2r &radii,
                                                         const bool testMesh,
                                                         const bool invertSDF) {
-    DistanceFieldCollisionDetection::DistanceFieldCollisionTorus *ct =
-            new DistanceFieldCollisionDetection::DistanceFieldCollisionTorus();
+    auto *ct = new DistanceFieldCollisionDetection::DistanceFieldCollisionTorus();
     ct->m_bodyIndex = bodyIndex;
     ct->m_bodyType = bodyType;
     ct->m_radii = radii;
@@ -523,8 +512,7 @@ void DistanceFieldCollisionDetection::addCollisionCylinder(const unsigned int bo
                                                            const Vector2r &dim,
                                                            const bool testMesh,
                                                            const bool invertSDF) {
-    DistanceFieldCollisionDetection::DistanceFieldCollisionCylinder *ct =
-            new DistanceFieldCollisionDetection::DistanceFieldCollisionCylinder();
+    auto *ct = new DistanceFieldCollisionDetection::DistanceFieldCollisionCylinder();
     ct->m_bodyIndex = bodyIndex;
     ct->m_bodyType = bodyType;
     ct->m_dim = dim;
@@ -545,8 +533,7 @@ void DistanceFieldCollisionDetection::addCollisionHollowSphere(const unsigned in
                                                                const Real thickness,
                                                                const bool testMesh,
                                                                const bool invertSDF) {
-    DistanceFieldCollisionDetection::DistanceFieldCollisionHollowSphere *cs =
-            new DistanceFieldCollisionDetection::DistanceFieldCollisionHollowSphere();
+    auto *cs = new DistanceFieldCollisionDetection::DistanceFieldCollisionHollowSphere();
     cs->m_bodyIndex = bodyIndex;
     cs->m_bodyType = bodyType;
     cs->m_radius = radius;
@@ -566,8 +553,7 @@ void DistanceFieldCollisionDetection::addCollisionHollowBox(const unsigned int b
                                                             const Real thickness,
                                                             const bool testMesh,
                                                             const bool invertSDF) {
-    DistanceFieldCollisionDetection::DistanceFieldCollisionHollowBox *cf =
-            new DistanceFieldCollisionDetection::DistanceFieldCollisionHollowBox();
+    auto *cf = new DistanceFieldCollisionDetection::DistanceFieldCollisionHollowBox();
     cf->m_bodyIndex = bodyIndex;
     cf->m_bodyType = bodyType;
     // distance function requires 0.5*box
@@ -585,7 +571,7 @@ void DistanceFieldCollisionDetection::addCollisionObjectWithoutGeometry(const un
                                                                         const Vector3r *vertices,
                                                                         const unsigned int numVertices,
                                                                         const bool testMesh) {
-    DistanceFieldCollisionObjectWithoutGeometry *co = new DistanceFieldCollisionObjectWithoutGeometry();
+    auto *co = new DistanceFieldCollisionObjectWithoutGeometry();
     co->m_bodyIndex = bodyIndex;
     co->m_bodyType = bodyType;
     co->m_bvh.init(vertices, numVertices);
@@ -598,7 +584,7 @@ void DistanceFieldCollisionDetection::addCollisionObjectWithoutGeometry(const un
 double DistanceFieldCollisionDetection::DistanceFieldCollisionBox::distance(const Eigen::Vector3d &x,
                                                                             const Real tolerance) {
     const Eigen::Vector3d box_d = m_box.template cast<double>();
-    const Eigen::Vector3d x_d = x.template cast<double>();
+    const Eigen::Vector3d &x_d = x.template cast<double>();
     const Eigen::Vector3d d(fabs(x_d.x()) - box_d.x(), fabs(x_d.y()) - box_d.y(), fabs(x_d.z()) - box_d.z());
     const Eigen::Vector3d max_d(std::max(d.x(), 0.0), std::max(d.y(), 0.0), std::max(d.z(), 0.0));
     return m_invertSDF * (std::min(std::max(d.x(), std::max(d.y(), d.z())), 0.0) + max_d.norm()) -
@@ -607,14 +593,14 @@ double DistanceFieldCollisionDetection::DistanceFieldCollisionBox::distance(cons
 
 double DistanceFieldCollisionDetection::DistanceFieldCollisionSphere::distance(const Eigen::Vector3d &x,
                                                                                const Real tolerance) {
-    const Eigen::Vector3d d = x.template cast<double>();
+    const Eigen::Vector3d &d = x.template cast<double>();
     const double dl = d.norm();
     return m_invertSDF * (dl - static_cast<double>(m_radius)) - static_cast<double>(tolerance);
 }
 
 bool DistanceFieldCollisionDetection::DistanceFieldCollisionSphere::collisionTest(
         const Vector3r &x, const Real tolerance, Vector3r &cp, Vector3r &n, Real &dist, const Real maxDist) {
-    const Vector3r d = x;
+    const Vector3r &d = x;
     const Real dl = d.norm();
     dist = m_invertSDF * (dl - m_radius) - tolerance;
     if (dist < maxDist) {
@@ -646,7 +632,7 @@ double DistanceFieldCollisionDetection::DistanceFieldCollisionCylinder::distance
 
 double DistanceFieldCollisionDetection::DistanceFieldCollisionHollowSphere::distance(const Eigen::Vector3d &x,
                                                                                      const Real tolerance) {
-    const Eigen::Vector3d d = x.template cast<double>();
+    const Eigen::Vector3d &d = x.template cast<double>();
     const double dl = d.norm();
     return m_invertSDF * (fabs(dl - static_cast<double>(m_radius)) - static_cast<double>(m_thickness)) -
            static_cast<double>(tolerance);
@@ -654,7 +640,7 @@ double DistanceFieldCollisionDetection::DistanceFieldCollisionHollowSphere::dist
 
 bool DistanceFieldCollisionDetection::DistanceFieldCollisionHollowSphere::collisionTest(
         const Vector3r &x, const Real tolerance, Vector3r &cp, Vector3r &n, Real &dist, const Real maxDist) {
-    const Vector3r d = x;
+    const Vector3r &d = x;
     const Real dl = d.norm();
     dist = m_invertSDF * (fabs(dl - m_radius) - m_thickness) - tolerance;
     if (dist < maxDist) {
@@ -674,7 +660,7 @@ bool DistanceFieldCollisionDetection::DistanceFieldCollisionHollowSphere::collis
 double DistanceFieldCollisionDetection::DistanceFieldCollisionHollowBox::distance(const Eigen::Vector3d &x,
                                                                                   const Real tolerance) {
     const Eigen::Vector3d box_d = m_box.template cast<double>();
-    const Eigen::Vector3d x_d = x.template cast<double>();
+    const Eigen::Vector3d &x_d = x.template cast<double>();
     const Eigen::Vector3d d = x_d.cwiseAbs() - box_d;
     const Eigen::Vector3d max_d = d.cwiseMax(Eigen::Vector3d(0.0, 0.0, 0.0));
     return m_invertSDF * (fabs(std::min(d.maxCoeff(), 0.0) + max_d.norm()) - m_thickness) -
@@ -778,14 +764,14 @@ bool DistanceFieldCollisionDetection::findRefTetAt(
             A.col(0) = X1 - X0;
             A.col(1) = X2 - X0;
             A.col(2) = X3 - X0;
-            bary.push_back(A.inverse() * (X - X0));
+            bary.emplace_back(A.inverse() * (X - X0));
             tets.push_back(tetIndex);
         }
     };
 
     bvh0.traverse_depth_first(predicate, cb);
 
-    if (bary.size() == 0) return false;
+    if (bary.empty()) return false;
 
     // find best set of barycentric coordinates
     unsigned int index = 0;

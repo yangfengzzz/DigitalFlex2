@@ -8,7 +8,7 @@
 
 using namespace std;
 using namespace Eigen;
-using namespace Utilities;
+using namespace vox::utility;
 
 #define SQR(x) ((x) * (x))
 #define CUBE(x) ((x) * (x) * (x))

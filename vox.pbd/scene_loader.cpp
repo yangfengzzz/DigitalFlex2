@@ -9,17 +9,17 @@
 #include <fstream>
 #include <iostream>
 
+#include "vox.base/logging.h"
 #include "vox.pbd/file_system.h"
-#include "vox.pbd/logger.h"
 
-using namespace Utilities;
+using namespace vox::utility;
 
 void scene_loader::readScene(const std::string &fileName, SceneData &sceneData) {
-    LOG_INFO << "Load scene file: " << fileName;
+    LOGI("Load scene file: {}", fileName)
     try {
         std::ifstream input_file(fileName);
         if (!input_file.is_open()) {
-            LOG_ERR << "Cannot open file!\n";
+            LOGE("Cannot open file!")
             return;
         }
         m_json << input_file;
@@ -148,7 +148,7 @@ void scene_loader::readScene(const std::string &fileName, SceneData &sceneData) 
         if (m_json.find("TargetVelocityMotorSliderJoints") != m_json.end())
             readTargetVelocityMotorSliderJoints(m_json, "TargetVelocityMotorSliderJoints", sceneData);
     } catch (std::exception &e) {
-        LOG_ERR << e.what();
+        LOGE(e.what())
         exit(1);
     }
 }
@@ -337,7 +337,6 @@ void scene_loader::readTriangleModels(const nlohmann::json &j,
             readVector(triModel, "scale", data.m_scale);
 
             // static particles
-            unsigned int index = 0;
             if (triModel.find("staticParticles") != triModel.end()) {
                 data.m_staticParticles.reserve((unsigned int)triModel["staticParticles"].size());
                 for (auto &item : triModel["staticParticles"])
@@ -375,7 +374,7 @@ void scene_loader::readTetModels(const nlohmann::json &j,
                 eleFileName = basePath + "/" + eleFileName;
             }
 
-            std::string visFileName = "";
+            std::string visFileName;
             if (readValue<std::string>(tetModel, "visFile", visFileName)) {
                 if (FileSystem::isRelativePath(visFileName)) {
                     visFileName = basePath + "/" + visFileName;
@@ -411,7 +410,6 @@ void scene_loader::readTetModels(const nlohmann::json &j,
             readVector(tetModel, "scale", data.m_scale);
 
             // static particles
-            unsigned int index = 0;
             if (tetModel.find("staticParticles") != tetModel.end()) {
                 data.m_staticParticles.reserve((unsigned int)tetModel["staticParticles"].size());
                 for (auto &item : tetModel["staticParticles"])
@@ -522,7 +520,7 @@ void scene_loader::readRigidBodyParticleBallJoints(const nlohmann::json &j,
     const nlohmann::json &child = j[key];
 
     for (auto &joint : child) {
-        RigidBodyParticleBallJointData jd;
+        RigidBodyParticleBallJointData jd{};
         if (readValue(joint, "rbID", jd.m_bodyID[0]) && readValue(joint, "particleID", jd.m_bodyID[1])) {
             sceneData.m_rigidBodyParticleBallJointData.push_back(jd);
         }
@@ -542,7 +540,6 @@ void scene_loader::readTargetAngleMotorHingeJoints(const nlohmann::json &j,
                 jd.m_target = 0.0;
 
                 // target sequence
-                unsigned int index = 0;
                 if (joint.find("targetSequence") != joint.end()) {
                     jd.m_targetSequence.reserve((unsigned int)joint["targetSequence"].size());
                     for (auto &item : joint["targetSequence"]) jd.m_targetSequence.push_back(item.get<Real>());
@@ -570,7 +567,6 @@ void scene_loader::readTargetVelocityMotorHingeJoints(const nlohmann::json &j,
                 jd.m_target = 0.0;
 
                 // target sequence
-                unsigned int index = 0;
                 if (joint.find("targetSequence") != joint.end()) {
                     jd.m_targetSequence.reserve((unsigned int)joint["targetSequence"].size());
                     for (auto &item : joint["targetSequence"]) jd.m_targetSequence.push_back(item.get<Real>());
@@ -598,7 +594,6 @@ void scene_loader::readTargetPositionMotorSliderJoints(const nlohmann::json &j,
                 jd.m_target = 0.0;
 
                 // target sequence
-                unsigned int index = 0;
                 if (joint.find("targetSequence") != joint.end()) {
                     jd.m_targetSequence.reserve((unsigned int)joint["targetSequence"].size());
                     for (auto &item : joint["targetSequence"]) jd.m_targetSequence.push_back(item.get<Real>());
@@ -626,7 +621,6 @@ void scene_loader::readTargetVelocityMotorSliderJoints(const nlohmann::json &j,
                 jd.m_target = 0.0;
 
                 // target sequence
-                unsigned int index = 0;
                 if (joint.find("targetSequence") != joint.end()) {
                     jd.m_targetSequence.reserve((unsigned int)joint["targetSequence"].size());
                     for (auto &item : joint["targetSequence"]) jd.m_targetSequence.push_back(item.get<Real>());

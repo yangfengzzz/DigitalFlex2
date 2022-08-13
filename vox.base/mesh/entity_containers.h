@@ -13,77 +13,63 @@ namespace vox {
 class TriangleMesh;
 
 class FaceContainer {
-
 public:
-  [[nodiscard]] FaceIterator begin() const { return FaceIterator(0, m_mesh); }
-  [[nodiscard]] FaceIterator end() const;
+    [[nodiscard]] FaceIterator begin() const { return FaceIterator(0, m_mesh); }
+    [[nodiscard]] FaceIterator end() const;
 
 private:
-  friend class TriangleMesh;
-  FaceContainer(TriangleMesh *mesh) : m_mesh(mesh) {}
+    friend class TriangleMesh;
+    FaceContainer(TriangleMesh *mesh) : m_mesh(mesh) {}
 
-  TriangleMesh *m_mesh;
+    TriangleMesh *m_mesh;
 };
 
 class FaceConstContainer {
-
 public:
-  [[nodiscard]] FaceConstIterator begin() const {
-    return FaceConstIterator(0, m_mesh);
-  }
-  [[nodiscard]] FaceConstIterator end() const;
+    [[nodiscard]] FaceConstIterator begin() const { return FaceConstIterator(0, m_mesh); }
+    [[nodiscard]] FaceConstIterator end() const;
 
 private:
-  friend class TriangleMesh;
-  FaceConstContainer(TriangleMesh const *mesh) : m_mesh(mesh) {}
+    friend class TriangleMesh;
+    FaceConstContainer(TriangleMesh const *mesh) : m_mesh(mesh) {}
 
-  TriangleMesh const *m_mesh;
+    TriangleMesh const *m_mesh;
 };
 
 class IncidentFaceContainer {
-
 public:
-  [[nodiscard]] IncidentFaceIterator begin() const {
-    return IncidentFaceIterator(m_v, m_mesh);
-  }
-  [[nodiscard]] IncidentFaceIterator end() const {
-    return IncidentFaceIterator();
-  }
+    [[nodiscard]] IncidentFaceIterator begin() const { return IncidentFaceIterator(m_v, m_mesh); }
+    [[nodiscard]] IncidentFaceIterator end() const { return IncidentFaceIterator(); }
 
 private:
-  friend class TriangleMesh;
-  IncidentFaceContainer(unsigned int v, TriangleMesh const *mesh)
-      : m_v(v), m_mesh(mesh) {}
+    friend class TriangleMesh;
+    IncidentFaceContainer(unsigned int v, TriangleMesh const *mesh) : m_v(v), m_mesh(mesh) {}
 
-  TriangleMesh const *m_mesh;
-  unsigned int m_v;
+    TriangleMesh const *m_mesh;
+    unsigned int m_v;
 };
 
 class VertexContainer {
-
 public:
-  [[nodiscard]] VertexIterator begin() const { return {0, m_mesh}; }
-  [[nodiscard]] VertexIterator end() const;
+    [[nodiscard]] VertexIterator begin() const { return {0, m_mesh}; }
+    [[nodiscard]] VertexIterator end() const;
 
 private:
-  friend class TriangleMesh;
-  VertexContainer(TriangleMesh *mesh) : m_mesh(mesh) {}
+    friend class TriangleMesh;
+    VertexContainer(TriangleMesh *mesh) : m_mesh(mesh) {}
 
-  TriangleMesh *m_mesh;
+    TriangleMesh *m_mesh;
 };
 
 class VertexConstContainer {
-
 public:
-  [[nodiscard]] VertexConstIterator begin() const {
-    return VertexConstIterator(0, m_mesh);
-  }
-  [[nodiscard]] VertexConstIterator end() const;
+    [[nodiscard]] VertexConstIterator begin() const { return VertexConstIterator(0, m_mesh); }
+    [[nodiscard]] VertexConstIterator end() const;
 
 private:
-  friend class TriangleMesh;
-  VertexConstContainer(TriangleMesh const *mesh) : m_mesh(mesh) {}
+    friend class TriangleMesh;
+    VertexConstContainer(TriangleMesh const *mesh) : m_mesh(mesh) {}
 
-  TriangleMesh const *m_mesh;
+    TriangleMesh const *m_mesh;
 };
-} // namespace vox
+}  // namespace vox

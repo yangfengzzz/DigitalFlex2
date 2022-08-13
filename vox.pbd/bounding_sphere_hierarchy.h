@@ -13,12 +13,10 @@
 namespace vox {
 class PointCloudBSH : public KDTree<bounding_sphere> {
 public:
-    using super = KDTree<bounding_sphere>;
-
     PointCloudBSH();
 
-    void init(const Vector3r *vertices, const unsigned int numVertices);
-    Vector3r const &entity_position(unsigned int i) const final;
+    void init(const Vector3r *vertices, unsigned int numVertices);
+    [[nodiscard]] Vector3r const &entity_position(unsigned int i) const final;
     void compute_hull(unsigned int b, unsigned int n, bounding_sphere &hull) const final;
     void compute_hull_approx(unsigned int b, unsigned int n, bounding_sphere &hull) const final;
 
@@ -29,16 +27,14 @@ private:
 
 class TetMeshBSH : public KDTree<bounding_sphere> {
 public:
-    using super = KDTree<bounding_sphere>;
-
     TetMeshBSH();
 
     void init(const Vector3r *vertices,
-              const unsigned int numVertices,
+              unsigned int numVertices,
               const unsigned int *indices,
-              const unsigned int numTets,
-              const Real tolerance);
-    Vector3r const &entity_position(unsigned int i) const final;
+              unsigned int numTets,
+              Real tolerance);
+    [[nodiscard]] Vector3r const &entity_position(unsigned int i) const final;
     void compute_hull(unsigned int b, unsigned int n, bounding_sphere &hull) const final;
     void compute_hull_approx(unsigned int b, unsigned int n, bounding_sphere &hull) const final;
     void updateVertices(const Vector3r *vertices);
@@ -58,9 +54,9 @@ public:
 
     static void traverse(PointCloudBSH const &b1, TetMeshBSH const &b2, TraversalCallback func);
     static void traverse(PointCloudBSH const &b1,
-                         const unsigned int node_index1,
+                         unsigned int node_index1,
                          TetMeshBSH const &b2,
-                         const unsigned int node_index2,
+                         unsigned int node_index2,
                          TraversalCallback func);
 };
 }  // namespace vox

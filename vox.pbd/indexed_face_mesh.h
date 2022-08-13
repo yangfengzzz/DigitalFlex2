@@ -12,7 +12,7 @@
 
 #include "vox.pbd/common.h"
 
-namespace Utilities {
+namespace vox::utility {
 class IndexedFaceMesh {
 public:
     struct Edge {
@@ -32,11 +32,11 @@ public:
     typedef std::vector<Vector2r> UVs;
 
 protected:
-    unsigned int m_numPoints;
+    unsigned int m_numPoints{};
     Faces m_indices;
     Edges m_edges;
     FacesEdges m_facesEdges;
-    bool m_closed;
+    bool m_closed{};
     UVIndices m_uvIndices;
     UVs m_uvs;
     VerticesFaces m_verticesFaces;
@@ -44,7 +44,7 @@ protected:
     const unsigned int m_verticesPerFace = 3u;
     FaceNormals m_normals;
     VertexNormals m_vertexNormals;
-    bool m_flatShading;
+    bool m_flatShading{};
 
 public:
     IndexedFaceMesh();
@@ -53,45 +53,45 @@ public:
     ~IndexedFaceMesh();
 
     void release();
-    bool isClosed() const;
-    bool getFlatShading() const { return m_flatShading; }
+    [[nodiscard]] bool isClosed() const;
+    [[nodiscard]] bool getFlatShading() const { return m_flatShading; }
     void setFlatShading(const bool v) { m_flatShading = v; }
-    void initMesh(const unsigned int nPoints, const unsigned int nEdges, const unsigned int nFaces);
-    void addFace(const unsigned int *const indices);
-    void addFace(const int *const indices);
-    void addUV(const Real u, const Real v);
-    void addUVIndex(const unsigned int index);
+    void initMesh(unsigned int nPoints, unsigned int nEdges, unsigned int nFaces);
+    void addFace(const unsigned int *indices);
+    void addFace(const int *indices);
+    void addUV(Real u, Real v);
+    void addUVIndex(unsigned int index);
 
-    const Faces &getFaces() const { return m_indices; }
+    [[nodiscard]] const Faces &getFaces() const { return m_indices; }
     Faces &getFaces() { return m_indices; }
-    const FaceNormals &getFaceNormals() const { return m_normals; }
+    [[nodiscard]] const FaceNormals &getFaceNormals() const { return m_normals; }
     FaceNormals &getFaceNormals() { return m_normals; }
-    const VertexNormals &getVertexNormals() const { return m_vertexNormals; }
+    [[nodiscard]] const VertexNormals &getVertexNormals() const { return m_vertexNormals; }
     VertexNormals &getVertexNormals() { return m_vertexNormals; }
     Edges &getEdges() { return m_edges; }
-    const Edges &getEdges() const { return m_edges; }
-    const FacesEdges &getFacesEdges() const { return m_facesEdges; }
-    const UVIndices &getUVIndices() const { return m_uvIndices; }
-    const UVs &getUVs() const { return m_uvs; }
-    const VerticesFaces &getVertexFaces() const { return m_verticesFaces; }
-    const VerticesEdges &getVertexEdges() const { return m_verticesEdges; }
+    [[nodiscard]] const Edges &getEdges() const { return m_edges; }
+    [[nodiscard]] const FacesEdges &getFacesEdges() const { return m_facesEdges; }
+    [[nodiscard]] const UVIndices &getUVIndices() const { return m_uvIndices; }
+    [[nodiscard]] const UVs &getUVs() const { return m_uvs; }
+    [[nodiscard]] const VerticesFaces &getVertexFaces() const { return m_verticesFaces; }
+    [[nodiscard]] const VerticesEdges &getVertexEdges() const { return m_verticesEdges; }
 
-    unsigned int numVertices() const { return m_numPoints; }
-    unsigned int numFaces() const { return (unsigned int)m_indices.size() / m_verticesPerFace; }
-    unsigned int numEdges() const { return (unsigned int)m_edges.size(); }
-    unsigned int numUVs() const { return (unsigned int)m_uvs.size(); }
+    [[nodiscard]] unsigned int numVertices() const { return m_numPoints; }
+    [[nodiscard]] unsigned int numFaces() const { return (unsigned int)m_indices.size() / m_verticesPerFace; }
+    [[nodiscard]] unsigned int numEdges() const { return (unsigned int)m_edges.size(); }
+    [[nodiscard]] unsigned int numUVs() const { return (unsigned int)m_uvs.size(); }
 
     void copyUVs(const UVIndices &uvIndices, const UVs &uvs);
 
     void buildNeighbors();
 
     template <class PositionData>
-    void updateNormals(const PositionData &pd, const unsigned int offset);
+    void updateNormals(const PositionData &pd, unsigned int offset);
 
     template <class PositionData>
     void updateVertexNormals(const PositionData &pd);
 
-    unsigned int getVerticesPerFace() const;
+    [[nodiscard]] unsigned int getVerticesPerFace() const;
 };
 
 template <class PositionData>
@@ -139,4 +139,4 @@ void IndexedFaceMesh::updateVertexNormals(const PositionData &pd) {
     }
 }
 
-}  // namespace Utilities
+}  // namespace vox::utility

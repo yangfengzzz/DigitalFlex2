@@ -4,12 +4,8 @@
 //  personal capacity and am not conveying any rights to any intellectual
 //  property of any third parties.
 
-#include "time_step_controller.h"
+#include "vox.pbd/time_step_controller.h"
 
-#include <iostream>
-
-#include "vox.pbd/position_based_dynamics.h"
-#include "vox.pbd/position_based_rigid_body_dynamics.h"
 #include "vox.pbd/time_integration.h"
 #include "vox.pbd/time_manager.h"
 #include "vox.pbd/timing.h"
@@ -33,10 +29,10 @@ TimeStepController::TimeStepController() {
     m_maxIterations = 1;
     m_maxIterationsV = 5;
     m_subSteps = 5;
-    m_collisionDetection = NULL;
+    m_collisionDetection = nullptr;
 }
 
-TimeStepController::~TimeStepController(void) {}
+TimeStepController::~TimeStepController(void) = default;
 
 void TimeStepController::initParameters() {
     TimeStep::initParameters();
@@ -70,13 +66,13 @@ void TimeStepController::initParameters() {
             createEnumParameter("velocityUpdateMethod", "Velocity update method", &m_velocityUpdateMethod);
     setGroup(VELOCITY_UPDATE_METHOD, "PBD");
     setDescription(VELOCITY_UPDATE_METHOD, "Velocity method.");
-    EnumParameter *enumParam = static_cast<EnumParameter *>(getParameter(VELOCITY_UPDATE_METHOD));
+    auto *enumParam = static_cast<EnumParameter *>(getParameter(VELOCITY_UPDATE_METHOD));
     enumParam->addEnumValue("First Order Update", ENUM_VUPDATE_FIRST_ORDER);
     enumParam->addEnumValue("Second Order Update", ENUM_VUPDATE_SECOND_ORDER);
 }
 
-void TimeStepController::step(simulation_model &model) {
-    START_TIMING("simulation step");
+void TimeStepController::step(SimulationModel &model) {
+    START_TIMING("simulation step")
     TimeManager *tm = TimeManager::getCurrent();
     const Real hOld = tm->getTimeStepSize();
 
@@ -84,7 +80,7 @@ void TimeStepController::step(simulation_model &model) {
     // rigid body model
     //////////////////////////////////////////////////////////////////////////
     clearAccelerations(model);
-    simulation_model::RigidBodyVector &rb = model.getRigidBodies();
+    SimulationModel::RigidBodyVector &rb = model.getRigidBodies();
     ParticleData &pd = model.getParticles();
     OrientationData &od = model.getOrientations();
 
@@ -133,10 +129,9 @@ void TimeStepController::step(simulation_model &model) {
             }
         }
 
-        START_TIMING("position constraints projection");
+        START_TIMING("position constraints projection")
         positionConstraintProjection(model);
-        STOP_TIMING_AVG;
-
+        STOP_TIMING_AVG
 #pragma omp parallel if (numBodies > MIN_PARALLEL_SIZE) default(shared)
         {
 // Update velocities
@@ -196,9 +191,9 @@ void TimeStepController::step(simulation_model &model) {
     }
 
     if (m_collisionDetection) {
-        START_TIMING("collision detection");
+        START_TIMING("collision detection")
         m_collisionDetection->collisionDetection(model);
-        STOP_TIMING_AVG;
+        STOP_TIMING_AVG
     }
 
     velocityConstraintProjection(model);
@@ -206,15 +201,15 @@ void TimeStepController::step(simulation_model &model) {
     //////////////////////////////////////////////////////////////////////////
     // update motor joint targets
     //////////////////////////////////////////////////////////////////////////
-    simulation_model::ConstraintVector &constraints = model.getConstraints();
-    for (unsigned int i = 0; i < constraints.size(); i++) {
-        if ((constraints[i]->getTypeId() == TargetAngleMotorHingeJoint::TYPE_ID) ||
-            (constraints[i]->getTypeId() == TargetVelocityMotorHingeJoint::TYPE_ID) ||
-            (constraints[i]->getTypeId() == TargetPositionMotorSliderJoint::TYPE_ID) ||
-            (constraints[i]->getTypeId() == TargetVelocityMotorSliderJoint::TYPE_ID)) {
-            MotorJoint *motor = (MotorJoint *)constraints[i];
+    SimulationModel::ConstraintVector &constraints = model.getConstraints();
+    for (auto &constraint : constraints) {
+        if ((constraint->getTypeId() == TargetAngleMotorHingeJoint::TYPE_ID) ||
+            (constraint->getTypeId() == TargetVelocityMotorHingeJoint::TYPE_ID) ||
+            (constraint->getTypeId() == TargetPositionMotorSliderJoint::TYPE_ID) ||
+            (constraint->getTypeId() == TargetVelocityMotorSliderJoint::TYPE_ID)) {
+            auto *motor = (MotorJoint *)constraint;
             const std::vector<Real> sequence = motor->getTargetSequence();
-            if (sequence.size() > 0) {
+            if (!sequence.empty()) {
                 Real time = tm->getTime();
                 const Real sequenceDuration = sequence[sequence.size() - 2] - sequence[0];
                 if (motor->getRepeatSequence()) {
@@ -224,7 +219,7 @@ void TimeStepController::step(simulation_model &model) {
                 while ((2 * index < sequence.size()) && (sequence[2 * index] <= time)) index++;
 
                 // linear interpolation
-                Real target = 0.0;
+                Real target;
                 if (2 * index < sequence.size()) {
                     const Real alpha =
                             (time - sequence[2 * (index - 1)]) / (sequence[2 * index] - sequence[2 * (index - 1)]);
@@ -239,7 +234,7 @@ void TimeStepController::step(simulation_model &model) {
 
     // compute new time
     tm->setTime(tm->getTime() + h);
-    STOP_TIMING_AVG;
+    STOP_TIMING_AVG
 }
 
 void TimeStepController::reset() {
@@ -249,17 +244,17 @@ void TimeStepController::reset() {
     // m_maxIterationsV = 5;
 }
 
-void TimeStepController::positionConstraintProjection(simulation_model &model) {
+void TimeStepController::positionConstraintProjection(SimulationModel &model) {
     m_iterations = 0;
 
     // init constraint groups if necessary
     model.initConstraintGroups();
 
-    simulation_model::RigidBodyVector &rb = model.getRigidBodies();
-    simulation_model::ConstraintVector &constraints = model.getConstraints();
-    simulation_model::ConstraintGroupVector &groups = model.getConstraintGroups();
-    simulation_model::RigidBodyContactConstraintVector &contacts = model.getRigidBodyContactConstraints();
-    simulation_model::ParticleSolidContactConstraintVector &particleTetContacts =
+    SimulationModel::RigidBodyVector &rb = model.getRigidBodies();
+    SimulationModel::ConstraintVector &constraints = model.getConstraints();
+    SimulationModel::ConstraintGroupVector &groups = model.getConstraintGroups();
+    SimulationModel::RigidBodyContactConstraintVector &contacts = model.getRigidBodyContactConstraints();
+    SimulationModel::ParticleSolidContactConstraintVector &particleTetContacts =
             model.getParticleSolidContactConstraints();
 
     // init constraints for this time step if necessary
@@ -268,13 +263,13 @@ void TimeStepController::positionConstraintProjection(simulation_model &model) {
     }
 
     while (m_iterations < m_maxIterations) {
-        for (unsigned int group = 0; group < groups.size(); group++) {
-            const int groupSize = (int)groups[group].size();
+        for (auto &group : groups) {
+            const int groupSize = (int)group.size();
 #pragma omp parallel if (groupSize > MIN_PARALLEL_SIZE) default(shared)
             {
 #pragma omp for schedule(static)
                 for (int i = 0; i < groupSize; i++) {
-                    const unsigned int constraintIndex = groups[group][i];
+                    const unsigned int constraintIndex = group[i];
 
                     constraints[constraintIndex]->updateConstraint(model);
                     constraints[constraintIndex]->solvePositionConstraint(model, m_iterations);
@@ -282,63 +277,63 @@ void TimeStepController::positionConstraintProjection(simulation_model &model) {
             }
         }
 
-        for (unsigned int i = 0; i < particleTetContacts.size(); i++) {
-            particleTetContacts[i].solvePositionConstraint(model, m_iterations);
+        for (auto &particleTetContact : particleTetContacts) {
+            particleTetContact.solvePositionConstraint(model, m_iterations);
         }
 
         m_iterations++;
     }
 }
 
-void TimeStepController::velocityConstraintProjection(simulation_model &model) {
+void TimeStepController::velocityConstraintProjection(SimulationModel &model) {
     m_iterationsV = 0;
 
     // init constraint groups if necessary
     model.initConstraintGroups();
 
-    simulation_model::RigidBodyVector &rb = model.getRigidBodies();
-    simulation_model::ConstraintVector &constraints = model.getConstraints();
-    simulation_model::ConstraintGroupVector &groups = model.getConstraintGroups();
-    simulation_model::RigidBodyContactConstraintVector &rigidBodyContacts = model.getRigidBodyContactConstraints();
-    simulation_model::ParticleRigidBodyContactConstraintVector &particleRigidBodyContacts =
+    SimulationModel::RigidBodyVector &rb = model.getRigidBodies();
+    SimulationModel::ConstraintVector &constraints = model.getConstraints();
+    SimulationModel::ConstraintGroupVector &groups = model.getConstraintGroups();
+    SimulationModel::RigidBodyContactConstraintVector &rigidBodyContacts = model.getRigidBodyContactConstraints();
+    SimulationModel::ParticleRigidBodyContactConstraintVector &particleRigidBodyContacts =
             model.getParticleRigidBodyContactConstraints();
-    simulation_model::ParticleSolidContactConstraintVector &particleTetContacts =
+    SimulationModel::ParticleSolidContactConstraintVector &particleTetContacts =
             model.getParticleSolidContactConstraints();
 
-    for (unsigned int group = 0; group < groups.size(); group++) {
-        const int groupSize = (int)groups[group].size();
+    for (auto &group : groups) {
+        const int groupSize = (int)group.size();
 #pragma omp parallel if (groupSize > MIN_PARALLEL_SIZE) default(shared)
         {
 #pragma omp for schedule(static)
             for (int i = 0; i < groupSize; i++) {
-                const unsigned int constraintIndex = groups[group][i];
+                const unsigned int constraintIndex = group[i];
                 constraints[constraintIndex]->updateConstraint(model);
             }
         }
     }
 
     while (m_iterationsV < m_maxIterationsV) {
-        for (unsigned int group = 0; group < groups.size(); group++) {
-            const int groupSize = (int)groups[group].size();
+        for (auto &group : groups) {
+            const int groupSize = (int)group.size();
 #pragma omp parallel if (groupSize > MIN_PARALLEL_SIZE) default(shared)
             {
 #pragma omp for schedule(static)
                 for (int i = 0; i < groupSize; i++) {
-                    const unsigned int constraintIndex = groups[group][i];
+                    const unsigned int constraintIndex = group[i];
                     constraints[constraintIndex]->solveVelocityConstraint(model, m_iterationsV);
                 }
             }
         }
 
         // solve contacts
-        for (unsigned int i = 0; i < rigidBodyContacts.size(); i++) {
-            rigidBodyContacts[i].solveVelocityConstraint(model, m_iterationsV);
+        for (auto &rigidBodyContact : rigidBodyContacts) {
+            rigidBodyContact.solveVelocityConstraint(model, m_iterationsV);
         }
-        for (unsigned int i = 0; i < particleRigidBodyContacts.size(); i++) {
-            particleRigidBodyContacts[i].solveVelocityConstraint(model, m_iterationsV);
+        for (auto &particleRigidBodyContact : particleRigidBodyContacts) {
+            particleRigidBodyContact.solveVelocityConstraint(model, m_iterationsV);
         }
-        for (unsigned int i = 0; i < particleTetContacts.size(); i++) {
-            particleTetContacts[i].solveVelocityConstraint(model, m_iterationsV);
+        for (auto &particleTetContact : particleTetContacts) {
+            particleTetContact.solveVelocityConstraint(model, m_iterationsV);
         }
         m_iterationsV++;
     }

@@ -31,7 +31,7 @@ public:
 
         Node() = default;
 
-        bool is_leaf() const { return children[0] < 0 && children[1] < 0; }
+        [[nodiscard]] bool is_leaf() const { return children[0] < 0 && children[1] < 0; }
 
         // Index of child nodes in nodes array.
         // -1 if child does not exist.
@@ -49,14 +49,14 @@ public:
     };
     using TraversalQueue = std::queue<QueueItem>;
 
-    KDTree(std::size_t n, unsigned int maxPrimitivesPerLeaf = 1)
+    explicit KDTree(std::size_t n, unsigned int maxPrimitivesPerLeaf = 1)
         : m_lst(n), m_maxPrimitivesPerLeaf(maxPrimitivesPerLeaf) {}
 
-    virtual ~KDTree() {}
+    virtual ~KDTree() = default;
 
     Node const &node(unsigned int i) const { return m_nodes[i]; }
     HullType const &hull(unsigned int i) const { return m_hulls[i]; }
-    unsigned int entity(unsigned int i) const { return m_lst[i]; }
+    [[nodiscard]] unsigned int entity(unsigned int i) const { return m_lst[i]; }
 
     void construct();
     void traverse_depth_first(TraversalPredicate pred,
@@ -84,7 +84,7 @@ protected:
 
     unsigned int add_node(unsigned int b, unsigned int n);
 
-    virtual Vector3r const &entity_position(unsigned int i) const = 0;
+    [[nodiscard]] virtual Vector3r const &entity_position(unsigned int i) const = 0;
     virtual void compute_hull(unsigned int b, unsigned int n, HullType &hull) const = 0;
     virtual void compute_hull_approx(unsigned int b, unsigned int n, HullType &hull) const { compute_hull(b, n, hull); }
 

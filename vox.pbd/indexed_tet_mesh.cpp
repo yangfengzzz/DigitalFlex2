@@ -6,9 +6,9 @@
 
 #include "vox.pbd/indexed_tet_mesh.h"
 
-using namespace Utilities;
+using namespace vox::utility;
 
-IndexedTetMesh::IndexedTetMesh() {}
+IndexedTetMesh::IndexedTetMesh() = default;
 
 IndexedTetMesh::~IndexedTetMesh() { release(); }
 

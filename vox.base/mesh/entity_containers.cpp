@@ -5,25 +5,23 @@
 //  property of any third parties.
 
 #include "vox.base/mesh/entity_containers.h"
+
 #include "vox.base/mesh/triangle_mesh.h"
 
 namespace vox {
 
-FaceIterator FaceContainer::end() const {
-  return FaceIterator(static_cast<unsigned int>(m_mesh->nFaces()), m_mesh);
-}
+FaceIterator FaceContainer::end() const { return FaceIterator(static_cast<unsigned int>(m_mesh->nFaces()), m_mesh); }
 
 FaceConstIterator FaceConstContainer::end() const {
-  return FaceConstIterator(static_cast<unsigned int>(m_mesh->nFaces()), m_mesh);
+    return FaceConstIterator(static_cast<unsigned int>(m_mesh->nFaces()), m_mesh);
 }
 
 VertexIterator VertexContainer::end() const {
-  return VertexIterator(static_cast<unsigned int>(m_mesh->nVertices()), m_mesh);
+    return VertexIterator(static_cast<unsigned int>(m_mesh->nVertices()), m_mesh);
 }
 
 VertexConstIterator VertexConstContainer::end() const {
-  return VertexConstIterator(static_cast<unsigned int>(m_mesh->nVertices()),
-                             m_mesh);
+    return VertexConstIterator(static_cast<unsigned int>(m_mesh->nVertices()), m_mesh);
 }
 
-} // namespace vox
+}  // namespace vox

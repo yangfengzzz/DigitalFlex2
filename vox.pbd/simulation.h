@@ -20,11 +20,11 @@ public:
     static int GRAVITATION;
 
 protected:
-    simulation_model *m_model;
+    SimulationModel *m_model{};
     TimeStep *m_timeStep;
     Vector3r m_gravitation;
 
-    virtual void initParameters();
+    void initParameters() override;
 
 private:
     static simulation *current;
@@ -33,7 +33,7 @@ public:
     simulation();
     simulation(const simulation &) = delete;
     simulation &operator=(const simulation &) = delete;
-    ~simulation();
+    ~simulation() override;
 
     void init();
     void reset();
@@ -43,8 +43,8 @@ public:
     static void setCurrent(simulation *tm);
     static bool hasCurrent();
 
-    simulation_model *getModel() { return m_model; }
-    void setModel(simulation_model *model) { m_model = model; }
+    SimulationModel *getModel() { return m_model; }
+    void setModel(SimulationModel *model) { m_model = model; }
 
     TimeStep *getTimeStep() { return m_timeStep; }
     void setTimeStep(TimeStep *ts) { m_timeStep = ts; }

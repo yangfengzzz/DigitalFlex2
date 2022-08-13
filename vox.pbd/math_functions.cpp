@@ -16,7 +16,7 @@ using namespace vox;
 
 // ----------------------------------------------------------------------------------------------
 void MathFunctions::jacobiRotate(Matrix3r &A, Matrix3r &R, int p, int q) {
-    // rotates A through phi in pq-plane to set A(p,q) = 0
+    // rotates A thorough phi in pq-plane to set A(p,q) = 0
     // rotation stored in R whose columns are eigenvectors of A
     if (A(p, q) == 0.0) return;
 

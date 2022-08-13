@@ -19,15 +19,15 @@ private:
     std::vector<Vector3r> m_x;
 
 public:
-    FORCE_INLINE VertexData(void) : m_x() {}
+    FORCE_INLINE VertexData() : m_x() {}
 
-    FORCE_INLINE ~VertexData(void) { m_x.clear(); }
+    FORCE_INLINE ~VertexData() { m_x.clear(); }
 
     FORCE_INLINE void addVertex(const Vector3r &vertex) { m_x.push_back(vertex); }
 
     FORCE_INLINE Vector3r &getPosition(const unsigned int i) { return m_x[i]; }
 
-    FORCE_INLINE const Vector3r &getPosition(const unsigned int i) const { return m_x[i]; }
+    [[nodiscard]] FORCE_INLINE const Vector3r &getPosition(const unsigned int i) const { return m_x[i]; }
 
     FORCE_INLINE void setPosition(const unsigned int i, const Vector3r &pos) { m_x[i] = pos; }
 
@@ -45,9 +45,9 @@ public:
 
     /** Release the array containing the particle data.
      */
-    FORCE_INLINE unsigned int size() const { return (unsigned int)m_x.size(); }
+    [[nodiscard]] FORCE_INLINE unsigned int size() const { return (unsigned int)m_x.size(); }
 
-    FORCE_INLINE const std::vector<Vector3r> &getVertices() const { return m_x; }
+    [[nodiscard]] FORCE_INLINE const std::vector<Vector3r> &getVertices() const { return m_x; }
 };
 
 /** This class encapsulates the state of all particles of a particle model.
@@ -69,9 +69,9 @@ private:
     std::vector<Vector3r> m_lastX;
 
 public:
-    FORCE_INLINE ParticleData(void) : m_masses(), m_invMasses(), m_x0(), m_x(), m_v(), m_a(), m_oldX(), m_lastX() {}
+    FORCE_INLINE ParticleData() : m_masses(), m_invMasses(), m_x0(), m_x(), m_v(), m_a(), m_oldX(), m_lastX() {}
 
-    FORCE_INLINE ~ParticleData(void) {
+    FORCE_INLINE ~ParticleData() {
         m_masses.clear();
         m_invMasses.clear();
         m_x0.clear();
@@ -89,47 +89,47 @@ public:
         m_lastX.push_back(vertex);
         m_masses.push_back(1.0);
         m_invMasses.push_back(1.0);
-        m_v.push_back(Vector3r(0.0, 0.0, 0.0));
-        m_a.push_back(Vector3r(0.0, 0.0, 0.0));
+        m_v.emplace_back(0.0, 0.0, 0.0);
+        m_a.emplace_back(0.0, 0.0, 0.0);
     }
 
     FORCE_INLINE Vector3r &getPosition(const unsigned int i) { return m_x[i]; }
 
-    FORCE_INLINE const Vector3r &getPosition(const unsigned int i) const { return m_x[i]; }
+    [[nodiscard]] FORCE_INLINE const Vector3r &getPosition(const unsigned int i) const { return m_x[i]; }
 
     FORCE_INLINE void setPosition(const unsigned int i, const Vector3r &pos) { m_x[i] = pos; }
 
     FORCE_INLINE Vector3r &getPosition0(const unsigned int i) { return m_x0[i]; }
 
-    FORCE_INLINE const Vector3r &getPosition0(const unsigned int i) const { return m_x0[i]; }
+    [[nodiscard]] FORCE_INLINE const Vector3r &getPosition0(const unsigned int i) const { return m_x0[i]; }
 
     FORCE_INLINE void setPosition0(const unsigned int i, const Vector3r &pos) { m_x0[i] = pos; }
 
     FORCE_INLINE Vector3r &getLastPosition(const unsigned int i) { return m_lastX[i]; }
 
-    FORCE_INLINE const Vector3r &getLastPosition(const unsigned int i) const { return m_lastX[i]; }
+    [[nodiscard]] FORCE_INLINE const Vector3r &getLastPosition(const unsigned int i) const { return m_lastX[i]; }
 
     FORCE_INLINE void setLastPosition(const unsigned int i, const Vector3r &pos) { m_lastX[i] = pos; }
 
     FORCE_INLINE Vector3r &getOldPosition(const unsigned int i) { return m_oldX[i]; }
 
-    FORCE_INLINE const Vector3r &getOldPosition(const unsigned int i) const { return m_oldX[i]; }
+    [[nodiscard]] FORCE_INLINE const Vector3r &getOldPosition(const unsigned int i) const { return m_oldX[i]; }
 
     FORCE_INLINE void setOldPosition(const unsigned int i, const Vector3r &pos) { m_oldX[i] = pos; }
 
     FORCE_INLINE Vector3r &getVelocity(const unsigned int i) { return m_v[i]; }
 
-    FORCE_INLINE const Vector3r &getVelocity(const unsigned int i) const { return m_v[i]; }
+    [[nodiscard]] FORCE_INLINE const Vector3r &getVelocity(const unsigned int i) const { return m_v[i]; }
 
-    FORCE_INLINE void setVelocity(const unsigned int i, const Vector3r &vel) { m_v[i] = vel; }
+    [[maybe_unused]] FORCE_INLINE void setVelocity(const unsigned int i, const Vector3r &vel) { m_v[i] = vel; }
 
     FORCE_INLINE Vector3r &getAcceleration(const unsigned int i) { return m_a[i]; }
 
-    FORCE_INLINE const Vector3r &getAcceleration(const unsigned int i) const { return m_a[i]; }
+    [[nodiscard]] FORCE_INLINE const Vector3r &getAcceleration(const unsigned int i) const { return m_a[i]; }
 
     FORCE_INLINE void setAcceleration(const unsigned int i, const Vector3r &accel) { m_a[i] = accel; }
 
-    FORCE_INLINE const Real getMass(const unsigned int i) const { return m_masses[i]; }
+    [[nodiscard]] FORCE_INLINE Real getMass(const unsigned int i) const { return m_masses[i]; }
 
     FORCE_INLINE Real &getMass(const unsigned int i) { return m_masses[i]; }
 
@@ -141,11 +141,11 @@ public:
             m_invMasses[i] = 0.0;
     }
 
-    FORCE_INLINE const Real getInvMass(const unsigned int i) const { return m_invMasses[i]; }
+    [[nodiscard]] FORCE_INLINE Real getInvMass(const unsigned int i) const { return m_invMasses[i]; }
 
-    FORCE_INLINE const unsigned int getNumberOfParticles() const { return (unsigned int)m_x.size(); }
+    [[nodiscard]] FORCE_INLINE unsigned int getNumberOfParticles() const { return (unsigned int)m_x.size(); }
 
-    FORCE_INLINE const std::vector<Vector3r> &getVertices() const { return m_x; }
+    [[nodiscard]] FORCE_INLINE const std::vector<Vector3r> &getVertices() const { return m_x; }
 
     /** Resize the array containing the particle data.
      */
@@ -188,7 +188,7 @@ public:
 
     /** Release the array containing the particle data.
      */
-    FORCE_INLINE unsigned int size() const { return (unsigned int)m_x.size(); }
+    [[nodiscard]] FORCE_INLINE unsigned int size() const { return (unsigned int)m_x.size(); }
 };
 
 /** This class encapsulates the state of all orientations of a quaternion model.
@@ -210,10 +210,10 @@ private:
     std::vector<Quaternionr> m_lastQ;
 
 public:
-    FORCE_INLINE OrientationData(void)
+    FORCE_INLINE OrientationData()
         : m_masses(), m_invMasses(), m_q0(), m_q(), m_omega(), m_alpha(), m_oldQ(), m_lastQ() {}
 
-    FORCE_INLINE ~OrientationData(void) {
+    FORCE_INLINE ~OrientationData() {
         m_masses.clear();
         m_invMasses.clear();
         m_q0.clear();
@@ -231,47 +231,47 @@ public:
         m_lastQ.push_back(vertex);
         m_masses.push_back(1.0);
         m_invMasses.push_back(1.0);
-        m_omega.push_back(Vector3r(0.0, 0.0, 0.0));
-        m_alpha.push_back(Vector3r(0.0, 0.0, 0.0));
+        m_omega.emplace_back(0.0, 0.0, 0.0);
+        m_alpha.emplace_back(0.0, 0.0, 0.0);
     }
 
     FORCE_INLINE Quaternionr &getQuaternion(const unsigned int i) { return m_q[i]; }
 
-    FORCE_INLINE const Quaternionr &getQuaternion(const unsigned int i) const { return m_q[i]; }
+    [[nodiscard]] FORCE_INLINE const Quaternionr &getQuaternion(const unsigned int i) const { return m_q[i]; }
 
     FORCE_INLINE void setQuaternion(const unsigned int i, const Quaternionr &pos) { m_q[i] = pos; }
 
     FORCE_INLINE Quaternionr &getQuaternion0(const unsigned int i) { return m_q0[i]; }
 
-    FORCE_INLINE const Quaternionr &getQuaternion0(const unsigned int i) const { return m_q0[i]; }
+    [[nodiscard]] FORCE_INLINE const Quaternionr &getQuaternion0(const unsigned int i) const { return m_q0[i]; }
 
     FORCE_INLINE void setQuaternion0(const unsigned int i, const Quaternionr &pos) { m_q0[i] = pos; }
 
     FORCE_INLINE Quaternionr &getLastQuaternion(const unsigned int i) { return m_lastQ[i]; }
 
-    FORCE_INLINE const Quaternionr &getLastQuaternion(const unsigned int i) const { return m_lastQ[i]; }
+    [[nodiscard]] FORCE_INLINE const Quaternionr &getLastQuaternion(const unsigned int i) const { return m_lastQ[i]; }
 
     FORCE_INLINE void setLastQuaternion(const unsigned int i, const Quaternionr &pos) { m_lastQ[i] = pos; }
 
     FORCE_INLINE Quaternionr &getOldQuaternion(const unsigned int i) { return m_oldQ[i]; }
 
-    FORCE_INLINE const Quaternionr &getOldQuaternion(const unsigned int i) const { return m_oldQ[i]; }
+    [[nodiscard]] FORCE_INLINE const Quaternionr &getOldQuaternion(const unsigned int i) const { return m_oldQ[i]; }
 
     FORCE_INLINE void setOldQuaternion(const unsigned int i, const Quaternionr &pos) { m_oldQ[i] = pos; }
 
     FORCE_INLINE Vector3r &getVelocity(const unsigned int i) { return m_omega[i]; }
 
-    FORCE_INLINE const Vector3r &getVelocity(const unsigned int i) const { return m_omega[i]; }
+    [[nodiscard]] FORCE_INLINE const Vector3r &getVelocity(const unsigned int i) const { return m_omega[i]; }
 
     FORCE_INLINE void setVelocity(const unsigned int i, const Vector3r &vel) { m_omega[i] = vel; }
 
     FORCE_INLINE Vector3r &getAcceleration(const unsigned int i) { return m_alpha[i]; }
 
-    FORCE_INLINE const Vector3r &getAcceleration(const unsigned int i) const { return m_alpha[i]; }
+    [[nodiscard]] FORCE_INLINE const Vector3r &getAcceleration(const unsigned int i) const { return m_alpha[i]; }
 
     FORCE_INLINE void setAcceleration(const unsigned int i, const Vector3r &accel) { m_alpha[i] = accel; }
 
-    FORCE_INLINE const Real getMass(const unsigned int i) const { return m_masses[i]; }
+    [[nodiscard]] FORCE_INLINE Real getMass(const unsigned int i) const { return m_masses[i]; }
 
     FORCE_INLINE Real &getMass(const unsigned int i) { return m_masses[i]; }
 
@@ -283,11 +283,12 @@ public:
             m_invMasses[i] = 0.0;
     }
 
-    FORCE_INLINE const Real getInvMass(const unsigned int i) const { return m_invMasses[i]; }
+    [[nodiscard]] FORCE_INLINE Real getInvMass(const unsigned int i) const { return m_invMasses[i]; }
 
-    FORCE_INLINE const unsigned int getNumberOfQuaternions() const { return (unsigned int)m_q.size(); }
+    [[nodiscard]] FORCE_INLINE unsigned int getNumberOfQuaternions() const { return (unsigned int)m_q.size(); }
 
-    /** Resize the array containing the particle data.
+    /**
+     * Resize the array containing the particle data.
      */
     FORCE_INLINE void resize(const unsigned int newSize) {
         m_masses.resize(newSize);
@@ -300,7 +301,8 @@ public:
         m_lastQ.resize(newSize);
     }
 
-    /** Reserve the array containing the particle data.
+    /**
+     * Reserve the array containing the particle data.
      */
     FORCE_INLINE void reserve(const unsigned int newSize) {
         m_masses.reserve(newSize);
@@ -313,7 +315,8 @@ public:
         m_lastQ.reserve(newSize);
     }
 
-    /** Release the array containing the particle data.
+    /**
+     * Release the array containing the particle data.
      */
     FORCE_INLINE void release() {
         m_masses.clear();
@@ -326,8 +329,9 @@ public:
         m_lastQ.clear();
     }
 
-    /** Release the array containing the particle data.
+    /**
+     * Release the array containing the particle data.
      */
-    FORCE_INLINE unsigned int size() const { return (unsigned int)m_q.size(); }
+    [[nodiscard]] FORCE_INLINE unsigned int size() const { return (unsigned int)m_q.size(); }
 };
 }  // namespace vox

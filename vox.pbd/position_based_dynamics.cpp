@@ -489,8 +489,6 @@ bool PositionBasedDynamics::solve_EdgeEdgeDistanceConstraint(const Vector3r &p0,
     return true;
 }
 
-#include <iostream>
-
 // ----------------------------------------------------------------------------------------------
 bool PositionBasedDynamics::init_ShapeMatchingConstraint(const Vector3r x0[],
                                                          const Real invMasses[],
@@ -636,7 +634,7 @@ bool PositionBasedDynamics::solve_StrainTriangleConstraint(const Vector3r &p0,
             r[2] = Vector3r((p1[2] + corr1[2]) - (p0[2] + corr0[2]), (p2[2] + corr2[2]) - (p0[2] + corr0[2]), 0.0);
 
             Real Sij = 0.0;
-            for (int k = 0; k < 3; k++) Sij += r[k].dot(c[i]) * r[k].dot(c[j]);
+            for (auto &k : r) Sij += k.dot(c[i]) * k.dot(c[j]);
 
             Vector3r d[3];
             d[0] = Vector3r(0.0, 0.0, 0.0);
@@ -650,9 +648,9 @@ bool PositionBasedDynamics::solve_StrainTriangleConstraint(const Vector3r &p0,
             if (i != j && normalizeShear) {
                 Real fi2 = 0.0;
                 Real fj2 = 0.0;
-                for (int k = 0; k < 3; k++) {
-                    fi2 += r[k].dot(c[i]) * r[k].dot(c[i]);
-                    fj2 += r[k].dot(c[j]) * r[k].dot(c[j]);
+                for (auto &k : r) {
+                    fi2 += k.dot(c[i]) * k.dot(c[i]);
+                    fj2 += k.dot(c[j]) * k.dot(c[j]);
                 }
                 Real fi = sqrt(fi2);
                 Real fj = sqrt(fj2);

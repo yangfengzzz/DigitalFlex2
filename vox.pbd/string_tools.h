@@ -9,10 +9,10 @@
 #include <iostream>
 #include <vector>
 
-namespace Utilities {
+namespace vox::utility {
 /** \brief Tools to handle std::string objects
  */
-class string_tools {
+class StringTools {
 public:
     static void tokenize(const std::string &str,
                          std::vector<std::string> &tokens,
@@ -27,4 +27,4 @@ public:
         }
     }
 };
-}  // namespace Utilities
+}  // namespace vox::utility

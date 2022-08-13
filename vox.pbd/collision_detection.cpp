@@ -9,7 +9,7 @@
 #include "vox.pbd/id_factory.h"
 
 using namespace vox;
-using namespace Utilities;
+using namespace vox::utility;
 
 int CollisionDetection::CollisionObjectWithoutGeometry::TYPE_ID = IDFactory::getId();
 const unsigned int CollisionDetection::RigidBodyContactType = 0;
@@ -23,15 +23,15 @@ const unsigned int CollisionDetection::CollisionObject::TetModelCollisionObjectT
 
 CollisionDetection::CollisionDetection() : m_collisionObjects() {
     m_collisionObjects.reserve(1000);
-    m_contactCB = NULL;
-    m_solidContactCB = NULL;
+    m_contactCB = nullptr;
+    m_solidContactCB = nullptr;
     m_tolerance = static_cast<Real>(0.01);
 }
 
 CollisionDetection::~CollisionDetection() { cleanup(); }
 
 void CollisionDetection::cleanup() {
-    for (unsigned int i = 0; i < m_collisionObjects.size(); i++) delete m_collisionObjects[i];
+    for (auto &m_collisionObject : m_collisionObjects) delete m_collisionObject;
     m_collisionObjects.clear();
 }
 
@@ -77,7 +77,7 @@ void CollisionDetection::addParticleSolidContact(const unsigned int particleInde
 }
 
 void CollisionDetection::addCollisionObject(const unsigned int bodyIndex, const unsigned int bodyType) {
-    CollisionObjectWithoutGeometry *co = new CollisionObjectWithoutGeometry();
+    auto *co = new CollisionObjectWithoutGeometry();
     co->m_bodyIndex = bodyIndex;
     co->m_bodyType = bodyType;
     m_collisionObjects.push_back(co);
@@ -93,22 +93,21 @@ void CollisionDetection::setSolidContactCallback(CollisionDetection::SolidContac
     m_solidContactCBUserData = userData;
 }
 
-void CollisionDetection::updateAABBs(simulation_model &model) {
-    const simulation_model::RigidBodyVector &rigidBodies = model.getRigidBodies();
-    const simulation_model::TriangleModelVector &triModels = model.getTriangleModels();
-    const simulation_model::TetModelVector &tetModels = model.getTetModels();
+void CollisionDetection::updateAABBs(SimulationModel &model) {
+    const SimulationModel::RigidBodyVector &rigidBodies = model.getRigidBodies();
+    const SimulationModel::TriangleModelVector &triModels = model.getTriangleModels();
+    const SimulationModel::TetModelVector &tetModels = model.getTetModels();
     const ParticleData &pd = model.getParticles();
 
-    for (unsigned int i = 0; i < m_collisionObjects.size(); i++) {
-        CollisionDetection::CollisionObject *co = m_collisionObjects[i];
+    for (auto co : m_collisionObjects) {
         updateAABB(model, co);
     }
 }
 
-void CollisionDetection::updateAABB(simulation_model &model, CollisionDetection::CollisionObject *co) {
-    const simulation_model::RigidBodyVector &rigidBodies = model.getRigidBodies();
-    const simulation_model::TriangleModelVector &triModels = model.getTriangleModels();
-    const simulation_model::TetModelVector &tetModels = model.getTetModels();
+void CollisionDetection::updateAABB(SimulationModel &model, CollisionDetection::CollisionObject *co) const {
+    const SimulationModel::RigidBodyVector &rigidBodies = model.getRigidBodies();
+    const SimulationModel::TriangleModelVector &triModels = model.getTriangleModels();
+    const SimulationModel::TetModelVector &tetModels = model.getTetModels();
     const ParticleData &pd = model.getParticles();
     if (co->m_bodyType == CollisionDetection::CollisionObject::RigidBodyCollisionObjectType) {
         const unsigned int rbIndex = co->m_bodyIndex;

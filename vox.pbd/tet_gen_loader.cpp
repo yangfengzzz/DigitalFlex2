@@ -6,18 +6,19 @@
 
 #include "vox.pbd/tet_gen_loader.h"
 
+#include <fstream>
 #include <sstream>
 
-#include "vox.pbd/logger.h"
+#include "vox.base/logging.h"
 
-using namespace Utilities;
+using namespace vox::utility;
 using namespace std;
 
 // Call this function to load a model from a *.tet file
 void tet_gen_loader::loadTetFile(const std::string &filename,
                                  std::vector<Vector3r> &vertices,
                                  std::vector<unsigned int> &tets) {
-    LOG_INFO << "Loading " << filename;
+    LOGI("Loading {}", filename)
 
     // variables
     size_t i, num_materials, num_vertices, num_tetras, num_triangles;
@@ -27,7 +28,7 @@ void tet_gen_loader::loadTetFile(const std::string &filename,
     // try to open the file
     ifstream fin(filename.c_str());
     if (!fin) {
-        LOG_ERR << "'" + filename + "' file not found.";
+        LOGE("{} file not found.", filename)
         return;
     }
 
@@ -106,16 +107,16 @@ void tet_gen_loader::loadTetFile(const std::string &filename,
     // close file
     fin.close();
 
-    LOG_INFO << "Number of tets: " << num_tetras;
-    LOG_INFO << "Number of vertices: " << num_vertices;
+    LOGI("Number of tets: {}", num_tetras)
+    LOGI("Number of vertices: {}", num_vertices)
 }
 
 void tet_gen_loader::loadTetgenModel(const std::string &nodeFilename,
                                      const std::string &eleFilename,
                                      std::vector<Vector3r> &vertices,
                                      std::vector<unsigned int> &tets) {
-    LOG_INFO << "Loading " << nodeFilename;
-    LOG_INFO << "Loading " << eleFilename;
+    LOGI("Loading {}", nodeFilename)
+    LOGI("Loading {}", eleFilename)
 
     // variables
     size_t i, num_vertices, num_tetras;
@@ -125,11 +126,11 @@ void tet_gen_loader::loadTetgenModel(const std::string &nodeFilename,
     ifstream finNode(nodeFilename.c_str());
     ifstream finEle(eleFilename.c_str());
     if (!finNode) {
-        LOG_ERR << "'" + nodeFilename + "' file not found.";
+        LOGE("{} file not found.", nodeFilename)
         return;
     }
     if (!finEle) {
-        LOG_ERR << "'" + eleFilename + "' file not found.";
+        LOGE("{} file not found.", eleFilename)
         return;
     }
 
@@ -182,14 +183,14 @@ void tet_gen_loader::loadTetgenModel(const std::string &nodeFilename,
     finNode.close();
     finEle.close();
 
-    LOG_INFO << "Number of tets: " << num_tetras;
-    LOG_INFO << "Number of vertices: " << num_vertices;
+    LOGI("Number of tets: {}", num_tetras)
+    LOGI("Number of vertices: {}", num_vertices)
 }
 
 void tet_gen_loader::loadMSHModel(const std::string &mshFilename,
                                   std::vector<Vector3r> &vertices,
                                   std::vector<unsigned int> &tets) {
-    LOG_INFO << "Loading " << mshFilename;
+    LOGI("Loading {}", mshFilename)
 
     // variables
     size_t i, num_vertices, num_tetras;
@@ -198,7 +199,7 @@ void tet_gen_loader::loadMSHModel(const std::string &mshFilename,
     // try to open the file
     ifstream mshStream(mshFilename.c_str());
     if (!mshStream) {
-        LOG_ERR << "'" << mshFilename << "' file not found.";
+        LOGE("{} file not found.", mshFilename)
         return;
     }
 
@@ -253,6 +254,6 @@ void tet_gen_loader::loadMSHModel(const std::string &mshFilename,
     // close file
     mshStream.close();
 
-    LOG_INFO << "Number of tets: " << num_tetras;
-    LOG_INFO << "Number of vertices: " << num_vertices;
+    LOGI("Number of tets: {}", num_tetras)
+    LOGI("Number of vertices: {}", num_vertices)
 }

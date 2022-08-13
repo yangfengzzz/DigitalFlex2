@@ -6,10 +6,10 @@
 
 #include "vox.pbd/tet_model.h"
 
-#include "vox.pbd/logger.h"
+#include "vox.base/logging.h"
 
 using namespace vox;
-using namespace Utilities;
+using namespace vox::utility;
 
 TetModel::TetModel() : m_surfaceMesh(), m_visVertices(), m_visMesh(), m_particleMesh() {
     m_initialX.setZero();
@@ -19,7 +19,7 @@ TetModel::TetModel() : m_surfaceMesh(), m_visVertices(), m_visMesh(), m_particle
     m_frictionCoeff = static_cast<Real>(0.2);
 }
 
-TetModel::~TetModel(void) { cleanupModel(); }
+TetModel::~TetModel() { cleanupModel(); }
 
 void TetModel::cleanupModel() { m_particleMesh.release(); }
 
@@ -126,7 +126,7 @@ void TetModel::attachVisMesh(const ParticleData &pd) {
                 }
             }
             if (curT[0] == -1) {
-                LOG_ERR << "ERROR: vertex has no nearest triangle.";
+                LOGE("ERROR: vertex has no nearest triangle.")
                 continue;
             }
 
@@ -251,7 +251,7 @@ void TetModel::solveQuadraticForZero(const Vector3r &F,
 }
 
 void TetModel::updateVisMesh(const ParticleData &pd) {
-    if (m_attachments.size() == 0) return;
+    if (m_attachments.empty()) return;
 
     // The collision mesh is the boundary of the tet mesh
     unsigned int *faces = m_surfaceMesh.getFaces().data();
@@ -262,10 +262,10 @@ void TetModel::updateVisMesh(const ParticleData &pd) {
 #pragma omp parallel default(shared)
     {
 #pragma omp for schedule(static)
-        for (int i = 0; i < (int)m_attachments.size(); i++) {
-            const unsigned int pindex = m_attachments[i].m_index;
-            const unsigned int triindex = m_attachments[i].m_triIndex;
-            const Real *bary = m_attachments[i].m_bary;
+        for (auto &m_attachment : m_attachments) {
+            const unsigned int pindex = m_attachment.m_index;
+            const unsigned int triindex = m_attachment.m_triIndex;
+            const Real *bary = m_attachment.m_bary;
 
             const unsigned int indexA = faces[3 * triindex] + m_indexOffset;
             const unsigned int indexB = faces[3 * triindex + 1] + m_indexOffset;
@@ -280,7 +280,7 @@ void TetModel::updateVisMesh(const ParticleData &pd) {
             n.normalize();
 
             Vector3r &p = m_visVertices.getPosition(pindex);
-            p = p2 - n * m_attachments[i].m_dist;
+            p = p2 - n * m_attachment.m_dist;
         }
     }
 

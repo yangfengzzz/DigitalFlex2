@@ -6,13 +6,13 @@
 
 #pragma once
 
+#include <nlohmann/json.hpp>
 #include <string>
 
-#include "extern/json/json.hpp"
 #include "vox.base/parameter_object.h"
 #include "vox.pbd/common.h"
 
-namespace Utilities {
+namespace vox::utility {
 class scene_loader {
 protected:
     nlohmann::json m_json;
@@ -223,34 +223,44 @@ public:
         std::vector<DistanceJointData> m_distanceJointData;
     };
 
-    virtual ~scene_loader() {}
+    virtual ~scene_loader() = default;
     void readScene(const std::string &fileName, SceneData &sceneData);
-    void readSimulation(const nlohmann::json &child, const std::string &key, SceneData &sceneData);
-    void readRigidBodies(const nlohmann::json &child,
-                         const std::string &key,
-                         const std::string &basePath,
-                         SceneData &sceneData);
-    void readTriangleModels(const nlohmann::json &child,
-                            const std::string &key,
-                            const std::string &basePath,
-                            SceneData &sceneData);
-    void readTetModels(const nlohmann::json &child,
-                       const std::string &key,
-                       const std::string &basePath,
-                       SceneData &sceneData);
-    void readBallJoints(const nlohmann::json &child, const std::string &key, SceneData &sceneData);
-    void readBallOnLineJoints(const nlohmann::json &child, const std::string &key, SceneData &sceneData);
-    void readHingeJoints(const nlohmann::json &child, const std::string &key, SceneData &sceneData);
-    void readUniversalJoints(const nlohmann::json &child, const std::string &key, SceneData &sceneData);
-    void readSliderJoints(const nlohmann::json &child, const std::string &key, SceneData &sceneData);
-    void readRigidBodyParticleBallJoints(const nlohmann::json &child, const std::string &key, SceneData &sceneData);
-    void readTargetAngleMotorHingeJoints(const nlohmann::json &child, const std::string &key, SceneData &sceneData);
-    void readTargetVelocityMotorHingeJoints(const nlohmann::json &child, const std::string &key, SceneData &sceneData);
-    void readTargetPositionMotorSliderJoints(const nlohmann::json &child, const std::string &key, SceneData &sceneData);
-    void readTargetVelocityMotorSliderJoints(const nlohmann::json &child, const std::string &key, SceneData &sceneData);
-    void readRigidBodySprings(const nlohmann::json &j, const std::string &key, SceneData &sceneData);
-    void readDistanceJoints(const nlohmann::json &j, const std::string &key, SceneData &sceneData);
-    void readDamperJoints(const nlohmann::json &child, const std::string &key, SceneData &sceneData);
+    static void readSimulation(const nlohmann::json &child, const std::string &key, SceneData &sceneData);
+    static void readRigidBodies(const nlohmann::json &child,
+                                const std::string &key,
+                                const std::string &basePath,
+                                SceneData &sceneData);
+    static void readTriangleModels(const nlohmann::json &child,
+                                   const std::string &key,
+                                   const std::string &basePath,
+                                   SceneData &sceneData);
+    static void readTetModels(const nlohmann::json &child,
+                              const std::string &key,
+                              const std::string &basePath,
+                              SceneData &sceneData);
+    static void readBallJoints(const nlohmann::json &child, const std::string &key, SceneData &sceneData);
+    static void readBallOnLineJoints(const nlohmann::json &child, const std::string &key, SceneData &sceneData);
+    static void readHingeJoints(const nlohmann::json &child, const std::string &key, SceneData &sceneData);
+    static void readUniversalJoints(const nlohmann::json &child, const std::string &key, SceneData &sceneData);
+    static void readSliderJoints(const nlohmann::json &child, const std::string &key, SceneData &sceneData);
+    static void readRigidBodyParticleBallJoints(const nlohmann::json &child,
+                                                const std::string &key,
+                                                SceneData &sceneData);
+    static void readTargetAngleMotorHingeJoints(const nlohmann::json &child,
+                                                const std::string &key,
+                                                SceneData &sceneData);
+    static void readTargetVelocityMotorHingeJoints(const nlohmann::json &child,
+                                                   const std::string &key,
+                                                   SceneData &sceneData);
+    static void readTargetPositionMotorSliderJoints(const nlohmann::json &child,
+                                                    const std::string &key,
+                                                    SceneData &sceneData);
+    static void readTargetVelocityMotorSliderJoints(const nlohmann::json &child,
+                                                    const std::string &key,
+                                                    SceneData &sceneData);
+    static void readRigidBodySprings(const nlohmann::json &j, const std::string &key, SceneData &sceneData);
+    static void readDistanceJoints(const nlohmann::json &j, const std::string &key, SceneData &sceneData);
+    static void readDamperJoints(const nlohmann::json &child, const std::string &key, SceneData &sceneData);
 
     template <typename T>
     static bool readValue(const nlohmann::json &j, const std::string &key, T &v) {
@@ -271,9 +281,9 @@ public:
         return true;
     }
 
-    void readParameterObject(GenParam::ParameterObject *paramObj);
+    void readParameterObject(ParameterObject *paramObj);
 };
 
 template <>
 bool scene_loader::readValue<bool>(const nlohmann::json &j, const std::string &key, bool &v);
-}  // namespace Utilities
+}  // namespace vox::utility

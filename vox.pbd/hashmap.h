@@ -11,7 +11,7 @@
 
 #include "vox.pbd/common.h"
 
-namespace Utilities {
+namespace vox::utility {
 template <class KeyType>
 inline unsigned int hashFunction(const KeyType &key) {
     return 0u;
@@ -49,7 +49,7 @@ protected:
     }
 
 public:
-    FORCE_INLINE Hashmap(const unsigned int bucketCount) {
+    FORCE_INLINE explicit Hashmap(const unsigned int bucketCount) {
         // Use a bucket count of 2^n => faster modulo
         unsigned int val = bucketCount;
         unsigned int powerOfTwo = 1u;
@@ -78,7 +78,7 @@ public:
 
     /** Return the bucket count.
      */
-    FORCE_INLINE unsigned int bucket_count() const { return m_bucketCount; }
+    [[nodiscard]] FORCE_INLINE unsigned int bucket_count() const { return m_bucketCount; }
 
     /** Find element.
      */
@@ -157,4 +157,4 @@ public:
         return NULL;
     }
 };
-}  // namespace Utilities
+}  // namespace vox::utility

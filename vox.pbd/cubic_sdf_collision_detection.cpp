@@ -9,6 +9,7 @@
 #include "vox.pbd/cubic_sdf_collision_detection.h"
 
 #include <Eigen/Dense>
+#include <utility>
 
 #include "vox.pbd/id_factory.h"
 
@@ -18,7 +19,7 @@ int CubicSDFCollisionDetection::CubicSDFCollisionObject::TYPE_ID = IDFactory::ge
 
 CubicSDFCollisionDetection::CubicSDFCollisionDetection() : DistanceFieldCollisionDetection() {}
 
-CubicSDFCollisionDetection::~CubicSDFCollisionDetection() {}
+CubicSDFCollisionDetection::~CubicSDFCollisionDetection() = default;
 
 bool CubicSDFCollisionDetection::isDistanceFieldCollisionObject(CollisionObject *co) const {
     return DistanceFieldCollisionDetection::isDistanceFieldCollisionObject(co) ||
@@ -33,7 +34,7 @@ void CubicSDFCollisionDetection::addCubicSDFCollisionObject(const unsigned int b
                                                             const Vector3r &scale,
                                                             const bool testMesh,
                                                             const bool invertSDF) {
-    CubicSDFCollisionDetection::CubicSDFCollisionObject *co = new CubicSDFCollisionDetection::CubicSDFCollisionObject();
+    auto *co = new CubicSDFCollisionDetection::CubicSDFCollisionObject();
     co->m_bodyIndex = bodyIndex;
     co->m_bodyType = bodyType;
     co->m_sdfFile = sdfFile;
@@ -47,20 +48,20 @@ void CubicSDFCollisionDetection::addCubicSDFCollisionObject(const unsigned int b
     m_collisionObjects.push_back(co);
 }
 
-void PBD::cubic_sdf_collision_detection::addCubicSDFCollisionObject(const unsigned int bodyIndex,
-                                                                    const unsigned int bodyType,
-                                                                    const Vector3r *vertices,
-                                                                    const unsigned int numVertices,
-                                                                    GridPtr sdf,
-                                                                    const Vector3r &scale,
-                                                                    const bool testMesh /*= true*/,
-                                                                    const bool invertSDF /*= false*/) {
-    CubicSDFCollisionDetection::CubicSDFCollisionObject *co = new CubicSDFCollisionDetection::CubicSDFCollisionObject();
+void CubicSDFCollisionDetection::addCubicSDFCollisionObject(const unsigned int bodyIndex,
+                                                            const unsigned int bodyType,
+                                                            const Vector3r *vertices,
+                                                            const unsigned int numVertices,
+                                                            GridPtr sdf,
+                                                            const Vector3r &scale,
+                                                            const bool testMesh /*= true*/,
+                                                            const bool invertSDF /*= false*/) {
+    auto *co = new CubicSDFCollisionDetection::CubicSDFCollisionObject();
     co->m_bodyIndex = bodyIndex;
     co->m_bodyType = bodyType;
     co->m_sdfFile = "";
     co->m_scale = scale;
-    co->m_sdf = sdf;
+    co->m_sdf = std::move(sdf);
     co->m_bvh.init(vertices, numVertices);
     co->m_bvh.construct();
     co->m_testMesh = testMesh;
@@ -69,9 +70,9 @@ void PBD::cubic_sdf_collision_detection::addCubicSDFCollisionObject(const unsign
     m_collisionObjects.push_back(co);
 }
 
-CubicSDFCollisionDetection::CubicSDFCollisionObject::CubicSDFCollisionObject() {}
+CubicSDFCollisionDetection::CubicSDFCollisionObject::CubicSDFCollisionObject() = default;
 
-CubicSDFCollisionDetection::CubicSDFCollisionObject::~CubicSDFCollisionObject() {}
+CubicSDFCollisionDetection::CubicSDFCollisionObject::~CubicSDFCollisionObject() = default;
 
 double CubicSDFCollisionDetection::CubicSDFCollisionObject::distance(const Eigen::Vector3d &x, const Real tolerance) {
     const Eigen::Vector3d scaled_x = x.cwiseProduct(m_scale.template cast<double>().cwiseInverse());

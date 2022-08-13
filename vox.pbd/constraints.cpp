@@ -27,14 +27,14 @@ int RigidBodyParticleBallJoint::TYPE_ID = IDFactory::getId();
 int RigidBodySpring::TYPE_ID = IDFactory::getId();
 int DistanceJoint::TYPE_ID = IDFactory::getId();
 int DistanceConstraint::TYPE_ID = IDFactory::getId();
-int DistanceConstraint_XPBD::TYPE_ID = IDFactory::getId();
+int DistanceConstraint_XTYPE_ID = IDFactory::getId();
 int DihedralConstraint::TYPE_ID = IDFactory::getId();
 int IsometricBendingConstraint::TYPE_ID = IDFactory::getId();
-int IsometricBendingConstraint_XPBD::TYPE_ID = IDFactory::getId();
+int IsometricBendingConstraint_XTYPE_ID = IDFactory::getId();
 int FEMTriangleConstraint::TYPE_ID = IDFactory::getId();
 int StrainTriangleConstraint::TYPE_ID = IDFactory::getId();
 int VolumeConstraint::TYPE_ID = IDFactory::getId();
-int VolumeConstraint_XPBD::TYPE_ID = IDFactory::getId();
+int VolumeConstraint_XTYPE_ID = IDFactory::getId();
 int FEMTetConstraint::TYPE_ID = IDFactory::getId();
 int StrainTetConstraint::TYPE_ID = IDFactory::getId();
 int ShapeMatchingConstraint::TYPE_ID = IDFactory::getId();
@@ -55,29 +55,29 @@ int DirectPositionBasedSolverForStiffRodsConstraint::TYPE_ID = IDFactory::getId(
 //////////////////////////////////////////////////////////////////////////
 // BallJoint
 //////////////////////////////////////////////////////////////////////////
-bool BallJoint::initConstraint(simulation_model &model,
+bool BallJoint::initConstraint(SimulationModel &model,
                                const unsigned int rbIndex1,
                                const unsigned int rbIndex2,
                                const Vector3r &pos) {
     m_bodies[0] = rbIndex1;
     m_bodies[1] = rbIndex2;
-    simulation_model::RigidBodyVector &rb = model.getRigidBodies();
+    SimulationModel::RigidBodyVector &rb = model.getRigidBodies();
     RigidBody &rb1 = *rb[m_bodies[0]];
     RigidBody &rb2 = *rb[m_bodies[1]];
     return PositionBasedRigidBodyDynamics::init_BallJoint(rb1.getPosition(), rb1.getRotation(), rb2.getPosition(),
                                                           rb2.getRotation(), pos, m_jointInfo);
 }
 
-bool BallJoint::updateConstraint(simulation_model &model) {
-    simulation_model::RigidBodyVector &rb = model.getRigidBodies();
+bool BallJoint::updateConstraint(SimulationModel &model) {
+    SimulationModel::RigidBodyVector &rb = model.getRigidBodies();
     RigidBody &rb1 = *rb[m_bodies[0]];
     RigidBody &rb2 = *rb[m_bodies[1]];
     return PositionBasedRigidBodyDynamics::update_BallJoint(rb1.getPosition(), rb1.getRotation(), rb2.getPosition(),
                                                             rb2.getRotation(), m_jointInfo);
 }
 
-bool BallJoint::solvePositionConstraint(simulation_model &model, const unsigned int iter) {
-    simulation_model::RigidBodyVector &rb = model.getRigidBodies();
+bool BallJoint::solvePositionConstraint(SimulationModel &model, const unsigned int iter) {
+    SimulationModel::RigidBodyVector &rb = model.getRigidBodies();
 
     RigidBody &rb1 = *rb[m_bodies[0]];
     RigidBody &rb2 = *rb[m_bodies[1]];
@@ -109,30 +109,30 @@ bool BallJoint::solvePositionConstraint(simulation_model &model, const unsigned 
 //////////////////////////////////////////////////////////////////////////
 // BallOnLineJoint
 //////////////////////////////////////////////////////////////////////////
-bool BallOnLineJoint::initConstraint(simulation_model &model,
+bool BallOnLineJoint::initConstraint(SimulationModel &model,
                                      const unsigned int rbIndex1,
                                      const unsigned int rbIndex2,
                                      const Vector3r &pos,
                                      const Vector3r &dir) {
     m_bodies[0] = rbIndex1;
     m_bodies[1] = rbIndex2;
-    simulation_model::RigidBodyVector &rb = model.getRigidBodies();
+    SimulationModel::RigidBodyVector &rb = model.getRigidBodies();
     RigidBody &rb1 = *rb[m_bodies[0]];
     RigidBody &rb2 = *rb[m_bodies[1]];
     return PositionBasedRigidBodyDynamics::init_BallOnLineJoint(rb1.getPosition(), rb1.getRotation(), rb2.getPosition(),
                                                                 rb2.getRotation(), pos, dir, m_jointInfo);
 }
 
-bool BallOnLineJoint::updateConstraint(simulation_model &model) {
-    simulation_model::RigidBodyVector &rb = model.getRigidBodies();
+bool BallOnLineJoint::updateConstraint(SimulationModel &model) {
+    SimulationModel::RigidBodyVector &rb = model.getRigidBodies();
     RigidBody &rb1 = *rb[m_bodies[0]];
     RigidBody &rb2 = *rb[m_bodies[1]];
     return PositionBasedRigidBodyDynamics::update_BallOnLineJoint(rb1.getPosition(), rb1.getRotation(),
                                                                   rb2.getPosition(), rb2.getRotation(), m_jointInfo);
 }
 
-bool BallOnLineJoint::solvePositionConstraint(simulation_model &model, const unsigned int iter) {
-    simulation_model::RigidBodyVector &rb = model.getRigidBodies();
+bool BallOnLineJoint::solvePositionConstraint(SimulationModel &model, const unsigned int iter) {
+    SimulationModel::RigidBodyVector &rb = model.getRigidBodies();
 
     RigidBody &rb1 = *rb[m_bodies[0]];
     RigidBody &rb2 = *rb[m_bodies[1]];
@@ -164,30 +164,30 @@ bool BallOnLineJoint::solvePositionConstraint(simulation_model &model, const uns
 //////////////////////////////////////////////////////////////////////////
 // HingeJoint
 //////////////////////////////////////////////////////////////////////////
-bool HingeJoint::initConstraint(simulation_model &model,
+bool HingeJoint::initConstraint(SimulationModel &model,
                                 const unsigned int rbIndex1,
                                 const unsigned int rbIndex2,
                                 const Vector3r &pos,
                                 const Vector3r &axis) {
     m_bodies[0] = rbIndex1;
     m_bodies[1] = rbIndex2;
-    simulation_model::RigidBodyVector &rb = model.getRigidBodies();
+    SimulationModel::RigidBodyVector &rb = model.getRigidBodies();
     RigidBody &rb1 = *rb[m_bodies[0]];
     RigidBody &rb2 = *rb[m_bodies[1]];
     return PositionBasedRigidBodyDynamics::init_HingeJoint(rb1.getPosition(), rb1.getRotation(), rb2.getPosition(),
                                                            rb2.getRotation(), pos, axis, m_jointInfo);
 }
 
-bool HingeJoint::updateConstraint(simulation_model &model) {
-    simulation_model::RigidBodyVector &rb = model.getRigidBodies();
+bool HingeJoint::updateConstraint(SimulationModel &model) {
+    SimulationModel::RigidBodyVector &rb = model.getRigidBodies();
     RigidBody &rb1 = *rb[m_bodies[0]];
     RigidBody &rb2 = *rb[m_bodies[1]];
     return PositionBasedRigidBodyDynamics::update_HingeJoint(rb1.getPosition(), rb1.getRotation(), rb2.getPosition(),
                                                              rb2.getRotation(), m_jointInfo);
 }
 
-bool HingeJoint::solvePositionConstraint(simulation_model &model, const unsigned int iter) {
-    simulation_model::RigidBodyVector &rb = model.getRigidBodies();
+bool HingeJoint::solvePositionConstraint(SimulationModel &model, const unsigned int iter) {
+    SimulationModel::RigidBodyVector &rb = model.getRigidBodies();
 
     RigidBody &rb1 = *rb[m_bodies[0]];
     RigidBody &rb2 = *rb[m_bodies[1]];
@@ -219,7 +219,7 @@ bool HingeJoint::solvePositionConstraint(simulation_model &model, const unsigned
 //////////////////////////////////////////////////////////////////////////
 // UniversalJoint
 //////////////////////////////////////////////////////////////////////////
-bool UniversalJoint::initConstraint(simulation_model &model,
+bool UniversalJoint::initConstraint(SimulationModel &model,
                                     const unsigned int rbIndex1,
                                     const unsigned int rbIndex2,
                                     const Vector3r &pos,
@@ -227,23 +227,23 @@ bool UniversalJoint::initConstraint(simulation_model &model,
                                     const Vector3r &axis2) {
     m_bodies[0] = rbIndex1;
     m_bodies[1] = rbIndex2;
-    simulation_model::RigidBodyVector &rb = model.getRigidBodies();
+    SimulationModel::RigidBodyVector &rb = model.getRigidBodies();
     RigidBody &rb1 = *rb[m_bodies[0]];
     RigidBody &rb2 = *rb[m_bodies[1]];
     return PositionBasedRigidBodyDynamics::init_UniversalJoint(rb1.getPosition(), rb1.getRotation(), rb2.getPosition(),
                                                                rb2.getRotation(), pos, axis1, axis2, m_jointInfo);
 }
 
-bool UniversalJoint::updateConstraint(simulation_model &model) {
-    simulation_model::RigidBodyVector &rb = model.getRigidBodies();
+bool UniversalJoint::updateConstraint(SimulationModel &model) {
+    SimulationModel::RigidBodyVector &rb = model.getRigidBodies();
     RigidBody &rb1 = *rb[m_bodies[0]];
     RigidBody &rb2 = *rb[m_bodies[1]];
     return PositionBasedRigidBodyDynamics::update_UniversalJoint(rb1.getPosition(), rb1.getRotation(),
                                                                  rb2.getPosition(), rb2.getRotation(), m_jointInfo);
 }
 
-bool UniversalJoint::solvePositionConstraint(simulation_model &model, const unsigned int iter) {
-    simulation_model::RigidBodyVector &rb = model.getRigidBodies();
+bool UniversalJoint::solvePositionConstraint(SimulationModel &model, const unsigned int iter) {
+    SimulationModel::RigidBodyVector &rb = model.getRigidBodies();
 
     RigidBody &rb1 = *rb[m_bodies[0]];
     RigidBody &rb2 = *rb[m_bodies[1]];
@@ -275,29 +275,29 @@ bool UniversalJoint::solvePositionConstraint(simulation_model &model, const unsi
 //////////////////////////////////////////////////////////////////////////
 // SliderJoint
 //////////////////////////////////////////////////////////////////////////
-bool SliderJoint::initConstraint(simulation_model &model,
+bool SliderJoint::initConstraint(SimulationModel &model,
                                  const unsigned int rbIndex1,
                                  const unsigned int rbIndex2,
                                  const Vector3r &axis) {
     m_bodies[0] = rbIndex1;
     m_bodies[1] = rbIndex2;
-    simulation_model::RigidBodyVector &rb = model.getRigidBodies();
+    SimulationModel::RigidBodyVector &rb = model.getRigidBodies();
     RigidBody &rb1 = *rb[m_bodies[0]];
     RigidBody &rb2 = *rb[m_bodies[1]];
     return PositionBasedRigidBodyDynamics::init_SliderJoint(rb1.getPosition(), rb1.getRotation(), rb2.getPosition(),
                                                             rb2.getRotation(), axis, m_jointInfo);
 }
 
-bool SliderJoint::updateConstraint(simulation_model &model) {
-    simulation_model::RigidBodyVector &rb = model.getRigidBodies();
+bool SliderJoint::updateConstraint(SimulationModel &model) {
+    SimulationModel::RigidBodyVector &rb = model.getRigidBodies();
     RigidBody &rb1 = *rb[m_bodies[0]];
     RigidBody &rb2 = *rb[m_bodies[1]];
     return PositionBasedRigidBodyDynamics::update_SliderJoint(rb1.getPosition(), rb1.getRotation(), rb2.getPosition(),
                                                               rb2.getRotation(), m_jointInfo);
 }
 
-bool SliderJoint::solvePositionConstraint(simulation_model &model, const unsigned int iter) {
-    simulation_model::RigidBodyVector &rb = model.getRigidBodies();
+bool SliderJoint::solvePositionConstraint(SimulationModel &model, const unsigned int iter) {
+    SimulationModel::RigidBodyVector &rb = model.getRigidBodies();
 
     RigidBody &rb1 = *rb[m_bodies[0]];
     RigidBody &rb2 = *rb[m_bodies[1]];
@@ -329,29 +329,29 @@ bool SliderJoint::solvePositionConstraint(simulation_model &model, const unsigne
 //////////////////////////////////////////////////////////////////////////
 // TargetPositionMotorSliderJoint
 //////////////////////////////////////////////////////////////////////////
-bool TargetPositionMotorSliderJoint::initConstraint(simulation_model &model,
+bool TargetPositionMotorSliderJoint::initConstraint(SimulationModel &model,
                                                     const unsigned int rbIndex1,
                                                     const unsigned int rbIndex2,
                                                     const Vector3r &axis) {
     m_bodies[0] = rbIndex1;
     m_bodies[1] = rbIndex2;
-    simulation_model::RigidBodyVector &rb = model.getRigidBodies();
+    SimulationModel::RigidBodyVector &rb = model.getRigidBodies();
     RigidBody &rb1 = *rb[m_bodies[0]];
     RigidBody &rb2 = *rb[m_bodies[1]];
     return PositionBasedRigidBodyDynamics::init_TargetPositionMotorSliderJoint(
             rb1.getPosition(), rb1.getRotation(), rb2.getPosition(), rb2.getRotation(), axis, m_jointInfo);
 }
 
-bool TargetPositionMotorSliderJoint::updateConstraint(simulation_model &model) {
-    simulation_model::RigidBodyVector &rb = model.getRigidBodies();
+bool TargetPositionMotorSliderJoint::updateConstraint(SimulationModel &model) {
+    SimulationModel::RigidBodyVector &rb = model.getRigidBodies();
     RigidBody &rb1 = *rb[m_bodies[0]];
     RigidBody &rb2 = *rb[m_bodies[1]];
     return PositionBasedRigidBodyDynamics::update_TargetPositionMotorSliderJoint(
             rb1.getPosition(), rb1.getRotation(), rb2.getPosition(), rb2.getRotation(), m_jointInfo);
 }
 
-bool TargetPositionMotorSliderJoint::solvePositionConstraint(simulation_model &model, const unsigned int iter) {
-    simulation_model::RigidBodyVector &rb = model.getRigidBodies();
+bool TargetPositionMotorSliderJoint::solvePositionConstraint(SimulationModel &model, const unsigned int iter) {
+    SimulationModel::RigidBodyVector &rb = model.getRigidBodies();
 
     RigidBody &rb1 = *rb[m_bodies[0]];
     RigidBody &rb2 = *rb[m_bodies[1]];
@@ -383,29 +383,29 @@ bool TargetPositionMotorSliderJoint::solvePositionConstraint(simulation_model &m
 //////////////////////////////////////////////////////////////////////////
 // TargetVelocityMotorSliderJoint
 //////////////////////////////////////////////////////////////////////////
-bool TargetVelocityMotorSliderJoint::initConstraint(simulation_model &model,
+bool TargetVelocityMotorSliderJoint::initConstraint(SimulationModel &model,
                                                     const unsigned int rbIndex1,
                                                     const unsigned int rbIndex2,
                                                     const Vector3r &axis) {
     m_bodies[0] = rbIndex1;
     m_bodies[1] = rbIndex2;
-    simulation_model::RigidBodyVector &rb = model.getRigidBodies();
+    SimulationModel::RigidBodyVector &rb = model.getRigidBodies();
     RigidBody &rb1 = *rb[m_bodies[0]];
     RigidBody &rb2 = *rb[m_bodies[1]];
     return PositionBasedRigidBodyDynamics::init_TargetVelocityMotorSliderJoint(
             rb1.getPosition(), rb1.getRotation(), rb2.getPosition(), rb2.getRotation(), axis, m_jointInfo);
 }
 
-bool TargetVelocityMotorSliderJoint::updateConstraint(simulation_model &model) {
-    simulation_model::RigidBodyVector &rb = model.getRigidBodies();
+bool TargetVelocityMotorSliderJoint::updateConstraint(SimulationModel &model) {
+    SimulationModel::RigidBodyVector &rb = model.getRigidBodies();
     RigidBody &rb1 = *rb[m_bodies[0]];
     RigidBody &rb2 = *rb[m_bodies[1]];
     return PositionBasedRigidBodyDynamics::update_TargetVelocityMotorSliderJoint(
             rb1.getPosition(), rb1.getRotation(), rb2.getPosition(), rb2.getRotation(), m_jointInfo);
 }
 
-bool TargetVelocityMotorSliderJoint::solvePositionConstraint(simulation_model &model, const unsigned int iter) {
-    simulation_model::RigidBodyVector &rb = model.getRigidBodies();
+bool TargetVelocityMotorSliderJoint::solvePositionConstraint(SimulationModel &model, const unsigned int iter) {
+    SimulationModel::RigidBodyVector &rb = model.getRigidBodies();
 
     RigidBody &rb1 = *rb[m_bodies[0]];
     RigidBody &rb2 = *rb[m_bodies[1]];
@@ -434,8 +434,8 @@ bool TargetVelocityMotorSliderJoint::solvePositionConstraint(simulation_model &m
     return res;
 }
 
-bool TargetVelocityMotorSliderJoint::solveVelocityConstraint(simulation_model &model, const unsigned int iter) {
-    simulation_model::RigidBodyVector &rb = model.getRigidBodies();
+bool TargetVelocityMotorSliderJoint::solveVelocityConstraint(SimulationModel &model, const unsigned int iter) {
+    SimulationModel::RigidBodyVector &rb = model.getRigidBodies();
 
     RigidBody &rb1 = *rb[m_bodies[0]];
     RigidBody &rb2 = *rb[m_bodies[1]];
@@ -464,30 +464,30 @@ bool TargetVelocityMotorSliderJoint::solveVelocityConstraint(simulation_model &m
 //////////////////////////////////////////////////////////////////////////
 // TargetAngleMotorHingeJoint
 //////////////////////////////////////////////////////////////////////////
-bool TargetAngleMotorHingeJoint::initConstraint(simulation_model &model,
+bool TargetAngleMotorHingeJoint::initConstraint(SimulationModel &model,
                                                 const unsigned int rbIndex1,
                                                 const unsigned int rbIndex2,
                                                 const Vector3r &pos,
                                                 const Vector3r &axis) {
     m_bodies[0] = rbIndex1;
     m_bodies[1] = rbIndex2;
-    simulation_model::RigidBodyVector &rb = model.getRigidBodies();
+    SimulationModel::RigidBodyVector &rb = model.getRigidBodies();
     RigidBody &rb1 = *rb[m_bodies[0]];
     RigidBody &rb2 = *rb[m_bodies[1]];
     return PositionBasedRigidBodyDynamics::init_TargetAngleMotorHingeJoint(
             rb1.getPosition(), rb1.getRotation(), rb2.getPosition(), rb2.getRotation(), pos, axis, m_jointInfo);
 }
 
-bool TargetAngleMotorHingeJoint::updateConstraint(simulation_model &model) {
-    simulation_model::RigidBodyVector &rb = model.getRigidBodies();
+bool TargetAngleMotorHingeJoint::updateConstraint(SimulationModel &model) {
+    SimulationModel::RigidBodyVector &rb = model.getRigidBodies();
     RigidBody &rb1 = *rb[m_bodies[0]];
     RigidBody &rb2 = *rb[m_bodies[1]];
     return PositionBasedRigidBodyDynamics::update_TargetAngleMotorHingeJoint(
             rb1.getPosition(), rb1.getRotation(), rb2.getPosition(), rb2.getRotation(), m_jointInfo);
 }
 
-bool TargetAngleMotorHingeJoint::solvePositionConstraint(simulation_model &model, const unsigned int iter) {
-    simulation_model::RigidBodyVector &rb = model.getRigidBodies();
+bool TargetAngleMotorHingeJoint::solvePositionConstraint(SimulationModel &model, const unsigned int iter) {
+    SimulationModel::RigidBodyVector &rb = model.getRigidBodies();
 
     RigidBody &rb1 = *rb[m_bodies[0]];
     RigidBody &rb2 = *rb[m_bodies[1]];
@@ -519,30 +519,30 @@ bool TargetAngleMotorHingeJoint::solvePositionConstraint(simulation_model &model
 //////////////////////////////////////////////////////////////////////////
 // TargetVelocityMotorHingeJoint
 //////////////////////////////////////////////////////////////////////////
-bool TargetVelocityMotorHingeJoint::initConstraint(simulation_model &model,
+bool TargetVelocityMotorHingeJoint::initConstraint(SimulationModel &model,
                                                    const unsigned int rbIndex1,
                                                    const unsigned int rbIndex2,
                                                    const Vector3r &pos,
                                                    const Vector3r &axis) {
     m_bodies[0] = rbIndex1;
     m_bodies[1] = rbIndex2;
-    simulation_model::RigidBodyVector &rb = model.getRigidBodies();
+    SimulationModel::RigidBodyVector &rb = model.getRigidBodies();
     RigidBody &rb1 = *rb[m_bodies[0]];
     RigidBody &rb2 = *rb[m_bodies[1]];
     return PositionBasedRigidBodyDynamics::init_TargetVelocityMotorHingeJoint(
             rb1.getPosition(), rb1.getRotation(), rb2.getPosition(), rb2.getRotation(), pos, axis, m_jointInfo);
 }
 
-bool TargetVelocityMotorHingeJoint::updateConstraint(simulation_model &model) {
-    simulation_model::RigidBodyVector &rb = model.getRigidBodies();
+bool TargetVelocityMotorHingeJoint::updateConstraint(SimulationModel &model) {
+    SimulationModel::RigidBodyVector &rb = model.getRigidBodies();
     RigidBody &rb1 = *rb[m_bodies[0]];
     RigidBody &rb2 = *rb[m_bodies[1]];
     return PositionBasedRigidBodyDynamics::update_TargetVelocityMotorHingeJoint(
             rb1.getPosition(), rb1.getRotation(), rb2.getPosition(), rb2.getRotation(), m_jointInfo);
 }
 
-bool TargetVelocityMotorHingeJoint::solvePositionConstraint(simulation_model &model, const unsigned int iter) {
-    simulation_model::RigidBodyVector &rb = model.getRigidBodies();
+bool TargetVelocityMotorHingeJoint::solvePositionConstraint(SimulationModel &model, const unsigned int iter) {
+    SimulationModel::RigidBodyVector &rb = model.getRigidBodies();
 
     RigidBody &rb1 = *rb[m_bodies[0]];
     RigidBody &rb2 = *rb[m_bodies[1]];
@@ -571,8 +571,8 @@ bool TargetVelocityMotorHingeJoint::solvePositionConstraint(simulation_model &mo
     return res;
 }
 
-bool TargetVelocityMotorHingeJoint::solveVelocityConstraint(simulation_model &model, const unsigned int iter) {
-    simulation_model::RigidBodyVector &rb = model.getRigidBodies();
+bool TargetVelocityMotorHingeJoint::solveVelocityConstraint(SimulationModel &model, const unsigned int iter) {
+    SimulationModel::RigidBodyVector &rb = model.getRigidBodies();
 
     RigidBody &rb1 = *rb[m_bodies[0]];
     RigidBody &rb2 = *rb[m_bodies[1]];
@@ -601,7 +601,7 @@ bool TargetVelocityMotorHingeJoint::solveVelocityConstraint(simulation_model &mo
 //////////////////////////////////////////////////////////////////////////
 // DamperJoint
 //////////////////////////////////////////////////////////////////////////
-bool DamperJoint::initConstraint(simulation_model &model,
+bool DamperJoint::initConstraint(SimulationModel &model,
                                  const unsigned int rbIndex1,
                                  const unsigned int rbIndex2,
                                  const Vector3r &axis,
@@ -610,28 +610,28 @@ bool DamperJoint::initConstraint(simulation_model &model,
     m_lambda = 0.0;
     m_bodies[0] = rbIndex1;
     m_bodies[1] = rbIndex2;
-    simulation_model::RigidBodyVector &rb = model.getRigidBodies();
+    SimulationModel::RigidBodyVector &rb = model.getRigidBodies();
     RigidBody &rb1 = *rb[m_bodies[0]];
     RigidBody &rb2 = *rb[m_bodies[1]];
     return PositionBasedRigidBodyDynamics::init_DamperJoint(rb1.getPosition(), rb1.getRotation(), rb2.getPosition(),
                                                             rb2.getRotation(), axis, m_jointInfo);
 }
 
-bool DamperJoint::updateConstraint(simulation_model &model) {
-    simulation_model::RigidBodyVector &rb = model.getRigidBodies();
+bool DamperJoint::updateConstraint(SimulationModel &model) {
+    SimulationModel::RigidBodyVector &rb = model.getRigidBodies();
     RigidBody &rb1 = *rb[m_bodies[0]];
     RigidBody &rb2 = *rb[m_bodies[1]];
     return PositionBasedRigidBodyDynamics::update_DamperJoint(rb1.getPosition(), rb1.getRotation(), rb2.getPosition(),
                                                               rb2.getRotation(), m_jointInfo);
 }
 
-bool DamperJoint::solvePositionConstraint(simulation_model &model, const unsigned int iter) {
-    simulation_model::RigidBodyVector &rb = model.getRigidBodies();
+bool DamperJoint::solvePositionConstraint(SimulationModel &model, const unsigned int iter) {
+    SimulationModel::RigidBodyVector &rb = model.getRigidBodies();
 
     RigidBody &rb1 = *rb[m_bodies[0]];
     RigidBody &rb2 = *rb[m_bodies[1]];
 
-    const Real dt = TimeManager::getCurrent()->TimeManager();
+    const Real dt = TimeManager::getCurrent()->getTimeStepSize();
 
     if (iter == 0) m_lambda = 0.0;
 
@@ -662,28 +662,28 @@ bool DamperJoint::solvePositionConstraint(simulation_model &model, const unsigne
 //////////////////////////////////////////////////////////////////////////
 // RigidBodyParticleBallJoint
 //////////////////////////////////////////////////////////////////////////
-bool RigidBodyParticleBallJoint::initConstraint(simulation_model &model,
+bool RigidBodyParticleBallJoint::initConstraint(SimulationModel &model,
                                                 const unsigned int rbIndex,
                                                 const unsigned int particleIndex) {
     m_bodies[0] = rbIndex;
     m_bodies[1] = particleIndex;
-    simulation_model::RigidBodyVector &rbs = model.getRigidBodies();
+    SimulationModel::RigidBodyVector &rbs = model.getRigidBodies();
     ParticleData &pd = model.getParticles();
     RigidBody &rb = *rbs[m_bodies[0]];
     return PositionBasedRigidBodyDynamics::init_RigidBodyParticleBallJoint(rb.getPosition(), rb.getRotation(),
                                                                            pd.getPosition(particleIndex), m_jointInfo);
 }
 
-bool RigidBodyParticleBallJoint::updateConstraint(simulation_model &model) {
-    simulation_model::RigidBodyVector &rb = model.getRigidBodies();
+bool RigidBodyParticleBallJoint::updateConstraint(SimulationModel &model) {
+    SimulationModel::RigidBodyVector &rb = model.getRigidBodies();
     ParticleData &pd = model.getParticles();
     RigidBody &rb1 = *rb[m_bodies[0]];
     return PositionBasedRigidBodyDynamics::update_RigidBodyParticleBallJoint(rb1.getPosition(), rb1.getRotation(),
                                                                              pd.getPosition(m_bodies[1]), m_jointInfo);
 }
 
-bool RigidBodyParticleBallJoint::solvePositionConstraint(simulation_model &model, const unsigned int iter) {
-    simulation_model::RigidBodyVector &rb = model.getRigidBodies();
+bool RigidBodyParticleBallJoint::solvePositionConstraint(SimulationModel &model, const unsigned int iter) {
+    SimulationModel::RigidBodyVector &rb = model.getRigidBodies();
     ParticleData &pd = model.getParticles();
 
     RigidBody &rb1 = *rb[m_bodies[0]];
@@ -711,7 +711,7 @@ bool RigidBodyParticleBallJoint::solvePositionConstraint(simulation_model &model
 //////////////////////////////////////////////////////////////////////////
 // RigidBodySpring
 //////////////////////////////////////////////////////////////////////////
-bool RigidBodySpring::initConstraint(simulation_model &model,
+bool RigidBodySpring::initConstraint(SimulationModel &model,
                                      const unsigned int rbIndex1,
                                      const unsigned int rbIndex2,
                                      const Vector3r &pos1,
@@ -722,28 +722,28 @@ bool RigidBodySpring::initConstraint(simulation_model &model,
     m_restLength = (pos1 - pos2).norm();
     m_bodies[0] = rbIndex1;
     m_bodies[1] = rbIndex2;
-    simulation_model::RigidBodyVector &rb = model.getRigidBodies();
+    SimulationModel::RigidBodyVector &rb = model.getRigidBodies();
     RigidBody &rb1 = *rb[m_bodies[0]];
     RigidBody &rb2 = *rb[m_bodies[1]];
     return PositionBasedRigidBodyDynamics::init_DistanceJoint(rb1.getPosition(), rb1.getRotation(), rb2.getPosition(),
                                                               rb2.getRotation(), pos1, pos2, m_jointInfo);
 }
 
-bool RigidBodySpring::updateConstraint(simulation_model &model) {
-    simulation_model::RigidBodyVector &rb = model.getRigidBodies();
+bool RigidBodySpring::updateConstraint(SimulationModel &model) {
+    SimulationModel::RigidBodyVector &rb = model.getRigidBodies();
     RigidBody &rb1 = *rb[m_bodies[0]];
     RigidBody &rb2 = *rb[m_bodies[1]];
     return PositionBasedRigidBodyDynamics::update_DistanceJoint(rb1.getPosition(), rb1.getRotation(), rb2.getPosition(),
                                                                 rb2.getRotation(), m_jointInfo);
 }
 
-bool RigidBodySpring::solvePositionConstraint(simulation_model &model, const unsigned int iter) {
-    simulation_model::RigidBodyVector &rb = model.getRigidBodies();
+bool RigidBodySpring::solvePositionConstraint(SimulationModel &model, const unsigned int iter) {
+    SimulationModel::RigidBodyVector &rb = model.getRigidBodies();
 
     RigidBody &rb1 = *rb[m_bodies[0]];
     RigidBody &rb2 = *rb[m_bodies[1]];
 
-    const Real dt = TimeManager::getCurrent()->TimeManager();
+    const Real dt = TimeManager::getCurrent()->getTimeStepSize();
 
     if (iter == 0) m_lambda = 0.0;
 
@@ -774,7 +774,7 @@ bool RigidBodySpring::solvePositionConstraint(simulation_model &model, const uns
 //////////////////////////////////////////////////////////////////////////
 // DistanceJoint
 //////////////////////////////////////////////////////////////////////////
-bool DistanceJoint::initConstraint(simulation_model &model,
+bool DistanceJoint::initConstraint(SimulationModel &model,
                                    const unsigned int rbIndex1,
                                    const unsigned int rbIndex2,
                                    const Vector3r &pos1,
@@ -782,23 +782,23 @@ bool DistanceJoint::initConstraint(simulation_model &model,
     m_restLength = (pos1 - pos2).norm();
     m_bodies[0] = rbIndex1;
     m_bodies[1] = rbIndex2;
-    simulation_model::RigidBodyVector &rb = model.getRigidBodies();
+    SimulationModel::RigidBodyVector &rb = model.getRigidBodies();
     RigidBody &rb1 = *rb[m_bodies[0]];
     RigidBody &rb2 = *rb[m_bodies[1]];
     return PositionBasedRigidBodyDynamics::init_DistanceJoint(rb1.getPosition(), rb1.getRotation(), rb2.getPosition(),
                                                               rb2.getRotation(), pos1, pos2, m_jointInfo);
 }
 
-bool DistanceJoint::updateConstraint(simulation_model &model) {
-    simulation_model::RigidBodyVector &rb = model.getRigidBodies();
+bool DistanceJoint::updateConstraint(SimulationModel &model) {
+    SimulationModel::RigidBodyVector &rb = model.getRigidBodies();
     RigidBody &rb1 = *rb[m_bodies[0]];
     RigidBody &rb2 = *rb[m_bodies[1]];
     return PositionBasedRigidBodyDynamics::update_DistanceJoint(rb1.getPosition(), rb1.getRotation(), rb2.getPosition(),
                                                                 rb2.getRotation(), m_jointInfo);
 }
 
-bool DistanceJoint::solvePositionConstraint(simulation_model &model, const unsigned int iter) {
-    simulation_model::RigidBodyVector &rb = model.getRigidBodies();
+bool DistanceJoint::solvePositionConstraint(SimulationModel &model, const unsigned int iter) {
+    SimulationModel::RigidBodyVector &rb = model.getRigidBodies();
 
     RigidBody &rb1 = *rb[m_bodies[0]];
     RigidBody &rb2 = *rb[m_bodies[1]];
@@ -832,7 +832,7 @@ bool DistanceJoint::solvePositionConstraint(simulation_model &model, const unsig
 //////////////////////////////////////////////////////////////////////////
 // DistanceConstraint
 //////////////////////////////////////////////////////////////////////////
-bool DistanceConstraint::initConstraint(simulation_model &model,
+bool DistanceConstraint::initConstraint(SimulationModel &model,
                                         const unsigned int particle1,
                                         const unsigned int particle2,
                                         const Real stiffness) {
@@ -849,7 +849,7 @@ bool DistanceConstraint::initConstraint(simulation_model &model,
     return true;
 }
 
-bool DistanceConstraint::solvePositionConstraint(simulation_model &model, const unsigned int iter) {
+bool DistanceConstraint::solvePositionConstraint(SimulationModel &model, const unsigned int iter) {
     ParticleData &pd = model.getParticles();
 
     const unsigned i1 = m_bodies[0];
@@ -874,7 +874,7 @@ bool DistanceConstraint::solvePositionConstraint(simulation_model &model, const 
 //////////////////////////////////////////////////////////////////////////
 // DistanceConstraint_XPBD
 //////////////////////////////////////////////////////////////////////////
-bool DistanceConstraint_XPBD::initConstraint(simulation_model &model,
+bool DistanceConstraint_XPBD::initConstraint(SimulationModel &model,
                                              const unsigned int particle1,
                                              const unsigned int particle2,
                                              const Real stiffness) {
@@ -892,7 +892,7 @@ bool DistanceConstraint_XPBD::initConstraint(simulation_model &model,
     return true;
 }
 
-bool DistanceConstraint_XPBD::solvePositionConstraint(simulation_model &model, const unsigned int iter) {
+bool DistanceConstraint_XPBD::solvePositionConstraint(SimulationModel &model, const unsigned int iter) {
     ParticleData &pd = model.getParticles();
 
     const unsigned i1 = m_bodies[0];
@@ -903,7 +903,7 @@ bool DistanceConstraint_XPBD::solvePositionConstraint(simulation_model &model, c
     const Real invMass1 = pd.getInvMass(i1);
     const Real invMass2 = pd.getInvMass(i2);
 
-    const Real dt = TimeManager::getCurrent()->TimeManager();
+    const Real dt = TimeManager::getCurrent()->getTimeStepSize();
 
     if (iter == 0) m_lambda = 0.0;
 
@@ -922,7 +922,7 @@ bool DistanceConstraint_XPBD::solvePositionConstraint(simulation_model &model, c
 // DihedralConstraint
 //////////////////////////////////////////////////////////////////////////
 
-bool DihedralConstraint::initConstraint(simulation_model &model,
+bool DihedralConstraint::initConstraint(SimulationModel &model,
                                         const unsigned int particle1,
                                         const unsigned int particle2,
                                         const unsigned int particle3,
@@ -963,7 +963,7 @@ bool DihedralConstraint::initConstraint(simulation_model &model,
     return true;
 }
 
-bool DihedralConstraint::solvePositionConstraint(simulation_model &model, const unsigned int iter) {
+bool DihedralConstraint::solvePositionConstraint(SimulationModel &model, const unsigned int iter) {
     ParticleData &pd = model.getParticles();
 
     const unsigned i1 = m_bodies[0];
@@ -998,7 +998,7 @@ bool DihedralConstraint::solvePositionConstraint(simulation_model &model, const 
 //////////////////////////////////////////////////////////////////////////
 // IsometricBendingConstraint
 //////////////////////////////////////////////////////////////////////////
-bool IsometricBendingConstraint::initConstraint(simulation_model &model,
+bool IsometricBendingConstraint::initConstraint(SimulationModel &model,
                                                 const unsigned int particle1,
                                                 const unsigned int particle2,
                                                 const unsigned int particle3,
@@ -1020,7 +1020,7 @@ bool IsometricBendingConstraint::initConstraint(simulation_model &model,
     return PositionBasedDynamics::init_IsometricBendingConstraint(x1, x2, x3, x4, m_Q);
 }
 
-bool IsometricBendingConstraint::solvePositionConstraint(simulation_model &model, const unsigned int iter) {
+bool IsometricBendingConstraint::solvePositionConstraint(SimulationModel &model, const unsigned int iter) {
     ParticleData &pd = model.getParticles();
 
     const unsigned i1 = m_bodies[0];
@@ -1054,7 +1054,7 @@ bool IsometricBendingConstraint::solvePositionConstraint(simulation_model &model
 //////////////////////////////////////////////////////////////////////////
 // IsometricBendingConstraint_XPBD
 //////////////////////////////////////////////////////////////////////////
-bool IsometricBendingConstraint_XPBD::initConstraint(simulation_model &model,
+bool IsometricBendingConstraint_XPBD::initConstraint(SimulationModel &model,
                                                      const unsigned int particle1,
                                                      const unsigned int particle2,
                                                      const unsigned int particle3,
@@ -1077,7 +1077,7 @@ bool IsometricBendingConstraint_XPBD::initConstraint(simulation_model &model,
     return PositionBasedDynamics::init_IsometricBendingConstraint(x1, x2, x3, x4, m_Q);
 }
 
-bool IsometricBendingConstraint_XPBD::solvePositionConstraint(simulation_model &model, const unsigned int iter) {
+bool IsometricBendingConstraint_XPBD::solvePositionConstraint(SimulationModel &model, const unsigned int iter) {
     ParticleData &pd = model.getParticles();
 
     const unsigned i1 = m_bodies[0];
@@ -1095,7 +1095,7 @@ bool IsometricBendingConstraint_XPBD::solvePositionConstraint(simulation_model &
     const Real invMass3 = pd.getInvMass(i3);
     const Real invMass4 = pd.getInvMass(i4);
 
-    const Real dt = TimeManager::getCurrent()->TimeManager();
+    const Real dt = TimeManager::getCurrent()->getTimeStepSize();
 
     if (iter == 0) m_lambda = 0.0;
 
@@ -1115,7 +1115,7 @@ bool IsometricBendingConstraint_XPBD::solvePositionConstraint(simulation_model &
 //////////////////////////////////////////////////////////////////////////
 // FEMTriangleConstraint
 //////////////////////////////////////////////////////////////////////////
-bool FEMTriangleConstraint::initConstraint(simulation_model &model,
+bool FEMTriangleConstraint::initConstraint(SimulationModel &model,
                                            const unsigned int particle1,
                                            const unsigned int particle2,
                                            const unsigned int particle3,
@@ -1142,7 +1142,7 @@ bool FEMTriangleConstraint::initConstraint(simulation_model &model,
     return PositionBasedDynamics::init_FEMTriangleConstraint(x1, x2, x3, m_area, m_invRestMat);
 }
 
-bool FEMTriangleConstraint::solvePositionConstraint(simulation_model &model, const unsigned int iter) {
+bool FEMTriangleConstraint::solvePositionConstraint(SimulationModel &model, const unsigned int iter) {
     ParticleData &pd = model.getParticles();
 
     const unsigned i1 = m_bodies[0];
@@ -1173,7 +1173,7 @@ bool FEMTriangleConstraint::solvePositionConstraint(simulation_model &model, con
 //////////////////////////////////////////////////////////////////////////
 // StrainTriangleConstraint
 //////////////////////////////////////////////////////////////////////////
-bool StrainTriangleConstraint::initConstraint(simulation_model &model,
+bool StrainTriangleConstraint::initConstraint(SimulationModel &model,
                                               const unsigned int particle1,
                                               const unsigned int particle2,
                                               const unsigned int particle3,
@@ -1205,7 +1205,7 @@ bool StrainTriangleConstraint::initConstraint(simulation_model &model,
     return PositionBasedDynamics::init_StrainTriangleConstraint(y1, y2, y3, m_invRestMat);
 }
 
-bool StrainTriangleConstraint::solvePositionConstraint(simulation_model &model, const unsigned int iter) {
+bool StrainTriangleConstraint::solvePositionConstraint(SimulationModel &model, const unsigned int iter) {
     ParticleData &pd = model.getParticles();
 
     const unsigned i1 = m_bodies[0];
@@ -1237,7 +1237,7 @@ bool StrainTriangleConstraint::solvePositionConstraint(simulation_model &model, 
 // VolumeConstraint
 //////////////////////////////////////////////////////////////////////////
 
-bool VolumeConstraint::initConstraint(simulation_model &model,
+bool VolumeConstraint::initConstraint(SimulationModel &model,
                                       const unsigned int particle1,
                                       const unsigned int particle2,
                                       const unsigned int particle3,
@@ -1260,7 +1260,7 @@ bool VolumeConstraint::initConstraint(simulation_model &model,
     return true;
 }
 
-bool VolumeConstraint::solvePositionConstraint(simulation_model &model, const unsigned int iter) {
+bool VolumeConstraint::solvePositionConstraint(SimulationModel &model, const unsigned int iter) {
     ParticleData &pd = model.getParticles();
 
     const unsigned i1 = m_bodies[0];
@@ -1296,7 +1296,7 @@ bool VolumeConstraint::solvePositionConstraint(simulation_model &model, const un
 // VolumeConstraint_XPBD
 //////////////////////////////////////////////////////////////////////////
 
-bool VolumeConstraint_XPBD::initConstraint(simulation_model &model,
+bool VolumeConstraint_XPBD::initConstraint(SimulationModel &model,
                                            const unsigned int particle1,
                                            const unsigned int particle2,
                                            const unsigned int particle3,
@@ -1320,7 +1320,7 @@ bool VolumeConstraint_XPBD::initConstraint(simulation_model &model,
     return true;
 }
 
-bool VolumeConstraint_XPBD::solvePositionConstraint(simulation_model &model, const unsigned int iter) {
+bool VolumeConstraint_XPBD::solvePositionConstraint(SimulationModel &model, const unsigned int iter) {
     ParticleData &pd = model.getParticles();
 
     const unsigned i1 = m_bodies[0];
@@ -1338,7 +1338,7 @@ bool VolumeConstraint_XPBD::solvePositionConstraint(simulation_model &model, con
     const Real invMass3 = pd.getInvMass(i3);
     const Real invMass4 = pd.getInvMass(i4);
 
-    const Real dt = TimeManager::getCurrent()->TimeManager();
+    const Real dt = TimeManager::getCurrent()->getTimeStepSize();
 
     if (iter == 0) m_lambda = 0.0;
 
@@ -1358,7 +1358,7 @@ bool VolumeConstraint_XPBD::solvePositionConstraint(simulation_model &model, con
 //////////////////////////////////////////////////////////////////////////
 // FEMTetConstraint
 //////////////////////////////////////////////////////////////////////////
-bool FEMTetConstraint::initConstraint(simulation_model &model,
+bool FEMTetConstraint::initConstraint(SimulationModel &model,
                                       const unsigned int particle1,
                                       const unsigned int particle2,
                                       const unsigned int particle3,
@@ -1382,7 +1382,7 @@ bool FEMTetConstraint::initConstraint(simulation_model &model,
     return PositionBasedDynamics::init_FEMTetraConstraint(x1, x2, x3, x4, m_volume, m_invRestMat);
 }
 
-bool FEMTetConstraint::solvePositionConstraint(simulation_model &model, const unsigned int iter) {
+bool FEMTetConstraint::solvePositionConstraint(SimulationModel &model, const unsigned int iter) {
     ParticleData &pd = model.getParticles();
 
     const unsigned i1 = m_bodies[0];
@@ -1422,7 +1422,7 @@ bool FEMTetConstraint::solvePositionConstraint(simulation_model &model, const un
 //////////////////////////////////////////////////////////////////////////
 // StrainTetConstraint
 //////////////////////////////////////////////////////////////////////////
-bool StrainTetConstraint::initConstraint(simulation_model &model,
+bool StrainTetConstraint::initConstraint(SimulationModel &model,
                                          const unsigned int particle1,
                                          const unsigned int particle2,
                                          const unsigned int particle3,
@@ -1450,7 +1450,7 @@ bool StrainTetConstraint::initConstraint(simulation_model &model,
     return PositionBasedDynamics::init_StrainTetraConstraint(x1, x2, x3, x4, m_invRestMat);
 }
 
-bool StrainTetConstraint::solvePositionConstraint(simulation_model &model, const unsigned int iter) {
+bool StrainTetConstraint::solvePositionConstraint(SimulationModel &model, const unsigned int iter) {
     ParticleData &pd = model.getParticles();
 
     const unsigned i1 = m_bodies[0];
@@ -1485,7 +1485,7 @@ bool StrainTetConstraint::solvePositionConstraint(simulation_model &model, const
 //////////////////////////////////////////////////////////////////////////
 // ShapeMatchingConstraint
 //////////////////////////////////////////////////////////////////////////
-bool ShapeMatchingConstraint::initConstraint(simulation_model &model,
+bool ShapeMatchingConstraint::initConstraint(SimulationModel &model,
                                              const unsigned int particleIndices[],
                                              const unsigned int numClusters[],
                                              const Real stiffness) {
@@ -1502,7 +1502,7 @@ bool ShapeMatchingConstraint::initConstraint(simulation_model &model,
     return res;
 }
 
-bool ShapeMatchingConstraint::solvePositionConstraint(simulation_model &model, const unsigned int iter) {
+bool ShapeMatchingConstraint::solvePositionConstraint(SimulationModel &model, const unsigned int iter) {
     ParticleData &pd = model.getParticles();
     for (unsigned int i = 0; i < numberOfBodies(); i++) {
         m_x[i] = pd.getPosition(m_bodies[i]);
@@ -1524,7 +1524,7 @@ bool ShapeMatchingConstraint::solvePositionConstraint(simulation_model &model, c
 //////////////////////////////////////////////////////////////////////////
 // RigidBodyContactConstraint
 //////////////////////////////////////////////////////////////////////////
-bool RigidBodyContactConstraint::initConstraint(simulation_model &model,
+bool RigidBodyContactConstraint::initConstraint(SimulationModel &model,
                                                 const unsigned int rbIndex1,
                                                 const unsigned int rbIndex2,
                                                 const Vector3r &cp1,
@@ -1539,7 +1539,7 @@ bool RigidBodyContactConstraint::initConstraint(simulation_model &model,
 
     m_bodies[0] = rbIndex1;
     m_bodies[1] = rbIndex2;
-    simulation_model::RigidBodyVector &rb = model.getRigidBodies();
+    SimulationModel::RigidBodyVector &rb = model.getRigidBodies();
     RigidBody &rb1 = *rb[m_bodies[0]];
     RigidBody &rb2 = *rb[m_bodies[1]];
 
@@ -1552,8 +1552,8 @@ bool RigidBodyContactConstraint::initConstraint(simulation_model &model,
             restitutionCoeff, m_constraintInfo);
 }
 
-bool RigidBodyContactConstraint::solveVelocityConstraint(simulation_model &model, const unsigned int iter) {
-    simulation_model::RigidBodyVector &rb = model.getRigidBodies();
+bool RigidBodyContactConstraint::solveVelocityConstraint(SimulationModel &model, const unsigned int iter) {
+    SimulationModel::RigidBodyVector &rb = model.getRigidBodies();
 
     RigidBody &rb1 = *rb[m_bodies[0]];
     RigidBody &rb2 = *rb[m_bodies[1]];
@@ -1582,7 +1582,7 @@ bool RigidBodyContactConstraint::solveVelocityConstraint(simulation_model &model
 //////////////////////////////////////////////////////////////////////////
 // ParticleRigidBodyContactConstraint
 //////////////////////////////////////////////////////////////////////////
-bool ParticleRigidBodyContactConstraint::initConstraint(simulation_model &model,
+bool ParticleRigidBodyContactConstraint::initConstraint(SimulationModel &model,
                                                         const unsigned int particleIndex,
                                                         const unsigned int rbIndex,
                                                         const Vector3r &cp1,
@@ -1597,7 +1597,7 @@ bool ParticleRigidBodyContactConstraint::initConstraint(simulation_model &model,
 
     m_bodies[0] = particleIndex;
     m_bodies[1] = rbIndex;
-    simulation_model::RigidBodyVector &rbs = model.getRigidBodies();
+    SimulationModel::RigidBodyVector &rbs = model.getRigidBodies();
     ParticleData &pd = model.getParticles();
 
     RigidBody &rb = *rbs[m_bodies[1]];
@@ -1610,8 +1610,8 @@ bool ParticleRigidBodyContactConstraint::initConstraint(simulation_model &model,
             rb.getAngularVelocity(), cp1, cp2, normal, restitutionCoeff, m_constraintInfo);
 }
 
-bool ParticleRigidBodyContactConstraint::solveVelocityConstraint(simulation_model &model, const unsigned int iter) {
-    simulation_model::RigidBodyVector &rbs = model.getRigidBodies();
+bool ParticleRigidBodyContactConstraint::solveVelocityConstraint(SimulationModel &model, const unsigned int iter) {
+    SimulationModel::RigidBodyVector &rbs = model.getRigidBodies();
     ParticleData &pd = model.getParticles();
 
     RigidBody &rb = *rbs[m_bodies[1]];
@@ -1638,7 +1638,7 @@ bool ParticleRigidBodyContactConstraint::solveVelocityConstraint(simulation_mode
 //////////////////////////////////////////////////////////////////////////
 // ParticleSolidContactConstraint
 //////////////////////////////////////////////////////////////////////////
-bool ParticleTetContactConstraint::initConstraint(simulation_model &model,
+bool ParticleTetContactConstraint::initConstraint(SimulationModel &model,
                                                   const unsigned int particleIndex,
                                                   const unsigned int solidIndex,
                                                   const unsigned int tetIndex,
@@ -1657,7 +1657,7 @@ bool ParticleTetContactConstraint::initConstraint(simulation_model &model,
     m_bary = bary;
     ParticleData &pd = model.getParticles();
 
-    const simulation_model::TetModelVector &tetModels = model.getTetModels();
+    const SimulationModel::TetModelVector &tetModels = model.getTetModels();
     TetModel *tm = tetModels[solidIndex];
     const unsigned int offset = tm->getIndexOffset();
     const unsigned int *indices = tm->getParticleMesh().getTets().data();
@@ -1679,10 +1679,10 @@ bool ParticleTetContactConstraint::initConstraint(simulation_model &model,
             m_x.data(), m_v.data(), bary, normal, m_constraintInfo);
 }
 
-bool ParticleTetContactConstraint::solvePositionConstraint(simulation_model &model, const unsigned int iter) {
+bool ParticleTetContactConstraint::solvePositionConstraint(SimulationModel &model, const unsigned int iter) {
     ParticleData &pd = model.getParticles();
 
-    const simulation_model::TetModelVector &tetModels = model.getTetModels();
+    const SimulationModel::TetModelVector &tetModels = model.getTetModels();
     TetModel *tm = tetModels[m_solidIndex];
     const unsigned int offset = tm->getIndexOffset();
     const unsigned int *indices = tm->getParticleMesh().getTets().data();
@@ -1707,10 +1707,10 @@ bool ParticleTetContactConstraint::solvePositionConstraint(simulation_model &mod
     return res;
 }
 
-bool ParticleTetContactConstraint::solveVelocityConstraint(simulation_model &model, const unsigned int iter) {
+bool ParticleTetContactConstraint::solveVelocityConstraint(SimulationModel &model, const unsigned int iter) {
     ParticleData &pd = model.getParticles();
 
-    const simulation_model::TetModelVector &tetModels = model.getTetModels();
+    const SimulationModel::TetModelVector &tetModels = model.getTetModels();
     TetModel *tm = tetModels[m_solidIndex];
     const unsigned int offset = tm->getIndexOffset();
     const unsigned int *indices = tm->getParticleMesh().getTets().data();
@@ -1742,7 +1742,7 @@ bool ParticleTetContactConstraint::solveVelocityConstraint(simulation_model &mod
 //////////////////////////////////////////////////////////////////////////
 // StretchShearConstraint
 //////////////////////////////////////////////////////////////////////////
-bool StretchShearConstraint::initConstraint(simulation_model &model,
+bool StretchShearConstraint::initConstraint(SimulationModel &model,
                                             const unsigned int particle1,
                                             const unsigned int particle2,
                                             const unsigned int quaternion1,
@@ -1765,7 +1765,7 @@ bool StretchShearConstraint::initConstraint(simulation_model &model,
     return true;
 }
 
-bool StretchShearConstraint::solvePositionConstraint(simulation_model &model, const unsigned int iter) {
+bool StretchShearConstraint::solvePositionConstraint(SimulationModel &model, const unsigned int iter) {
     ParticleData &pd = model.getParticles();
     OrientationData &od = model.getOrientations();
 
@@ -1800,7 +1800,7 @@ bool StretchShearConstraint::solvePositionConstraint(simulation_model &model, co
 //////////////////////////////////////////////////////////////////////////
 // BendTwistConstraint
 //////////////////////////////////////////////////////////////////////////
-bool BendTwistConstraint::initConstraint(simulation_model &model,
+bool BendTwistConstraint::initConstraint(SimulationModel &model,
                                          const unsigned int quaternion1,
                                          const unsigned int quaternion2,
                                          const Real twistingStiffness,
@@ -1825,7 +1825,7 @@ bool BendTwistConstraint::initConstraint(simulation_model &model,
     return true;
 }
 
-bool BendTwistConstraint::solvePositionConstraint(simulation_model &model, const unsigned int iter) {
+bool BendTwistConstraint::solvePositionConstraint(SimulationModel &model, const unsigned int iter) {
     OrientationData &od = model.getOrientations();
 
     const unsigned i1 = m_bodies[0];
@@ -1859,17 +1859,17 @@ bool BendTwistConstraint::solvePositionConstraint(simulation_model &model, const
 // StretchBendingTwistingConstraint
 //////////////////////////////////////////////////////////////////////////
 
-bool PBD::StretchBendingTwistingConstraint::initConstraint(simulation_model &model,
-                                                           const unsigned int segmentIndex1,
-                                                           const unsigned int segmentIndex2,
-                                                           const Vector3r &pos,
-                                                           const Real averageRadius,
-                                                           const Real averageSegmentLength,
-                                                           Real youngsModulus,
-                                                           Real torsionModulus) {
+bool StretchBendingTwistingConstraint::initConstraint(SimulationModel &model,
+                                                      const unsigned int segmentIndex1,
+                                                      const unsigned int segmentIndex2,
+                                                      const Vector3r &pos,
+                                                      const Real averageRadius,
+                                                      const Real averageSegmentLength,
+                                                      Real youngsModulus,
+                                                      Real torsionModulus) {
     m_bodies[0] = segmentIndex1;
     m_bodies[1] = segmentIndex2;
-    simulation_model::RigidBodyVector &rb = model.getRigidBodies();
+    SimulationModel::RigidBodyVector &rb = model.getRigidBodies();
     const RigidBody &segment1 = *rb[m_bodies[0]];
     const RigidBody &segment2 = *rb[m_bodies[1]];
 
@@ -1883,15 +1883,15 @@ bool PBD::StretchBendingTwistingConstraint::initConstraint(simulation_model &mod
             m_stiffnessCoefficientK, m_restDarbouxVector);
 }
 
-bool StretchBendingTwistingConstraint::initConstraintBeforeProjection(simulation_model &model) {
+bool StretchBendingTwistingConstraint::initConstraintBeforeProjection(SimulationModel &model) {
     DirectPositionBasedSolverForStiffRods::initBeforeProjection_StretchBendingTwistingConstraint(
-            m_stiffnessCoefficientK, static_cast<Real>(1.0) / TimeManager::getCurrent()->TimeManager(),
+            m_stiffnessCoefficientK, static_cast<Real>(1.0) / TimeManager::getCurrent()->getTimeStepSize(),
             m_averageSegmentLength, m_stretchCompliance, m_bendingAndTorsionCompliance, m_lambdaSum);
     return true;
-};
+}
 
-bool StretchBendingTwistingConstraint::updateConstraint(simulation_model &model) {
-    simulation_model::RigidBodyVector &rb = model.getRigidBodies();
+bool StretchBendingTwistingConstraint::updateConstraint(SimulationModel &model) {
+    SimulationModel::RigidBodyVector &rb = model.getRigidBodies();
     const RigidBody &segment1 = *rb[m_bodies[0]];
     const RigidBody &segment2 = *rb[m_bodies[1]];
     return DirectPositionBasedSolverForStiffRods::update_StretchBendingTwistingConstraint(
@@ -1899,8 +1899,8 @@ bool StretchBendingTwistingConstraint::updateConstraint(simulation_model &model)
             m_constraintInfo);
 }
 
-bool StretchBendingTwistingConstraint::solvePositionConstraint(simulation_model &model, const unsigned int iter) {
-    simulation_model::RigidBodyVector &rb = model.getRigidBodies();
+bool StretchBendingTwistingConstraint::solvePositionConstraint(SimulationModel &model, const unsigned int iter) {
+    SimulationModel::RigidBodyVector &rb = model.getRigidBodies();
 
     RigidBody &segment1 = *rb[m_bodies[0]];
     RigidBody &segment2 = *rb[m_bodies[1]];
@@ -1934,16 +1934,16 @@ bool StretchBendingTwistingConstraint::solvePositionConstraint(simulation_model 
 // DirectPositionBasedSolverForStiffRodsConstraint
 //////////////////////////////////////////////////////////////////////////
 
-PBD::DirectPositionBasedSolverForStiffRodsConstraint::~DirectPositionBasedSolverForStiffRodsConstraint() {
+DirectPositionBasedSolverForStiffRodsConstraint::~DirectPositionBasedSolverForStiffRodsConstraint() {
     deleteNodes();
-    if (intervals != NULL) delete[] intervals;
-    if (forward != NULL) delete[] forward;
-    if (backward != NULL) delete[] backward;
-    if (root != NULL) delete[] root;
-    root = NULL;
-    forward = NULL;
-    backward = NULL;
-    intervals = NULL;
+    delete[] intervals;
+    delete[] forward;
+    delete[] backward;
+    delete[] root;
+    root = nullptr;
+    forward = nullptr;
+    backward = nullptr;
+    intervals = nullptr;
     numberOfIntervals = 0;
 }
 
@@ -1954,13 +1954,13 @@ void DirectPositionBasedSolverForStiffRodsConstraint::deleteNodes() {
             Node *node = *nodeIter;
 
             // Root node does not have to be deleted
-            if (node->parent != NULL) delete node;
+            if (node->parent != nullptr) delete node;
         }
     }
 }
 
-bool PBD::DirectPositionBasedSolverForStiffRodsConstraint::initConstraint(
-        simulation_model &model,
+bool DirectPositionBasedSolverForStiffRodsConstraint::initConstraint(
+        SimulationModel &model,
         const std::vector<std::pair<unsigned int, unsigned int>> &constraintSegmentIndices,
         const std::vector<Vector3r> &constraintPositions,
         const std::vector<Real> &averageRadii,
@@ -1998,7 +1998,7 @@ bool PBD::DirectPositionBasedSolverForStiffRodsConstraint::initConstraint(
     for (auto bodyIdx : uniqueSegmentIndices) {
         idx = (unsigned int)m_Segments.size();
         idxMap[bodyIdx] = idx;
-        m_Segments.push_back(RodSegmentImpl(model, bodyIdx));
+        m_Segments.emplace_back(model, bodyIdx);
         m_rodSegments.push_back(&m_Segments.back());
     }
 
@@ -2028,26 +2028,26 @@ bool PBD::DirectPositionBasedSolverForStiffRodsConstraint::initConstraint(
     return true;
 }
 
-bool PBD::DirectPositionBasedSolverForStiffRodsConstraint::initConstraintBeforeProjection(simulation_model &model) {
+bool DirectPositionBasedSolverForStiffRodsConstraint::initConstraintBeforeProjection(SimulationModel &model) {
     DirectPositionBasedSolverForStiffRods::initBeforeProjection_DirectPositionBasedSolverForStiffRodsConstraint(
-            m_rodConstraints, static_cast<Real>(1.0) / TimeManager::getCurrent()->TimeManager(), m_lambdaSums);
+            m_rodConstraints, static_cast<Real>(1.0) / TimeManager::getCurrent()->getTimeStepSize(), m_lambdaSums);
     return true;
 }
 
-bool PBD::DirectPositionBasedSolverForStiffRodsConstraint::updateConstraint(simulation_model &model) {
+bool DirectPositionBasedSolverForStiffRodsConstraint::updateConstraint(SimulationModel &model) {
     DirectPositionBasedSolverForStiffRods::update_DirectPositionBasedSolverForStiffRodsConstraint(m_rodConstraints,
                                                                                                   m_rodSegments);
     return true;
 }
 
-bool PBD::DirectPositionBasedSolverForStiffRodsConstraint::solvePositionConstraint(simulation_model &model,
-                                                                                   const unsigned int iter) {
+bool DirectPositionBasedSolverForStiffRodsConstraint::solvePositionConstraint(SimulationModel &model,
+                                                                              const unsigned int iter) {
     const bool res = DirectPositionBasedSolverForStiffRods::solve_DirectPositionBasedSolverForStiffRodsConstraint(
             m_rodConstraints, m_rodSegments, intervals, numberOfIntervals, forward, backward, m_rightHandSide,
             m_lambdaSums, m_bendingAndTorsionJacobians, m_corr_x, m_corr_q);
 
     // apply corrections to bodies
-    simulation_model::RigidBodyVector &rbs = model.getRigidBodies();
+    SimulationModel::RigidBodyVector &rbs = model.getRigidBodies();
 
     for (size_t i(0); i < m_rodSegments.size(); ++i) {
         RodSegmentImpl &segment = m_Segments[i];
@@ -2063,22 +2063,22 @@ bool PBD::DirectPositionBasedSolverForStiffRodsConstraint::solvePositionConstrai
     return res;
 }
 
-bool PBD::DirectPositionBasedSolverForStiffRodsConstraint::RodSegmentImpl::isDynamic() {
+bool DirectPositionBasedSolverForStiffRodsConstraint::RodSegmentImpl::isDynamic() {
     return 0 != (m_model.getRigidBodies())[m_segmentIdx]->getMass();
 }
 
-Real PBD::DirectPositionBasedSolverForStiffRodsConstraint::RodSegmentImpl::Mass() {
+Real DirectPositionBasedSolverForStiffRodsConstraint::RodSegmentImpl::Mass() {
     return (m_model.getRigidBodies())[m_segmentIdx]->getMass();
 }
 
-const Vector3r &PBD::DirectPositionBasedSolverForStiffRodsConstraint::RodSegmentImpl::InertiaTensor() {
+const Vector3r &DirectPositionBasedSolverForStiffRodsConstraint::RodSegmentImpl::InertiaTensor() {
     return (m_model.getRigidBodies())[m_segmentIdx]->getInertiaTensor();
 }
 
-const Vector3r &PBD::DirectPositionBasedSolverForStiffRodsConstraint::RodSegmentImpl::Position() {
+const Vector3r &DirectPositionBasedSolverForStiffRodsConstraint::RodSegmentImpl::Position() {
     return (m_model.getRigidBodies())[m_segmentIdx]->getPosition();
 }
 
-const Quaternionr &PBD::DirectPositionBasedSolverForStiffRodsConstraint::RodSegmentImpl::Rotation() {
+const Quaternionr &DirectPositionBasedSolverForStiffRodsConstraint::RodSegmentImpl::Rotation() {
     return (m_model.getRigidBodies())[m_segmentIdx]->getRotation();
 }

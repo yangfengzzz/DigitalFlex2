@@ -119,7 +119,7 @@ void KDTree<HullType>::traverse_breadth_first_parallel(TraversalPredicate pred, 
 #endif
 
     // compute ceiling of Log2
-    // assuming double and long long have the same size.
+    // assuming double and long have the same size.
     double d = maxThreads - 1;
     long long ll;
     memcpy(&ll, &d, sizeof(d));

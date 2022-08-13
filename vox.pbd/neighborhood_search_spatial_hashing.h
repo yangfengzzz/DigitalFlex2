@@ -13,7 +13,7 @@
 
 typedef Eigen::Vector3i NeighborhoodSearchCellPos;
 
-namespace Utilities {
+namespace vox::utility {
 template <>
 inline unsigned int hashFunction<NeighborhoodSearchCellPos *>(NeighborhoodSearchCellPos *const &key) {
     const int p1 = 73856093 * (*key)[0];
@@ -21,21 +21,22 @@ inline unsigned int hashFunction<NeighborhoodSearchCellPos *>(NeighborhoodSearch
     const int p3 = 83492791 * (*key)[2];
     return p1 + p2 + p3;
 }
-}  // namespace Utilities
+}  // namespace vox::utility
 
 namespace vox {
 class neighborhood_search_spatial_hashing {
 public:
-    neighborhood_search_spatial_hashing(const unsigned int numParticles = 0,
-                                        const Real radius = 0.1,
-                                        const unsigned int maxNeighbors = 60u,
-                                        const unsigned int maxParticlesPerCell = 50u);
+    explicit neighborhood_search_spatial_hashing(unsigned int numParticles = 0,
+                                                 Real radius = 0.1,
+                                                 unsigned int maxNeighbors = 60u,
+                                                 unsigned int maxParticlesPerCell = 50u);
     ~neighborhood_search_spatial_hashing();
 
     // Spatial hashing
     struct HashEntry {
-        HashEntry(){};
-        unsigned long timestamp;
+        HashEntry() = default;
+        ;
+        unsigned long timestamp{};
         std::vector<unsigned int> particleIndices;
     };
 
@@ -45,18 +46,18 @@ public:
 
     void cleanup();
     void neighborhoodSearch(Vector3r *x);
-    void neighborhoodSearch(Vector3r *x, const unsigned int numBoundaryParticles, Vector3r *boundaryX);
+    void neighborhoodSearch(Vector3r *x, unsigned int numBoundaryParticles, Vector3r *boundaryX);
     void update();
-    unsigned int **getNeighbors() const;
-    unsigned int *getNumNeighbors() const;
-    const unsigned int getMaxNeighbors() const { return m_maxNeighbors; }
+    [[nodiscard]] unsigned int **getNeighbors() const;
+    [[nodiscard]] unsigned int *getNumNeighbors() const;
+    [[nodiscard]] unsigned int getMaxNeighbors() const { return m_maxNeighbors; }
 
-    unsigned int getNumParticles() const;
-    void setRadius(const Real radius);
-    Real getRadius() const;
+    [[nodiscard]] unsigned int getNumParticles() const;
+    void setRadius(Real radius);
+    [[nodiscard]] Real getRadius() const;
 
-    FORCE_INLINE unsigned int n_neighbors(unsigned int i) const { return m_numNeighbors[i]; }
-    FORCE_INLINE unsigned int neighbor(unsigned int i, unsigned int k) const { return m_neighbors[i][k]; }
+    [[nodiscard]] FORCE_INLINE unsigned int n_neighbors(unsigned int i) const { return m_numNeighbors[i]; }
+    [[nodiscard]] FORCE_INLINE unsigned int neighbor(unsigned int i, unsigned int k) const { return m_neighbors[i][k]; }
 
 private:
     unsigned int m_numParticles;
@@ -67,8 +68,6 @@ private:
     Real m_cellGridSize;
     Real m_radius2;
     unsigned int m_currentTimestamp;
-    Utilities::Hashmap<NeighborhoodSearchCellPos *, HashEntry *> m_gridMap;
+    utility::Hashmap<NeighborhoodSearchCellPos *, HashEntry *> m_gridMap;
 };
 }  // namespace vox
-
-#endif

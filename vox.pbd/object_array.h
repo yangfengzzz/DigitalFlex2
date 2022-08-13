@@ -10,7 +10,7 @@
 
 #include "vox.pbd/common.h"
 
-namespace Utilities {
+namespace vox::utility {
 template <class T, int growBy = 100, bool linearGrow = true>
 class ObjectArray {
 private:
@@ -180,4 +180,4 @@ private:
         }
     }
 };
-}  // namespace Utilities
+}  // namespace vox::utility

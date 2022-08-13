@@ -6,12 +6,9 @@
 
 #include "vox.pbd/simulation_model.h"
 
-#include "vox.pbd/constraints.h"
-#include "vox.pbd/position_based_rigid_body_dynamics.h"
-
 using namespace vox;
 
-simulation_model::simulation_model() {
+SimulationModel::SimulationModel() {
     m_contactStiffnessRigidBody = 1.0;
     m_contactStiffnessParticleRigidBody = 100.0;
 
@@ -22,35 +19,35 @@ simulation_model::simulation_model() {
     m_particleSolidContactConstraints.reserve(10000);
 }
 
-simulation_model::~simulation_model() { cleanup(); }
+SimulationModel::~SimulationModel() { cleanup(); }
 
-void simulation_model::init() { initParameters(); }
+void SimulationModel::init() { initParameters(); }
 
-void simulation_model::cleanup() {
+void SimulationModel::cleanup() {
     resetContacts();
-    for (unsigned int i = 0; i < m_rigidBodies.size(); i++) delete m_rigidBodies[i];
+    for (auto &m_rigidBodie : m_rigidBodies) delete m_rigidBodie;
     m_rigidBodies.clear();
-    for (unsigned int i = 0; i < m_triangleModels.size(); i++) delete m_triangleModels[i];
+    for (auto &m_triangleModel : m_triangleModels) delete m_triangleModel;
     m_triangleModels.clear();
-    for (unsigned int i = 0; i < m_tetModels.size(); i++) delete m_tetModels[i];
+    for (auto &m_tetModel : m_tetModels) delete m_tetModel;
     m_tetModels.clear();
-    for (unsigned int i = 0; i < m_lineModels.size(); i++) delete m_lineModels[i];
+    for (auto &m_lineModel : m_lineModels) delete m_lineModel;
     m_lineModels.clear();
-    for (unsigned int i = 0; i < m_constraints.size(); i++) delete m_constraints[i];
+    for (auto &m_constraint : m_constraints) delete m_constraint;
     m_constraints.clear();
     m_particles.release();
     m_orientations.release();
     m_groupsInitialized = false;
 }
 
-void simulation_model::reset() {
+void SimulationModel::reset() {
     resetContacts();
 
     // rigid bodies
-    for (size_t i = 0; i < m_rigidBodies.size(); i++) {
-        m_rigidBodies[i]->reset();
-        m_rigidBodies[i]->getGeometry().updateMeshTransformation(m_rigidBodies[i]->getPosition(),
-                                                                 m_rigidBodies[i]->getRotationMatrix());
+    for (auto &m_rigidBodie : m_rigidBodies) {
+        m_rigidBodie->reset();
+        m_rigidBodie->getGeometry().updateMeshTransformation(m_rigidBodie->getPosition(),
+                                                             m_rigidBodie->getRotationMatrix());
     }
 
     // particles
@@ -76,40 +73,40 @@ void simulation_model::reset() {
     updateConstraints();
 }
 
-simulation_model::RigidBodyVector &simulation_model::getRigidBodies() { return m_rigidBodies; }
+SimulationModel::RigidBodyVector &SimulationModel::getRigidBodies() { return m_rigidBodies; }
 
-ParticleData &simulation_model::getParticles() { return m_particles; }
+ParticleData &SimulationModel::getParticles() { return m_particles; }
 
-OrientationData &simulation_model::getOrientations() { return m_orientations; }
+OrientationData &SimulationModel::getOrientations() { return m_orientations; }
 
-simulation_model::TriangleModelVector &simulation_model::getTriangleModels() { return m_triangleModels; }
+SimulationModel::TriangleModelVector &SimulationModel::getTriangleModels() { return m_triangleModels; }
 
-simulation_model::TetModelVector &simulation_model::getTetModels() { return m_tetModels; }
+SimulationModel::TetModelVector &SimulationModel::getTetModels() { return m_tetModels; }
 
-simulation_model::LineModelVector &simulation_model::getLineModels() { return m_lineModels; }
+SimulationModel::LineModelVector &SimulationModel::getLineModels() { return m_lineModels; }
 
-simulation_model::ConstraintVector &simulation_model::getConstraints() { return m_constraints; }
+SimulationModel::ConstraintVector &SimulationModel::getConstraints() { return m_constraints; }
 
-simulation_model::RigidBodyContactConstraintVector &simulation_model::getRigidBodyContactConstraints() {
+SimulationModel::RigidBodyContactConstraintVector &SimulationModel::getRigidBodyContactConstraints() {
     return m_rigidBodyContactConstraints;
 }
 
-simulation_model::ParticleRigidBodyContactConstraintVector &simulation_model::getParticleRigidBodyContactConstraints() {
+SimulationModel::ParticleRigidBodyContactConstraintVector &SimulationModel::getParticleRigidBodyContactConstraints() {
     return m_particleRigidBodyContactConstraints;
 }
 
-simulation_model::ParticleSolidContactConstraintVector &simulation_model::getParticleSolidContactConstraints() {
+SimulationModel::ParticleSolidContactConstraintVector &SimulationModel::getParticleSolidContactConstraints() {
     return m_particleSolidContactConstraints;
 }
 
-simulation_model::ConstraintGroupVector &simulation_model::getConstraintGroups() { return m_constraintGroups; }
+SimulationModel::ConstraintGroupVector &SimulationModel::getConstraintGroups() { return m_constraintGroups; }
 
-void simulation_model::updateConstraints() {
-    for (unsigned int i = 0; i < m_constraints.size(); i++) m_constraints[i]->updateConstraint(*this);
+void SimulationModel::updateConstraints() {
+    for (auto &m_constraint : m_constraints) m_constraint->updateConstraint(*this);
 }
 
-bool simulation_model::addBallJoint(const unsigned int rbIndex1, const unsigned int rbIndex2, const Vector3r &pos) {
-    BallJoint *bj = new BallJoint();
+bool SimulationModel::addBallJoint(const unsigned int rbIndex1, const unsigned int rbIndex2, const Vector3r &pos) {
+    auto *bj = new BallJoint();
     const bool res = bj->initConstraint(*this, rbIndex1, rbIndex2, pos);
     if (res) {
         m_constraints.push_back(bj);
@@ -118,11 +115,11 @@ bool simulation_model::addBallJoint(const unsigned int rbIndex1, const unsigned 
     return res;
 }
 
-bool simulation_model::addBallOnLineJoint(const unsigned int rbIndex1,
-                                          const unsigned int rbIndex2,
-                                          const Vector3r &pos,
-                                          const Vector3r &dir) {
-    BallOnLineJoint *bj = new BallOnLineJoint();
+bool SimulationModel::addBallOnLineJoint(const unsigned int rbIndex1,
+                                         const unsigned int rbIndex2,
+                                         const Vector3r &pos,
+                                         const Vector3r &dir) {
+    auto *bj = new BallOnLineJoint();
     const bool res = bj->initConstraint(*this, rbIndex1, rbIndex2, pos, dir);
     if (res) {
         m_constraints.push_back(bj);
@@ -131,11 +128,11 @@ bool simulation_model::addBallOnLineJoint(const unsigned int rbIndex1,
     return res;
 }
 
-bool simulation_model::addHingeJoint(const unsigned int rbIndex1,
-                                     const unsigned int rbIndex2,
-                                     const Vector3r &pos,
-                                     const Vector3r &axis) {
-    HingeJoint *hj = new HingeJoint();
+bool SimulationModel::addHingeJoint(const unsigned int rbIndex1,
+                                    const unsigned int rbIndex2,
+                                    const Vector3r &pos,
+                                    const Vector3r &axis) {
+    auto *hj = new HingeJoint();
     const bool res = hj->initConstraint(*this, rbIndex1, rbIndex2, pos, axis);
     if (res) {
         m_constraints.push_back(hj);
@@ -144,12 +141,12 @@ bool simulation_model::addHingeJoint(const unsigned int rbIndex1,
     return res;
 }
 
-bool simulation_model::addUniversalJoint(const unsigned int rbIndex1,
-                                         const unsigned int rbIndex2,
-                                         const Vector3r &pos,
-                                         const Vector3r &axis1,
-                                         const Vector3r &axis2) {
-    UniversalJoint *uj = new UniversalJoint();
+bool SimulationModel::addUniversalJoint(const unsigned int rbIndex1,
+                                        const unsigned int rbIndex2,
+                                        const Vector3r &pos,
+                                        const Vector3r &axis1,
+                                        const Vector3r &axis2) {
+    auto *uj = new UniversalJoint();
     const bool res = uj->initConstraint(*this, rbIndex1, rbIndex2, pos, axis1, axis2);
     if (res) {
         m_constraints.push_back(uj);
@@ -158,8 +155,8 @@ bool simulation_model::addUniversalJoint(const unsigned int rbIndex1,
     return res;
 }
 
-bool simulation_model::addSliderJoint(const unsigned int rbIndex1, const unsigned int rbIndex2, const Vector3r &axis) {
-    SliderJoint *joint = new SliderJoint();
+bool SimulationModel::addSliderJoint(const unsigned int rbIndex1, const unsigned int rbIndex2, const Vector3r &axis) {
+    auto *joint = new SliderJoint();
     const bool res = joint->initConstraint(*this, rbIndex1, rbIndex2, axis);
     if (res) {
         m_constraints.push_back(joint);
@@ -168,48 +165,35 @@ bool simulation_model::addSliderJoint(const unsigned int rbIndex1, const unsigne
     return res;
 }
 
-bool simulation_model::addTargetPositionMotorSliderJoint(const unsigned int rbIndex1,
-                                                         const unsigned int rbIndex2,
-                                                         const Vector3r &axis) {
-    TargetPositionMotorSliderJoint *joint = new TargetPositionMotorSliderJoint();
-    const bool res = joint->initConstraint(*this, rbIndex1, rbIndex2, axis);
-    if (res) {
-        m_constraints.push_back(joint);
-        m_groupsInitialized = false;
-    }
-    return res;
-}
-
-bool simulation_model::addTargetVelocityMotorSliderJoint(const unsigned int rbIndex1,
-                                                         const unsigned int rbIndex2,
-                                                         const Vector3r &axis) {
-    TargetVelocityMotorSliderJoint *joint = new TargetVelocityMotorSliderJoint();
-    const bool res = joint->initConstraint(*this, rbIndex1, rbIndex2, axis);
-    if (res) {
-        m_constraints.push_back(joint);
-        m_groupsInitialized = false;
-    }
-    return res;
-}
-
-bool simulation_model::addTargetAngleMotorHingeJoint(const unsigned int rbIndex1,
-                                                     const unsigned int rbIndex2,
-                                                     const Vector3r &pos,
-                                                     const Vector3r &axis) {
-    TargetAngleMotorHingeJoint *hj = new TargetAngleMotorHingeJoint();
-    const bool res = hj->initConstraint(*this, rbIndex1, rbIndex2, pos, axis);
-    if (res) {
-        m_constraints.push_back(hj);
-        m_groupsInitialized = false;
-    }
-    return res;
-}
-
-bool simulation_model::addTargetVelocityMotorHingeJoint(const unsigned int rbIndex1,
+bool SimulationModel::addTargetPositionMotorSliderJoint(const unsigned int rbIndex1,
                                                         const unsigned int rbIndex2,
-                                                        const Vector3r &pos,
                                                         const Vector3r &axis) {
-    TargetVelocityMotorHingeJoint *hj = new TargetVelocityMotorHingeJoint();
+    auto *joint = new TargetPositionMotorSliderJoint();
+    const bool res = joint->initConstraint(*this, rbIndex1, rbIndex2, axis);
+    if (res) {
+        m_constraints.push_back(joint);
+        m_groupsInitialized = false;
+    }
+    return res;
+}
+
+bool SimulationModel::addTargetVelocityMotorSliderJoint(const unsigned int rbIndex1,
+                                                        const unsigned int rbIndex2,
+                                                        const Vector3r &axis) {
+    auto *joint = new TargetVelocityMotorSliderJoint();
+    const bool res = joint->initConstraint(*this, rbIndex1, rbIndex2, axis);
+    if (res) {
+        m_constraints.push_back(joint);
+        m_groupsInitialized = false;
+    }
+    return res;
+}
+
+bool SimulationModel::addTargetAngleMotorHingeJoint(const unsigned int rbIndex1,
+                                                    const unsigned int rbIndex2,
+                                                    const Vector3r &pos,
+                                                    const Vector3r &axis) {
+    auto *hj = new TargetAngleMotorHingeJoint();
     const bool res = hj->initConstraint(*this, rbIndex1, rbIndex2, pos, axis);
     if (res) {
         m_constraints.push_back(hj);
@@ -218,11 +202,24 @@ bool simulation_model::addTargetVelocityMotorHingeJoint(const unsigned int rbInd
     return res;
 }
 
-bool simulation_model::addDamperJoint(const unsigned int rbIndex1,
-                                      const unsigned int rbIndex2,
-                                      const Vector3r &axis,
-                                      const Real stiffness) {
-    DamperJoint *joint = new DamperJoint();
+bool SimulationModel::addTargetVelocityMotorHingeJoint(const unsigned int rbIndex1,
+                                                       const unsigned int rbIndex2,
+                                                       const Vector3r &pos,
+                                                       const Vector3r &axis) {
+    auto *hj = new TargetVelocityMotorHingeJoint();
+    const bool res = hj->initConstraint(*this, rbIndex1, rbIndex2, pos, axis);
+    if (res) {
+        m_constraints.push_back(hj);
+        m_groupsInitialized = false;
+    }
+    return res;
+}
+
+bool SimulationModel::addDamperJoint(const unsigned int rbIndex1,
+                                     const unsigned int rbIndex2,
+                                     const Vector3r &axis,
+                                     const Real stiffness) {
+    auto *joint = new DamperJoint();
     const bool res = joint->initConstraint(*this, rbIndex1, rbIndex2, axis, stiffness);
     if (res) {
         m_constraints.push_back(joint);
@@ -231,8 +228,8 @@ bool simulation_model::addDamperJoint(const unsigned int rbIndex1,
     return res;
 }
 
-bool simulation_model::addRigidBodyParticleBallJoint(const unsigned int rbIndex, const unsigned int particleIndex) {
-    RigidBodyParticleBallJoint *bj = new RigidBodyParticleBallJoint();
+bool SimulationModel::addRigidBodyParticleBallJoint(const unsigned int rbIndex, const unsigned int particleIndex) {
+    auto *bj = new RigidBodyParticleBallJoint();
     const bool res = bj->initConstraint(*this, rbIndex, particleIndex);
     if (res) {
         m_constraints.push_back(bj);
@@ -241,12 +238,12 @@ bool simulation_model::addRigidBodyParticleBallJoint(const unsigned int rbIndex,
     return res;
 }
 
-bool simulation_model::addRigidBodySpring(const unsigned int rbIndex1,
-                                          const unsigned int rbIndex2,
-                                          const Vector3r &pos1,
-                                          const Vector3r &pos2,
-                                          const Real stiffness) {
-    RigidBodySpring *s = new RigidBodySpring();
+bool SimulationModel::addRigidBodySpring(const unsigned int rbIndex1,
+                                         const unsigned int rbIndex2,
+                                         const Vector3r &pos1,
+                                         const Vector3r &pos2,
+                                         const Real stiffness) {
+    auto *s = new RigidBodySpring();
     const bool res = s->initConstraint(*this, rbIndex1, rbIndex2, pos1, pos2, stiffness);
     if (res) {
         m_constraints.push_back(s);
@@ -255,11 +252,11 @@ bool simulation_model::addRigidBodySpring(const unsigned int rbIndex1,
     return res;
 }
 
-bool simulation_model::addDistanceJoint(const unsigned int rbIndex1,
-                                        const unsigned int rbIndex2,
-                                        const Vector3r &pos1,
-                                        const Vector3r &pos2) {
-    DistanceJoint *j = new DistanceJoint();
+bool SimulationModel::addDistanceJoint(const unsigned int rbIndex1,
+                                       const unsigned int rbIndex2,
+                                       const Vector3r &pos1,
+                                       const Vector3r &pos2) {
+    auto *j = new DistanceJoint();
     const bool res = j->initConstraint(*this, rbIndex1, rbIndex2, pos1, pos2);
     if (res) {
         m_constraints.push_back(j);
@@ -268,14 +265,14 @@ bool simulation_model::addDistanceJoint(const unsigned int rbIndex1,
     return res;
 }
 
-bool simulation_model::addRigidBodyContactConstraint(const unsigned int rbIndex1,
-                                                     const unsigned int rbIndex2,
-                                                     const Vector3r &cp1,
-                                                     const Vector3r &cp2,
-                                                     const Vector3r &normal,
-                                                     const Real dist,
-                                                     const Real restitutionCoeff,
-                                                     const Real frictionCoeff) {
+bool SimulationModel::addRigidBodyContactConstraint(const unsigned int rbIndex1,
+                                                    const unsigned int rbIndex2,
+                                                    const Vector3r &cp1,
+                                                    const Vector3r &cp2,
+                                                    const Vector3r &normal,
+                                                    const Real dist,
+                                                    const Real restitutionCoeff,
+                                                    const Real frictionCoeff) {
     m_rigidBodyContactConstraints.emplace_back(RigidBodyContactConstraint());
     RigidBodyContactConstraint &cc = m_rigidBodyContactConstraints.back();
     const bool res = cc.initConstraint(*this, rbIndex1, rbIndex2, cp1, cp2, normal, dist, restitutionCoeff,
@@ -284,14 +281,14 @@ bool simulation_model::addRigidBodyContactConstraint(const unsigned int rbIndex1
     return res;
 }
 
-bool simulation_model::addParticleRigidBodyContactConstraint(const unsigned int particleIndex,
-                                                             const unsigned int rbIndex,
-                                                             const Vector3r &cp1,
-                                                             const Vector3r &cp2,
-                                                             const Vector3r &normal,
-                                                             const Real dist,
-                                                             const Real restitutionCoeff,
-                                                             const Real frictionCoeff) {
+bool SimulationModel::addParticleRigidBodyContactConstraint(const unsigned int particleIndex,
+                                                            const unsigned int rbIndex,
+                                                            const Vector3r &cp1,
+                                                            const Vector3r &cp2,
+                                                            const Vector3r &normal,
+                                                            const Real dist,
+                                                            const Real restitutionCoeff,
+                                                            const Real frictionCoeff) {
     m_particleRigidBodyContactConstraints.emplace_back(ParticleRigidBodyContactConstraint());
     ParticleRigidBodyContactConstraint &cc = m_particleRigidBodyContactConstraints.back();
     const bool res = cc.initConstraint(*this, particleIndex, rbIndex, cp1, cp2, normal, dist, restitutionCoeff,
@@ -300,16 +297,16 @@ bool simulation_model::addParticleRigidBodyContactConstraint(const unsigned int 
     return res;
 }
 
-bool simulation_model::addParticleSolidContactConstraint(const unsigned int particleIndex,
-                                                         const unsigned int solidIndex,
-                                                         const unsigned int tetIndex,
-                                                         const Vector3r &bary,
-                                                         const Vector3r &cp1,
-                                                         const Vector3r &cp2,
-                                                         const Vector3r &normal,
-                                                         const Real dist,
-                                                         const Real restitutionCoeff,
-                                                         const Real frictionCoeff) {
+bool SimulationModel::addParticleSolidContactConstraint(const unsigned int particleIndex,
+                                                        const unsigned int solidIndex,
+                                                        const unsigned int tetIndex,
+                                                        const Vector3r &bary,
+                                                        const Vector3r &cp1,
+                                                        const Vector3r &cp2,
+                                                        const Vector3r &normal,
+                                                        const Real dist,
+                                                        const Real restitutionCoeff,
+                                                        const Real frictionCoeff) {
     m_particleSolidContactConstraints.emplace_back(ParticleTetContactConstraint());
     ParticleTetContactConstraint &cc = m_particleSolidContactConstraints.back();
     const bool res =
@@ -318,10 +315,10 @@ bool simulation_model::addParticleSolidContactConstraint(const unsigned int part
     return res;
 }
 
-bool simulation_model::addDistanceConstraint(const unsigned int particle1,
-                                             const unsigned int particle2,
-                                             const Real stiffness) {
-    DistanceConstraint *c = new DistanceConstraint();
+bool SimulationModel::addDistanceConstraint(const unsigned int particle1,
+                                            const unsigned int particle2,
+                                            const Real stiffness) {
+    auto *c = new DistanceConstraint();
     const bool res = c->initConstraint(*this, particle1, particle2, stiffness);
     if (res) {
         m_constraints.push_back(c);
@@ -330,10 +327,10 @@ bool simulation_model::addDistanceConstraint(const unsigned int particle1,
     return res;
 }
 
-bool simulation_model::addDistanceConstraint_XPBD(const unsigned int particle1,
-                                                  const unsigned int particle2,
-                                                  const Real stiffness) {
-    DistanceConstraint_XPBD *c = new DistanceConstraint_XPBD();
+bool SimulationModel::addDistanceConstraint_XPBD(const unsigned int particle1,
+                                                 const unsigned int particle2,
+                                                 const Real stiffness) {
+    auto *c = new DistanceConstraint_XPBD();
     const bool res = c->initConstraint(*this, particle1, particle2, stiffness);
     if (res) {
         m_constraints.push_back(c);
@@ -342,12 +339,12 @@ bool simulation_model::addDistanceConstraint_XPBD(const unsigned int particle1,
     return res;
 }
 
-bool simulation_model::addDihedralConstraint(const unsigned int particle1,
-                                             const unsigned int particle2,
-                                             const unsigned int particle3,
-                                             const unsigned int particle4,
-                                             const Real stiffness) {
-    DihedralConstraint *c = new DihedralConstraint();
+bool SimulationModel::addDihedralConstraint(const unsigned int particle1,
+                                            const unsigned int particle2,
+                                            const unsigned int particle3,
+                                            const unsigned int particle4,
+                                            const Real stiffness) {
+    auto *c = new DihedralConstraint();
     const bool res = c->initConstraint(*this, particle1, particle2, particle3, particle4, stiffness);
     if (res) {
         m_constraints.push_back(c);
@@ -356,12 +353,12 @@ bool simulation_model::addDihedralConstraint(const unsigned int particle1,
     return res;
 }
 
-bool simulation_model::addIsometricBendingConstraint(const unsigned int particle1,
-                                                     const unsigned int particle2,
-                                                     const unsigned int particle3,
-                                                     const unsigned int particle4,
-                                                     const Real stiffness) {
-    IsometricBendingConstraint *c = new IsometricBendingConstraint();
+bool SimulationModel::addIsometricBendingConstraint(const unsigned int particle1,
+                                                    const unsigned int particle2,
+                                                    const unsigned int particle3,
+                                                    const unsigned int particle4,
+                                                    const Real stiffness) {
+    auto *c = new IsometricBendingConstraint();
     const bool res = c->initConstraint(*this, particle1, particle2, particle3, particle4, stiffness);
     if (res) {
         m_constraints.push_back(c);
@@ -370,12 +367,12 @@ bool simulation_model::addIsometricBendingConstraint(const unsigned int particle
     return res;
 }
 
-bool simulation_model::addIsometricBendingConstraint_XPBD(const unsigned int particle1,
-                                                          const unsigned int particle2,
-                                                          const unsigned int particle3,
-                                                          const unsigned int particle4,
-                                                          const Real stiffness) {
-    IsometricBendingConstraint_XPBD *c = new IsometricBendingConstraint_XPBD();
+bool SimulationModel::addIsometricBendingConstraint_XPBD(const unsigned int particle1,
+                                                         const unsigned int particle2,
+                                                         const unsigned int particle3,
+                                                         const unsigned int particle4,
+                                                         const Real stiffness) {
+    auto *c = new IsometricBendingConstraint_XPBD();
     const bool res = c->initConstraint(*this, particle1, particle2, particle3, particle4, stiffness);
     if (res) {
         m_constraints.push_back(c);
@@ -384,15 +381,15 @@ bool simulation_model::addIsometricBendingConstraint_XPBD(const unsigned int par
     return res;
 }
 
-bool simulation_model::addFEMTriangleConstraint(const unsigned int particle1,
-                                                const unsigned int particle2,
-                                                const unsigned int particle3,
-                                                const Real xxStiffness,
-                                                const Real yyStiffness,
-                                                const Real xyStiffness,
-                                                const Real xyPoissonRatio,
-                                                const Real yxPoissonRatio) {
-    FEMTriangleConstraint *c = new FEMTriangleConstraint();
+bool SimulationModel::addFEMTriangleConstraint(const unsigned int particle1,
+                                               const unsigned int particle2,
+                                               const unsigned int particle3,
+                                               const Real xxStiffness,
+                                               const Real yyStiffness,
+                                               const Real xyStiffness,
+                                               const Real xyPoissonRatio,
+                                               const Real yxPoissonRatio) {
+    auto *c = new FEMTriangleConstraint();
     const bool res = c->initConstraint(*this, particle1, particle2, particle3, xxStiffness, yyStiffness, xyStiffness,
                                        xyPoissonRatio, yxPoissonRatio);
     if (res) {
@@ -402,15 +399,15 @@ bool simulation_model::addFEMTriangleConstraint(const unsigned int particle1,
     return res;
 }
 
-bool simulation_model::addStrainTriangleConstraint(const unsigned int particle1,
-                                                   const unsigned int particle2,
-                                                   const unsigned int particle3,
-                                                   const Real xxStiffness,
-                                                   const Real yyStiffness,
-                                                   const Real xyStiffness,
-                                                   const bool normalizeStretch,
-                                                   const bool normalizeShear) {
-    StrainTriangleConstraint *c = new StrainTriangleConstraint();
+bool SimulationModel::addStrainTriangleConstraint(const unsigned int particle1,
+                                                  const unsigned int particle2,
+                                                  const unsigned int particle3,
+                                                  const Real xxStiffness,
+                                                  const Real yyStiffness,
+                                                  const Real xyStiffness,
+                                                  const bool normalizeStretch,
+                                                  const bool normalizeShear) {
+    auto *c = new StrainTriangleConstraint();
     const bool res = c->initConstraint(*this, particle1, particle2, particle3, xxStiffness, yyStiffness, xyStiffness,
                                        normalizeStretch, normalizeShear);
     if (res) {
@@ -420,12 +417,12 @@ bool simulation_model::addStrainTriangleConstraint(const unsigned int particle1,
     return res;
 }
 
-bool simulation_model::addVolumeConstraint(const unsigned int particle1,
-                                           const unsigned int particle2,
-                                           const unsigned int particle3,
-                                           const unsigned int particle4,
-                                           const Real stiffness) {
-    VolumeConstraint *c = new VolumeConstraint();
+bool SimulationModel::addVolumeConstraint(const unsigned int particle1,
+                                          const unsigned int particle2,
+                                          const unsigned int particle3,
+                                          const unsigned int particle4,
+                                          const Real stiffness) {
+    auto *c = new VolumeConstraint();
     const bool res = c->initConstraint(*this, particle1, particle2, particle3, particle4, stiffness);
     if (res) {
         m_constraints.push_back(c);
@@ -434,12 +431,12 @@ bool simulation_model::addVolumeConstraint(const unsigned int particle1,
     return res;
 }
 
-bool simulation_model::addVolumeConstraint_XPBD(const unsigned int particle1,
-                                                const unsigned int particle2,
-                                                const unsigned int particle3,
-                                                const unsigned int particle4,
-                                                const Real stiffness) {
-    VolumeConstraint_XPBD *c = new VolumeConstraint_XPBD();
+bool SimulationModel::addVolumeConstraint_XPBD(const unsigned int particle1,
+                                               const unsigned int particle2,
+                                               const unsigned int particle3,
+                                               const unsigned int particle4,
+                                               const Real stiffness) {
+    auto *c = new VolumeConstraint_XPBD();
     const bool res = c->initConstraint(*this, particle1, particle2, particle3, particle4, stiffness);
     if (res) {
         m_constraints.push_back(c);
@@ -448,13 +445,13 @@ bool simulation_model::addVolumeConstraint_XPBD(const unsigned int particle1,
     return res;
 }
 
-bool simulation_model::addFEMTetConstraint(const unsigned int particle1,
-                                           const unsigned int particle2,
-                                           const unsigned int particle3,
-                                           const unsigned int particle4,
-                                           const Real stiffness,
-                                           const Real poissonRatio) {
-    FEMTetConstraint *c = new FEMTetConstraint();
+bool SimulationModel::addFEMTetConstraint(const unsigned int particle1,
+                                          const unsigned int particle2,
+                                          const unsigned int particle3,
+                                          const unsigned int particle4,
+                                          const Real stiffness,
+                                          const Real poissonRatio) {
+    auto *c = new FEMTetConstraint();
     const bool res = c->initConstraint(*this, particle1, particle2, particle3, particle4, stiffness, poissonRatio);
     if (res) {
         m_constraints.push_back(c);
@@ -463,15 +460,15 @@ bool simulation_model::addFEMTetConstraint(const unsigned int particle1,
     return res;
 }
 
-bool simulation_model::addStrainTetConstraint(const unsigned int particle1,
-                                              const unsigned int particle2,
-                                              const unsigned int particle3,
-                                              const unsigned int particle4,
-                                              const Real stretchStiffness,
-                                              const Real shearStiffness,
-                                              const bool normalizeStretch,
-                                              const bool normalizeShear) {
-    StrainTetConstraint *c = new StrainTetConstraint();
+bool SimulationModel::addStrainTetConstraint(const unsigned int particle1,
+                                             const unsigned int particle2,
+                                             const unsigned int particle3,
+                                             const unsigned int particle4,
+                                             const Real stretchStiffness,
+                                             const Real shearStiffness,
+                                             const bool normalizeStretch,
+                                             const bool normalizeShear) {
+    auto *c = new StrainTetConstraint();
     const bool res = c->initConstraint(*this, particle1, particle2, particle3, particle4, stretchStiffness,
                                        shearStiffness, normalizeStretch, normalizeShear);
     if (res) {
@@ -481,11 +478,11 @@ bool simulation_model::addStrainTetConstraint(const unsigned int particle1,
     return res;
 }
 
-bool simulation_model::addShapeMatchingConstraint(const unsigned int numberOfParticles,
-                                                  const unsigned int particleIndices[],
-                                                  const unsigned int numClusters[],
-                                                  const Real stiffness) {
-    ShapeMatchingConstraint *c = new ShapeMatchingConstraint(numberOfParticles);
+bool SimulationModel::addShapeMatchingConstraint(const unsigned int numberOfParticles,
+                                                 const unsigned int particleIndices[],
+                                                 const unsigned int numClusters[],
+                                                 const Real stiffness) {
+    auto *c = new ShapeMatchingConstraint(numberOfParticles);
     const bool res = c->initConstraint(*this, particleIndices, numClusters, stiffness);
     if (res) {
         m_constraints.push_back(c);
@@ -494,13 +491,13 @@ bool simulation_model::addShapeMatchingConstraint(const unsigned int numberOfPar
     return res;
 }
 
-bool simulation_model::addStretchShearConstraint(const unsigned int particle1,
-                                                 const unsigned int particle2,
-                                                 const unsigned int quaternion1,
-                                                 const Real stretchingStiffness,
-                                                 const Real shearingStiffness1,
-                                                 const Real shearingStiffness2) {
-    StretchShearConstraint *c = new StretchShearConstraint();
+bool SimulationModel::addStretchShearConstraint(const unsigned int particle1,
+                                                const unsigned int particle2,
+                                                const unsigned int quaternion1,
+                                                const Real stretchingStiffness,
+                                                const Real shearingStiffness1,
+                                                const Real shearingStiffness2) {
+    auto *c = new StretchShearConstraint();
     const bool res = c->initConstraint(*this, particle1, particle2, quaternion1, stretchingStiffness,
                                        shearingStiffness1, shearingStiffness2);
     if (res) {
@@ -510,12 +507,12 @@ bool simulation_model::addStretchShearConstraint(const unsigned int particle1,
     return res;
 }
 
-bool simulation_model::addBendTwistConstraint(const unsigned int quaternion1,
-                                              const unsigned int quaternion2,
-                                              const Real twistingStiffness,
-                                              const Real bendingStiffness1,
-                                              const Real bendingStiffness2) {
-    BendTwistConstraint *c = new BendTwistConstraint();
+bool SimulationModel::addBendTwistConstraint(const unsigned int quaternion1,
+                                             const unsigned int quaternion2,
+                                             const Real twistingStiffness,
+                                             const Real bendingStiffness1,
+                                             const Real bendingStiffness2) {
+    auto *c = new BendTwistConstraint();
     const bool res =
             c->initConstraint(*this, quaternion1, quaternion2, twistingStiffness, bendingStiffness1, bendingStiffness2);
     if (res) {
@@ -525,14 +522,14 @@ bool simulation_model::addBendTwistConstraint(const unsigned int quaternion1,
     return res;
 }
 
-bool simulation_model::addStretchBendingTwistingConstraint(const unsigned int rbIndex1,
-                                                           const unsigned int rbIndex2,
-                                                           const Vector3r &pos,
-                                                           const Real averageRadius,
-                                                           const Real averageSegmentLength,
-                                                           const Real youngsModulus,
-                                                           const Real torsionModulus) {
-    StretchBendingTwistingConstraint *c = new StretchBendingTwistingConstraint();
+bool SimulationModel::addStretchBendingTwistingConstraint(const unsigned int rbIndex1,
+                                                          const unsigned int rbIndex2,
+                                                          const Vector3r &pos,
+                                                          const Real averageRadius,
+                                                          const Real averageSegmentLength,
+                                                          const Real youngsModulus,
+                                                          const Real torsionModulus) {
+    auto *c = new StretchBendingTwistingConstraint();
     const bool res = c->initConstraint(*this, rbIndex1, rbIndex2, pos, averageRadius, averageSegmentLength,
                                        youngsModulus, torsionModulus);
     if (res) {
@@ -542,14 +539,14 @@ bool simulation_model::addStretchBendingTwistingConstraint(const unsigned int rb
     return res;
 }
 
-bool simulation_model::addDirectPositionBasedSolverForStiffRodsConstraint(
+bool SimulationModel::addDirectPositionBasedSolverForStiffRodsConstraint(
         const std::vector<std::pair<unsigned int, unsigned int>> &jointSegmentIndices,
         const std::vector<Vector3r> &jointPositions,
         const std::vector<Real> &averageRadii,
         const std::vector<Real> &averageSegmentLengths,
         const std::vector<Real> &youngsModuli,
         const std::vector<Real> &torsionModuli) {
-    DirectPositionBasedSolverForStiffRodsConstraint *c = new DirectPositionBasedSolverForStiffRodsConstraint();
+    auto *c = new DirectPositionBasedSolverForStiffRodsConstraint();
     const bool res = c->initConstraint(*this, jointSegmentIndices, jointPositions, averageRadii, averageSegmentLengths,
                                        youngsModuli, torsionModuli);
     if (res) {
@@ -559,13 +556,13 @@ bool simulation_model::addDirectPositionBasedSolverForStiffRodsConstraint(
     return res;
 }
 
-void simulation_model::addTriangleModel(const unsigned int nPoints,
-                                        const unsigned int nFaces,
-                                        Vector3r *points,
-                                        unsigned int *indices,
-                                        const TriangleModel::ParticleMesh::UVIndices &uvIndices,
-                                        const TriangleModel::ParticleMesh::UVs &uvs) {
-    TriangleModel *triModel = new TriangleModel();
+void SimulationModel::addTriangleModel(const unsigned int nPoints,
+                                       const unsigned int nFaces,
+                                       Vector3r *points,
+                                       unsigned int *indices,
+                                       const TriangleModel::ParticleMesh::UVIndices &uvIndices,
+                                       const TriangleModel::ParticleMesh::UVs &uvs) {
+    auto *triModel = new TriangleModel();
     m_triangleModels.push_back(triModel);
 
     unsigned int startIndex = m_particles.size();
@@ -579,11 +576,11 @@ void simulation_model::addTriangleModel(const unsigned int nPoints,
     triModel->updateMeshNormals(m_particles);
 }
 
-void simulation_model::addRegularTriangleModel(const int width,
-                                               const int height,
-                                               const Vector3r &translation,
-                                               const Matrix3r &rotation,
-                                               const Vector2r &scale) {
+void SimulationModel::addRegularTriangleModel(const int width,
+                                              const int height,
+                                              const Vector3r &translation,
+                                              const Matrix3r &rotation,
+                                              const Vector2r &scale) {
     TriangleModel::ParticleMesh::UVs uvs;
     uvs.resize(width * height);
 
@@ -646,11 +643,11 @@ void simulation_model::addRegularTriangleModel(const int width,
         pd.setMass(i, 1.0);
 }
 
-void simulation_model::addTetModel(const unsigned int nPoints,
-                                   const unsigned int nTets,
-                                   Vector3r *points,
-                                   unsigned int *indices) {
-    TetModel *tetModel = new TetModel();
+void SimulationModel::addTetModel(const unsigned int nPoints,
+                                  const unsigned int nTets,
+                                  Vector3r *points,
+                                  unsigned int *indices) {
+    auto *tetModel = new TetModel();
     m_tetModels.push_back(tetModel);
 
     unsigned int startIndex = m_particles.size();
@@ -661,12 +658,12 @@ void simulation_model::addTetModel(const unsigned int nPoints,
     tetModel->initMesh(nPoints, nTets, startIndex, indices);
 }
 
-void simulation_model::addRegularTetModel(const int width,
-                                          const int height,
-                                          const int depth,
-                                          const Vector3r &translation,
-                                          const Matrix3r &rotation,
-                                          const Vector3r &scale) {
+void SimulationModel::addRegularTetModel(const int width,
+                                         const int height,
+                                         const int depth,
+                                         const Vector3r &translation,
+                                         const Matrix3r &rotation,
+                                         const Vector3r &scale) {
     std::vector<Vector3r> points;
     points.resize(width * height * depth);
 
@@ -768,13 +765,13 @@ void simulation_model::addRegularTetModel(const int width,
     }
 }
 
-void simulation_model::addLineModel(const unsigned int nPoints,
-                                    const unsigned int nQuaternions,
-                                    Vector3r *points,
-                                    Quaternionr *quaternions,
-                                    unsigned int *indices,
-                                    unsigned int *indicesQuaternions) {
-    line_model *lineModel = new line_model();
+void SimulationModel::addLineModel(const unsigned int nPoints,
+                                   const unsigned int nQuaternions,
+                                   Vector3r *points,
+                                   Quaternionr *quaternions,
+                                   unsigned int *indices,
+                                   unsigned int *indicesQuaternions) {
+    auto *lineModel = new line_model();
     m_lineModels.push_back(lineModel);
 
     unsigned int startIndex = m_particles.size();
@@ -790,12 +787,12 @@ void simulation_model::addLineModel(const unsigned int nPoints,
     lineModel->initMesh(nPoints, nQuaternions, startIndex, startIndexOrientations, indices, indicesQuaternions);
 }
 
-void simulation_model::initConstraintGroups() {
+void SimulationModel::initConstraintGroups() {
     if (m_groupsInitialized) return;
 
-    const unsigned int numConstraints = (unsigned int)m_constraints.size();
-    const unsigned int numParticles = (unsigned int)m_particles.size();
-    const unsigned int numRigidBodies = (unsigned int)m_rigidBodies.size();
+    const auto numConstraints = (unsigned int)m_constraints.size();
+    const auto numParticles = (unsigned int)m_particles.size();
+    const auto numRigidBodies = (unsigned int)m_rigidBodies.size();
     const unsigned int numBodies = numParticles + numRigidBodies;
     m_constraintGroups.clear();
 
@@ -835,34 +832,34 @@ void simulation_model::initConstraintGroups() {
         }
     }
 
-    for (unsigned int i = 0; i < mapping.size(); i++) {
-        delete[] mapping[i];
+    for (auto &i : mapping) {
+        delete[] i;
     }
     mapping.clear();
 
     m_groupsInitialized = true;
 }
 
-void simulation_model::resetContacts() {
+void SimulationModel::resetContacts() {
     m_rigidBodyContactConstraints.clear();
     m_particleRigidBodyContactConstraints.clear();
     m_particleSolidContactConstraints.clear();
 }
 
-void simulation_model::addClothConstraints(const TriangleModel *tm,
-                                           const unsigned int clothMethod,
-                                           const Real distanceStiffness,
-                                           const Real xxStiffness,
-                                           const Real yyStiffness,
-                                           const Real xyStiffness,
-                                           const Real xyPoissonRatio,
-                                           const Real yxPoissonRatio,
-                                           const bool normalizeStretch,
-                                           const bool normalizeShear) {
+void SimulationModel::addClothConstraints(const TriangleModel *tm,
+                                          const unsigned int clothMethod,
+                                          const Real distanceStiffness,
+                                          const Real xxStiffness,
+                                          const Real yyStiffness,
+                                          const Real xyStiffness,
+                                          const Real xyPoissonRatio,
+                                          const Real yxPoissonRatio,
+                                          const bool normalizeStretch,
+                                          const bool normalizeShear) {
     if (clothMethod == 1) {
         const unsigned int offset = tm->getIndexOffset();
         const unsigned int nEdges = tm->getParticleMesh().numEdges();
-        const Utilities::IndexedFaceMesh::Edge *edges = tm->getParticleMesh().getEdges().data();
+        const utility::IndexedFaceMesh::Edge *edges = tm->getParticleMesh().getEdges().data();
         for (unsigned int i = 0; i < nEdges; i++) {
             const unsigned int v1 = edges[i].m_vert[0] + offset;
             const unsigned int v2 = edges[i].m_vert[1] + offset;
@@ -895,7 +892,7 @@ void simulation_model::addClothConstraints(const TriangleModel *tm,
     } else if (clothMethod == 4) {
         const unsigned int offset = tm->getIndexOffset();
         const unsigned int nEdges = tm->getParticleMesh().numEdges();
-        const Utilities::IndexedFaceMesh::Edge *edges = tm->getParticleMesh().getEdges().data();
+        const utility::IndexedFaceMesh::Edge *edges = tm->getParticleMesh().getEdges().data();
         for (unsigned int i = 0; i < nEdges; i++) {
             const unsigned int v1 = edges[i].m_vert[0] + offset;
             const unsigned int v2 = edges[i].m_vert[1] + offset;
@@ -905,9 +902,9 @@ void simulation_model::addClothConstraints(const TriangleModel *tm,
     }
 }
 
-void simulation_model::addBendingConstraints(const TriangleModel *tm,
-                                             const unsigned int bendingMethod,
-                                             const Real stiffness) {
+void SimulationModel::addBendingConstraints(const TriangleModel *tm,
+                                            const unsigned int bendingMethod,
+                                            const Real stiffness) {
     if ((bendingMethod < 1) || (bendingMethod > 3)) return;
 
     const unsigned int offset = tm->getIndexOffset();
@@ -953,20 +950,20 @@ void simulation_model::addBendingConstraints(const TriangleModel *tm,
     }
 }
 
-void simulation_model::addSolidConstraints(const TetModel *tm,
-                                           const unsigned int solidMethod,
-                                           const Real stiffness,
-                                           const Real poissonRatio,
-                                           const Real volumeStiffness,
-                                           const bool normalizeStretch,
-                                           const bool normalizeShear) {
+void SimulationModel::addSolidConstraints(const TetModel *tm,
+                                          const unsigned int solidMethod,
+                                          const Real stiffness,
+                                          const Real poissonRatio,
+                                          const Real volumeStiffness,
+                                          const bool normalizeStretch,
+                                          const bool normalizeShear) {
     const unsigned int nTets = tm->getParticleMesh().numTets();
     const unsigned int *tets = tm->getParticleMesh().getTets().data();
-    const Utilities::IndexedTetMesh::VerticesTets &vTets = tm->getParticleMesh().getVertexTets();
+    const utility::IndexedTetMesh::VerticesTets &vTets = tm->getParticleMesh().getVertexTets();
     const unsigned int offset = tm->getIndexOffset();
     if (solidMethod == 1) {
         const unsigned int nEdges = tm->getParticleMesh().numEdges();
-        const Utilities::IndexedTetMesh::Edge *edges = tm->getParticleMesh().getEdges().data();
+        const utility::IndexedTetMesh::Edge *edges = tm->getParticleMesh().getEdges().data();
         for (unsigned int i = 0; i < nEdges; i++) {
             const unsigned int v1 = edges[i].m_vert[0] + offset;
             const unsigned int v2 = edges[i].m_vert[1] + offset;
@@ -1022,7 +1019,7 @@ void simulation_model::addSolidConstraints(const TetModel *tm,
     } else if (solidMethod == 5) {
         const unsigned int offset = tm->getIndexOffset();
         const unsigned int nEdges = tm->getParticleMesh().numEdges();
-        const Utilities::IndexedTetMesh::Edge *edges = tm->getParticleMesh().getEdges().data();
+        const utility::IndexedTetMesh::Edge *edges = tm->getParticleMesh().getEdges().data();
         for (unsigned int i = 0; i < nEdges; i++) {
             const unsigned int v1 = edges[i].m_vert[0] + offset;
             const unsigned int v2 = edges[i].m_vert[1] + offset;

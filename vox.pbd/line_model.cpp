@@ -13,7 +13,7 @@ line_model::line_model() {
     m_frictionCoeff = static_cast<Real>(0.2);
 }
 
-line_model::~line_model(void) {}
+line_model::~line_model(void) = default;
 
 line_model::Edges &line_model::getEdges() { return m_edges; }
 

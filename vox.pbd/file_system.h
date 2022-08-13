@@ -29,7 +29,7 @@
 #define S_ISREG(mode) (((mode)&S_IFMT) == S_IFREG)
 #endif
 
-namespace Utilities {
+namespace vox::utility {
 /** \brief This class implements different file system functions.
  */
 class FileSystem {
@@ -102,7 +102,7 @@ public:
         std::string npath = normalizePath(path);
 
         // Windows
-        size_t i = npath.find(":");
+        size_t i = npath.find(':');
         if (i != std::string::npos)
             return false;
         else if (npath[0] == '/')
@@ -146,7 +146,7 @@ public:
         status = 0;
         pp = copyOfPath;
         pp = pp + 3;  // Cut away Drive:
-        while ((status == 0) && (((sp = strchr(pp, '/')) != 0) || ((sp = strchr(pp, '\\')) != 0))) {
+        while ((status == 0) && (((sp = strchr(pp, '/')) != nullptr) || ((sp = strchr(pp, '\\')) != nullptr))) {
             if (sp != pp) {
                 *sp = '\0';
                 status = makeDir(copyOfPath);
@@ -160,11 +160,11 @@ public:
     }
 
     static std::string normalizePath(const std::string &path) {
-        if (path.size() == 0) return path;
+        if (path.empty()) return path;
         std::string result = path;
         std::replace(result.begin(), result.end(), '\\', '/');
         std::vector<std::string> tokens;
-        string_tools::tokenize(result, tokens, "/");
+        StringTools::tokenize(result, tokens, "/");
         unsigned int index = 0;
         while (index < tokens.size()) {
             if ((tokens[index] == "..") && (index > 0)) {
@@ -211,9 +211,9 @@ public:
         FILE *sourceFile = fopen(source.c_str(), "rb");
         FILE *destFile = fopen(dest.c_str(), "wb");
 
-        if ((sourceFile == NULL) || (destFile == NULL)) return false;
+        if ((sourceFile == nullptr) || (destFile == nullptr)) return false;
 
-        while (size = fread(buffer, 1, bufferSize, sourceFile)) {
+        while ((size = fread(buffer, 1, bufferSize, sourceFile))) {
             fwrite(buffer, 1, size, destFile);
         }
 
@@ -250,9 +250,9 @@ public:
         return false;
 #else
         DIR *dir = opendir(path.c_str());
-        if (dir != NULL) {
+        if (dir != nullptr) {
             struct dirent *dp;
-            while ((dp = readdir(dir)) != NULL) res.push_back(dp->d_name);
+            while ((dp = readdir(dir)) != nullptr) res.emplace_back(dp->d_name);
             closedir(dir);
             return true;
         }
@@ -287,7 +287,7 @@ public:
             return false;
         }
         std::string md5 = getFileMD5(fileName);
-        if (md5 != "") fstream.write(md5.c_str(), md5.size());
+        if (!md5.empty()) fstream.write(md5.c_str(), md5.size());
         fstream.close();
         return true;
     }
@@ -340,4 +340,4 @@ public:
     }
 #endif
 };
-}  // namespace Utilities
+}  // namespace vox::utility

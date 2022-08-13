@@ -8,12 +8,10 @@
 
 #include "vox.pbd/position_based_rigid_body_dynamics.h"
 
-#include <cfloat>
+#include <cmath>
 #include <iostream>
 
 #include "vox.pbd/math_functions.h"
-#define _USE_MATH_DEFINES
-#include <cmath>
 
 using namespace vox;
 

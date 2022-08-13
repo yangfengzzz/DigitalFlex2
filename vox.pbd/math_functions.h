@@ -22,7 +22,7 @@ public:
 
     static void polarDecomposition(const Matrix3r &A, Matrix3r &R, Matrix3r &U, Matrix3r &D);
 
-    static void polarDecompositionStable(const Matrix3r &M, const Real tolerance, Matrix3r &R);
+    static void polarDecompositionStable(const Matrix3r &M, Real tolerance, Matrix3r &R);
 
     static void svdWithInversionHandling(const Matrix3r &A, Vector3r &sigma, Matrix3r &U, Matrix3r &VT);
 
@@ -39,6 +39,6 @@ public:
      * "A Robust Method to Extract the Rotational Part of Deformations",
      * ACM SIGGRAPH Motion in Games, 2016
      */
-    static void extractRotation(const Matrix3r &A, Quaternionr &q, const unsigned int maxIter);
+    static void extractRotation(const Matrix3r &A, Quaternionr &q, unsigned int maxIter);
 };
 }  // namespace vox

@@ -17,14 +17,14 @@
 namespace vox {
 class line_model {
     struct OrientedEdge {
-        OrientedEdge() {}
+        OrientedEdge() = default;
         OrientedEdge(unsigned int p0, unsigned int p1, unsigned int q0) {
             m_vert[0] = p0;
             m_vert[1] = p1;
             m_quat = q0;
         }
-        unsigned int m_vert[2];
-        unsigned int m_quat;
+        unsigned int m_vert[2]{};
+        unsigned int m_quat{};
     };
 
 public:
@@ -36,11 +36,11 @@ public:
 protected:
     /** offset which must be added to get the correct index in the particles array
      */
-    unsigned int m_indexOffset;
+    unsigned int m_indexOffset{};
     /** offset which must be added to get the correct index in the quaternions
      * array */
-    unsigned int m_indexOffsetQuaternions;
-    unsigned int m_nPoints, m_nQuaternions;
+    unsigned int m_indexOffsetQuaternions{};
+    unsigned int m_nPoints{}, m_nQuaternions{};
     Edges m_edges;
     Real m_restitutionCoeff;
     Real m_frictionCoeff;
@@ -50,21 +50,21 @@ public:
 
     Edges &getEdges();
 
-    unsigned int getIndexOffset() const;
-    unsigned int getIndexOffsetQuaternions() const;
+    [[nodiscard]] unsigned int getIndexOffset() const;
+    [[nodiscard]] unsigned int getIndexOffsetQuaternions() const;
 
-    void initMesh(const unsigned int nPoints,
-                  const unsigned int nQuaternions,
-                  const unsigned int indexOffset,
-                  const unsigned int indexOffsetQuaternions,
+    void initMesh(unsigned int nPoints,
+                  unsigned int nQuaternions,
+                  unsigned int indexOffset,
+                  unsigned int indexOffsetQuaternions,
                   unsigned int *indices,
                   unsigned int *indicesQuaternions);
 
-    FORCE_INLINE Real getRestitutionCoeff() const { return m_restitutionCoeff; }
+    [[nodiscard]] FORCE_INLINE Real getRestitutionCoeff() const { return m_restitutionCoeff; }
 
     FORCE_INLINE void setRestitutionCoeff(Real val) { m_restitutionCoeff = val; }
 
-    FORCE_INLINE Real getFrictionCoeff() const { return m_frictionCoeff; }
+    [[nodiscard]] FORCE_INLINE Real getFrictionCoeff() const { return m_frictionCoeff; }
 
     FORCE_INLINE void setFrictionCoeff(Real val) { m_frictionCoeff = val; }
 };

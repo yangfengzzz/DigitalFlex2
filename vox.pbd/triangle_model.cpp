@@ -6,9 +6,6 @@
 
 #include "triangle_model.h"
 
-#include "vox.pbd/position_based_dynamics.h"
-#include "vox.pbd/position_based_rigid_body_dynamics.h"
-
 using namespace vox;
 
 TriangleModel::TriangleModel() : m_particleMesh() {
@@ -16,7 +13,7 @@ TriangleModel::TriangleModel() : m_particleMesh() {
     m_frictionCoeff = static_cast<Real>(0.2);
 }
 
-TriangleModel::~TriangleModel(void) { cleanupModel(); }
+TriangleModel::~TriangleModel() { cleanupModel(); }
 
 void TriangleModel::cleanupModel() { m_particleMesh.release(); }
 

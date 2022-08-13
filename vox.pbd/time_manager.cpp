@@ -15,10 +15,10 @@ TimeManager::TimeManager() {
     h = static_cast<Real>(0.005);
 }
 
-TimeManager::~TimeManager() { current = 0; }
+TimeManager::~TimeManager() { current = nullptr; }
 
 TimeManager *TimeManager::getCurrent() {
-    if (current == 0) {
+    if (current == nullptr) {
         current = new TimeManager();
     }
     return current;
@@ -26,12 +26,12 @@ TimeManager *TimeManager::getCurrent() {
 
 void TimeManager::setCurrent(TimeManager *tm) { current = tm; }
 
-bool TimeManager::hasCurrent() { return (current != 0); }
+bool TimeManager::hasCurrent() { return (current != nullptr); }
 
-Real TimeManager::getTime() { return time; }
+Real TimeManager::getTime() const { return time; }
 
 void TimeManager::setTime(Real t) { time = t; }
 
-Real TimeManager::getTimeStepSize() { return h; }
+Real TimeManager::getTimeStepSize() const { return h; }
 
 void TimeManager::setTimeStepSize(Real tss) { h = tss; }

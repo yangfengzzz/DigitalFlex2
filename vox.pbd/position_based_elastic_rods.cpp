@@ -6,11 +6,10 @@
 
 #include "vox.pbd/position_based_elastic_rods.h"
 
-#include "vox.pbd/logger.h"
-#include "vox.pbd/math_functions.h"
-
-#define _USE_MATH_DEFINES
 #include <cmath>
+
+#include "vox.base/logging.h"
+#include "vox.pbd/math_functions.h"
 
 using namespace vox;
 
@@ -259,10 +258,10 @@ bool position_based_elastic_rods::computeDarbouxVector(const Matrix3r &dA,
 
     factor = static_cast<Real>(2.0) / (mid_edge_length * factor);
 
-    for (int c = 0; c < 3; ++c) {
-        const int i = permutation[c][0];
-        const int j = permutation[c][1];
-        const int k = permutation[c][2];
+    for (auto c : permutation) {
+        const int i = c[0];
+        const int j = c[1];
+        const int k = c[2];
         darboux_vector[i] = dA.col(j).dot(dB.col(k)) - dA.col(k).dot(dB.col(j));
     }
     darboux_vector *= factor;
@@ -370,10 +369,10 @@ bool position_based_elastic_rods::computeDarbouxGradient(const Vector3r &darboux
     Real X = static_cast<Real>(1.0) + da.col(0).dot(db.col(0)) + da.col(1).dot(db.col(1)) + da.col(2).dot(db.col(2));
     X = static_cast<Real>(2.0) / (length * X);
 
-    for (int c = 0; c < 3; ++c) {
-        const int i = permutation[c][0];
-        const int j = permutation[c][1];
-        const int k = permutation[c][2];
+    for (auto c : permutation) {
+        const int i = c[0];
+        const int j = c[1];
+        const int k = c[2];
         // pa
         {
             Vector3r term1(0, 0, 0);
@@ -483,9 +482,9 @@ void DirectPositionBasedSolverForStiffRods::initLists(int numberOfIntervals,
                                                       std::list<Node *> *&forward,
                                                       std::list<Node *> *&backward,
                                                       Node *&root) {
-    if (forward != NULL) delete[] forward;
-    if (backward != NULL) delete[] backward;
-    if (root != NULL) delete[] root;
+    delete[] forward;
+    delete[] backward;
+    delete[] root;
     forward = new std::list<Node *>[numberOfIntervals];
     backward = new std::list<Node *>[numberOfIntervals];
     root = new Node[numberOfIntervals];
@@ -520,7 +519,7 @@ void DirectPositionBasedSolverForStiffRods::initSegmentNode(Node *n,
                                                             std::vector<RodSegment *> &rodSegments,
                                                             std::vector<RodConstraint *> &markedConstraints,
                                                             Interval *intervals) {
-    RodSegment *segment = (RodSegment *)n->object;
+    auto *segment = (RodSegment *)n->object;
 
     std::vector<RodConstraint *> constraints;
     std::vector<int> constraintIndices;
@@ -538,8 +537,8 @@ void DirectPositionBasedSolverForStiffRods::initSegmentNode(Node *n,
 
         // Test whether the edge has been visited before
         bool marked = false;
-        for (unsigned int j = 0; j < markedConstraints.size(); j++) {
-            if (constraints[i] == markedConstraints[j]) {
+        for (auto &markedConstraint : markedConstraints) {
+            if (constraints[i] == markedConstraint) {
                 marked = true;
                 break;
             }
@@ -589,7 +588,7 @@ void DirectPositionBasedSolverForStiffRods::orderMatrix(Node *n,
                                                         int intervalIndex,
                                                         std::list<Node *> *forward,
                                                         std::list<Node *> *backward) {
-    for (unsigned int i = 0; i < n->children.size(); i++) orderMatrix(n->children[i], intervalIndex, forward, backward);
+    for (auto &i : n->children) orderMatrix(i, intervalIndex, forward, backward);
     forward[intervalIndex].push_back(n);
     backward[intervalIndex].push_front(n);
 }
@@ -608,7 +607,7 @@ void DirectPositionBasedSolverForStiffRods::initNodes(int intervalIndex,
         if (!isSegmentInInterval(rb, intervalIndex, intervals, rodConstraints, rodSegments))
             continue;
         else {
-            if (root[intervalIndex].object == NULL) {
+            if (root[intervalIndex].object == nullptr) {
                 root[intervalIndex].object = rb;
                 root[intervalIndex].index = i;
             }
@@ -621,7 +620,7 @@ void DirectPositionBasedSolverForStiffRods::initNodes(int intervalIndex,
         }
     }
     root[intervalIndex].isconstraint = false;
-    root[intervalIndex].parent = NULL;
+    root[intervalIndex].parent = nullptr;
 
     root[intervalIndex].D.setZero();
     root[intervalIndex].Dinv.setZero();
@@ -813,7 +812,7 @@ Real DirectPositionBasedSolverForStiffRods::factor(const int intervalIndex,
         Node *node = *nodeIter;
         // compute system matrix diagonal
         if (node->isconstraint) {
-            RodConstraint *currentConstraint = (RodConstraint *)node->object;
+            auto *currentConstraint = (RodConstraint *)node->object;
             // insert compliance
             node->D.setZero();
             const Vector3r &stretchCompliance(currentConstraint->getStretchCompliance());
@@ -831,11 +830,11 @@ Real DirectPositionBasedSolverForStiffRods::factor(const int intervalIndex,
         }
 
         // compute Jacobian
-        if (node->parent != NULL) {
+        if (node->parent != nullptr) {
             if (node->isconstraint) {
                 // compute J
-                RodConstraint *constraint = (RodConstraint *)node->object;
-                RodSegment *segment = (RodSegment *)node->parent->object;
+                auto *constraint = (RodConstraint *)node->object;
+                auto *segment = (RodSegment *)node->parent->object;
 
                 Real sign = 1;
                 int segmentIndex = 0;
@@ -862,8 +861,8 @@ Real DirectPositionBasedSolverForStiffRods::factor(const int intervalIndex,
                 node->J.block<3, 3>(3, 3) = lowerRight;
             } else {
                 // compute JT
-                RodConstraint *constraint = (RodConstraint *)node->parent->object;
-                RodSegment *segment = (RodSegment *)node->object;
+                auto *constraint = (RodConstraint *)node->parent->object;
+                auto *segment = (RodSegment *)node->object;
 
                 Real sign = 1;
                 int segmentIndex = 0;
@@ -894,16 +893,16 @@ Real DirectPositionBasedSolverForStiffRods::factor(const int intervalIndex,
     for (nodeIter = forward[intervalIndex].begin(); nodeIter != forward[intervalIndex].end(); nodeIter++) {
         Node *node = *nodeIter;
         std::vector<Node *> children = node->children;
-        for (size_t i = 0; i < children.size(); i++) {
-            Matrix6r JT = (children[i]->J).transpose();
-            Matrix6r &D = children[i]->D;
-            Matrix6r &J = children[i]->J;
+        for (auto &i : children) {
+            Matrix6r JT = (i->J).transpose();
+            Matrix6r &D = i->D;
+            Matrix6r &J = i->J;
             Matrix6r JTDJ = ((JT * D) * J);
             node->D = node->D - JTDJ;
         }
         bool chk = false;
         if (!node->isconstraint) {
-            RodSegment *segment = (RodSegment *)node->object;
+            auto *segment = (RodSegment *)node->object;
             if (!segment->isDynamic()) {
                 node->Dinv.setZero();
                 chk = true;
@@ -911,7 +910,7 @@ Real DirectPositionBasedSolverForStiffRods::factor(const int intervalIndex,
         }
 
         node->DLDLT.compute(node->D);  // result reused in solve()
-        if (node->parent != NULL) {
+        if (node->parent != nullptr) {
             if (!chk) {
                 node->J = node->DLDLT.solve(node->J);
             } else {
@@ -938,9 +937,9 @@ bool DirectPositionBasedSolverForStiffRods::solve(int intervalIndex,
             node->soln.setZero();
         }
         std::vector<Node *> &children = node->children;
-        for (size_t i = 0; i < children.size(); ++i) {
-            Matrix6r cJT = children[i]->J.transpose();
-            Vector6r &csoln = children[i]->soln;
+        for (auto &i : children) {
+            Matrix6r cJT = i->J.transpose();
+            Vector6r &csoln = i->soln;
             Vector6r v = cJT * csoln;
             node->soln = node->soln - v;
         }
@@ -951,7 +950,7 @@ bool DirectPositionBasedSolverForStiffRods::solve(int intervalIndex,
 
         bool noZeroDinv(true);
         if (!node->isconstraint) {
-            RodSegment *segment = (RodSegment *)node->object;
+            auto *segment = (RodSegment *)node->object;
             noZeroDinv = segment->isDynamic();
         }
         if (noZeroDinv)  // if DInv == 0 child value is 0 and node->soln is not
@@ -959,7 +958,7 @@ bool DirectPositionBasedSolverForStiffRods::solve(int intervalIndex,
         {
             node->soln = node->DLDLT.solve(node->soln);
 
-            if (node->parent != NULL) {
+            if (node->parent != nullptr) {
                 node->soln -= node->J * node->parent->soln;
             }
         } else {
@@ -975,7 +974,7 @@ bool DirectPositionBasedSolverForStiffRods::solve(int intervalIndex,
     for (nodeIter = forward[intervalIndex].begin(); nodeIter != forward[intervalIndex].end(); nodeIter++) {
         Node *node = *nodeIter;
         if (!node->isconstraint) {
-            RodSegment *segment = (RodSegment *)node->object;
+            auto *segment = (RodSegment *)node->object;
             if (!segment->isDynamic()) {
                 break;
             }
@@ -1065,8 +1064,7 @@ bool DirectPositionBasedSolverForStiffRods::initBeforeProjection_DirectPositionB
 bool DirectPositionBasedSolverForStiffRods::update_DirectPositionBasedSolverForStiffRodsConstraint(
         const std::vector<RodConstraint *> &rodConstraints, const std::vector<RodSegment *> &rodSegments) {
     // update rod constraints
-    for (size_t cIdx(0); cIdx < rodConstraints.size(); ++cIdx) {
-        RodConstraint *constraint(rodConstraints[cIdx]);
+    for (auto constraint : rodConstraints) {
         RodSegment *segment0(rodSegments[constraint->segmentIndex(0)]);
         RodSegment *segment1(rodSegments[constraint->segmentIndex(1)]);
 

@@ -13,8 +13,9 @@
 #include <limits.h>
 #include <unistd.h>
 #endif
+#include <string>
 
-namespace Utilities {
+namespace vox::utility {
 class SystemInfo {
 public:
     static std::string getHostName() {
@@ -32,4 +33,4 @@ public:
 #endif
     }
 };
-}  // namespace Utilities
+}  // namespace vox::utility

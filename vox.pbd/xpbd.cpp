@@ -44,7 +44,7 @@ bool XPBD::solve_DistanceConstraint(const Vector3r &p0,
         K += alpha;
     }
 
-    Real Kinv = 0.0;
+    Real Kinv;
     if (fabs(K) > static_cast<Real>(1e-6))
         Kinv = static_cast<Real>(1.0) / K;
     else {

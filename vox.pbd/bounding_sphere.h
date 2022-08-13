@@ -6,6 +6,7 @@
 
 #pragma once
 
+#include <utility>
 #include <vector>
 
 #include "vox.pbd/common.h"
@@ -28,7 +29,7 @@ public:
      * \param x	3d coordiantes of the center point
      * \param r radius of the sphere
      */
-    bounding_sphere(Vector3r const &x, const Real r) : m_x(x), m_r(r) {}
+    bounding_sphere(Vector3r x, const Real r) : m_x(std::move(x)), m_r(r) {}
 
     /**
      * \brief	constructs a sphere for one point (with radius 0)
@@ -117,7 +118,7 @@ public:
      *
      * \return	const reference of the sphere center
      */
-    Vector3r const &x() const { return m_x; }
+    [[nodiscard]] Vector3r const &x() const { return m_x; }
 
     /**
      * \brief	Access function for center of the sphere
@@ -131,7 +132,7 @@ public:
      *
      * \return	Radius of the sphere
      */
-    Real r() const { return m_r; }
+    [[nodiscard]] Real r() const { return m_r; }
 
     /**
      * \brief	Access function for the radius
@@ -191,7 +192,7 @@ public:
      * \return		returns true when this sphere and the other sphere are
      * intersecting
      */
-    bool overlaps(bounding_sphere const &other) const {
+    [[nodiscard]] bool overlaps(bounding_sphere const &other) const {
         double rr = m_r + other.m_r;
         return (m_x - other.m_x).squaredNorm() < rr * rr;
     }
@@ -204,7 +205,7 @@ public:
      * \return		returns true when the other is contained in this sphere
      * or vice versa
      */
-    bool contains(bounding_sphere const &other) const {
+    [[nodiscard]] bool contains(bounding_sphere const &other) const {
         double rr = r() - other.r();
         return (x() - other.x()).squaredNorm() < rr * rr;
     }
@@ -216,7 +217,7 @@ public:
      * \param		other 3d coordinates of a point
      * \return		returns true when the point is contained in the sphere
      */
-    bool contains(Vector3r const &other) const { return (x() - other).squaredNorm() < m_r * m_r; }
+    [[nodiscard]] bool contains(Vector3r const &other) const { return (x() - other).squaredNorm() < m_r * m_r; }
 
 private:
     /**

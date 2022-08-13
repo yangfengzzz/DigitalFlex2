@@ -32,16 +32,16 @@ protected:
     unsigned int m_maxIterations;
     unsigned int m_maxIterationsV;
 
-    virtual void initParameters();
+    void initParameters() override;
 
-    void positionConstraintProjection(simulation_model &model);
-    void velocityConstraintProjection(simulation_model &model);
+    void positionConstraintProjection(SimulationModel &model);
+    void velocityConstraintProjection(SimulationModel &model);
 
 public:
     TimeStepController();
-    virtual ~TimeStepController(void);
+    ~TimeStepController() override;
 
-    virtual void step(simulation_model &model);
-    virtual void reset();
+    void step(SimulationModel &model) override;
+    void reset() override;
 };
 }  // namespace vox

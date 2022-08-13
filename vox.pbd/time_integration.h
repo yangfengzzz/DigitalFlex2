@@ -26,12 +26,12 @@ public:
      * @param  acceleration acceleration of the particle
      */
     static void semiImplicitEuler(
-            const Real h, const Real mass, Vector3r &position, Vector3r &velocity, const Vector3r &acceleration);
+            Real h, Real mass, Vector3r &position, Vector3r &velocity, const Vector3r &acceleration);
 
     // -------------- semi-implicit Euler (symplectic Euler) for rotational part
     // of a rigid body -----------------
-    static void semiImplicitEulerRotation(const Real h,
-                                          const Real mass,
+    static void semiImplicitEulerRotation(Real h,
+                                          Real mass,
                                           const Matrix3r &invertiaW,
                                           const Matrix3r &invInertiaW,
                                           Quaternionr &rotation,
@@ -53,8 +53,8 @@ public:
      * @param  velocity resulting velocity of the particle
      */
     static void velocityUpdateFirstOrder(
-            const Real h,
-            const Real mass,
+            Real h,
+            Real mass,
             const Vector3r &position,     // position after constraint projection	at time t+h
             const Vector3r &oldPosition,  // position before constraint projection at time t
             Vector3r &velocity);
@@ -62,8 +62,8 @@ public:
     // -------------- angular velocity update (first order)
     // ------------------------------------------------
     static void angularVelocityUpdateFirstOrder(
-            const Real h,
-            const Real mass,
+            Real h,
+            Real mass,
             const Quaternionr &rotation,     // rotation after constraint projection	at time t+h
             const Quaternionr &oldRotation,  // rotation before constraint projection at time t
             Vector3r &angularVelocity);
@@ -71,8 +71,8 @@ public:
     // -------------- velocity update (second order)
     // -----------------------------------------------------
     static void velocityUpdateSecondOrder(
-            const Real h,
-            const Real mass,
+            Real h,
+            Real mass,
             const Vector3r &position,            // position after constraint projection	at time t+h
             const Vector3r &oldPosition,         // position before constraint projection at time t
             const Vector3r &positionOfLastStep,  // position of last simulation step at time t-h
@@ -81,8 +81,8 @@ public:
     // -------------- angular velocity update (second order)
     // ------------------------------------------------
     static void angularVelocityUpdateSecondOrder(
-            const Real h,
-            const Real mass,
+            Real h,
+            Real mass,
             const Quaternionr &rotation,            // rotation after constraint projection	at time t+h
             const Quaternionr &oldRotation,         // rotation before constraint projection at time t
             const Quaternionr &rotationOfLastStep,  // rotation of last simulation step at time t-h

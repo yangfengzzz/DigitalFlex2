@@ -7,7 +7,7 @@
 #include "vox.pbd/neighborhood_search_spatial_hashing.h"
 
 using namespace vox;
-using namespace Utilities;
+using namespace vox::utility;
 
 neighborhood_search_spatial_hashing::neighborhood_search_spatial_hashing(const unsigned int numParticles,
                                                                          const Real radius,
@@ -20,8 +20,8 @@ neighborhood_search_spatial_hashing::neighborhood_search_spatial_hashing(const u
     m_maxParticlesPerCell = maxParticlesPerCell;
     m_maxNeighbors = maxNeighbors;
 
-    m_numNeighbors = NULL;
-    m_neighbors = NULL;
+    m_numNeighbors = nullptr;
+    m_neighbors = nullptr;
 
     if (numParticles != 0) {
         m_numNeighbors = new unsigned int[m_numParticles];
@@ -44,12 +44,10 @@ void neighborhood_search_spatial_hashing::cleanup() {
         Hashmap<NeighborhoodSearchCellPos *, neighborhood_search_spatial_hashing::HashEntry *>::KeyValueMap *kvMap =
                 m_gridMap.getKeyValueMap(i);
         if (kvMap) {
-            for (Hashmap<NeighborhoodSearchCellPos *,
-                         neighborhood_search_spatial_hashing::HashEntry *>::KeyValueMap::iterator iter = kvMap->begin();
-                 iter != kvMap->end(); iter++) {
-                neighborhood_search_spatial_hashing::HashEntry *entry = iter->second;
+            for (auto &iter : *kvMap) {
+                neighborhood_search_spatial_hashing::HashEntry *entry = iter.second;
                 delete entry;
-                iter->second = NULL;
+                iter.second = NULL;
             }
         }
     }
@@ -79,13 +77,13 @@ void neighborhood_search_spatial_hashing::neighborhoodSearch(Vector3r *x) {
         NeighborhoodSearchCellPos cellPos(cellPos1, cellPos2, cellPos3);
         HashEntry *&entry = m_gridMap[&cellPos];
 
-        if (entry != NULL) {
+        if (entry != nullptr) {
             if (entry->timestamp != m_currentTimestamp) {
                 entry->timestamp = m_currentTimestamp;
                 entry->particleIndices.clear();
             }
         } else {
-            HashEntry *newEntry = new HashEntry();
+            auto *newEntry = new HashEntry();
             newEntry->particleIndices.reserve(m_maxParticlesPerCell);
             newEntry->timestamp = m_currentTimestamp;
             entry = newEntry;
@@ -108,9 +106,8 @@ void neighborhood_search_spatial_hashing::neighborhoodSearch(Vector3r *x) {
                         NeighborhoodSearchCellPos cellPos(cellPos1 + j, cellPos2 + k, cellPos3 + l);
                         HashEntry *const *entry = m_gridMap.query(&cellPos);
 
-                        if ((entry != NULL) && (*entry != NULL) && ((*entry)->timestamp == m_currentTimestamp)) {
-                            for (unsigned int m = 0; m < (*entry)->particleIndices.size(); m++) {
-                                const unsigned int pi = (*entry)->particleIndices[m];
+                        if ((entry != nullptr) && (*entry != nullptr) && ((*entry)->timestamp == m_currentTimestamp)) {
+                            for (unsigned int pi : (*entry)->particleIndices) {
                                 if (pi != i) {
                                     const Real dist2 = (x[i] - x[pi]).squaredNorm();
                                     if (dist2 < m_radius2) {
@@ -141,13 +138,13 @@ void neighborhood_search_spatial_hashing::neighborhoodSearch(Vector3r *x,
         NeighborhoodSearchCellPos cellPos(cellPos1, cellPos2, cellPos3);
         HashEntry *&entry = m_gridMap[&cellPos];
 
-        if (entry != NULL) {
+        if (entry != nullptr) {
             if (entry->timestamp != m_currentTimestamp) {
                 entry->timestamp = m_currentTimestamp;
                 entry->particleIndices.clear();
             }
         } else {
-            HashEntry *newEntry = new HashEntry();
+            auto *newEntry = new HashEntry();
             newEntry->particleIndices.reserve(m_maxParticlesPerCell);
             newEntry->timestamp = m_currentTimestamp;
             entry = newEntry;
@@ -162,13 +159,13 @@ void neighborhood_search_spatial_hashing::neighborhoodSearch(Vector3r *x,
         NeighborhoodSearchCellPos cellPos(cellPos1, cellPos2, cellPos3);
         HashEntry *&entry = m_gridMap[&cellPos];
 
-        if (entry != NULL) {
+        if (entry != nullptr) {
             if (entry->timestamp != m_currentTimestamp) {
                 entry->timestamp = m_currentTimestamp;
                 entry->particleIndices.clear();
             }
         } else {
-            HashEntry *newEntry = new HashEntry();
+            auto *newEntry = new HashEntry();
             newEntry->particleIndices.reserve(m_maxParticlesPerCell);
             newEntry->timestamp = m_currentTimestamp;
             entry = newEntry;
@@ -191,9 +188,8 @@ void neighborhood_search_spatial_hashing::neighborhoodSearch(Vector3r *x,
                         NeighborhoodSearchCellPos cellPos(cellPos1 + j, cellPos2 + k, cellPos3 + l);
                         HashEntry *const *entry = m_gridMap.query(&cellPos);
 
-                        if ((entry != NULL) && (*entry != NULL) && ((*entry)->timestamp == m_currentTimestamp)) {
-                            for (unsigned int m = 0; m < (*entry)->particleIndices.size(); m++) {
-                                const unsigned int pi = (*entry)->particleIndices[m];
+                        if ((entry != nullptr) && (*entry != nullptr) && ((*entry)->timestamp == m_currentTimestamp)) {
+                            for (unsigned int pi : (*entry)->particleIndices) {
                                 if (pi != i) {
                                     Real dist2;
                                     if (pi < m_numParticles)
@@ -204,9 +200,8 @@ void neighborhood_search_spatial_hashing::neighborhoodSearch(Vector3r *x,
                                     if (dist2 < m_radius2) {
                                         if (m_numNeighbors[i] < m_maxNeighbors)
                                             m_neighbors[i][m_numNeighbors[i]++] = pi;
-                                        // 										else
-                                        // 											std::cout
-                                        // << "too many neighbors detected\n";
+                                        // else
+                                        // std::cout << "too many neighbors detected\n";
                                     }
                                 }
                             }
