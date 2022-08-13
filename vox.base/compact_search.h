@@ -47,7 +47,9 @@ public:
    * Get method to access a point set.
    * @param i Index of the point set to retrieve.
    */
-  [[nodiscard]] PointSet const &point_set(unsigned int i) const { return m_point_sets[i]; }
+  [[nodiscard]] PointSet const &point_set(unsigned int i) const {
+    return m_point_sets[i];
+  }
 
   /**
    * Get method to access a point set.
@@ -63,7 +65,9 @@ public:
   /**
    * Get method to access the list of point sets.
    */
-  [[nodiscard]] std::vector<PointSet> const &point_sets() const { return m_point_sets; }
+  [[nodiscard]] std::vector<PointSet> const &point_sets() const {
+    return m_point_sets;
+  }
 
   /**
    * Get method to access the list of point sets.

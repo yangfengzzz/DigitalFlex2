@@ -10,3 +10,6 @@
 [submodule "third_party/libmorton"]
 	path = third_party/libmorton
 	url = https://github.com/Forceflow/libmorton.git
+[submodule "third_party/eigen"]
+	path = third_party/eigen
+	url = https://gitlab.com/libeigen/eigen.git

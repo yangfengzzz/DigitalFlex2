@@ -52,7 +52,8 @@ public:
    * @param i Point index.
    * @returns Number of points neighboring point i in point set point_set.
    */
-  [[nodiscard]] std::size_t n_neighbors(unsigned int point_set, unsigned int i) const {
+  [[nodiscard]] std::size_t n_neighbors(unsigned int point_set,
+                                        unsigned int i) const {
     return static_cast<unsigned int>(m_neighbors[point_set][i].size());
   }
 
@@ -65,7 +66,7 @@ public:
    * @returns Index of neighboring point i in point set point_set.
    */
   [[nodiscard]] unsigned int neighbor(unsigned int point_set, unsigned int i,
-                        unsigned int k) const {
+                                      unsigned int k) const {
     return m_neighbors[point_set][i][k];
   }
 
@@ -76,8 +77,8 @@ public:
    * @param i Point index for which the neighbor list should be returned.
    * @returns Neighbor list of point i in point set point_set.
    */
-  [[nodiscard]] const std::vector<unsigned int> &neighbor_list(unsigned int point_set,
-                                                 unsigned int i) const {
+  [[nodiscard]] const std::vector<unsigned int> &
+  neighbor_list(unsigned int point_set, unsigned int i) const {
     return m_neighbors[point_set][i];
   }
 

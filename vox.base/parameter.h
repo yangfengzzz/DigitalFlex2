@@ -8,8 +8,8 @@
 
 #include <functional>
 #include <memory>
-#include <utility>
 #include <string>
+#include <utility>
 
 namespace vox {
 /** Base class of all generic parameter types.

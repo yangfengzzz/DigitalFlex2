@@ -33,7 +33,8 @@ public:
 
   EnumParameter(const std::string &name, const std::string &label,
                 GetFunc<int> getValue, SetFunc<int> setValue)
-      : Parameter<int>(name, label, ParameterBase::ENUM, std::move(getValue), std::move(setValue)) {}
+      : Parameter<int>(name, label, ParameterBase::ENUM, std::move(getValue),
+                       std::move(setValue)) {}
 
   ~EnumParameter() override = default;
 
