@@ -46,7 +46,7 @@ include(check_atomic)
 
 ####################################################
 # Add base library
-#add_subdirectory(vox.base)
+add_subdirectory(vox.base)
 add_subdirectory(test.base)
 
 ## Add math library

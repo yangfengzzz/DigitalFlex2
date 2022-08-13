@@ -13,5 +13,5 @@ target_include_directories(${PROJECT_NAME} PUBLIC ../
 
 # Link third party libraries
 target_link_directories(${PROJECT_NAME} PUBLIC ${CMAKE_SOURCE_DIR}/third_party/googletest/build/lib)
-target_link_libraries(${PROJECT_NAME} PUBLIC
+target_link_libraries(${PROJECT_NAME} PUBLIC vox.base
         libgmock.a libgmock_main.a libgtest.a libgtest_main.a)
