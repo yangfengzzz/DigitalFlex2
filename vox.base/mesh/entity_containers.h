@@ -6,7 +6,7 @@
 
 #pragma once
 
-#include "entity_iterators.h"
+#include "vox.base/mesh/entity_iterators.h"
 
 namespace vox {
 

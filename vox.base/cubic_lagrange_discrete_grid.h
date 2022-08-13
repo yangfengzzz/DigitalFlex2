@@ -6,7 +6,7 @@
 
 #pragma once
 
-#include "discrete_grid.h"
+#include "vox.base/discrete_grid.h"
 
 namespace vox {
 

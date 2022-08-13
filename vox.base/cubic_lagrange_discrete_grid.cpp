@@ -4,11 +4,11 @@
 //  personal capacity and am not conveying any rights to any intellectual
 //  property of any third parties.
 
-#include "cubic_lagrange_discrete_grid.h"
-#include "data/z_sort_table.h"
-#include "utility/spinlock.h"
-#include "utility/timing.h"
-#include <utility/serialize.h>
+#include "vox.base/cubic_lagrange_discrete_grid.h"
+#include "vox.base/data/z_sort_table.h"
+#include "vox.base/utility/serialize.h"
+#include "vox.base/utility/spinlock.h"
+#include "vox.base/utility/timing.h"
 
 #include <atomic>
 #include <chrono>

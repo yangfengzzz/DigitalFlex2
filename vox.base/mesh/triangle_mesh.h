@@ -6,8 +6,8 @@
 
 #pragma once
 
-#include "entity_containers.h"
-#include "halfedge.h"
+#include "vox.base/mesh/entity_containers.h"
+#include "vox.base/mesh/halfedge.h"
 
 #include <array>
 #include <cassert>

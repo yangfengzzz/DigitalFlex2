@@ -33,7 +33,8 @@
 #include <unordered_map>
 #include <vector>
 
-#include "../mesh/triangle_mesh.h"
+#include "vox.base/mesh/triangle_mesh.h"
+
 namespace vox {
 /* ==========================================  DEFINITIONS
  * ========================================== */

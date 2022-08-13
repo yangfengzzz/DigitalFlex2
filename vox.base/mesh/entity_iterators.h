@@ -6,7 +6,7 @@
 
 #pragma once
 
-#include "halfedge.h"
+#include "vox.base/mesh/halfedge.h"
 
 #include <Eigen/Core>
 #include <array>
