@@ -23,7 +23,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		043A98A728A7410200BCFAB0 /* DigitalFlex2 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = DigitalFlex2; sourceTree = BUILT_PRODUCTS_DIR; };
+		043A98A728A7410200BCFAB0 /* apps */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = apps; sourceTree = BUILT_PRODUCTS_DIR; };
 		043A98AA28A7410200BCFAB0 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -41,7 +41,7 @@
 		043A989E28A7410200BCFAB0 = {
 			isa = PBXGroup;
 			children = (
-				043A98A928A7410200BCFAB0 /* DigitalFlex2 */,
+				043A98A928A7410200BCFAB0 /* apps */,
 				043A98A828A7410200BCFAB0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -49,25 +49,25 @@
 		043A98A828A7410200BCFAB0 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				043A98A728A7410200BCFAB0 /* DigitalFlex2 */,
+				043A98A728A7410200BCFAB0 /* apps */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		043A98A928A7410200BCFAB0 /* DigitalFlex2 */ = {
+		043A98A928A7410200BCFAB0 /* apps */ = {
 			isa = PBXGroup;
 			children = (
 				043A98AA28A7410200BCFAB0 /* main.cpp */,
 			);
-			path = DigitalFlex2;
+			path = apps;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		043A98A628A7410200BCFAB0 /* DigitalFlex2 */ = {
+		043A98A628A7410200BCFAB0 /* apps */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 043A98AE28A7410200BCFAB0 /* Build configuration list for PBXNativeTarget "DigitalFlex2" */;
+			buildConfigurationList = 043A98AE28A7410200BCFAB0 /* Build configuration list for PBXNativeTarget "apps" */;
 			buildPhases = (
 				043A98A328A7410200BCFAB0 /* Sources */,
 				043A98A428A7410200BCFAB0 /* Frameworks */,
@@ -77,9 +77,9 @@
 			);
 			dependencies = (
 			);
-			name = DigitalFlex2;
+			name = apps;
 			productName = DigitalFlex2;
-			productReference = 043A98A728A7410200BCFAB0 /* DigitalFlex2 */;
+			productReference = 043A98A728A7410200BCFAB0 /* apps */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -109,7 +109,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				043A98A628A7410200BCFAB0 /* DigitalFlex2 */,
+				043A98A628A7410200BCFAB0 /* apps */,
 			);
 		};
 /* End PBXProject section */
@@ -267,7 +267,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		043A98AE28A7410200BCFAB0 /* Build configuration list for PBXNativeTarget "DigitalFlex2" */ = {
+		043A98AE28A7410200BCFAB0 /* Build configuration list for PBXNativeTarget "apps" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				043A98AF28A7410200BCFAB0 /* Debug */,
