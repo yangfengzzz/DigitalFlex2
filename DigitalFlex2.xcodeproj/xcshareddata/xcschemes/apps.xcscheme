@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "043A98A628A7410200BCFAB0"
-               BuildableName = "DigitalFlex2"
+               BuildableName = "apps"
                BlueprintName = "apps"
                ReferencedContainer = "container:DigitalFlex2.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "043A98A628A7410200BCFAB0"
-            BuildableName = "DigitalFlex2"
+            BuildableName = "apps"
             BlueprintName = "apps"
             ReferencedContainer = "container:DigitalFlex2.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "043A98A628A7410200BCFAB0"
-            BuildableName = "DigitalFlex2"
+            BuildableName = "apps"
             BlueprintName = "apps"
             ReferencedContainer = "container:DigitalFlex2.xcodeproj">
          </BuildableReference>

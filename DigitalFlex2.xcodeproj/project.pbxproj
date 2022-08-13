@@ -7,7 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		040CBE4A28A7460F003AA16E /* parameter_object.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE4428A7460E003AA16E /* parameter_object.h */; };
+		040CBE4B28A7460F003AA16E /* parameter.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE4528A7460F003AA16E /* parameter.h */; };
+		040CBE4C28A7460F003AA16E /* enum_parameter.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE4628A7460F003AA16E /* enum_parameter.h */; };
+		040CBE4D28A7460F003AA16E /* function_parameter.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE4728A7460F003AA16E /* function_parameter.h */; };
+		040CBE4E28A7460F003AA16E /* numeric_parameter.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE4828A7460F003AA16E /* numeric_parameter.h */; };
+		040CBE4F28A7460F003AA16E /* vector_parameter.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE4928A7460F003AA16E /* vector_parameter.h */; };
 		043A98AB28A7410200BCFAB0 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 043A98AA28A7410200BCFAB0 /* main.cpp */; };
+		043A98EC28A742D200BCFAB0 /* test_parameter_object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 043A98E928A742D200BCFAB0 /* test_parameter_object.cpp */; };
+		043A98ED28A742D200BCFAB0 /* parameter_tests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 043A98EA28A742D200BCFAB0 /* parameter_tests.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -20,14 +28,33 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
+		043A98E028A7421100BCFAB0 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		040CBE4428A7460E003AA16E /* parameter_object.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = parameter_object.h; sourceTree = "<group>"; };
+		040CBE4528A7460F003AA16E /* parameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = parameter.h; sourceTree = "<group>"; };
+		040CBE4628A7460F003AA16E /* enum_parameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = enum_parameter.h; sourceTree = "<group>"; };
+		040CBE4728A7460F003AA16E /* function_parameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = function_parameter.h; sourceTree = "<group>"; };
+		040CBE4828A7460F003AA16E /* numeric_parameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = numeric_parameter.h; sourceTree = "<group>"; };
+		040CBE4928A7460F003AA16E /* vector_parameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vector_parameter.h; sourceTree = "<group>"; };
 		043A98A728A7410200BCFAB0 /* apps */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = apps; sourceTree = BUILT_PRODUCTS_DIR; };
 		043A98AA28A7410200BCFAB0 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		043A98B528A7416D00BCFAB0 /* libvox.base.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libvox.base.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		043A98C428A7418500BCFAB0 /* libvox.pbd.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libvox.pbd.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		043A98D328A7418E00BCFAB0 /* libvox.sph.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libvox.sph.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		043A98E228A7421100BCFAB0 /* test.base */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = test.base; sourceTree = BUILT_PRODUCTS_DIR; };
+		043A98E928A742D200BCFAB0 /* test_parameter_object.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = test_parameter_object.cpp; sourceTree = "<group>"; };
+		043A98EA28A742D200BCFAB0 /* parameter_tests.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = parameter_tests.cpp; sourceTree = "<group>"; };
+		043A98EB28A742D200BCFAB0 /* test_parameter_object.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = test_parameter_object.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +86,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		043A98DF28A7421100BCFAB0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -67,6 +101,7 @@
 			children = (
 				043A98A928A7410200BCFAB0 /* apps */,
 				043A98B628A7416D00BCFAB0 /* vox.base */,
+				043A98E328A7421100BCFAB0 /* test.base */,
 				043A98C528A7418500BCFAB0 /* vox.pbd */,
 				043A98D428A7418E00BCFAB0 /* vox.sph */,
 				043A98A828A7410200BCFAB0 /* Products */,
@@ -80,6 +115,7 @@
 				043A98B528A7416D00BCFAB0 /* libvox.base.a */,
 				043A98C428A7418500BCFAB0 /* libvox.pbd.a */,
 				043A98D328A7418E00BCFAB0 /* libvox.sph.a */,
+				043A98E228A7421100BCFAB0 /* test.base */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -95,6 +131,12 @@
 		043A98B628A7416D00BCFAB0 /* vox.base */ = {
 			isa = PBXGroup;
 			children = (
+				040CBE4528A7460F003AA16E /* parameter.h */,
+				040CBE4628A7460F003AA16E /* enum_parameter.h */,
+				040CBE4928A7460F003AA16E /* vector_parameter.h */,
+				040CBE4728A7460F003AA16E /* function_parameter.h */,
+				040CBE4828A7460F003AA16E /* numeric_parameter.h */,
+				040CBE4428A7460E003AA16E /* parameter_object.h */,
 			);
 			path = vox.base;
 			sourceTree = "<group>";
@@ -113,6 +155,16 @@
 			path = vox.sph;
 			sourceTree = "<group>";
 		};
+		043A98E328A7421100BCFAB0 /* test.base */ = {
+			isa = PBXGroup;
+			children = (
+				043A98EA28A742D200BCFAB0 /* parameter_tests.cpp */,
+				043A98EB28A742D200BCFAB0 /* test_parameter_object.h */,
+				043A98E928A742D200BCFAB0 /* test_parameter_object.cpp */,
+			);
+			path = test.base;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -120,6 +172,12 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				040CBE4D28A7460F003AA16E /* function_parameter.h in Headers */,
+				040CBE4E28A7460F003AA16E /* numeric_parameter.h in Headers */,
+				040CBE4B28A7460F003AA16E /* parameter.h in Headers */,
+				040CBE4C28A7460F003AA16E /* enum_parameter.h in Headers */,
+				040CBE4A28A7460F003AA16E /* parameter_object.h in Headers */,
+				040CBE4F28A7460F003AA16E /* vector_parameter.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,6 +266,23 @@
 			productReference = 043A98D328A7418E00BCFAB0 /* libvox.sph.a */;
 			productType = "com.apple.product-type.library.static";
 		};
+		043A98E128A7421100BCFAB0 /* test.base */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 043A98E628A7421100BCFAB0 /* Build configuration list for PBXNativeTarget "test.base" */;
+			buildPhases = (
+				043A98DE28A7421100BCFAB0 /* Sources */,
+				043A98DF28A7421100BCFAB0 /* Frameworks */,
+				043A98E028A7421100BCFAB0 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = test.base;
+			productName = test.base;
+			productReference = 043A98E228A7421100BCFAB0 /* test.base */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -229,6 +304,9 @@
 					043A98D228A7418E00BCFAB0 = {
 						CreatedOnToolsVersion = 13.4.1;
 					};
+					043A98E128A7421100BCFAB0 = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
 				};
 			};
 			buildConfigurationList = 043A98A228A7410200BCFAB0 /* Build configuration list for PBXProject "DigitalFlex2" */;
@@ -244,10 +322,11 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				043A98A628A7410200BCFAB0 /* apps */,
 				043A98B428A7416D00BCFAB0 /* vox.base */,
+				043A98E128A7421100BCFAB0 /* test.base */,
 				043A98C328A7418500BCFAB0 /* vox.pbd */,
 				043A98D228A7418E00BCFAB0 /* vox.sph */,
+				043A98A628A7410200BCFAB0 /* apps */,
 			);
 		};
 /* End PBXProject section */
@@ -279,6 +358,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		043A98DE28A7421100BCFAB0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				043A98EC28A742D200BCFAB0 /* test_parameter_object.cpp in Sources */,
+				043A98ED28A742D200BCFAB0 /* parameter_tests.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,6 +510,7 @@
 				EXECUTABLE_PREFIX = lib;
 				GCC_ENABLE_CPP_EXCEPTIONS = YES;
 				GCC_ENABLE_CPP_RTTI = YES;
+				HEADER_SEARCH_PATHS = /Users/yangfeng/Desktop/DigitalFlex2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -435,6 +524,7 @@
 				EXECUTABLE_PREFIX = lib;
 				GCC_ENABLE_CPP_EXCEPTIONS = YES;
 				GCC_ENABLE_CPP_RTTI = YES;
+				HEADER_SEARCH_PATHS = /Users/yangfeng/Desktop/DigitalFlex2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -492,6 +582,48 @@
 			};
 			name = Release;
 		};
+		043A98E728A7421100BCFAB0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4SL5L673UU;
+				ENABLE_HARDENED_RUNTIME = YES;
+				HEADER_SEARCH_PATHS = /Users/yangfeng/Desktop/DigitalFlex2;
+				LIBRARY_SEARCH_PATHS = ./third_party/googletest/build/lib;
+				OTHER_LDFLAGS = (
+					"-lgtest",
+					"-lgtest_main",
+					"-lgmock",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SYSTEM_HEADER_SEARCH_PATHS = (
+					./third_party/googletest/googlemock/include,
+					./third_party/googletest/googletest/include,
+				);
+			};
+			name = Debug;
+		};
+		043A98E828A7421100BCFAB0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4SL5L673UU;
+				ENABLE_HARDENED_RUNTIME = YES;
+				HEADER_SEARCH_PATHS = /Users/yangfeng/Desktop/DigitalFlex2;
+				LIBRARY_SEARCH_PATHS = ./third_party/googletest/build/lib;
+				OTHER_LDFLAGS = (
+					"-lgtest",
+					"-lgtest_main",
+					"-lgmock",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SYSTEM_HEADER_SEARCH_PATHS = (
+					./third_party/googletest/googlemock/include,
+					./third_party/googletest/googletest/include,
+				);
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -536,6 +668,15 @@
 			buildConfigurations = (
 				043A98DC28A7418E00BCFAB0 /* Debug */,
 				043A98DD28A7418E00BCFAB0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		043A98E628A7421100BCFAB0 /* Build configuration list for PBXNativeTarget "test.base" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				043A98E728A7421100BCFAB0 /* Debug */,
+				043A98E828A7421100BCFAB0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
