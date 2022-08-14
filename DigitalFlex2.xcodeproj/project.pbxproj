@@ -943,20 +943,20 @@
 		043A98B628A7416D00BCFAB0 /* vox.base */ = {
 			isa = PBXGroup;
 			children = (
+				040CBEEC28A8E12C003AA16E /* version.h */,
+				040CBEE928A8E12C003AA16E /* config.h */,
 				040CC06F28A92BBA003AA16E /* reflect */,
 				040CC06E28A92BB0003AA16E /* discrete_grid */,
 				040CC06D28A92BA7003AA16E /* compact_search */,
 				040CBF0328A8E150003AA16E /* mesh */,
-				040CBEE928A8E12C003AA16E /* config.h */,
 				040CBEE828A8E12C003AA16E /* logging.h */,
 				049DB6D328A92C6E00D9C358 /* serialize.h */,
 				049DB6D228A92C6E00D9C358 /* spinlock.h */,
 				049DB6D528A92C6E00D9C358 /* timing.h */,
 				049DB6D428A92C6E00D9C358 /* timing.cpp */,
-				049DB6D628A92C6E00D9C358 /* z_sort_table.h */,
 				040CBEEF28A8E12D003AA16E /* md5.h */,
 				040CBEF428A8E12D003AA16E /* md5.cpp */,
-				040CBEEC28A8E12C003AA16E /* version.h */,
+				049DB6D628A92C6E00D9C358 /* z_sort_table.h */,
 			);
 			path = vox.base;
 			sourceTree = "<group>";

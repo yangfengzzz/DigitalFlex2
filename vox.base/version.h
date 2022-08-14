@@ -1,5 +1,10 @@
-#ifndef __Version_h__
-#define __Version_h__
+//  Copyright (c) 2022 Feng Yang
+//
+//  I am making my contributions/submissions to this project solely in my
+//  personal capacity and am not conveying any rights to any intellectual
+//  property of any third parties.
+
+#pragma once
 
 #define STRINGIZE_HELPER(x) #x
 #define STRINGIZE(x) STRINGIZE_HELPER(x)
@@ -13,6 +18,4 @@
 
 #ifdef DL_OUTPUT
 #pragma WARNING(Local changes not committed.)
-#endif
-
 #endif

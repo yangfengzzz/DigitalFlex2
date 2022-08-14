@@ -11,7 +11,7 @@
 
 #include "vox.base/config.h"
 
-namespace CompactNSearch {
+namespace vox {
 struct PointID {
     unsigned int point_set_id;
     unsigned int point_id;
@@ -153,4 +153,4 @@ public:
         return false;
     }
 };
-}  // namespace CompactNSearch
+}  // namespace vox

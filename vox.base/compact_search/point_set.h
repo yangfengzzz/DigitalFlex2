@@ -10,7 +10,7 @@
 
 #include "vox.base/config.h"
 
-namespace CompactNSearch {
+namespace vox {
 class NeighborhoodSearch;
 
 /**
@@ -164,4 +164,4 @@ void PointSet::sort_field(T *lst) const {
 #endif
                    [&](int i) { return tmp[i]; });
 }
-}  // namespace CompactNSearch
+}  // namespace vox

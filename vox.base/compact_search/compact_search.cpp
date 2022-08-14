@@ -15,7 +15,7 @@
 
 #include "third_party/libmorton/include/libmorton/morton.h"
 
-namespace CompactNSearch {
+namespace vox {
 namespace {
 // Determines Morten value according to z-curve.
 inline uint_fast64_t z_value(HashKey const &key) {
@@ -597,4 +597,4 @@ void NeighborhoodSearch::query(Real const *xa, std::vector<std::vector<unsigned 
     }
 }
 
-}  // namespace CompactNSearch
+}  // namespace vox

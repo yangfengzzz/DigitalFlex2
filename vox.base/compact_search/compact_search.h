@@ -12,7 +12,7 @@
 #include "vox.base/compact_search/point_set.h"
 #include "vox.base/config.h"
 
-namespace CompactNSearch {
+namespace vox {
 
 struct NeighborhoodSearchNotInitialized : public std::exception {
     [[nodiscard]] char const *what() const noexcept override { return "Neighborhood search was not initialized."; }
@@ -234,4 +234,4 @@ private:
     bool m_initialized;
 };
 
-}  // namespace CompactNSearch
+}  // namespace vox
