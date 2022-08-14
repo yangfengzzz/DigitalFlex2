@@ -259,6 +259,10 @@
 		040CC05128A8E389003AA16E /* simulation_data_dfsph.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CC04D28A8E389003AA16E /* simulation_data_dfsph.h */; };
 		040CC05428A91951003AA16E /* partio_reader_writer.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CC05228A91951003AA16E /* partio_reader_writer.h */; };
 		040CC05528A91951003AA16E /* partio_reader_writer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CC05328A91951003AA16E /* partio_reader_writer.cpp */; };
+		040CC06328A91A50003AA16E /* kernel_tests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CC06128A91A50003AA16E /* kernel_tests.cpp */; };
+		040CC06428A91A50003AA16E /* read_write_state_tests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CC06228A91A50003AA16E /* read_write_state_tests.cpp */; };
+		040CC06A28A91A92003AA16E /* libvox.base.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 043A98B528A7416D00BCFAB0 /* libvox.base.a */; };
+		040CC06B28A91A92003AA16E /* libvox.sph.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 043A98D328A7418E00BCFAB0 /* libvox.sph.a */; };
 		043A98AB28A7410200BCFAB0 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 043A98AA28A7410200BCFAB0 /* main.cpp */; };
 		043A98EC28A742D200BCFAB0 /* test_parameter_object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 043A98E928A742D200BCFAB0 /* test_parameter_object.cpp */; };
 		043A98ED28A742D200BCFAB0 /* parameter_tests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 043A98EA28A742D200BCFAB0 /* parameter_tests.cpp */; };
@@ -279,9 +283,32 @@
 			remoteGlobalIDString = 043A98B428A7416D00BCFAB0;
 			remoteInfo = vox.base;
 		};
+		040CC06628A91A8D003AA16E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 043A989F28A7410200BCFAB0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 043A98B428A7416D00BCFAB0;
+			remoteInfo = vox.base;
+		};
+		040CC06828A91A8D003AA16E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 043A989F28A7410200BCFAB0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 043A98D228A7418E00BCFAB0;
+			remoteInfo = vox.sph;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		040CC05828A91A3B003AA16E /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 		043A98A528A7410200BCFAB0 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -554,6 +581,10 @@
 		040CC04D28A8E389003AA16E /* simulation_data_dfsph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = simulation_data_dfsph.h; sourceTree = "<group>"; };
 		040CC05228A91951003AA16E /* partio_reader_writer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = partio_reader_writer.h; sourceTree = "<group>"; };
 		040CC05328A91951003AA16E /* partio_reader_writer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = partio_reader_writer.cpp; sourceTree = "<group>"; };
+		040CC05A28A91A3B003AA16E /* test.sph */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = test.sph; sourceTree = BUILT_PRODUCTS_DIR; };
+		040CC06128A91A50003AA16E /* kernel_tests.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = kernel_tests.cpp; sourceTree = "<group>"; };
+		040CC06228A91A50003AA16E /* read_write_state_tests.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = read_write_state_tests.cpp; sourceTree = "<group>"; };
+		040CC06528A91A5B003AA16E /* test.sph.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = test.sph.entitlements; sourceTree = "<group>"; };
 		043A98A728A7410200BCFAB0 /* apps */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = apps; sourceTree = BUILT_PRODUCTS_DIR; };
 		043A98AA28A7410200BCFAB0 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		043A98B528A7416D00BCFAB0 /* libvox.base.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libvox.base.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -566,6 +597,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		040CC05728A91A3B003AA16E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				040CC06A28A91A92003AA16E /* libvox.base.a in Frameworks */,
+				040CC06B28A91A92003AA16E /* libvox.sph.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		043A98A428A7410200BCFAB0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -846,6 +886,16 @@
 			path = wcsph;
 			sourceTree = "<group>";
 		};
+		040CC05B28A91A3B003AA16E /* test.sph */ = {
+			isa = PBXGroup;
+			children = (
+				040CC06528A91A5B003AA16E /* test.sph.entitlements */,
+				040CC06128A91A50003AA16E /* kernel_tests.cpp */,
+				040CC06228A91A50003AA16E /* read_write_state_tests.cpp */,
+			);
+			path = test.sph;
+			sourceTree = "<group>";
+		};
 		043A989E28A7410200BCFAB0 = {
 			isa = PBXGroup;
 			children = (
@@ -854,6 +904,7 @@
 				043A98E328A7421100BCFAB0 /* test.base */,
 				043A98C528A7418500BCFAB0 /* vox.pbd */,
 				043A98D428A7418E00BCFAB0 /* vox.sph */,
+				040CC05B28A91A3B003AA16E /* test.sph */,
 				043A98A828A7410200BCFAB0 /* Products */,
 				040CBEE528A8E11E003AA16E /* Frameworks */,
 			);
@@ -867,6 +918,7 @@
 				043A98C428A7418500BCFAB0 /* libvox.pbd.a */,
 				043A98D328A7418E00BCFAB0 /* libvox.sph.a */,
 				043A98E228A7421100BCFAB0 /* test.base */,
+				040CC05A28A91A3B003AA16E /* test.sph */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1238,6 +1290,25 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		040CC05928A91A3B003AA16E /* test.sph */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 040CC05E28A91A3B003AA16E /* Build configuration list for PBXNativeTarget "test.sph" */;
+			buildPhases = (
+				040CC05628A91A3B003AA16E /* Sources */,
+				040CC05728A91A3B003AA16E /* Frameworks */,
+				040CC05828A91A3B003AA16E /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				040CC06728A91A8D003AA16E /* PBXTargetDependency */,
+				040CC06928A91A8D003AA16E /* PBXTargetDependency */,
+			);
+			name = test.sph;
+			productName = test.sph;
+			productReference = 040CC05A28A91A3B003AA16E /* test.sph */;
+			productType = "com.apple.product-type.tool";
+		};
 		043A98A628A7410200BCFAB0 /* apps */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 043A98AE28A7410200BCFAB0 /* Build configuration list for PBXNativeTarget "apps" */;
@@ -1334,6 +1405,9 @@
 				BuildIndependentTargetsInParallel = 1;
 				LastUpgradeCheck = 1340;
 				TargetAttributes = {
+					040CC05928A91A3B003AA16E = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
 					043A98A628A7410200BCFAB0 = {
 						CreatedOnToolsVersion = 13.4.1;
 					};
@@ -1368,12 +1442,22 @@
 				043A98E128A7421100BCFAB0 /* test.base */,
 				043A98C328A7418500BCFAB0 /* vox.pbd */,
 				043A98D228A7418E00BCFAB0 /* vox.sph */,
+				040CC05928A91A3B003AA16E /* test.sph */,
 				043A98A628A7410200BCFAB0 /* apps */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
+		040CC05628A91A3B003AA16E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				040CC06328A91A50003AA16E /* kernel_tests.cpp in Sources */,
+				040CC06428A91A50003AA16E /* read_write_state_tests.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		043A98A328A7410200BCFAB0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1528,9 +1612,77 @@
 			target = 043A98B428A7416D00BCFAB0 /* vox.base */;
 			targetProxy = 040CBF7828A8E27F003AA16E /* PBXContainerItemProxy */;
 		};
+		040CC06728A91A8D003AA16E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 043A98B428A7416D00BCFAB0 /* vox.base */;
+			targetProxy = 040CC06628A91A8D003AA16E /* PBXContainerItemProxy */;
+		};
+		040CC06928A91A8D003AA16E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 043A98D228A7418E00BCFAB0 /* vox.sph */;
+			targetProxy = 040CC06828A91A8D003AA16E /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		040CC05F28A91A3B003AA16E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = test.sph/test.sph.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4SL5L673UU;
+				ENABLE_HARDENED_RUNTIME = YES;
+				HEADER_SEARCH_PATHS = /Users/yangfeng/Desktop/DigitalFlex2;
+				LIBRARY_SEARCH_PATHS = ./third_party/googletest/build/lib;
+				OTHER_LDFLAGS = (
+					"-lgtest",
+					"-lgtest_main",
+					"-lgmock",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SYSTEM_HEADER_SEARCH_PATHS = (
+					./third_party/googletest/googlemock/include,
+					./third_party/googletest/googletest/include,
+					./third_party/eigen,
+					./third_party/libmorton/include,
+					./third_party/spdlog/include,
+					./third_party/nlohmann/include,
+					./third_party/tinyexpr,
+					./third_party/partio/src/lib,
+					/opt/homebrew/include,
+				);
+			};
+			name = Debug;
+		};
+		040CC06028A91A3B003AA16E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = test.sph/test.sph.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4SL5L673UU;
+				ENABLE_HARDENED_RUNTIME = YES;
+				HEADER_SEARCH_PATHS = /Users/yangfeng/Desktop/DigitalFlex2;
+				LIBRARY_SEARCH_PATHS = ./third_party/googletest/build/lib;
+				OTHER_LDFLAGS = (
+					"-lgtest",
+					"-lgtest_main",
+					"-lgmock",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SYSTEM_HEADER_SEARCH_PATHS = (
+					./third_party/googletest/googlemock/include,
+					./third_party/googletest/googletest/include,
+					./third_party/eigen,
+					./third_party/libmorton/include,
+					./third_party/spdlog/include,
+					./third_party/nlohmann/include,
+					./third_party/tinyexpr,
+					./third_party/partio/src/lib,
+					/opt/homebrew/include,
+				);
+			};
+			name = Release;
+		};
 		043A98AC28A7410200BCFAB0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1831,6 +1983,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		040CC05E28A91A3B003AA16E /* Build configuration list for PBXNativeTarget "test.sph" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				040CC05F28A91A3B003AA16E /* Debug */,
+				040CC06028A91A3B003AA16E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		043A98A228A7410200BCFAB0 /* Build configuration list for PBXProject "DigitalFlex2" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

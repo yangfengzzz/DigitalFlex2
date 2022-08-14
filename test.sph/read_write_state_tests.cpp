@@ -5,7 +5,7 @@
 //  property of any third parties.
 
 #include <gtest/gtest.h>
-
+#include <omp.h>
 #include "vox.base/logging.h"
 #include "vox.editor/simulator_base.h"
 #include "vox.sph/file_system.h"
