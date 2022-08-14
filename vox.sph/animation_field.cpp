@@ -9,11 +9,9 @@
 #include <iostream>
 #include <utility>
 
-#include "extern/tinyexpr/tinyexpr.h"
+#include <tinyexpr.h>
 #include "vox.base/logging.h"
-#include "vox.sph/fluid_model.h"
 #include "vox.sph/simulation.h"
-#include "vox.sph/sph_kernels.h"
 #include "vox.sph/time_manager.h"
 #include "vox.sph/time_step.h"
 

@@ -11,9 +11,9 @@
 
 using namespace vox;
 
-SimulationDataPCISPH::SimulationDataPCISPH() {}
+SimulationDataPCISPH::SimulationDataPCISPH() = default;
 
-SimulationDataPCISPH::~SimulationDataPCISPH(void) { cleanup(); }
+SimulationDataPCISPH::~SimulationDataPCISPH() { cleanup(); }
 
 void SimulationDataPCISPH::init() {
     Simulation *sim = Simulation::getCurrent();

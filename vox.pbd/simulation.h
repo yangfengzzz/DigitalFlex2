@@ -15,7 +15,7 @@ namespace vox {
 /** \brief Class to manage the current simulation time and the time step size.
  * This class is a singleton.
  */
-class simulation : public ParameterObject {
+class Simulation : public ParameterObject {
 public:
     static int GRAVITATION;
 
@@ -27,20 +27,20 @@ protected:
     void initParameters() override;
 
 private:
-    static simulation *current;
+    static Simulation *current;
 
 public:
-    simulation();
-    simulation(const simulation &) = delete;
-    simulation &operator=(const simulation &) = delete;
-    ~simulation() override;
+    Simulation();
+    Simulation(const Simulation &) = delete;
+    Simulation &operator=(const Simulation &) = delete;
+    ~Simulation() override;
 
     void init();
     void reset();
 
     // Singleton
-    static simulation *getCurrent();
-    static void setCurrent(simulation *tm);
+    static Simulation *getCurrent();
+    static void setCurrent(Simulation *tm);
     static bool hasCurrent();
 
     SimulationModel *getModel() { return m_model; }

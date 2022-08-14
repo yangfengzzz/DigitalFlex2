@@ -10,7 +10,7 @@
 
 using namespace vox;
 
-RegularSampling2D::RegularSampling2D() {}
+RegularSampling2D::RegularSampling2D() = default;
 
 void RegularSampling2D::sampleMesh(const Matrix3r& rotation,
                                    const Vector3r& translation,

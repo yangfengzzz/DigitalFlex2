@@ -39,6 +39,8 @@ documentation and/or software.
 
 */
 
+#pragma once
+
 #include <cstdio>
 #include <fstream>
 #include <iostream>

@@ -6,8 +6,7 @@
 
 #pragma once
 
-#include <Eigen/src/Core/util/ForwardDeclarations.h>
-
+#include <Eigen/Dense>
 #include <vector>
 
 #include "vox.sph/common.h"

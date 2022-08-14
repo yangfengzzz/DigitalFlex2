@@ -25,8 +25,8 @@ void TimeStep::clearAccelerations(SimulationModel &model) {
     //////////////////////////////////////////////////////////////////////////
 
     SimulationModel::RigidBodyVector &rb = model.getRigidBodies();
-    simulation *sim = simulation::getCurrent();
-    const Vector3r grav(sim->getVecValue<Real>(simulation::GRAVITATION));
+    Simulation *sim = Simulation::getCurrent();
+    const Vector3r grav(sim->getVecValue<Real>(Simulation::GRAVITATION));
     for (auto &i : rb) {
         // Clear accelerations of dynamic particles
         if (i->getMass() != 0.0) {

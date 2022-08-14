@@ -189,7 +189,8 @@ std::string Elasticity_Kugelstadt2021::computeMD5(const unsigned int objIndex) {
     }
 
     // compute MD5 checksum for all particle positions, this is used for the cache file
-    MD5 context((unsigned char*)&tempN[0], static_cast<unsigned int>(2 * numParticles * sizeof(unsigned int)));
+    MD5 context;
+    context.update((unsigned char*)&tempN[0], static_cast<unsigned int>(2 * numParticles * sizeof(unsigned int)));
     char* md5hex = context.hex_digest();
 
     tempN.clear();

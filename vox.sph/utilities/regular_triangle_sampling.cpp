@@ -63,7 +63,7 @@ void RegularTriangleSampling::appendFaceSamples(const Real d,
     for (unsigned int iFace = 0; iFace < numFaces; iFace++) {
         using Matrix3ui = Eigen::Matrix<unsigned int, 3, 1, Eigen::DontAlign>;
         const auto face = Eigen::Map<const Matrix3ui>(faces + 3 * iFace);
-        // chose longest edge as base
+        // chose the longest edge as base
         Vector3r v0, base, toTop;
         Real l2 = 0;
         for (unsigned int c = 0; c < 3; c++) {

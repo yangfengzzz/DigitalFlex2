@@ -44,7 +44,8 @@ class Vec3r {
 public:
     std::array<FLOAT, 3> v;
 
-    Vec3r(){};
+    Vec3r() = default;
+    ;
     template <typename FLOAT_I>
     Vec3r(const FLOAT_I &x, const FLOAT_I &y, const FLOAT_I &z) {
         v[0] = static_cast<FLOAT>(x);
@@ -59,8 +60,8 @@ public:
     FLOAT &operator[](const SIZE_T &i) {
         return v[i];
     }
-    FLOAT dot(const Vec3r &u) const { return v[0] * u[0] + v[1] * u[1] + v[2] * u[2]; }
-    Vec3r<FLOAT> cross(const Vec3r &u) const {
+    [[nodiscard]] FLOAT dot(const Vec3r &u) const { return v[0] * u[0] + v[1] * u[1] + v[2] * u[2]; }
+    [[nodiscard]] Vec3r<FLOAT> cross(const Vec3r &u) const {
         return Vec3r(v[1] * u[2] - v[2] * u[1], -v[0] * u[2] + v[2] * u[0], v[0] * u[1] - v[1] * u[0]);
     }
     Vec3r<FLOAT> operator+(const Vec3r &u) const { return Vec3r(v[0] + u[0], v[1] + u[1], v[2] + u[2]); }
@@ -84,9 +85,9 @@ public:
         v[1] /= static_cast<FLOAT>(a);
         v[2] /= static_cast<FLOAT>(a);
     }
-    FLOAT squaredNorm() const { return this->dot(*this); }
-    FLOAT norm() const { return std::sqrt(this->squaredNorm()); }
-    Vec3r<FLOAT> normalized() const { return (*this) / this->norm(); }
+    [[nodiscard]] FLOAT squaredNorm() const { return this->dot(*this); }
+    [[nodiscard]] FLOAT norm() const { return std::sqrt(this->squaredNorm()); }
+    [[nodiscard]] Vec3r<FLOAT> normalized() const { return (*this) / this->norm(); }
     void normalize() {
         const FLOAT norm = this->norm();
         v[0] /= norm;
@@ -114,8 +115,8 @@ static double point_triangle_sq_unsigned(NearestEntity &nearest_entity,
 // Struct that contains the result of a distance query
 struct Result {
     double distance = std::numeric_limits<double>::max();
-    Vec3d nearest_point;
-    Discregrid::NearestEntity nearest_entity;
+    Vec3d nearest_point{};
+    vox::NearestEntity nearest_entity{};
     int triangle_id = -1;
 };
 // -----------------------------------
@@ -133,14 +134,14 @@ private:
     };
 
     struct Node {
-        BoundingSphere bv_left;
-        BoundingSphere bv_right;
+        BoundingSphere bv_left{};
+        BoundingSphere bv_right{};
         int left = -1;  // If left == -1, right is the triangle_id
         int right = -1;
     };
 
     struct Triangle {
-        std::array<Vec3d, 3> vertices;
+        std::array<Vec3d, 3> vertices{};
         int id = -1;
     };
 
@@ -151,16 +152,13 @@ private:
     std::vector<Vec3d> pseudonormals_triangles;
     std::vector<std::array<Vec3d, 3>> pseudonormals_edges;
     std::vector<Vec3d> pseudonormals_vertices;
-    BoundingSphere root_bv;
+    BoundingSphere root_bv{};
     bool is_constructed = false;
 
     /* Methods */
     void _construct();
-    void _build_tree(const int node_id,
-                     BoundingSphere &bounding_sphere,
-                     std::vector<Triangle> &triangles,
-                     const int begin,
-                     const int end);
+    void _build_tree(
+            int node_id, BoundingSphere &bounding_sphere, std::vector<Triangle> &triangles, int begin, int end);
     void _query(Result &result, const Node &node, const Vec3d &point) const;
 
 public:
@@ -177,10 +175,7 @@ public:
      * @param n_triangles Number of triangles.
      */
     template <typename FLOAT, typename INT, typename SIZE_T>
-    TriangleMeshDistance(const FLOAT *vertices,
-                         const SIZE_T n_vertices,
-                         const INT *triangles,
-                         const SIZE_T n_triangles);
+    TriangleMeshDistance(const FLOAT *vertices, SIZE_T n_vertices, const INT *triangles, SIZE_T n_triangles);
 
     /**
      * @brief Constructs a new TriangleMeshDistance object.
@@ -199,7 +194,7 @@ public:
      *
      * @param mesh Discregrid TriangleMesh object.
      */
-    TriangleMeshDistance(const TriangleMesh &mesh);
+    explicit TriangleMeshDistance(const TriangleMesh &mesh);
 
     /**
      * @brief Initializes an existing TriangleMeshDistance object (including empty
@@ -212,7 +207,7 @@ public:
      * @param n_triangles Number of triangles.
      */
     template <typename FLOAT, typename INT, typename SIZE_T>
-    void construct(const FLOAT *vertices, const SIZE_T n_vertices, const INT *triangles, const SIZE_T n_triangles);
+    void construct(const FLOAT *vertices, SIZE_T n_vertices, const INT *triangles, SIZE_T n_triangles);
 
     /**
      * @brief Initializes an existing TriangleMeshDistance object (including empty
@@ -239,7 +234,7 @@ public:
      */
     template <typename IndexableVector3double>
     Result unsigned_distance(const IndexableVector3double &point) const;
-    Result unsigned_distance(const std::array<double, 3> &point) const;
+    [[nodiscard]] Result unsigned_distance(const std::array<double, 3> &point) const;
 
     /**
      * @brief Computes the unsigned distance from a point to the triangle mesh.
@@ -253,35 +248,35 @@ public:
      */
     template <typename IndexableVector3double>
     Result signed_distance(const IndexableVector3double &point) const;
-    Result signed_distance(const std::array<double, 3> &point) const;
+    [[nodiscard]] Result signed_distance(const std::array<double, 3> &point) const;
 };
 }  // namespace vox
 
 /* ==========================================  DECLARATIONS
  * ========================================== */
 template <typename FLOAT, typename INT, typename SIZE_T>
-inline Discregrid::TriangleMeshDistance::TriangleMeshDistance(const FLOAT *vertices,
-                                                              const SIZE_T n_vertices,
-                                                              const INT *triangles,
-                                                              const SIZE_T n_triangles) {
+inline vox::TriangleMeshDistance::TriangleMeshDistance(const FLOAT *vertices,
+                                                       const SIZE_T n_vertices,
+                                                       const INT *triangles,
+                                                       const SIZE_T n_triangles) {
     this->construct(vertices, n_vertices, triangles, n_triangles);
 }
 
 template <typename IndexableVector3double, typename IndexableVector3int>
-inline Discregrid::TriangleMeshDistance::TriangleMeshDistance(const std::vector<IndexableVector3double> &vertices,
-                                                              const std::vector<IndexableVector3int> &triangles) {
+inline vox::TriangleMeshDistance::TriangleMeshDistance(const std::vector<IndexableVector3double> &vertices,
+                                                       const std::vector<IndexableVector3int> &triangles) {
     this->construct(vertices, triangles);
 }
 
-inline Discregrid::TriangleMeshDistance::TriangleMeshDistance(const TriangleMesh &mesh) {
+inline vox::TriangleMeshDistance::TriangleMeshDistance(const TriangleMesh &mesh) {
     this->construct(mesh.vertex_data(), mesh.face_data());
 }
 
 template <typename FLOAT, typename INT, typename SIZE_T>
-inline void Discregrid::TriangleMeshDistance::construct(const FLOAT *vertices,
-                                                        const SIZE_T n_vertices,
-                                                        const INT *triangles,
-                                                        const SIZE_T n_triangles) {
+inline void vox::TriangleMeshDistance::construct(const FLOAT *vertices,
+                                                 const SIZE_T n_vertices,
+                                                 const INT *triangles,
+                                                 const SIZE_T n_triangles) {
     this->vertices.resize(3 * n_vertices);
     for (size_t i = 0; i < (size_t)n_vertices; i++) {
         this->vertices[i][0] = (double)vertices[3 * i + 0];
@@ -299,8 +294,8 @@ inline void Discregrid::TriangleMeshDistance::construct(const FLOAT *vertices,
 }
 
 template <typename IndexableVector3double, typename IndexableVector3int>
-inline void Discregrid::TriangleMeshDistance::construct(const std::vector<IndexableVector3double> &vertices,
-                                                        const std::vector<IndexableVector3int> &triangles) {
+inline void vox::TriangleMeshDistance::construct(const std::vector<IndexableVector3double> &vertices,
+                                                 const std::vector<IndexableVector3int> &triangles) {
     this->vertices.resize(vertices.size());
     for (size_t i = 0; i < vertices.size(); i++) {
         this->vertices[i][0] = (double)vertices[i][0];
@@ -316,32 +311,32 @@ inline void Discregrid::TriangleMeshDistance::construct(const std::vector<Indexa
     this->_construct();
 }
 
-inline Discregrid::Result Discregrid::TriangleMeshDistance::signed_distance(const std::array<double, 3> &point) const {
+inline vox::Result vox::TriangleMeshDistance::signed_distance(const std::array<double, 3> &point) const {
     const Vec3d p(point[0], point[1], point[2]);
     Result result = this->unsigned_distance(p);
 
     const std::array<int, 3> &triangle = this->triangles[result.triangle_id];
     Vec3d pseudonormal;
     switch (result.nearest_entity) {
-        case Discregrid::NearestEntity::V0:
+        case vox::NearestEntity::V0:
             pseudonormal = this->pseudonormals_vertices[triangle[0]];
             break;
-        case Discregrid::NearestEntity::V1:
+        case vox::NearestEntity::V1:
             pseudonormal = this->pseudonormals_vertices[triangle[1]];
             break;
-        case Discregrid::NearestEntity::V2:
+        case vox::NearestEntity::V2:
             pseudonormal = this->pseudonormals_vertices[triangle[2]];
             break;
-        case Discregrid::NearestEntity::E01:
+        case vox::NearestEntity::E01:
             pseudonormal = this->pseudonormals_edges[result.triangle_id][0];
             break;
-        case Discregrid::NearestEntity::E12:
+        case vox::NearestEntity::E12:
             pseudonormal = this->pseudonormals_edges[result.triangle_id][1];
             break;
-        case Discregrid::NearestEntity::E02:
+        case vox::NearestEntity::E02:
             pseudonormal = this->pseudonormals_edges[result.triangle_id][2];
             break;
-        case Discregrid::NearestEntity::F:
+        case vox::NearestEntity::F:
             pseudonormal = this->pseudonormals_triangles[result.triangle_id];
             break;
 
@@ -356,13 +351,12 @@ inline Discregrid::Result Discregrid::TriangleMeshDistance::signed_distance(cons
 }
 
 template <typename IndexableVector3double>
-inline Discregrid::Result Discregrid::TriangleMeshDistance::signed_distance(const IndexableVector3double &point) const {
+inline vox::Result vox::TriangleMeshDistance::signed_distance(const IndexableVector3double &point) const {
     return this->signed_distance(
             {static_cast<double>(point[0]), static_cast<double>(point[1]), static_cast<double>(point[2])});
 }
 
-inline Discregrid::Result Discregrid::TriangleMeshDistance::unsigned_distance(
-        const std::array<double, 3> &point) const {
+inline vox::Result vox::TriangleMeshDistance::unsigned_distance(const std::array<double, 3> &point) const {
     if (!this->is_constructed) {
         std::cout << "DistanceTriangleMesh error: not constructed." << std::endl;
         exit(-1);
@@ -376,14 +370,13 @@ inline Discregrid::Result Discregrid::TriangleMeshDistance::unsigned_distance(
 }
 
 template <typename IndexableVector3double>
-inline Discregrid::Result Discregrid::TriangleMeshDistance::unsigned_distance(
-        const IndexableVector3double &point) const {
+inline vox::Result vox::TriangleMeshDistance::unsigned_distance(const IndexableVector3double &point) const {
     return this->unsigned_distance(
             {static_cast<double>(point[0]), static_cast<double>(point[1]), static_cast<double>(point[2])});
 }
 
-inline void Discregrid::TriangleMeshDistance::_construct() {
-    if (this->triangles.size() == 0) {
+inline void vox::TriangleMeshDistance::_construct() {
+    if (this->triangles.empty()) {
         std::cout << "DistanceTriangleMesh error: Empty triangle list." << std::endl;
         exit(-1);
     }
@@ -401,14 +394,14 @@ inline void Discregrid::TriangleMeshDistance::_construct() {
         triangles[i].vertices[2] = this->vertices[triangle[2]];
     }
 
-    this->nodes.push_back(Node());
+    this->nodes.emplace_back();
     this->_build_tree(0, this->root_bv, triangles, 0, (int)triangles.size());
 
     // Compute pseudonormals
     //// Edge data structure
     std::unordered_map<uint64_t, Vec3d> edge_normals;
     std::unordered_map<uint64_t, int> edges_count;
-    const uint64_t n_vertices = (uint64_t)this->vertices.size();
+    const auto n_vertices = (uint64_t)this->vertices.size();
     auto add_edge_normal = [&](const int i, const int j, const Vec3d &triangle_normal) {
         const uint64_t key = std::min(i, j) * n_vertices + std::max(i, j);
         if (edge_normals.find(key) == edge_normals.end()) {
@@ -487,11 +480,11 @@ inline void Discregrid::TriangleMeshDistance::_construct() {
     this->is_constructed = true;
 }
 
-inline void Discregrid::TriangleMeshDistance::_build_tree(const int node_id,
-                                                          BoundingSphere &bounding_sphere,
-                                                          std::vector<Triangle> &triangles,
-                                                          const int begin,
-                                                          const int end) {
+inline void vox::TriangleMeshDistance::_build_tree(const int node_id,
+                                                   BoundingSphere &bounding_sphere,
+                                                   std::vector<Triangle> &triangles,
+                                                   const int begin,
+                                                   const int end) {
     const int n_triangles = end - begin;
 
     if (n_triangles == 0) {
@@ -552,16 +545,16 @@ inline void Discregrid::TriangleMeshDistance::_build_tree(const int node_id,
         const int mid = (int)(0.5 * (begin + end));
 
         this->nodes[node_id].left = (int)this->nodes.size();
-        this->nodes.push_back(Node());
+        this->nodes.emplace_back();
         this->_build_tree(this->nodes[node_id].left, this->nodes[node_id].bv_left, triangles, begin, mid);
 
         this->nodes[node_id].right = (int)this->nodes.size();
-        this->nodes.push_back(Node());
+        this->nodes.emplace_back();
         this->_build_tree(this->nodes[node_id].right, this->nodes[node_id].bv_right, triangles, mid, end);
     }
 }
 
-inline void Discregrid::TriangleMeshDistance::_query(Result &result, const Node &node, const Vec3d &point) const {
+inline void vox::TriangleMeshDistance::_query(Result &result, const Node &node, const Vec3d &point) const {
     // End of recursion
     if (node.left == -1) {
         const int triangle_id = node.right;
@@ -571,9 +564,8 @@ inline void Discregrid::TriangleMeshDistance::_query(Result &result, const Node 
         const Vec3d &v2 = this->vertices[triangle[2]];
 
         Vec3d nearest_point;
-        Discregrid::NearestEntity nearest_entity;
-        const double distance_sq =
-                Discregrid::point_triangle_sq_unsigned(nearest_entity, nearest_point, point, v0, v1, v2);
+        vox::NearestEntity nearest_entity;
+        const double distance_sq = vox::point_triangle_sq_unsigned(nearest_entity, nearest_point, point, v0, v1, v2);
 
         if (distance_sq < result.distance * result.distance) {
             result.nearest_point = nearest_point;
@@ -609,12 +601,12 @@ inline void Discregrid::TriangleMeshDistance::_query(Result &result, const Node 
     }
 }
 
-static double Discregrid::point_triangle_sq_unsigned(NearestEntity &nearest_entity,
-                                                     Vec3d &nearest_point,
-                                                     const Vec3d &point,
-                                                     const Vec3d &v0,
-                                                     const Vec3d &v1,
-                                                     const Vec3d &v2) {
+static double vox::point_triangle_sq_unsigned(NearestEntity &nearest_entity,
+                                              Vec3d &nearest_point,
+                                              const Vec3d &point,
+                                              const Vec3d &v0,
+                                              const Vec3d &v1,
+                                              const Vec3d &v2) {
     Vec3d diff = v0 - point;
     Vec3d edge0 = v1 - v0;
     Vec3d edge1 = v2 - v0;

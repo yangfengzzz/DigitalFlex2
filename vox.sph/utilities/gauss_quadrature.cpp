@@ -2527,7 +2527,7 @@ extern double const gaussian_weights_1[101][51] = {
          0.010185191297820344463742614494, 0.006500337783251350191882078633, 0.002796807171079840510785619045}};
 }  // namespace vox
 
-double GaussQuadrature::integrate(Integrand integrand, Domain const& domain, unsigned int p) {
+double GaussQuadrature::integrate(const Integrand& integrand, Domain const& domain, unsigned int p) {
     if (p < 1) p = 1;
 
     // Number of Gauss points

@@ -15,7 +15,7 @@ using namespace vox::utility;
 using namespace std;
 
 // Call this function to load a model from a *.tet file
-void tet_gen_loader::loadTetFile(const std::string &filename,
+void TetGenLoader::loadTetFile(const std::string &filename,
                                  std::vector<Vector3r> &vertices,
                                  std::vector<unsigned int> &tets) {
     LOGI("Loading {}", filename)
@@ -111,7 +111,7 @@ void tet_gen_loader::loadTetFile(const std::string &filename,
     LOGI("Number of vertices: {}", num_vertices)
 }
 
-void tet_gen_loader::loadTetgenModel(const std::string &nodeFilename,
+void TetGenLoader::loadTetgenModel(const std::string &nodeFilename,
                                      const std::string &eleFilename,
                                      std::vector<Vector3r> &vertices,
                                      std::vector<unsigned int> &tets) {
@@ -187,7 +187,7 @@ void tet_gen_loader::loadTetgenModel(const std::string &nodeFilename,
     LOGI("Number of vertices: {}", num_vertices)
 }
 
-void tet_gen_loader::loadMSHModel(const std::string &mshFilename,
+void TetGenLoader::loadMSHModel(const std::string &mshFilename,
                                   std::vector<Vector3r> &vertices,
                                   std::vector<unsigned int> &tets) {
     LOGI("Loading {}", mshFilename)

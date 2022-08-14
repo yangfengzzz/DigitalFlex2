@@ -28,7 +28,7 @@ public:
      * @param  acceleration acceleration of the particle
      */
     static void semiImplicitEuler(
-            Real h, const Real mass, Vector3r &position, Vector3r &velocity, const Vector3r &acceleration);
+            Real h, Real mass, Vector3r &position, Vector3r &velocity, const Vector3r &acceleration);
 
     // -------------- velocity update (first order) -----------------------------------------------------
     /** Perform a velocity update (first order) for the linear velocity:

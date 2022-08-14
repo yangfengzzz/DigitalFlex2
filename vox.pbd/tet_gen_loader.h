@@ -12,7 +12,7 @@
 #include "vox.pbd/common.h"
 
 namespace vox::utility {
-class tet_gen_loader {
+class TetGenLoader {
 public:
     static void loadTetFile(const std::string &filename,
                             std::vector<Vector3r> &vertices,

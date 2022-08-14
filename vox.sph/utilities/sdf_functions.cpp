@@ -8,6 +8,8 @@
 
 #include "vox.sph/obj_loader.h"
 #include "vox.sph/timing.h"
+#include "vox.base/mesh/triangle_mesh.h"
+#include "vox.base/geometry/triangle_mesh_distance.h"
 
 using namespace Eigen;
 using namespace std;
@@ -71,7 +73,7 @@ CubicLagrangeDiscreteGrid *SDFFunctions::generateSDF(const unsigned int numVerti
     TriangleMesh sdfMesh(&doubleVec[0], faces, numVertices, numFaces);
 #endif
 
-    MeshDistance md(sdfMesh);
+    TriangleMeshDistance md(sdfMesh);
     Eigen::AlignedBox3d domain;
     domain.extend(bbox.min().cast<double>());
     domain.extend(bbox.max().cast<double>());
@@ -82,7 +84,7 @@ CubicLagrangeDiscreteGrid *SDFFunctions::generateSDF(const unsigned int numVerti
     auto func = DiscreteGrid::ContinuousFunction{};
     Real factor = 1.0;
     if (invert) factor = -1.0;
-    func = [&md, &factor](Eigen::Vector3d const &xi) { return factor * md.signedDistanceCached(xi); };
+    func = [&md, &factor](Eigen::Vector3d const &xi) { return factor * md.signed_distance(xi).distance; };
 
     distanceField->addFunction(func, false);
     STOP_TIMING_PRINT

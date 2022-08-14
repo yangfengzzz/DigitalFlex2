@@ -14,9 +14,10 @@
 #include "vox.sph/timing.h"
 
 namespace vox::utility {
-#define INCREASE_COUNTER(counterName, increaseBy) utility::Counting::increaseCounter(counterName, increaseBy);
+#define INCREASE_COUNTER(counterName, increaseBy) vox::utility::Counting::increaseCounter(counterName, increaseBy);
 
-#define INIT_COUNTING std::unordered_map<std::string, AverageCount> Counting::m_averageCounts;
+#define INIT_COUNTING \
+    std::unordered_map<std::string, vox::utility::AverageCount> vox::utility::Counting::m_averageCounts;
 
 struct AverageCount {
     Real sum;

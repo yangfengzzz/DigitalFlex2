@@ -16,12 +16,8 @@ file(GLOB sources
         ${CMAKE_CURRENT_SOURCE_DIR}/pcisph/*.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/wcsph/*.cpp
 
-        ${CMAKE_CURRENT_SOURCE_DIR}/exporter/*.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/gui/*.cpp
-
         ${CMAKE_CURRENT_SOURCE_DIR}/pbf/*.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/projective_fluids/*.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/position_based_dynamics_wrapper/*.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/utilities/*.cpp)
 
 add_library(${PROJECT_NAME} STATIC ${sources})
@@ -30,6 +26,7 @@ target_include_directories(${PROJECT_NAME} PUBLIC ../
         ../third_party/eigen
         ../third_party/nlohmann/include
         ../third_party/spdlog/include
+        ../third_party/tinyexpr
         ${CMAKE_CURRENT_SOURCE_DIR})
 
 target_link_libraries(${PROJECT_NAME} OpenMP::OpenMP_CXX)

@@ -13,7 +13,7 @@
 #include "vox.pbd/common.h"
 
 namespace vox::utility {
-class scene_loader {
+class SceneLoader {
 protected:
     nlohmann::json m_json;
 
@@ -223,7 +223,7 @@ public:
         std::vector<DistanceJointData> m_distanceJointData;
     };
 
-    virtual ~scene_loader() = default;
+    virtual ~SceneLoader() = default;
     void readScene(const std::string &fileName, SceneData &sceneData);
     static void readSimulation(const nlohmann::json &child, const std::string &key, SceneData &sceneData);
     static void readRigidBodies(const nlohmann::json &child,
@@ -285,5 +285,5 @@ public:
 };
 
 template <>
-bool scene_loader::readValue<bool>(const nlohmann::json &j, const std::string &key, bool &v);
+bool SceneLoader::readValue<bool>(const nlohmann::json &j, const std::string &key, bool &v);
 }  // namespace vox::utility

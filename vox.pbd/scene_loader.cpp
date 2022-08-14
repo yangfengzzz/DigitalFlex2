@@ -14,7 +14,7 @@
 
 using namespace vox::utility;
 
-void scene_loader::readScene(const std::string &fileName, SceneData &sceneData) {
+void SceneLoader::readScene(const std::string &fileName, SceneData &sceneData) {
     LOGI("Load scene file: {}", fileName)
     try {
         std::ifstream input_file(fileName);
@@ -153,7 +153,7 @@ void scene_loader::readScene(const std::string &fileName, SceneData &sceneData) 
     }
 }
 
-void scene_loader::readSimulation(const nlohmann::json &j, const std::string &key, SceneData &sceneData) {
+void SceneLoader::readSimulation(const nlohmann::json &j, const std::string &key, SceneData &sceneData) {
     const nlohmann::json &child = j[key];
 
     readValue(child, "timeStepSize", sceneData.m_timeStepSize);
@@ -199,7 +199,7 @@ void scene_loader::readSimulation(const nlohmann::json &j, const std::string &ke
     readValue(child, "volume_stiffness", sceneData.m_volume_stiffness);
 }
 
-void scene_loader::readRigidBodies(const nlohmann::json &j,
+void SceneLoader::readRigidBodies(const nlohmann::json &j,
                                    const std::string &key,
                                    const std::string &basePath,
                                    SceneData &sceneData) {
@@ -297,7 +297,7 @@ void scene_loader::readRigidBodies(const nlohmann::json &j,
     }
 }
 
-void scene_loader::readTriangleModels(const nlohmann::json &j,
+void SceneLoader::readTriangleModels(const nlohmann::json &j,
                                       const std::string &key,
                                       const std::string &basePath,
                                       SceneData &sceneData) {
@@ -356,7 +356,7 @@ void scene_loader::readTriangleModels(const nlohmann::json &j,
     }
 }
 
-void scene_loader::readTetModels(const nlohmann::json &j,
+void SceneLoader::readTetModels(const nlohmann::json &j,
                                  const std::string &key,
                                  const std::string &basePath,
                                  SceneData &sceneData) {
@@ -453,7 +453,7 @@ void scene_loader::readTetModels(const nlohmann::json &j,
     }
 }
 
-void scene_loader::readBallJoints(const nlohmann::json &j, const std::string &key, SceneData &sceneData) {
+void SceneLoader::readBallJoints(const nlohmann::json &j, const std::string &key, SceneData &sceneData) {
     const nlohmann::json &child = j[key];
 
     for (auto &joint : child) {
@@ -465,7 +465,7 @@ void scene_loader::readBallJoints(const nlohmann::json &j, const std::string &ke
     }
 }
 
-void scene_loader::readBallOnLineJoints(const nlohmann::json &j, const std::string &key, SceneData &sceneData) {
+void SceneLoader::readBallOnLineJoints(const nlohmann::json &j, const std::string &key, SceneData &sceneData) {
     const nlohmann::json &child = j[key];
 
     for (auto &joint : child) {
@@ -477,7 +477,7 @@ void scene_loader::readBallOnLineJoints(const nlohmann::json &j, const std::stri
     }
 }
 
-void scene_loader::readHingeJoints(const nlohmann::json &j, const std::string &key, SceneData &sceneData) {
+void SceneLoader::readHingeJoints(const nlohmann::json &j, const std::string &key, SceneData &sceneData) {
     const nlohmann::json &child = j[key];
 
     for (auto &joint : child) {
@@ -489,7 +489,7 @@ void scene_loader::readHingeJoints(const nlohmann::json &j, const std::string &k
     }
 }
 
-void scene_loader::readUniversalJoints(const nlohmann::json &j, const std::string &key, SceneData &sceneData) {
+void SceneLoader::readUniversalJoints(const nlohmann::json &j, const std::string &key, SceneData &sceneData) {
     const nlohmann::json &child = j[key];
 
     for (auto &joint : child) {
@@ -502,7 +502,7 @@ void scene_loader::readUniversalJoints(const nlohmann::json &j, const std::strin
     }
 }
 
-void scene_loader::readSliderJoints(const nlohmann::json &j, const std::string &key, SceneData &sceneData) {
+void SceneLoader::readSliderJoints(const nlohmann::json &j, const std::string &key, SceneData &sceneData) {
     const nlohmann::json &child = j[key];
 
     for (auto &joint : child) {
@@ -514,7 +514,7 @@ void scene_loader::readSliderJoints(const nlohmann::json &j, const std::string &
     }
 }
 
-void scene_loader::readRigidBodyParticleBallJoints(const nlohmann::json &j,
+void SceneLoader::readRigidBodyParticleBallJoints(const nlohmann::json &j,
                                                    const std::string &key,
                                                    SceneData &sceneData) {
     const nlohmann::json &child = j[key];
@@ -527,7 +527,7 @@ void scene_loader::readRigidBodyParticleBallJoints(const nlohmann::json &j,
     }
 }
 
-void scene_loader::readTargetAngleMotorHingeJoints(const nlohmann::json &j,
+void SceneLoader::readTargetAngleMotorHingeJoints(const nlohmann::json &j,
                                                    const std::string &key,
                                                    SceneData &sceneData) {
     const nlohmann::json &child = j[key];
@@ -554,7 +554,7 @@ void scene_loader::readTargetAngleMotorHingeJoints(const nlohmann::json &j,
     }
 }
 
-void scene_loader::readTargetVelocityMotorHingeJoints(const nlohmann::json &j,
+void SceneLoader::readTargetVelocityMotorHingeJoints(const nlohmann::json &j,
                                                       const std::string &key,
                                                       SceneData &sceneData) {
     const nlohmann::json &child = j[key];
@@ -581,7 +581,7 @@ void scene_loader::readTargetVelocityMotorHingeJoints(const nlohmann::json &j,
     }
 }
 
-void scene_loader::readTargetPositionMotorSliderJoints(const nlohmann::json &j,
+void SceneLoader::readTargetPositionMotorSliderJoints(const nlohmann::json &j,
                                                        const std::string &key,
                                                        SceneData &sceneData) {
     const nlohmann::json &child = j[key];
@@ -608,7 +608,7 @@ void scene_loader::readTargetPositionMotorSliderJoints(const nlohmann::json &j,
     }
 }
 
-void scene_loader::readTargetVelocityMotorSliderJoints(const nlohmann::json &j,
+void SceneLoader::readTargetVelocityMotorSliderJoints(const nlohmann::json &j,
                                                        const std::string &key,
                                                        SceneData &sceneData) {
     const nlohmann::json &child = j[key];
@@ -635,7 +635,7 @@ void scene_loader::readTargetVelocityMotorSliderJoints(const nlohmann::json &j,
     }
 }
 
-void scene_loader::readRigidBodySprings(const nlohmann::json &j, const std::string &key, SceneData &sceneData) {
+void SceneLoader::readRigidBodySprings(const nlohmann::json &j, const std::string &key, SceneData &sceneData) {
     const nlohmann::json &child = j[key];
 
     for (auto &joint : child) {
@@ -648,7 +648,7 @@ void scene_loader::readRigidBodySprings(const nlohmann::json &j, const std::stri
     }
 }
 
-void scene_loader::readDistanceJoints(const nlohmann::json &j, const std::string &key, SceneData &sceneData) {
+void SceneLoader::readDistanceJoints(const nlohmann::json &j, const std::string &key, SceneData &sceneData) {
     const nlohmann::json &child = j[key];
 
     for (auto &joint : child) {
@@ -660,7 +660,7 @@ void scene_loader::readDistanceJoints(const nlohmann::json &j, const std::string
     }
 }
 
-void scene_loader::readDamperJoints(const nlohmann::json &j, const std::string &key, SceneData &sceneData) {
+void SceneLoader::readDamperJoints(const nlohmann::json &j, const std::string &key, SceneData &sceneData) {
     const nlohmann::json &child = j[key];
 
     for (auto &joint : child) {
@@ -673,7 +673,7 @@ void scene_loader::readDamperJoints(const nlohmann::json &j, const std::string &
 }
 
 template <>
-bool scene_loader::readValue<bool>(const nlohmann::json &j, const std::string &key, bool &v) {
+bool SceneLoader::readValue<bool>(const nlohmann::json &j, const std::string &key, bool &v) {
     if (j.find(key) == j.end()) return false;
 
     if (j[key].is_number_integer()) {
@@ -684,7 +684,7 @@ bool scene_loader::readValue<bool>(const nlohmann::json &j, const std::string &k
     return true;
 }
 
-void scene_loader::readParameterObject(ParameterObject *paramObj) {
+void SceneLoader::readParameterObject(ParameterObject *paramObj) {
     if (paramObj == nullptr) return;
 
     const unsigned int numParams = paramObj->numParameters();

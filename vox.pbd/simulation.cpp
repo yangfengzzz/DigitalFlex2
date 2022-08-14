@@ -13,35 +13,35 @@
 using namespace vox;
 using namespace std;
 
-simulation *simulation::current = nullptr;
-int simulation::GRAVITATION = -1;
+Simulation *Simulation::current = nullptr;
+int Simulation::GRAVITATION = -1;
 
-simulation::simulation() {
+Simulation::Simulation() {
     m_gravitation = Vector3r(0.0, -9.81, 0.0);
 
     m_timeStep = nullptr;
 }
 
-simulation::~simulation() {
+Simulation::~Simulation() {
     delete m_timeStep;
     delete TimeManager::getCurrent();
 
     current = nullptr;
 }
 
-simulation *simulation::getCurrent() {
+Simulation *Simulation::getCurrent() {
     if (current == nullptr) {
-        current = new simulation();
+        current = new Simulation();
         current->init();
     }
     return current;
 }
 
-void simulation::setCurrent(simulation *tm) { current = tm; }
+void Simulation::setCurrent(Simulation *tm) { current = tm; }
 
-bool simulation::hasCurrent() { return (current != nullptr); }
+bool Simulation::hasCurrent() { return (current != nullptr); }
 
-void simulation::init() {
+void Simulation::init() {
     initParameters();
 
     m_timeStep = new TimeStepController();
@@ -49,7 +49,7 @@ void simulation::init() {
     TimeManager::getCurrent()->setTimeStepSize(static_cast<Real>(0.005));
 }
 
-void simulation::initParameters() {
+void Simulation::initParameters() {
     ParameterObject::initParameters();
 
     GRAVITATION = createVectorParameter("gravitation", "Gravitation", 3u, m_gravitation.data());
@@ -57,7 +57,7 @@ void simulation::initParameters() {
     setDescription(GRAVITATION, "Vector to define the gravitational acceleration.");
 }
 
-void simulation::reset() {
+void Simulation::reset() {
     m_model->reset();
     if (m_timeStep) m_timeStep->reset();
 
