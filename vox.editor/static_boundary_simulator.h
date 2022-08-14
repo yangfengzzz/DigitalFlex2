@@ -6,7 +6,7 @@
 
 #pragma once
 
-#include "vox.sph/boundary_simulator.h"
+#include "vox.editor/boundary_simulator.h"
 
 namespace vox {
 class SimulatorBase;
