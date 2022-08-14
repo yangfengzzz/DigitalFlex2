@@ -13,10 +13,273 @@
 		040CBE4D28A7460F003AA16E /* function_parameter.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE4728A7460F003AA16E /* function_parameter.h */; };
 		040CBE4E28A7460F003AA16E /* numeric_parameter.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE4828A7460F003AA16E /* numeric_parameter.h */; };
 		040CBE4F28A7460F003AA16E /* vector_parameter.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE4928A7460F003AA16E /* vector_parameter.h */; };
+		040CBE9A28A8E0EF003AA16E /* position_based_fluids.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBE5028A8E0EE003AA16E /* position_based_fluids.cpp */; };
+		040CBE9B28A8E0EF003AA16E /* simulation_model.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE5128A8E0EE003AA16E /* simulation_model.h */; };
+		040CBE9C28A8E0EF003AA16E /* sph_kernels.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBE5228A8E0EE003AA16E /* sph_kernels.cpp */; };
+		040CBE9D28A8E0EF003AA16E /* indexed_tet_mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBE5328A8E0EE003AA16E /* indexed_tet_mesh.cpp */; };
+		040CBE9E28A8E0EF003AA16E /* tet_model.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE5428A8E0EE003AA16E /* tet_model.h */; };
+		040CBE9F28A8E0EF003AA16E /* position_based_generic_constraints.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE5528A8E0EE003AA16E /* position_based_generic_constraints.h */; };
+		040CBEA028A8E0EF003AA16E /* position_based_elastic_rods.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE5628A8E0EE003AA16E /* position_based_elastic_rods.h */; };
+		040CBEA128A8E0EF003AA16E /* sph_kernels.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE5728A8E0EE003AA16E /* sph_kernels.h */; };
+		040CBEA228A8E0EF003AA16E /* rigid_body.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE5828A8E0EE003AA16E /* rigid_body.h */; };
+		040CBEA328A8E0EF003AA16E /* time_step_controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBE5928A8E0EE003AA16E /* time_step_controller.cpp */; };
+		040CBEA428A8E0EF003AA16E /* time_manager.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE5A28A8E0EE003AA16E /* time_manager.h */; };
+		040CBEA528A8E0EF003AA16E /* hashmap.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE5B28A8E0EE003AA16E /* hashmap.h */; };
+		040CBEA628A8E0EF003AA16E /* time_step_controller.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE5C28A8E0EE003AA16E /* time_step_controller.h */; };
+		040CBEA728A8E0EF003AA16E /* position_based_fluids.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE5D28A8E0EE003AA16E /* position_based_fluids.h */; };
+		040CBEA828A8E0EF003AA16E /* time_integration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBE5E28A8E0EE003AA16E /* time_integration.cpp */; };
+		040CBEA928A8E0EF003AA16E /* cubic_sdf_collision_detection.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE5F28A8E0EE003AA16E /* cubic_sdf_collision_detection.h */; };
+		040CBEAA28A8E0EF003AA16E /* distance_field_collision_detection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBE6028A8E0EE003AA16E /* distance_field_collision_detection.cpp */; };
+		040CBEAB28A8E0EF003AA16E /* volume_integration.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE6128A8E0EE003AA16E /* volume_integration.h */; };
+		040CBEAC28A8E0EF003AA16E /* time_integration.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE6228A8E0EE003AA16E /* time_integration.h */; };
+		040CBEAD28A8E0EF003AA16E /* indexed_face_mesh.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE6328A8E0EE003AA16E /* indexed_face_mesh.h */; };
+		040CBEAE28A8E0EF003AA16E /* system_info.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE6428A8E0EE003AA16E /* system_info.h */; };
+		040CBEAF28A8E0EF003AA16E /* obj_loader.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE6528A8E0EE003AA16E /* obj_loader.h */; };
+		040CBEB028A8E0EF003AA16E /* time_step.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBE6628A8E0EE003AA16E /* time_step.cpp */; };
+		040CBEB128A8E0EF003AA16E /* collision_detection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBE6728A8E0EE003AA16E /* collision_detection.cpp */; };
+		040CBEB228A8E0EF003AA16E /* rigid_body_geometry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBE6828A8E0EE003AA16E /* rigid_body_geometry.cpp */; };
+		040CBEB328A8E0EF003AA16E /* id_factory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBE6928A8E0EE003AA16E /* id_factory.cpp */; };
+		040CBEB428A8E0EF003AA16E /* bounding_sphere_hierarchy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBE6A28A8E0EE003AA16E /* bounding_sphere_hierarchy.cpp */; };
+		040CBEB528A8E0EF003AA16E /* tet_gen_loader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBE6B28A8E0EE003AA16E /* tet_gen_loader.cpp */; };
+		040CBEB628A8E0EF003AA16E /* indexed_tet_mesh.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE6C28A8E0EE003AA16E /* indexed_tet_mesh.h */; };
+		040CBEB728A8E0EF003AA16E /* direct_position_based_solver_for_stiff_rods_interface.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE6D28A8E0EE003AA16E /* direct_position_based_solver_for_stiff_rods_interface.h */; };
+		040CBEB828A8E0EF003AA16E /* position_based_elastic_rods.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBE6E28A8E0EE003AA16E /* position_based_elastic_rods.cpp */; };
+		040CBEB928A8E0EF003AA16E /* line_model.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE6F28A8E0EE003AA16E /* line_model.h */; };
+		040CBEBA28A8E0EF003AA16E /* distance_field_collision_detection.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE7028A8E0EE003AA16E /* distance_field_collision_detection.h */; };
+		040CBEBB28A8E0EF003AA16E /* time_step.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE7128A8E0EE003AA16E /* time_step.h */; };
+		040CBEBC28A8E0EF003AA16E /* triangle_model.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE7228A8E0EE003AA16E /* triangle_model.h */; };
+		040CBEBD28A8E0EF003AA16E /* file_system.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE7328A8E0EE003AA16E /* file_system.h */; };
+		040CBEBE28A8E0EF003AA16E /* volume_integration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBE7428A8E0EE003AA16E /* volume_integration.cpp */; };
+		040CBEBF28A8E0EF003AA16E /* scene_loader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBE7528A8E0EE003AA16E /* scene_loader.cpp */; };
+		040CBEC028A8E0EF003AA16E /* bounding_sphere.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE7628A8E0EE003AA16E /* bounding_sphere.h */; };
+		040CBEC128A8E0EF003AA16E /* position_based_dynamics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBE7728A8E0EE003AA16E /* position_based_dynamics.cpp */; };
+		040CBEC228A8E0EF003AA16E /* particle_data.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE7828A8E0EE003AA16E /* particle_data.h */; };
+		040CBEC328A8E0EF003AA16E /* simulation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBE7928A8E0EE003AA16E /* simulation.cpp */; };
+		040CBEC428A8E0EF003AA16E /* cubic_sdf_collision_detection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBE7A28A8E0EE003AA16E /* cubic_sdf_collision_detection.cpp */; };
+		040CBEC528A8E0EF003AA16E /* position_based_rigid_body_dynamics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBE7B28A8E0EE003AA16E /* position_based_rigid_body_dynamics.cpp */; };
+		040CBEC628A8E0EF003AA16E /* simulation_model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBE7D28A8E0EE003AA16E /* simulation_model.cpp */; };
+		040CBEC728A8E0EF003AA16E /* position_based_dynamics.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE7E28A8E0EE003AA16E /* position_based_dynamics.h */; };
+		040CBEC828A8E0EF003AA16E /* indexed_face_mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBE7F28A8E0EE003AA16E /* indexed_face_mesh.cpp */; };
+		040CBEC928A8E0EF003AA16E /* math_functions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBE8028A8E0EE003AA16E /* math_functions.cpp */; };
+		040CBECA28A8E0EF003AA16E /* aabb.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE8128A8E0EF003AA16E /* aabb.h */; };
+		040CBECB28A8E0EF003AA16E /* common.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE8228A8E0EF003AA16E /* common.h */; };
+		040CBECC28A8E0EF003AA16E /* kdtree.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE8328A8E0EF003AA16E /* kdtree.h */; };
+		040CBECD28A8E0EF003AA16E /* timing.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE8428A8E0EF003AA16E /* timing.h */; };
+		040CBECE28A8E0EF003AA16E /* tet_model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBE8528A8E0EF003AA16E /* tet_model.cpp */; };
+		040CBECF28A8E0EF003AA16E /* triangle_model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBE8628A8E0EF003AA16E /* triangle_model.cpp */; };
+		040CBED028A8E0EF003AA16E /* id_factory.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE8728A8E0EF003AA16E /* id_factory.h */; };
+		040CBED128A8E0EF003AA16E /* scene_loader.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE8828A8E0EF003AA16E /* scene_loader.h */; };
+		040CBED228A8E0EF003AA16E /* constraints.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBE8928A8E0EF003AA16E /* constraints.cpp */; };
+		040CBED328A8E0EF003AA16E /* xpbd.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE8A28A8E0EF003AA16E /* xpbd.h */; };
+		040CBED428A8E0EF003AA16E /* position_based_rigid_body_dynamics.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE8B28A8E0EF003AA16E /* position_based_rigid_body_dynamics.h */; };
+		040CBED528A8E0EF003AA16E /* constraints.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE8C28A8E0EF003AA16E /* constraints.h */; };
+		040CBED628A8E0EF003AA16E /* object_array.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE8D28A8E0EF003AA16E /* object_array.h */; };
+		040CBED728A8E0EF003AA16E /* collision_detection.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE8E28A8E0EF003AA16E /* collision_detection.h */; };
+		040CBED828A8E0EF003AA16E /* math_functions.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE8F28A8E0EF003AA16E /* math_functions.h */; };
+		040CBED928A8E0EF003AA16E /* tet_gen_loader.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE9028A8E0EF003AA16E /* tet_gen_loader.h */; };
+		040CBEDA28A8E0EF003AA16E /* time_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBE9128A8E0EF003AA16E /* time_manager.cpp */; };
+		040CBEDB28A8E0EF003AA16E /* rigid_body_geometry.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE9228A8E0EF003AA16E /* rigid_body_geometry.h */; };
+		040CBEDC28A8E0EF003AA16E /* bounding_sphere_hierarchy.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE9328A8E0EF003AA16E /* bounding_sphere_hierarchy.h */; };
+		040CBEDD28A8E0EF003AA16E /* simulation.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE9428A8E0EF003AA16E /* simulation.h */; };
+		040CBEDE28A8E0EF003AA16E /* xpbd.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBE9528A8E0EF003AA16E /* xpbd.cpp */; };
+		040CBEDF28A8E0EF003AA16E /* neighborhood_search_spatial_hashing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBE9628A8E0EF003AA16E /* neighborhood_search_spatial_hashing.cpp */; };
+		040CBEE028A8E0EF003AA16E /* string_tools.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE9728A8E0EF003AA16E /* string_tools.h */; };
+		040CBEE128A8E0EF003AA16E /* line_model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBE9828A8E0EF003AA16E /* line_model.cpp */; };
+		040CBEE228A8E0EF003AA16E /* neighborhood_search_spatial_hashing.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE9928A8E0EF003AA16E /* neighborhood_search_spatial_hashing.h */; };
+		040CBEE628A8E11E003AA16E /* libvox.base.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 043A98B528A7416D00BCFAB0 /* libvox.base.a */; };
+		040CBEF528A8E12D003AA16E /* logging.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBEE828A8E12C003AA16E /* logging.h */; };
+		040CBEF628A8E12D003AA16E /* config.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBEE928A8E12C003AA16E /* config.h */; };
+		040CBEF728A8E12D003AA16E /* compact_search.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBEEA28A8E12C003AA16E /* compact_search.h */; };
+		040CBEF828A8E12D003AA16E /* compact_search.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBEEB28A8E12C003AA16E /* compact_search.cpp */; };
+		040CBEF928A8E12D003AA16E /* version.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBEEC28A8E12C003AA16E /* version.h */; };
+		040CBEFA28A8E12D003AA16E /* cubic_lagrange_discrete_grid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBEED28A8E12D003AA16E /* cubic_lagrange_discrete_grid.cpp */; };
+		040CBEFB28A8E12D003AA16E /* discrete_grid.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBEEE28A8E12D003AA16E /* discrete_grid.h */; };
+		040CBEFC28A8E12D003AA16E /* md5.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBEEF28A8E12D003AA16E /* md5.h */; };
+		040CBEFD28A8E12D003AA16E /* point_set.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBEF028A8E12D003AA16E /* point_set.h */; };
+		040CBEFE28A8E12D003AA16E /* data_structures.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBEF128A8E12D003AA16E /* data_structures.h */; };
+		040CBEFF28A8E12D003AA16E /* cubic_lagrange_discrete_grid.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBEF228A8E12D003AA16E /* cubic_lagrange_discrete_grid.h */; };
+		040CBF0028A8E12D003AA16E /* discrete_grid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBEF328A8E12D003AA16E /* discrete_grid.cpp */; };
+		040CBF0128A8E12D003AA16E /* md5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBEF428A8E12D003AA16E /* md5.cpp */; };
+		040CBF0728A8E16D003AA16E /* z_sort_table.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF0628A8E16D003AA16E /* z_sort_table.h */; };
+		040CBF0C28A8E173003AA16E /* spinlock.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF0828A8E173003AA16E /* spinlock.h */; };
+		040CBF0D28A8E173003AA16E /* timing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBF0928A8E173003AA16E /* timing.cpp */; };
+		040CBF0E28A8E173003AA16E /* serialize.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF0A28A8E173003AA16E /* serialize.h */; };
+		040CBF0F28A8E173003AA16E /* timing.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF0B28A8E173003AA16E /* timing.h */; };
+		040CBF1728A8E17C003AA16E /* entity_iterators.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF1028A8E17C003AA16E /* entity_iterators.h */; };
+		040CBF1828A8E17C003AA16E /* entity_containers.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF1128A8E17C003AA16E /* entity_containers.h */; };
+		040CBF1928A8E17C003AA16E /* triangle_mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBF1228A8E17C003AA16E /* triangle_mesh.cpp */; };
+		040CBF1A28A8E17C003AA16E /* halfedge.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF1328A8E17C003AA16E /* halfedge.h */; };
+		040CBF1B28A8E17C003AA16E /* entity_iterators.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBF1428A8E17C003AA16E /* entity_iterators.cpp */; };
+		040CBF1C28A8E17C003AA16E /* entity_containers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBF1528A8E17C003AA16E /* entity_containers.cpp */; };
+		040CBF1D28A8E17C003AA16E /* triangle_mesh.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF1628A8E17C003AA16E /* triangle_mesh.h */; };
+		040CBF1F28A8E182003AA16E /* triangle_mesh_distance.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF1E28A8E182003AA16E /* triangle_mesh_distance.h */; };
+		040CBF4C28A8E26E003AA16E /* boundary_model.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF2028A8E26D003AA16E /* boundary_model.h */; };
+		040CBF4D28A8E26E003AA16E /* emitter_system.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBF2128A8E26D003AA16E /* emitter_system.cpp */; };
+		040CBF4E28A8E26E003AA16E /* boundary_model_koschier2017.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF2228A8E26D003AA16E /* boundary_model_koschier2017.h */; };
+		040CBF4F28A8E26E003AA16E /* animation_field_system.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF2328A8E26D003AA16E /* animation_field_system.h */; };
+		040CBF5028A8E26E003AA16E /* boundary_model_bender2019.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF2428A8E26D003AA16E /* boundary_model_bender2019.h */; };
+		040CBF5128A8E26E003AA16E /* boundary_model_akinci2012.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF2528A8E26D003AA16E /* boundary_model_akinci2012.h */; };
+		040CBF5228A8E26E003AA16E /* fluid_model.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF2628A8E26D003AA16E /* fluid_model.h */; };
+		040CBF5328A8E26E003AA16E /* boundary_model_bender2019.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBF2728A8E26D003AA16E /* boundary_model_bender2019.cpp */; };
+		040CBF5428A8E26E003AA16E /* file_system.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF2828A8E26D003AA16E /* file_system.h */; };
+		040CBF5528A8E26E003AA16E /* rigid_body_object.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF2928A8E26D003AA16E /* rigid_body_object.h */; };
+		040CBF5628A8E26E003AA16E /* non_pressure_force_base.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF2A28A8E26D003AA16E /* non_pressure_force_base.h */; };
+		040CBF5728A8E26E003AA16E /* scene_configuration.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF2B28A8E26D003AA16E /* scene_configuration.h */; };
+		040CBF5828A8E26E003AA16E /* static_rigid_body.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF2C28A8E26D003AA16E /* static_rigid_body.h */; };
+		040CBF5928A8E26E003AA16E /* time_step.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBF2D28A8E26D003AA16E /* time_step.cpp */; };
+		040CBF5A28A8E26E003AA16E /* timing.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF2E28A8E26D003AA16E /* timing.h */; };
+		040CBF5B28A8E26E003AA16E /* simulation.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF2F28A8E26D003AA16E /* simulation.h */; };
+		040CBF5C28A8E26E003AA16E /* triangle_mesh.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF3028A8E26D003AA16E /* triangle_mesh.h */; };
+		040CBF5D28A8E26E003AA16E /* scene_configuration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBF3128A8E26D003AA16E /* scene_configuration.cpp */; };
+		040CBF5E28A8E26E003AA16E /* boundary_model_koschier2017.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBF3228A8E26D003AA16E /* boundary_model_koschier2017.cpp */; };
+		040CBF5F28A8E26E003AA16E /* emitter_system.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF3328A8E26D003AA16E /* emitter_system.h */; };
+		040CBF6028A8E26E003AA16E /* animation_field.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF3428A8E26D003AA16E /* animation_field.h */; };
+		040CBF6128A8E26E003AA16E /* sph_kernels.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF3528A8E26D003AA16E /* sph_kernels.h */; };
+		040CBF6228A8E26E003AA16E /* emitter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBF3628A8E26E003AA16E /* emitter.cpp */; };
+		040CBF6328A8E26E003AA16E /* neighborhood_search.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF3728A8E26E003AA16E /* neighborhood_search.h */; };
+		040CBF6428A8E26E003AA16E /* animation_field_system.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBF3828A8E26E003AA16E /* animation_field_system.cpp */; };
+		040CBF6528A8E26E003AA16E /* sph_kernels.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBF3928A8E26E003AA16E /* sph_kernels.cpp */; };
+		040CBF6628A8E26E003AA16E /* time_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBF3A28A8E26E003AA16E /* time_manager.cpp */; };
+		040CBF6728A8E26E003AA16E /* common.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF3B28A8E26E003AA16E /* common.h */; };
+		040CBF6828A8E26E003AA16E /* time_manager.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF3C28A8E26E003AA16E /* time_manager.h */; };
+		040CBF6928A8E26E003AA16E /* time_step.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF3D28A8E26E003AA16E /* time_step.h */; };
+		040CBF6A28A8E26E003AA16E /* boundary_model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBF3E28A8E26E003AA16E /* boundary_model.cpp */; };
+		040CBF6B28A8E26E003AA16E /* simulation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBF3F28A8E26E003AA16E /* simulation.cpp */; };
+		040CBF6C28A8E26E003AA16E /* obj_loader.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF4028A8E26E003AA16E /* obj_loader.h */; };
+		040CBF6D28A8E26E003AA16E /* triangle_mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBF4128A8E26E003AA16E /* triangle_mesh.cpp */; };
+		040CBF6E28A8E26E003AA16E /* counting.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF4228A8E26E003AA16E /* counting.h */; };
+		040CBF6F28A8E26E003AA16E /* non_pressure_force_registration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBF4328A8E26E003AA16E /* non_pressure_force_registration.cpp */; };
+		040CBF7028A8E26E003AA16E /* binary_file_reader_writer.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF4428A8E26E003AA16E /* binary_file_reader_writer.h */; };
+		040CBF7128A8E26E003AA16E /* animation_field.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBF4528A8E26E003AA16E /* animation_field.cpp */; };
+		040CBF7228A8E26E003AA16E /* string_tools.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF4628A8E26E003AA16E /* string_tools.h */; };
+		040CBF7328A8E26E003AA16E /* non_pressure_force_base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBF4728A8E26E003AA16E /* non_pressure_force_base.cpp */; };
+		040CBF7428A8E26E003AA16E /* boundary_model_akinci2012.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBF4828A8E26E003AA16E /* boundary_model_akinci2012.cpp */; };
+		040CBF7528A8E26E003AA16E /* emitter.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF4928A8E26E003AA16E /* emitter.h */; };
+		040CBF7628A8E26E003AA16E /* fluid_model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBF4A28A8E26E003AA16E /* fluid_model.cpp */; };
+		040CBF7728A8E26E003AA16E /* system_info.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF4B28A8E26E003AA16E /* system_info.h */; };
+		040CBF7A28A8E282003AA16E /* libvox.base.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 043A98B528A7416D00BCFAB0 /* libvox.base.a */; };
+		040CBF8C28A8E334003AA16E /* time_step_wcsph.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF8828A8E334003AA16E /* time_step_wcsph.h */; };
+		040CBF8D28A8E334003AA16E /* simulation_data_wcsph.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF8928A8E334003AA16E /* simulation_data_wcsph.h */; };
+		040CBF8E28A8E334003AA16E /* time_step_wcsph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBF8A28A8E334003AA16E /* time_step_wcsph.cpp */; };
+		040CBF8F28A8E334003AA16E /* simulation_data_wcsph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBF8B28A8E334003AA16E /* simulation_data_wcsph.cpp */; };
+		040CBF9628A8E342003AA16E /* vorticity_base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBF9028A8E341003AA16E /* vorticity_base.cpp */; };
+		040CBF9728A8E342003AA16E /* vorticity_confinement.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF9128A8E341003AA16E /* vorticity_confinement.h */; };
+		040CBF9828A8E342003AA16E /* micropolar_model_bender2017.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBF9228A8E341003AA16E /* micropolar_model_bender2017.cpp */; };
+		040CBF9928A8E342003AA16E /* micropolar_model_bender2017.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF9328A8E341003AA16E /* micropolar_model_bender2017.h */; };
+		040CBF9A28A8E342003AA16E /* vorticity_base.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF9428A8E341003AA16E /* vorticity_base.h */; };
+		040CBF9B28A8E342003AA16E /* vorticity_confinement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBF9528A8E341003AA16E /* vorticity_confinement.cpp */; };
+		040CBFAC28A8E349003AA16E /* viscosity_xsph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBF9C28A8E349003AA16E /* viscosity_xsph.cpp */; };
+		040CBFAD28A8E349003AA16E /* viscosity_takahashi2015.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF9D28A8E349003AA16E /* viscosity_takahashi2015.h */; };
+		040CBFAE28A8E349003AA16E /* viscosity_peer2016.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBF9E28A8E349003AA16E /* viscosity_peer2016.cpp */; };
+		040CBFAF28A8E349003AA16E /* viscosity_standard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBF9F28A8E349003AA16E /* viscosity_standard.cpp */; };
+		040CBFB028A8E349003AA16E /* viscosity_xsph.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBFA028A8E349003AA16E /* viscosity_xsph.h */; };
+		040CBFB128A8E349003AA16E /* viscosity_bender2017.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBFA128A8E349003AA16E /* viscosity_bender2017.cpp */; };
+		040CBFB228A8E349003AA16E /* viscosity_base.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBFA228A8E349003AA16E /* viscosity_base.h */; };
+		040CBFB328A8E349003AA16E /* viscosity_peer2015.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBFA328A8E349003AA16E /* viscosity_peer2015.cpp */; };
+		040CBFB428A8E349003AA16E /* viscosity_peer2016.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBFA428A8E349003AA16E /* viscosity_peer2016.h */; };
+		040CBFB528A8E349003AA16E /* viscosity_standard.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBFA528A8E349003AA16E /* viscosity_standard.h */; };
+		040CBFB628A8E349003AA16E /* viscosity_takahashi2015.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBFA628A8E349003AA16E /* viscosity_takahashi2015.cpp */; };
+		040CBFB728A8E349003AA16E /* viscosity_bender2017.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBFA728A8E349003AA16E /* viscosity_bender2017.h */; };
+		040CBFB828A8E349003AA16E /* viscosity_weiler2018.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBFA828A8E349003AA16E /* viscosity_weiler2018.h */; };
+		040CBFB928A8E349003AA16E /* viscosity_weiler2018.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBFA928A8E349003AA16E /* viscosity_weiler2018.cpp */; };
+		040CBFBA28A8E349003AA16E /* viscosity_base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBFAA28A8E349003AA16E /* viscosity_base.cpp */; };
+		040CBFBB28A8E349003AA16E /* viscosity_peer2015.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBFAB28A8E349003AA16E /* viscosity_peer2015.h */; };
+		040CBFD428A8E350003AA16E /* sdf_functions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBFBC28A8E34F003AA16E /* sdf_functions.cpp */; };
+		040CBFD528A8E350003AA16E /* math_functions.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBFBD28A8E34F003AA16E /* math_functions.h */; };
+		040CBFD628A8E350003AA16E /* gauss_quadrature.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBFBE28A8E34F003AA16E /* gauss_quadrature.cpp */; };
+		040CBFD728A8E350003AA16E /* surface_sampling.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBFBF28A8E34F003AA16E /* surface_sampling.h */; };
+		040CBFD828A8E350003AA16E /* poisson_disk_sampling.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBFC028A8E34F003AA16E /* poisson_disk_sampling.h */; };
+		040CBFD928A8E350003AA16E /* winding_numbers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBFC128A8E34F003AA16E /* winding_numbers.cpp */; };
+		040CBFDA28A8E350003AA16E /* winding_numbers.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBFC228A8E34F003AA16E /* winding_numbers.h */; };
+		040CBFDB28A8E350003AA16E /* regular_triangle_sampling.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBFC328A8E34F003AA16E /* regular_triangle_sampling.h */; };
+		040CBFDC28A8E350003AA16E /* regular_sampling_2d.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBFC428A8E34F003AA16E /* regular_sampling_2d.cpp */; };
+		040CBFDD28A8E350003AA16E /* scene_loader.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBFC528A8E34F003AA16E /* scene_loader.h */; };
+		040CBFDE28A8E350003AA16E /* volume_sampling.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBFC628A8E34F003AA16E /* volume_sampling.cpp */; };
+		040CBFDF28A8E350003AA16E /* simple_quadrature.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBFC728A8E34F003AA16E /* simple_quadrature.h */; };
+		040CBFE028A8E350003AA16E /* sdf_functions.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBFC828A8E34F003AA16E /* sdf_functions.h */; };
+		040CBFE128A8E350003AA16E /* debug_tools.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBFC928A8E34F003AA16E /* debug_tools.h */; };
+		040CBFE228A8E350003AA16E /* volume_sampling.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBFCA28A8E34F003AA16E /* volume_sampling.h */; };
+		040CBFE328A8E350003AA16E /* gauss_quadrature.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBFCB28A8E34F003AA16E /* gauss_quadrature.h */; };
+		040CBFE428A8E350003AA16E /* math_functions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBFCC28A8E34F003AA16E /* math_functions.cpp */; };
+		040CBFE528A8E350003AA16E /* debug_tools.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBFCD28A8E34F003AA16E /* debug_tools.cpp */; };
+		040CBFE628A8E350003AA16E /* regular_triangle_sampling.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBFCE28A8E34F003AA16E /* regular_triangle_sampling.cpp */; };
+		040CBFE728A8E350003AA16E /* regular_sampling_2d.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBFCF28A8E350003AA16E /* regular_sampling_2d.h */; };
+		040CBFE828A8E350003AA16E /* poisson_disk_sampling.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBFD028A8E350003AA16E /* poisson_disk_sampling.cpp */; };
+		040CBFE928A8E350003AA16E /* matrix_free_solver.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBFD128A8E350003AA16E /* matrix_free_solver.h */; };
+		040CBFEA28A8E350003AA16E /* scene_loader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBFD228A8E350003AA16E /* scene_loader.cpp */; };
+		040CBFEB28A8E350003AA16E /* simple_quadrature.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBFD328A8E350003AA16E /* simple_quadrature.cpp */; };
+		040CBFF728A8E356003AA16E /* surface_tension_becker2007.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBFEC28A8E355003AA16E /* surface_tension_becker2007.cpp */; };
+		040CBFF828A8E356003AA16E /* surface_tension_base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBFED28A8E355003AA16E /* surface_tension_base.cpp */; };
+		040CBFF928A8E356003AA16E /* surface_tension_he2014.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBFEE28A8E355003AA16E /* surface_tension_he2014.cpp */; };
+		040CBFFA28A8E356003AA16E /* surface_tension_halton_vec323.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBFEF28A8E355003AA16E /* surface_tension_halton_vec323.h */; };
+		040CBFFB28A8E356003AA16E /* surface_tension_zorillaRitter2020.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBFF028A8E355003AA16E /* surface_tension_zorillaRitter2020.h */; };
+		040CBFFC28A8E356003AA16E /* surface_tension_akinci2013.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBFF128A8E355003AA16E /* surface_tension_akinci2013.h */; };
+		040CBFFD28A8E356003AA16E /* surface_tension_becker2007.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBFF228A8E356003AA16E /* surface_tension_becker2007.h */; };
+		040CBFFE28A8E356003AA16E /* surface_tension_akinci2013.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBFF328A8E356003AA16E /* surface_tension_akinci2013.cpp */; };
+		040CBFFF28A8E356003AA16E /* surface_tension_he2014.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBFF428A8E356003AA16E /* surface_tension_he2014.h */; };
+		040CC00028A8E356003AA16E /* surface_tension_base.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBFF528A8E356003AA16E /* surface_tension_base.h */; };
+		040CC00128A8E356003AA16E /* surface_tension_zorillaRitter2020.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBFF628A8E356003AA16E /* surface_tension_zorillaRitter2020.cpp */; };
+		040CC00628A8E35F003AA16E /* simulation_data_pf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CC00228A8E35F003AA16E /* simulation_data_pf.cpp */; };
+		040CC00728A8E35F003AA16E /* time_step_pf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CC00328A8E35F003AA16E /* time_step_pf.cpp */; };
+		040CC00828A8E35F003AA16E /* time_step_pf.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CC00428A8E35F003AA16E /* time_step_pf.h */; };
+		040CC00928A8E35F003AA16E /* simulation_data_pf.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CC00528A8E35F003AA16E /* simulation_data_pf.h */; };
+		040CC00E28A8E365003AA16E /* time_step_pcisph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CC00A28A8E365003AA16E /* time_step_pcisph.cpp */; };
+		040CC00F28A8E365003AA16E /* simulation_data_pcisph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CC00B28A8E365003AA16E /* simulation_data_pcisph.cpp */; };
+		040CC01028A8E365003AA16E /* time_step_pcisph.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CC00C28A8E365003AA16E /* time_step_pcisph.h */; };
+		040CC01128A8E365003AA16E /* simulation_data_pcisph.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CC00D28A8E365003AA16E /* simulation_data_pcisph.h */; };
+		040CC01828A8E36B003AA16E /* simulation_data_pbf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CC01228A8E36B003AA16E /* simulation_data_pbf.cpp */; };
+		040CC01928A8E36B003AA16E /* time_step_pbf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CC01328A8E36B003AA16E /* time_step_pbf.cpp */; };
+		040CC01A28A8E36B003AA16E /* time_step_pbf.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CC01428A8E36B003AA16E /* time_step_pbf.h */; };
+		040CC01B28A8E36B003AA16E /* simulation_data_pbf.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CC01528A8E36B003AA16E /* simulation_data_pbf.h */; };
+		040CC01C28A8E36B003AA16E /* time_integration.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CC01628A8E36B003AA16E /* time_integration.h */; };
+		040CC01D28A8E36B003AA16E /* time_integration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CC01728A8E36B003AA16E /* time_integration.cpp */; };
+		040CC02228A8E371003AA16E /* simulation_data_iisph.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CC01E28A8E371003AA16E /* simulation_data_iisph.h */; };
+		040CC02328A8E371003AA16E /* time_step_iisph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CC01F28A8E371003AA16E /* time_step_iisph.cpp */; };
+		040CC02428A8E371003AA16E /* simulation_data_iisph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CC02028A8E371003AA16E /* simulation_data_iisph.cpp */; };
+		040CC02528A8E371003AA16E /* time_step_iisph.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CC02128A8E371003AA16E /* time_step_iisph.h */; };
+		040CC02A28A8E377003AA16E /* time_step_icsph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CC02628A8E377003AA16E /* time_step_icsph.cpp */; };
+		040CC02B28A8E377003AA16E /* simulation_data_icsph.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CC02728A8E377003AA16E /* simulation_data_icsph.h */; };
+		040CC02C28A8E377003AA16E /* simulation_data_icsph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CC02828A8E377003AA16E /* simulation_data_icsph.cpp */; };
+		040CC02D28A8E377003AA16E /* time_step_icsph.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CC02928A8E377003AA16E /* time_step_icsph.h */; };
+		040CC03628A8E37E003AA16E /* elasticity_becker2009.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CC02E28A8E37E003AA16E /* elasticity_becker2009.cpp */; };
+		040CC03728A8E37E003AA16E /* elasticity_peer2018.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CC02F28A8E37E003AA16E /* elasticity_peer2018.h */; };
+		040CC03828A8E37E003AA16E /* elasticity_kugelstadt2021.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CC03028A8E37E003AA16E /* elasticity_kugelstadt2021.cpp */; };
+		040CC03928A8E37E003AA16E /* elasticity_becker2009.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CC03128A8E37E003AA16E /* elasticity_becker2009.h */; };
+		040CC03A28A8E37E003AA16E /* elasticity_kugelstadt2021.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CC03228A8E37E003AA16E /* elasticity_kugelstadt2021.h */; };
+		040CC03B28A8E37E003AA16E /* elasticity_base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CC03328A8E37E003AA16E /* elasticity_base.cpp */; };
+		040CC03C28A8E37E003AA16E /* elasticity_peer2018.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CC03428A8E37E003AA16E /* elasticity_peer2018.cpp */; };
+		040CC03D28A8E37E003AA16E /* elasticity_base.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CC03528A8E37E003AA16E /* elasticity_base.h */; };
+		040CC04428A8E384003AA16E /* drag_force_gissler2017.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CC03E28A8E383003AA16E /* drag_force_gissler2017.cpp */; };
+		040CC04528A8E384003AA16E /* drag_base.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CC03F28A8E383003AA16E /* drag_base.h */; };
+		040CC04628A8E384003AA16E /* drag_force_gissler2017.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CC04028A8E384003AA16E /* drag_force_gissler2017.h */; };
+		040CC04728A8E384003AA16E /* drag_base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CC04128A8E384003AA16E /* drag_base.cpp */; };
+		040CC04828A8E384003AA16E /* drag_force_macklin2014.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CC04228A8E384003AA16E /* drag_force_macklin2014.cpp */; };
+		040CC04928A8E384003AA16E /* drag_force_macklin2014.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CC04328A8E384003AA16E /* drag_force_macklin2014.h */; };
+		040CC04E28A8E389003AA16E /* time_step_dfsph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CC04A28A8E389003AA16E /* time_step_dfsph.cpp */; };
+		040CC04F28A8E389003AA16E /* simulation_data_dfsph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CC04B28A8E389003AA16E /* simulation_data_dfsph.cpp */; };
+		040CC05028A8E389003AA16E /* time_step_dfsph.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CC04C28A8E389003AA16E /* time_step_dfsph.h */; };
+		040CC05128A8E389003AA16E /* simulation_data_dfsph.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CC04D28A8E389003AA16E /* simulation_data_dfsph.h */; };
 		043A98AB28A7410200BCFAB0 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 043A98AA28A7410200BCFAB0 /* main.cpp */; };
 		043A98EC28A742D200BCFAB0 /* test_parameter_object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 043A98E928A742D200BCFAB0 /* test_parameter_object.cpp */; };
 		043A98ED28A742D200BCFAB0 /* parameter_tests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 043A98EA28A742D200BCFAB0 /* parameter_tests.cpp */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		040CBEE328A8E11A003AA16E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 043A989F28A7410200BCFAB0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 043A98B428A7416D00BCFAB0;
+			remoteInfo = vox.base;
+		};
+		040CBF7828A8E27F003AA16E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 043A989F28A7410200BCFAB0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 043A98B428A7416D00BCFAB0;
+			remoteInfo = vox.base;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		043A98A528A7410200BCFAB0 /* CopyFiles */ = {
@@ -46,6 +309,251 @@
 		040CBE4728A7460F003AA16E /* function_parameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = function_parameter.h; sourceTree = "<group>"; };
 		040CBE4828A7460F003AA16E /* numeric_parameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = numeric_parameter.h; sourceTree = "<group>"; };
 		040CBE4928A7460F003AA16E /* vector_parameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vector_parameter.h; sourceTree = "<group>"; };
+		040CBE5028A8E0EE003AA16E /* position_based_fluids.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = position_based_fluids.cpp; sourceTree = "<group>"; };
+		040CBE5128A8E0EE003AA16E /* simulation_model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = simulation_model.h; sourceTree = "<group>"; };
+		040CBE5228A8E0EE003AA16E /* sph_kernels.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sph_kernels.cpp; sourceTree = "<group>"; };
+		040CBE5328A8E0EE003AA16E /* indexed_tet_mesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = indexed_tet_mesh.cpp; sourceTree = "<group>"; };
+		040CBE5428A8E0EE003AA16E /* tet_model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tet_model.h; sourceTree = "<group>"; };
+		040CBE5528A8E0EE003AA16E /* position_based_generic_constraints.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = position_based_generic_constraints.h; sourceTree = "<group>"; };
+		040CBE5628A8E0EE003AA16E /* position_based_elastic_rods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = position_based_elastic_rods.h; sourceTree = "<group>"; };
+		040CBE5728A8E0EE003AA16E /* sph_kernels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sph_kernels.h; sourceTree = "<group>"; };
+		040CBE5828A8E0EE003AA16E /* rigid_body.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rigid_body.h; sourceTree = "<group>"; };
+		040CBE5928A8E0EE003AA16E /* time_step_controller.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = time_step_controller.cpp; sourceTree = "<group>"; };
+		040CBE5A28A8E0EE003AA16E /* time_manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = time_manager.h; sourceTree = "<group>"; };
+		040CBE5B28A8E0EE003AA16E /* hashmap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hashmap.h; sourceTree = "<group>"; };
+		040CBE5C28A8E0EE003AA16E /* time_step_controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = time_step_controller.h; sourceTree = "<group>"; };
+		040CBE5D28A8E0EE003AA16E /* position_based_fluids.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = position_based_fluids.h; sourceTree = "<group>"; };
+		040CBE5E28A8E0EE003AA16E /* time_integration.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = time_integration.cpp; sourceTree = "<group>"; };
+		040CBE5F28A8E0EE003AA16E /* cubic_sdf_collision_detection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cubic_sdf_collision_detection.h; sourceTree = "<group>"; };
+		040CBE6028A8E0EE003AA16E /* distance_field_collision_detection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = distance_field_collision_detection.cpp; sourceTree = "<group>"; };
+		040CBE6128A8E0EE003AA16E /* volume_integration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = volume_integration.h; sourceTree = "<group>"; };
+		040CBE6228A8E0EE003AA16E /* time_integration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = time_integration.h; sourceTree = "<group>"; };
+		040CBE6328A8E0EE003AA16E /* indexed_face_mesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = indexed_face_mesh.h; sourceTree = "<group>"; };
+		040CBE6428A8E0EE003AA16E /* system_info.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = system_info.h; sourceTree = "<group>"; };
+		040CBE6528A8E0EE003AA16E /* obj_loader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = obj_loader.h; sourceTree = "<group>"; };
+		040CBE6628A8E0EE003AA16E /* time_step.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = time_step.cpp; sourceTree = "<group>"; };
+		040CBE6728A8E0EE003AA16E /* collision_detection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = collision_detection.cpp; sourceTree = "<group>"; };
+		040CBE6828A8E0EE003AA16E /* rigid_body_geometry.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = rigid_body_geometry.cpp; sourceTree = "<group>"; };
+		040CBE6928A8E0EE003AA16E /* id_factory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = id_factory.cpp; sourceTree = "<group>"; };
+		040CBE6A28A8E0EE003AA16E /* bounding_sphere_hierarchy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = bounding_sphere_hierarchy.cpp; sourceTree = "<group>"; };
+		040CBE6B28A8E0EE003AA16E /* tet_gen_loader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tet_gen_loader.cpp; sourceTree = "<group>"; };
+		040CBE6C28A8E0EE003AA16E /* indexed_tet_mesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = indexed_tet_mesh.h; sourceTree = "<group>"; };
+		040CBE6D28A8E0EE003AA16E /* direct_position_based_solver_for_stiff_rods_interface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = direct_position_based_solver_for_stiff_rods_interface.h; sourceTree = "<group>"; };
+		040CBE6E28A8E0EE003AA16E /* position_based_elastic_rods.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = position_based_elastic_rods.cpp; sourceTree = "<group>"; };
+		040CBE6F28A8E0EE003AA16E /* line_model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = line_model.h; sourceTree = "<group>"; };
+		040CBE7028A8E0EE003AA16E /* distance_field_collision_detection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = distance_field_collision_detection.h; sourceTree = "<group>"; };
+		040CBE7128A8E0EE003AA16E /* time_step.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = time_step.h; sourceTree = "<group>"; };
+		040CBE7228A8E0EE003AA16E /* triangle_model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = triangle_model.h; sourceTree = "<group>"; };
+		040CBE7328A8E0EE003AA16E /* file_system.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = file_system.h; sourceTree = "<group>"; };
+		040CBE7428A8E0EE003AA16E /* volume_integration.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = volume_integration.cpp; sourceTree = "<group>"; };
+		040CBE7528A8E0EE003AA16E /* scene_loader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = scene_loader.cpp; sourceTree = "<group>"; };
+		040CBE7628A8E0EE003AA16E /* bounding_sphere.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bounding_sphere.h; sourceTree = "<group>"; };
+		040CBE7728A8E0EE003AA16E /* position_based_dynamics.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = position_based_dynamics.cpp; sourceTree = "<group>"; };
+		040CBE7828A8E0EE003AA16E /* particle_data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = particle_data.h; sourceTree = "<group>"; };
+		040CBE7928A8E0EE003AA16E /* simulation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = simulation.cpp; sourceTree = "<group>"; };
+		040CBE7A28A8E0EE003AA16E /* cubic_sdf_collision_detection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cubic_sdf_collision_detection.cpp; sourceTree = "<group>"; };
+		040CBE7B28A8E0EE003AA16E /* position_based_rigid_body_dynamics.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = position_based_rigid_body_dynamics.cpp; sourceTree = "<group>"; };
+		040CBE7C28A8E0EE003AA16E /* kdtree.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = kdtree.inl; sourceTree = "<group>"; };
+		040CBE7D28A8E0EE003AA16E /* simulation_model.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = simulation_model.cpp; sourceTree = "<group>"; };
+		040CBE7E28A8E0EE003AA16E /* position_based_dynamics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = position_based_dynamics.h; sourceTree = "<group>"; };
+		040CBE7F28A8E0EE003AA16E /* indexed_face_mesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = indexed_face_mesh.cpp; sourceTree = "<group>"; };
+		040CBE8028A8E0EE003AA16E /* math_functions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = math_functions.cpp; sourceTree = "<group>"; };
+		040CBE8128A8E0EF003AA16E /* aabb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aabb.h; sourceTree = "<group>"; };
+		040CBE8228A8E0EF003AA16E /* common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = "<group>"; };
+		040CBE8328A8E0EF003AA16E /* kdtree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kdtree.h; sourceTree = "<group>"; };
+		040CBE8428A8E0EF003AA16E /* timing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = timing.h; sourceTree = "<group>"; };
+		040CBE8528A8E0EF003AA16E /* tet_model.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tet_model.cpp; sourceTree = "<group>"; };
+		040CBE8628A8E0EF003AA16E /* triangle_model.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = triangle_model.cpp; sourceTree = "<group>"; };
+		040CBE8728A8E0EF003AA16E /* id_factory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = id_factory.h; sourceTree = "<group>"; };
+		040CBE8828A8E0EF003AA16E /* scene_loader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scene_loader.h; sourceTree = "<group>"; };
+		040CBE8928A8E0EF003AA16E /* constraints.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = constraints.cpp; sourceTree = "<group>"; };
+		040CBE8A28A8E0EF003AA16E /* xpbd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xpbd.h; sourceTree = "<group>"; };
+		040CBE8B28A8E0EF003AA16E /* position_based_rigid_body_dynamics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = position_based_rigid_body_dynamics.h; sourceTree = "<group>"; };
+		040CBE8C28A8E0EF003AA16E /* constraints.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = constraints.h; sourceTree = "<group>"; };
+		040CBE8D28A8E0EF003AA16E /* object_array.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = object_array.h; sourceTree = "<group>"; };
+		040CBE8E28A8E0EF003AA16E /* collision_detection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = collision_detection.h; sourceTree = "<group>"; };
+		040CBE8F28A8E0EF003AA16E /* math_functions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = math_functions.h; sourceTree = "<group>"; };
+		040CBE9028A8E0EF003AA16E /* tet_gen_loader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tet_gen_loader.h; sourceTree = "<group>"; };
+		040CBE9128A8E0EF003AA16E /* time_manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = time_manager.cpp; sourceTree = "<group>"; };
+		040CBE9228A8E0EF003AA16E /* rigid_body_geometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rigid_body_geometry.h; sourceTree = "<group>"; };
+		040CBE9328A8E0EF003AA16E /* bounding_sphere_hierarchy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bounding_sphere_hierarchy.h; sourceTree = "<group>"; };
+		040CBE9428A8E0EF003AA16E /* simulation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = simulation.h; sourceTree = "<group>"; };
+		040CBE9528A8E0EF003AA16E /* xpbd.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = xpbd.cpp; sourceTree = "<group>"; };
+		040CBE9628A8E0EF003AA16E /* neighborhood_search_spatial_hashing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = neighborhood_search_spatial_hashing.cpp; sourceTree = "<group>"; };
+		040CBE9728A8E0EF003AA16E /* string_tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = string_tools.h; sourceTree = "<group>"; };
+		040CBE9828A8E0EF003AA16E /* line_model.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = line_model.cpp; sourceTree = "<group>"; };
+		040CBE9928A8E0EF003AA16E /* neighborhood_search_spatial_hashing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = neighborhood_search_spatial_hashing.h; sourceTree = "<group>"; };
+		040CBEE828A8E12C003AA16E /* logging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = logging.h; sourceTree = "<group>"; };
+		040CBEE928A8E12C003AA16E /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
+		040CBEEA28A8E12C003AA16E /* compact_search.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = compact_search.h; sourceTree = "<group>"; };
+		040CBEEB28A8E12C003AA16E /* compact_search.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = compact_search.cpp; sourceTree = "<group>"; };
+		040CBEEC28A8E12C003AA16E /* version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = version.h; sourceTree = "<group>"; };
+		040CBEED28A8E12D003AA16E /* cubic_lagrange_discrete_grid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cubic_lagrange_discrete_grid.cpp; sourceTree = "<group>"; };
+		040CBEEE28A8E12D003AA16E /* discrete_grid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = discrete_grid.h; sourceTree = "<group>"; };
+		040CBEEF28A8E12D003AA16E /* md5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = md5.h; sourceTree = "<group>"; };
+		040CBEF028A8E12D003AA16E /* point_set.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = point_set.h; sourceTree = "<group>"; };
+		040CBEF128A8E12D003AA16E /* data_structures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = data_structures.h; sourceTree = "<group>"; };
+		040CBEF228A8E12D003AA16E /* cubic_lagrange_discrete_grid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cubic_lagrange_discrete_grid.h; sourceTree = "<group>"; };
+		040CBEF328A8E12D003AA16E /* discrete_grid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = discrete_grid.cpp; sourceTree = "<group>"; };
+		040CBEF428A8E12D003AA16E /* md5.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = md5.cpp; sourceTree = "<group>"; };
+		040CBF0628A8E16D003AA16E /* z_sort_table.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = z_sort_table.h; sourceTree = "<group>"; };
+		040CBF0828A8E173003AA16E /* spinlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = spinlock.h; sourceTree = "<group>"; };
+		040CBF0928A8E173003AA16E /* timing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = timing.cpp; sourceTree = "<group>"; };
+		040CBF0A28A8E173003AA16E /* serialize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = serialize.h; sourceTree = "<group>"; };
+		040CBF0B28A8E173003AA16E /* timing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = timing.h; sourceTree = "<group>"; };
+		040CBF1028A8E17C003AA16E /* entity_iterators.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = entity_iterators.h; sourceTree = "<group>"; };
+		040CBF1128A8E17C003AA16E /* entity_containers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = entity_containers.h; sourceTree = "<group>"; };
+		040CBF1228A8E17C003AA16E /* triangle_mesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = triangle_mesh.cpp; sourceTree = "<group>"; };
+		040CBF1328A8E17C003AA16E /* halfedge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = halfedge.h; sourceTree = "<group>"; };
+		040CBF1428A8E17C003AA16E /* entity_iterators.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = entity_iterators.cpp; sourceTree = "<group>"; };
+		040CBF1528A8E17C003AA16E /* entity_containers.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = entity_containers.cpp; sourceTree = "<group>"; };
+		040CBF1628A8E17C003AA16E /* triangle_mesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = triangle_mesh.h; sourceTree = "<group>"; };
+		040CBF1E28A8E182003AA16E /* triangle_mesh_distance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = triangle_mesh_distance.h; sourceTree = "<group>"; };
+		040CBF2028A8E26D003AA16E /* boundary_model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = boundary_model.h; sourceTree = "<group>"; };
+		040CBF2128A8E26D003AA16E /* emitter_system.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = emitter_system.cpp; sourceTree = "<group>"; };
+		040CBF2228A8E26D003AA16E /* boundary_model_koschier2017.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = boundary_model_koschier2017.h; sourceTree = "<group>"; };
+		040CBF2328A8E26D003AA16E /* animation_field_system.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = animation_field_system.h; sourceTree = "<group>"; };
+		040CBF2428A8E26D003AA16E /* boundary_model_bender2019.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = boundary_model_bender2019.h; sourceTree = "<group>"; };
+		040CBF2528A8E26D003AA16E /* boundary_model_akinci2012.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = boundary_model_akinci2012.h; sourceTree = "<group>"; };
+		040CBF2628A8E26D003AA16E /* fluid_model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fluid_model.h; sourceTree = "<group>"; };
+		040CBF2728A8E26D003AA16E /* boundary_model_bender2019.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = boundary_model_bender2019.cpp; sourceTree = "<group>"; };
+		040CBF2828A8E26D003AA16E /* file_system.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = file_system.h; sourceTree = "<group>"; };
+		040CBF2928A8E26D003AA16E /* rigid_body_object.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rigid_body_object.h; sourceTree = "<group>"; };
+		040CBF2A28A8E26D003AA16E /* non_pressure_force_base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = non_pressure_force_base.h; sourceTree = "<group>"; };
+		040CBF2B28A8E26D003AA16E /* scene_configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scene_configuration.h; sourceTree = "<group>"; };
+		040CBF2C28A8E26D003AA16E /* static_rigid_body.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = static_rigid_body.h; sourceTree = "<group>"; };
+		040CBF2D28A8E26D003AA16E /* time_step.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = time_step.cpp; sourceTree = "<group>"; };
+		040CBF2E28A8E26D003AA16E /* timing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = timing.h; sourceTree = "<group>"; };
+		040CBF2F28A8E26D003AA16E /* simulation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = simulation.h; sourceTree = "<group>"; };
+		040CBF3028A8E26D003AA16E /* triangle_mesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = triangle_mesh.h; sourceTree = "<group>"; };
+		040CBF3128A8E26D003AA16E /* scene_configuration.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = scene_configuration.cpp; sourceTree = "<group>"; };
+		040CBF3228A8E26D003AA16E /* boundary_model_koschier2017.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = boundary_model_koschier2017.cpp; sourceTree = "<group>"; };
+		040CBF3328A8E26D003AA16E /* emitter_system.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = emitter_system.h; sourceTree = "<group>"; };
+		040CBF3428A8E26D003AA16E /* animation_field.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = animation_field.h; sourceTree = "<group>"; };
+		040CBF3528A8E26D003AA16E /* sph_kernels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sph_kernels.h; sourceTree = "<group>"; };
+		040CBF3628A8E26E003AA16E /* emitter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = emitter.cpp; sourceTree = "<group>"; };
+		040CBF3728A8E26E003AA16E /* neighborhood_search.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = neighborhood_search.h; sourceTree = "<group>"; };
+		040CBF3828A8E26E003AA16E /* animation_field_system.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = animation_field_system.cpp; sourceTree = "<group>"; };
+		040CBF3928A8E26E003AA16E /* sph_kernels.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sph_kernels.cpp; sourceTree = "<group>"; };
+		040CBF3A28A8E26E003AA16E /* time_manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = time_manager.cpp; sourceTree = "<group>"; };
+		040CBF3B28A8E26E003AA16E /* common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = "<group>"; };
+		040CBF3C28A8E26E003AA16E /* time_manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = time_manager.h; sourceTree = "<group>"; };
+		040CBF3D28A8E26E003AA16E /* time_step.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = time_step.h; sourceTree = "<group>"; };
+		040CBF3E28A8E26E003AA16E /* boundary_model.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = boundary_model.cpp; sourceTree = "<group>"; };
+		040CBF3F28A8E26E003AA16E /* simulation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = simulation.cpp; sourceTree = "<group>"; };
+		040CBF4028A8E26E003AA16E /* obj_loader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = obj_loader.h; sourceTree = "<group>"; };
+		040CBF4128A8E26E003AA16E /* triangle_mesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = triangle_mesh.cpp; sourceTree = "<group>"; };
+		040CBF4228A8E26E003AA16E /* counting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = counting.h; sourceTree = "<group>"; };
+		040CBF4328A8E26E003AA16E /* non_pressure_force_registration.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = non_pressure_force_registration.cpp; sourceTree = "<group>"; };
+		040CBF4428A8E26E003AA16E /* binary_file_reader_writer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = binary_file_reader_writer.h; sourceTree = "<group>"; };
+		040CBF4528A8E26E003AA16E /* animation_field.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = animation_field.cpp; sourceTree = "<group>"; };
+		040CBF4628A8E26E003AA16E /* string_tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = string_tools.h; sourceTree = "<group>"; };
+		040CBF4728A8E26E003AA16E /* non_pressure_force_base.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = non_pressure_force_base.cpp; sourceTree = "<group>"; };
+		040CBF4828A8E26E003AA16E /* boundary_model_akinci2012.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = boundary_model_akinci2012.cpp; sourceTree = "<group>"; };
+		040CBF4928A8E26E003AA16E /* emitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = emitter.h; sourceTree = "<group>"; };
+		040CBF4A28A8E26E003AA16E /* fluid_model.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = fluid_model.cpp; sourceTree = "<group>"; };
+		040CBF4B28A8E26E003AA16E /* system_info.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = system_info.h; sourceTree = "<group>"; };
+		040CBF8828A8E334003AA16E /* time_step_wcsph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = time_step_wcsph.h; sourceTree = "<group>"; };
+		040CBF8928A8E334003AA16E /* simulation_data_wcsph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = simulation_data_wcsph.h; sourceTree = "<group>"; };
+		040CBF8A28A8E334003AA16E /* time_step_wcsph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = time_step_wcsph.cpp; sourceTree = "<group>"; };
+		040CBF8B28A8E334003AA16E /* simulation_data_wcsph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = simulation_data_wcsph.cpp; sourceTree = "<group>"; };
+		040CBF9028A8E341003AA16E /* vorticity_base.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = vorticity_base.cpp; sourceTree = "<group>"; };
+		040CBF9128A8E341003AA16E /* vorticity_confinement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vorticity_confinement.h; sourceTree = "<group>"; };
+		040CBF9228A8E341003AA16E /* micropolar_model_bender2017.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = micropolar_model_bender2017.cpp; sourceTree = "<group>"; };
+		040CBF9328A8E341003AA16E /* micropolar_model_bender2017.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = micropolar_model_bender2017.h; sourceTree = "<group>"; };
+		040CBF9428A8E341003AA16E /* vorticity_base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vorticity_base.h; sourceTree = "<group>"; };
+		040CBF9528A8E341003AA16E /* vorticity_confinement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = vorticity_confinement.cpp; sourceTree = "<group>"; };
+		040CBF9C28A8E349003AA16E /* viscosity_xsph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = viscosity_xsph.cpp; sourceTree = "<group>"; };
+		040CBF9D28A8E349003AA16E /* viscosity_takahashi2015.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = viscosity_takahashi2015.h; sourceTree = "<group>"; };
+		040CBF9E28A8E349003AA16E /* viscosity_peer2016.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = viscosity_peer2016.cpp; sourceTree = "<group>"; };
+		040CBF9F28A8E349003AA16E /* viscosity_standard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = viscosity_standard.cpp; sourceTree = "<group>"; };
+		040CBFA028A8E349003AA16E /* viscosity_xsph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = viscosity_xsph.h; sourceTree = "<group>"; };
+		040CBFA128A8E349003AA16E /* viscosity_bender2017.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = viscosity_bender2017.cpp; sourceTree = "<group>"; };
+		040CBFA228A8E349003AA16E /* viscosity_base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = viscosity_base.h; sourceTree = "<group>"; };
+		040CBFA328A8E349003AA16E /* viscosity_peer2015.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = viscosity_peer2015.cpp; sourceTree = "<group>"; };
+		040CBFA428A8E349003AA16E /* viscosity_peer2016.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = viscosity_peer2016.h; sourceTree = "<group>"; };
+		040CBFA528A8E349003AA16E /* viscosity_standard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = viscosity_standard.h; sourceTree = "<group>"; };
+		040CBFA628A8E349003AA16E /* viscosity_takahashi2015.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = viscosity_takahashi2015.cpp; sourceTree = "<group>"; };
+		040CBFA728A8E349003AA16E /* viscosity_bender2017.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = viscosity_bender2017.h; sourceTree = "<group>"; };
+		040CBFA828A8E349003AA16E /* viscosity_weiler2018.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = viscosity_weiler2018.h; sourceTree = "<group>"; };
+		040CBFA928A8E349003AA16E /* viscosity_weiler2018.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = viscosity_weiler2018.cpp; sourceTree = "<group>"; };
+		040CBFAA28A8E349003AA16E /* viscosity_base.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = viscosity_base.cpp; sourceTree = "<group>"; };
+		040CBFAB28A8E349003AA16E /* viscosity_peer2015.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = viscosity_peer2015.h; sourceTree = "<group>"; };
+		040CBFBC28A8E34F003AA16E /* sdf_functions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sdf_functions.cpp; sourceTree = "<group>"; };
+		040CBFBD28A8E34F003AA16E /* math_functions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = math_functions.h; sourceTree = "<group>"; };
+		040CBFBE28A8E34F003AA16E /* gauss_quadrature.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gauss_quadrature.cpp; sourceTree = "<group>"; };
+		040CBFBF28A8E34F003AA16E /* surface_sampling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = surface_sampling.h; sourceTree = "<group>"; };
+		040CBFC028A8E34F003AA16E /* poisson_disk_sampling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poisson_disk_sampling.h; sourceTree = "<group>"; };
+		040CBFC128A8E34F003AA16E /* winding_numbers.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = winding_numbers.cpp; sourceTree = "<group>"; };
+		040CBFC228A8E34F003AA16E /* winding_numbers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = winding_numbers.h; sourceTree = "<group>"; };
+		040CBFC328A8E34F003AA16E /* regular_triangle_sampling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = regular_triangle_sampling.h; sourceTree = "<group>"; };
+		040CBFC428A8E34F003AA16E /* regular_sampling_2d.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = regular_sampling_2d.cpp; sourceTree = "<group>"; };
+		040CBFC528A8E34F003AA16E /* scene_loader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scene_loader.h; sourceTree = "<group>"; };
+		040CBFC628A8E34F003AA16E /* volume_sampling.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = volume_sampling.cpp; sourceTree = "<group>"; };
+		040CBFC728A8E34F003AA16E /* simple_quadrature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = simple_quadrature.h; sourceTree = "<group>"; };
+		040CBFC828A8E34F003AA16E /* sdf_functions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sdf_functions.h; sourceTree = "<group>"; };
+		040CBFC928A8E34F003AA16E /* debug_tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = debug_tools.h; sourceTree = "<group>"; };
+		040CBFCA28A8E34F003AA16E /* volume_sampling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = volume_sampling.h; sourceTree = "<group>"; };
+		040CBFCB28A8E34F003AA16E /* gauss_quadrature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gauss_quadrature.h; sourceTree = "<group>"; };
+		040CBFCC28A8E34F003AA16E /* math_functions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = math_functions.cpp; sourceTree = "<group>"; };
+		040CBFCD28A8E34F003AA16E /* debug_tools.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = debug_tools.cpp; sourceTree = "<group>"; };
+		040CBFCE28A8E34F003AA16E /* regular_triangle_sampling.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = regular_triangle_sampling.cpp; sourceTree = "<group>"; };
+		040CBFCF28A8E350003AA16E /* regular_sampling_2d.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = regular_sampling_2d.h; sourceTree = "<group>"; };
+		040CBFD028A8E350003AA16E /* poisson_disk_sampling.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = poisson_disk_sampling.cpp; sourceTree = "<group>"; };
+		040CBFD128A8E350003AA16E /* matrix_free_solver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = matrix_free_solver.h; sourceTree = "<group>"; };
+		040CBFD228A8E350003AA16E /* scene_loader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = scene_loader.cpp; sourceTree = "<group>"; };
+		040CBFD328A8E350003AA16E /* simple_quadrature.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = simple_quadrature.cpp; sourceTree = "<group>"; };
+		040CBFEC28A8E355003AA16E /* surface_tension_becker2007.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = surface_tension_becker2007.cpp; sourceTree = "<group>"; };
+		040CBFED28A8E355003AA16E /* surface_tension_base.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = surface_tension_base.cpp; sourceTree = "<group>"; };
+		040CBFEE28A8E355003AA16E /* surface_tension_he2014.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = surface_tension_he2014.cpp; sourceTree = "<group>"; };
+		040CBFEF28A8E355003AA16E /* surface_tension_halton_vec323.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = surface_tension_halton_vec323.h; sourceTree = "<group>"; };
+		040CBFF028A8E355003AA16E /* surface_tension_zorillaRitter2020.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = surface_tension_zorillaRitter2020.h; sourceTree = "<group>"; };
+		040CBFF128A8E355003AA16E /* surface_tension_akinci2013.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = surface_tension_akinci2013.h; sourceTree = "<group>"; };
+		040CBFF228A8E356003AA16E /* surface_tension_becker2007.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = surface_tension_becker2007.h; sourceTree = "<group>"; };
+		040CBFF328A8E356003AA16E /* surface_tension_akinci2013.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = surface_tension_akinci2013.cpp; sourceTree = "<group>"; };
+		040CBFF428A8E356003AA16E /* surface_tension_he2014.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = surface_tension_he2014.h; sourceTree = "<group>"; };
+		040CBFF528A8E356003AA16E /* surface_tension_base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = surface_tension_base.h; sourceTree = "<group>"; };
+		040CBFF628A8E356003AA16E /* surface_tension_zorillaRitter2020.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = surface_tension_zorillaRitter2020.cpp; sourceTree = "<group>"; };
+		040CC00228A8E35F003AA16E /* simulation_data_pf.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = simulation_data_pf.cpp; sourceTree = "<group>"; };
+		040CC00328A8E35F003AA16E /* time_step_pf.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = time_step_pf.cpp; sourceTree = "<group>"; };
+		040CC00428A8E35F003AA16E /* time_step_pf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = time_step_pf.h; sourceTree = "<group>"; };
+		040CC00528A8E35F003AA16E /* simulation_data_pf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = simulation_data_pf.h; sourceTree = "<group>"; };
+		040CC00A28A8E365003AA16E /* time_step_pcisph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = time_step_pcisph.cpp; sourceTree = "<group>"; };
+		040CC00B28A8E365003AA16E /* simulation_data_pcisph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = simulation_data_pcisph.cpp; sourceTree = "<group>"; };
+		040CC00C28A8E365003AA16E /* time_step_pcisph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = time_step_pcisph.h; sourceTree = "<group>"; };
+		040CC00D28A8E365003AA16E /* simulation_data_pcisph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = simulation_data_pcisph.h; sourceTree = "<group>"; };
+		040CC01228A8E36B003AA16E /* simulation_data_pbf.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = simulation_data_pbf.cpp; sourceTree = "<group>"; };
+		040CC01328A8E36B003AA16E /* time_step_pbf.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = time_step_pbf.cpp; sourceTree = "<group>"; };
+		040CC01428A8E36B003AA16E /* time_step_pbf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = time_step_pbf.h; sourceTree = "<group>"; };
+		040CC01528A8E36B003AA16E /* simulation_data_pbf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = simulation_data_pbf.h; sourceTree = "<group>"; };
+		040CC01628A8E36B003AA16E /* time_integration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = time_integration.h; sourceTree = "<group>"; };
+		040CC01728A8E36B003AA16E /* time_integration.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = time_integration.cpp; sourceTree = "<group>"; };
+		040CC01E28A8E371003AA16E /* simulation_data_iisph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = simulation_data_iisph.h; sourceTree = "<group>"; };
+		040CC01F28A8E371003AA16E /* time_step_iisph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = time_step_iisph.cpp; sourceTree = "<group>"; };
+		040CC02028A8E371003AA16E /* simulation_data_iisph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = simulation_data_iisph.cpp; sourceTree = "<group>"; };
+		040CC02128A8E371003AA16E /* time_step_iisph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = time_step_iisph.h; sourceTree = "<group>"; };
+		040CC02628A8E377003AA16E /* time_step_icsph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = time_step_icsph.cpp; sourceTree = "<group>"; };
+		040CC02728A8E377003AA16E /* simulation_data_icsph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = simulation_data_icsph.h; sourceTree = "<group>"; };
+		040CC02828A8E377003AA16E /* simulation_data_icsph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = simulation_data_icsph.cpp; sourceTree = "<group>"; };
+		040CC02928A8E377003AA16E /* time_step_icsph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = time_step_icsph.h; sourceTree = "<group>"; };
+		040CC02E28A8E37E003AA16E /* elasticity_becker2009.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = elasticity_becker2009.cpp; sourceTree = "<group>"; };
+		040CC02F28A8E37E003AA16E /* elasticity_peer2018.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = elasticity_peer2018.h; sourceTree = "<group>"; };
+		040CC03028A8E37E003AA16E /* elasticity_kugelstadt2021.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = elasticity_kugelstadt2021.cpp; sourceTree = "<group>"; };
+		040CC03128A8E37E003AA16E /* elasticity_becker2009.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = elasticity_becker2009.h; sourceTree = "<group>"; };
+		040CC03228A8E37E003AA16E /* elasticity_kugelstadt2021.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = elasticity_kugelstadt2021.h; sourceTree = "<group>"; };
+		040CC03328A8E37E003AA16E /* elasticity_base.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = elasticity_base.cpp; sourceTree = "<group>"; };
+		040CC03428A8E37E003AA16E /* elasticity_peer2018.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = elasticity_peer2018.cpp; sourceTree = "<group>"; };
+		040CC03528A8E37E003AA16E /* elasticity_base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = elasticity_base.h; sourceTree = "<group>"; };
+		040CC03E28A8E383003AA16E /* drag_force_gissler2017.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = drag_force_gissler2017.cpp; sourceTree = "<group>"; };
+		040CC03F28A8E383003AA16E /* drag_base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = drag_base.h; sourceTree = "<group>"; };
+		040CC04028A8E384003AA16E /* drag_force_gissler2017.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = drag_force_gissler2017.h; sourceTree = "<group>"; };
+		040CC04128A8E384003AA16E /* drag_base.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = drag_base.cpp; sourceTree = "<group>"; };
+		040CC04228A8E384003AA16E /* drag_force_macklin2014.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = drag_force_macklin2014.cpp; sourceTree = "<group>"; };
+		040CC04328A8E384003AA16E /* drag_force_macklin2014.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = drag_force_macklin2014.h; sourceTree = "<group>"; };
+		040CC04A28A8E389003AA16E /* time_step_dfsph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = time_step_dfsph.cpp; sourceTree = "<group>"; };
+		040CC04B28A8E389003AA16E /* simulation_data_dfsph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = simulation_data_dfsph.cpp; sourceTree = "<group>"; };
+		040CC04C28A8E389003AA16E /* time_step_dfsph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = time_step_dfsph.h; sourceTree = "<group>"; };
+		040CC04D28A8E389003AA16E /* simulation_data_dfsph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = simulation_data_dfsph.h; sourceTree = "<group>"; };
 		043A98A728A7410200BCFAB0 /* apps */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = apps; sourceTree = BUILT_PRODUCTS_DIR; };
 		043A98AA28A7410200BCFAB0 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		043A98B528A7416D00BCFAB0 /* libvox.base.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libvox.base.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,6 +584,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				040CBEE628A8E11E003AA16E /* libvox.base.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +592,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				040CBF7A28A8E282003AA16E /* libvox.base.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,6 +606,246 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		040CBEE528A8E11E003AA16E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		040CBF0228A8E149003AA16E /* geometry */ = {
+			isa = PBXGroup;
+			children = (
+				040CBF1E28A8E182003AA16E /* triangle_mesh_distance.h */,
+			);
+			path = geometry;
+			sourceTree = "<group>";
+		};
+		040CBF0328A8E150003AA16E /* mesh */ = {
+			isa = PBXGroup;
+			children = (
+				040CBF1528A8E17C003AA16E /* entity_containers.cpp */,
+				040CBF1128A8E17C003AA16E /* entity_containers.h */,
+				040CBF1428A8E17C003AA16E /* entity_iterators.cpp */,
+				040CBF1028A8E17C003AA16E /* entity_iterators.h */,
+				040CBF1328A8E17C003AA16E /* halfedge.h */,
+				040CBF1228A8E17C003AA16E /* triangle_mesh.cpp */,
+				040CBF1628A8E17C003AA16E /* triangle_mesh.h */,
+			);
+			path = mesh;
+			sourceTree = "<group>";
+		};
+		040CBF0428A8E156003AA16E /* utility */ = {
+			isa = PBXGroup;
+			children = (
+				040CBF0A28A8E173003AA16E /* serialize.h */,
+				040CBF0828A8E173003AA16E /* spinlock.h */,
+				040CBF0928A8E173003AA16E /* timing.cpp */,
+				040CBF0B28A8E173003AA16E /* timing.h */,
+			);
+			path = utility;
+			sourceTree = "<group>";
+		};
+		040CBF0528A8E15D003AA16E /* data */ = {
+			isa = PBXGroup;
+			children = (
+				040CBF0628A8E16D003AA16E /* z_sort_table.h */,
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
+		040CBF7B28A8E29C003AA16E /* dfsph */ = {
+			isa = PBXGroup;
+			children = (
+				040CC04B28A8E389003AA16E /* simulation_data_dfsph.cpp */,
+				040CC04D28A8E389003AA16E /* simulation_data_dfsph.h */,
+				040CC04A28A8E389003AA16E /* time_step_dfsph.cpp */,
+				040CC04C28A8E389003AA16E /* time_step_dfsph.h */,
+			);
+			path = dfsph;
+			sourceTree = "<group>";
+		};
+		040CBF7C28A8E2A0003AA16E /* drag */ = {
+			isa = PBXGroup;
+			children = (
+				040CC04128A8E384003AA16E /* drag_base.cpp */,
+				040CC03F28A8E383003AA16E /* drag_base.h */,
+				040CC03E28A8E383003AA16E /* drag_force_gissler2017.cpp */,
+				040CC04028A8E384003AA16E /* drag_force_gissler2017.h */,
+				040CC04228A8E384003AA16E /* drag_force_macklin2014.cpp */,
+				040CC04328A8E384003AA16E /* drag_force_macklin2014.h */,
+			);
+			path = drag;
+			sourceTree = "<group>";
+		};
+		040CBF7D28A8E2BD003AA16E /* elasticity */ = {
+			isa = PBXGroup;
+			children = (
+				040CC03328A8E37E003AA16E /* elasticity_base.cpp */,
+				040CC03528A8E37E003AA16E /* elasticity_base.h */,
+				040CC02E28A8E37E003AA16E /* elasticity_becker2009.cpp */,
+				040CC03128A8E37E003AA16E /* elasticity_becker2009.h */,
+				040CC03028A8E37E003AA16E /* elasticity_kugelstadt2021.cpp */,
+				040CC03228A8E37E003AA16E /* elasticity_kugelstadt2021.h */,
+				040CC03428A8E37E003AA16E /* elasticity_peer2018.cpp */,
+				040CC02F28A8E37E003AA16E /* elasticity_peer2018.h */,
+			);
+			path = elasticity;
+			sourceTree = "<group>";
+		};
+		040CBF7E28A8E2CB003AA16E /* icsph */ = {
+			isa = PBXGroup;
+			children = (
+				040CC02828A8E377003AA16E /* simulation_data_icsph.cpp */,
+				040CC02728A8E377003AA16E /* simulation_data_icsph.h */,
+				040CC02628A8E377003AA16E /* time_step_icsph.cpp */,
+				040CC02928A8E377003AA16E /* time_step_icsph.h */,
+			);
+			path = icsph;
+			sourceTree = "<group>";
+		};
+		040CBF7F28A8E2D2003AA16E /* iisph */ = {
+			isa = PBXGroup;
+			children = (
+				040CC02028A8E371003AA16E /* simulation_data_iisph.cpp */,
+				040CC01E28A8E371003AA16E /* simulation_data_iisph.h */,
+				040CC01F28A8E371003AA16E /* time_step_iisph.cpp */,
+				040CC02128A8E371003AA16E /* time_step_iisph.h */,
+			);
+			path = iisph;
+			sourceTree = "<group>";
+		};
+		040CBF8028A8E2DA003AA16E /* pbf */ = {
+			isa = PBXGroup;
+			children = (
+				040CC01228A8E36B003AA16E /* simulation_data_pbf.cpp */,
+				040CC01528A8E36B003AA16E /* simulation_data_pbf.h */,
+				040CC01728A8E36B003AA16E /* time_integration.cpp */,
+				040CC01628A8E36B003AA16E /* time_integration.h */,
+				040CC01328A8E36B003AA16E /* time_step_pbf.cpp */,
+				040CC01428A8E36B003AA16E /* time_step_pbf.h */,
+			);
+			path = pbf;
+			sourceTree = "<group>";
+		};
+		040CBF8128A8E2E4003AA16E /* pcisph */ = {
+			isa = PBXGroup;
+			children = (
+				040CC00B28A8E365003AA16E /* simulation_data_pcisph.cpp */,
+				040CC00D28A8E365003AA16E /* simulation_data_pcisph.h */,
+				040CC00A28A8E365003AA16E /* time_step_pcisph.cpp */,
+				040CC00C28A8E365003AA16E /* time_step_pcisph.h */,
+			);
+			path = pcisph;
+			sourceTree = "<group>";
+		};
+		040CBF8228A8E2EF003AA16E /* projective_fluids */ = {
+			isa = PBXGroup;
+			children = (
+				040CC00228A8E35F003AA16E /* simulation_data_pf.cpp */,
+				040CC00528A8E35F003AA16E /* simulation_data_pf.h */,
+				040CC00328A8E35F003AA16E /* time_step_pf.cpp */,
+				040CC00428A8E35F003AA16E /* time_step_pf.h */,
+			);
+			path = projective_fluids;
+			sourceTree = "<group>";
+		};
+		040CBF8328A8E303003AA16E /* surface_tension */ = {
+			isa = PBXGroup;
+			children = (
+				040CBFF328A8E356003AA16E /* surface_tension_akinci2013.cpp */,
+				040CBFF128A8E355003AA16E /* surface_tension_akinci2013.h */,
+				040CBFED28A8E355003AA16E /* surface_tension_base.cpp */,
+				040CBFF528A8E356003AA16E /* surface_tension_base.h */,
+				040CBFEC28A8E355003AA16E /* surface_tension_becker2007.cpp */,
+				040CBFF228A8E356003AA16E /* surface_tension_becker2007.h */,
+				040CBFEF28A8E355003AA16E /* surface_tension_halton_vec323.h */,
+				040CBFEE28A8E355003AA16E /* surface_tension_he2014.cpp */,
+				040CBFF428A8E356003AA16E /* surface_tension_he2014.h */,
+				040CBFF628A8E356003AA16E /* surface_tension_zorillaRitter2020.cpp */,
+				040CBFF028A8E355003AA16E /* surface_tension_zorillaRitter2020.h */,
+			);
+			path = surface_tension;
+			sourceTree = "<group>";
+		};
+		040CBF8428A8E30D003AA16E /* utilities */ = {
+			isa = PBXGroup;
+			children = (
+				040CBFCD28A8E34F003AA16E /* debug_tools.cpp */,
+				040CBFC928A8E34F003AA16E /* debug_tools.h */,
+				040CBFBE28A8E34F003AA16E /* gauss_quadrature.cpp */,
+				040CBFCB28A8E34F003AA16E /* gauss_quadrature.h */,
+				040CBFCC28A8E34F003AA16E /* math_functions.cpp */,
+				040CBFBD28A8E34F003AA16E /* math_functions.h */,
+				040CBFD128A8E350003AA16E /* matrix_free_solver.h */,
+				040CBFD028A8E350003AA16E /* poisson_disk_sampling.cpp */,
+				040CBFC028A8E34F003AA16E /* poisson_disk_sampling.h */,
+				040CBFC428A8E34F003AA16E /* regular_sampling_2d.cpp */,
+				040CBFCF28A8E350003AA16E /* regular_sampling_2d.h */,
+				040CBFCE28A8E34F003AA16E /* regular_triangle_sampling.cpp */,
+				040CBFC328A8E34F003AA16E /* regular_triangle_sampling.h */,
+				040CBFD228A8E350003AA16E /* scene_loader.cpp */,
+				040CBFC528A8E34F003AA16E /* scene_loader.h */,
+				040CBFBC28A8E34F003AA16E /* sdf_functions.cpp */,
+				040CBFC828A8E34F003AA16E /* sdf_functions.h */,
+				040CBFD328A8E350003AA16E /* simple_quadrature.cpp */,
+				040CBFC728A8E34F003AA16E /* simple_quadrature.h */,
+				040CBFBF28A8E34F003AA16E /* surface_sampling.h */,
+				040CBFC628A8E34F003AA16E /* volume_sampling.cpp */,
+				040CBFCA28A8E34F003AA16E /* volume_sampling.h */,
+				040CBFC128A8E34F003AA16E /* winding_numbers.cpp */,
+				040CBFC228A8E34F003AA16E /* winding_numbers.h */,
+			);
+			path = utilities;
+			sourceTree = "<group>";
+		};
+		040CBF8528A8E314003AA16E /* viscosity */ = {
+			isa = PBXGroup;
+			children = (
+				040CBFAA28A8E349003AA16E /* viscosity_base.cpp */,
+				040CBFA228A8E349003AA16E /* viscosity_base.h */,
+				040CBFA128A8E349003AA16E /* viscosity_bender2017.cpp */,
+				040CBFA728A8E349003AA16E /* viscosity_bender2017.h */,
+				040CBFA328A8E349003AA16E /* viscosity_peer2015.cpp */,
+				040CBFAB28A8E349003AA16E /* viscosity_peer2015.h */,
+				040CBF9E28A8E349003AA16E /* viscosity_peer2016.cpp */,
+				040CBFA428A8E349003AA16E /* viscosity_peer2016.h */,
+				040CBF9F28A8E349003AA16E /* viscosity_standard.cpp */,
+				040CBFA528A8E349003AA16E /* viscosity_standard.h */,
+				040CBFA628A8E349003AA16E /* viscosity_takahashi2015.cpp */,
+				040CBF9D28A8E349003AA16E /* viscosity_takahashi2015.h */,
+				040CBFA928A8E349003AA16E /* viscosity_weiler2018.cpp */,
+				040CBFA828A8E349003AA16E /* viscosity_weiler2018.h */,
+				040CBF9C28A8E349003AA16E /* viscosity_xsph.cpp */,
+				040CBFA028A8E349003AA16E /* viscosity_xsph.h */,
+			);
+			path = viscosity;
+			sourceTree = "<group>";
+		};
+		040CBF8628A8E31C003AA16E /* vorticity */ = {
+			isa = PBXGroup;
+			children = (
+				040CBF9228A8E341003AA16E /* micropolar_model_bender2017.cpp */,
+				040CBF9328A8E341003AA16E /* micropolar_model_bender2017.h */,
+				040CBF9028A8E341003AA16E /* vorticity_base.cpp */,
+				040CBF9428A8E341003AA16E /* vorticity_base.h */,
+				040CBF9528A8E341003AA16E /* vorticity_confinement.cpp */,
+				040CBF9128A8E341003AA16E /* vorticity_confinement.h */,
+			);
+			path = vorticity;
+			sourceTree = "<group>";
+		};
+		040CBF8728A8E324003AA16E /* wcsph */ = {
+			isa = PBXGroup;
+			children = (
+				040CBF8B28A8E334003AA16E /* simulation_data_wcsph.cpp */,
+				040CBF8928A8E334003AA16E /* simulation_data_wcsph.h */,
+				040CBF8A28A8E334003AA16E /* time_step_wcsph.cpp */,
+				040CBF8828A8E334003AA16E /* time_step_wcsph.h */,
+			);
+			path = wcsph;
+			sourceTree = "<group>";
+		};
 		043A989E28A7410200BCFAB0 = {
 			isa = PBXGroup;
 			children = (
@@ -105,6 +855,7 @@
 				043A98C528A7418500BCFAB0 /* vox.pbd */,
 				043A98D428A7418E00BCFAB0 /* vox.sph */,
 				043A98A828A7410200BCFAB0 /* Products */,
+				040CBEE528A8E11E003AA16E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -131,6 +882,23 @@
 		043A98B628A7416D00BCFAB0 /* vox.base */ = {
 			isa = PBXGroup;
 			children = (
+				040CBF0528A8E15D003AA16E /* data */,
+				040CBF0428A8E156003AA16E /* utility */,
+				040CBF0328A8E150003AA16E /* mesh */,
+				040CBF0228A8E149003AA16E /* geometry */,
+				040CBEEB28A8E12C003AA16E /* compact_search.cpp */,
+				040CBEEA28A8E12C003AA16E /* compact_search.h */,
+				040CBEE928A8E12C003AA16E /* config.h */,
+				040CBEED28A8E12D003AA16E /* cubic_lagrange_discrete_grid.cpp */,
+				040CBEF228A8E12D003AA16E /* cubic_lagrange_discrete_grid.h */,
+				040CBEF128A8E12D003AA16E /* data_structures.h */,
+				040CBEF328A8E12D003AA16E /* discrete_grid.cpp */,
+				040CBEEE28A8E12D003AA16E /* discrete_grid.h */,
+				040CBEE828A8E12C003AA16E /* logging.h */,
+				040CBEF428A8E12D003AA16E /* md5.cpp */,
+				040CBEEF28A8E12D003AA16E /* md5.h */,
+				040CBEF028A8E12D003AA16E /* point_set.h */,
+				040CBEEC28A8E12C003AA16E /* version.h */,
 				040CBE4528A7460F003AA16E /* parameter.h */,
 				040CBE4628A7460F003AA16E /* enum_parameter.h */,
 				040CBE4928A7460F003AA16E /* vector_parameter.h */,
@@ -144,6 +912,80 @@
 		043A98C528A7418500BCFAB0 /* vox.pbd */ = {
 			isa = PBXGroup;
 			children = (
+				040CBE8128A8E0EF003AA16E /* aabb.h */,
+				040CBE6A28A8E0EE003AA16E /* bounding_sphere_hierarchy.cpp */,
+				040CBE9328A8E0EF003AA16E /* bounding_sphere_hierarchy.h */,
+				040CBE7628A8E0EE003AA16E /* bounding_sphere.h */,
+				040CBE6728A8E0EE003AA16E /* collision_detection.cpp */,
+				040CBE8E28A8E0EF003AA16E /* collision_detection.h */,
+				040CBE8228A8E0EF003AA16E /* common.h */,
+				040CBE8928A8E0EF003AA16E /* constraints.cpp */,
+				040CBE8C28A8E0EF003AA16E /* constraints.h */,
+				040CBE7A28A8E0EE003AA16E /* cubic_sdf_collision_detection.cpp */,
+				040CBE5F28A8E0EE003AA16E /* cubic_sdf_collision_detection.h */,
+				040CBE6D28A8E0EE003AA16E /* direct_position_based_solver_for_stiff_rods_interface.h */,
+				040CBE6028A8E0EE003AA16E /* distance_field_collision_detection.cpp */,
+				040CBE7028A8E0EE003AA16E /* distance_field_collision_detection.h */,
+				040CBE7328A8E0EE003AA16E /* file_system.h */,
+				040CBE5B28A8E0EE003AA16E /* hashmap.h */,
+				040CBE6928A8E0EE003AA16E /* id_factory.cpp */,
+				040CBE8728A8E0EF003AA16E /* id_factory.h */,
+				040CBE7F28A8E0EE003AA16E /* indexed_face_mesh.cpp */,
+				040CBE6328A8E0EE003AA16E /* indexed_face_mesh.h */,
+				040CBE5328A8E0EE003AA16E /* indexed_tet_mesh.cpp */,
+				040CBE6C28A8E0EE003AA16E /* indexed_tet_mesh.h */,
+				040CBE8328A8E0EF003AA16E /* kdtree.h */,
+				040CBE7C28A8E0EE003AA16E /* kdtree.inl */,
+				040CBE9828A8E0EF003AA16E /* line_model.cpp */,
+				040CBE6F28A8E0EE003AA16E /* line_model.h */,
+				040CBE8028A8E0EE003AA16E /* math_functions.cpp */,
+				040CBE8F28A8E0EF003AA16E /* math_functions.h */,
+				040CBE9628A8E0EF003AA16E /* neighborhood_search_spatial_hashing.cpp */,
+				040CBE9928A8E0EF003AA16E /* neighborhood_search_spatial_hashing.h */,
+				040CBE6528A8E0EE003AA16E /* obj_loader.h */,
+				040CBE8D28A8E0EF003AA16E /* object_array.h */,
+				040CBE7828A8E0EE003AA16E /* particle_data.h */,
+				040CBE7728A8E0EE003AA16E /* position_based_dynamics.cpp */,
+				040CBE7E28A8E0EE003AA16E /* position_based_dynamics.h */,
+				040CBE6E28A8E0EE003AA16E /* position_based_elastic_rods.cpp */,
+				040CBE5628A8E0EE003AA16E /* position_based_elastic_rods.h */,
+				040CBE5028A8E0EE003AA16E /* position_based_fluids.cpp */,
+				040CBE5D28A8E0EE003AA16E /* position_based_fluids.h */,
+				040CBE5528A8E0EE003AA16E /* position_based_generic_constraints.h */,
+				040CBE7B28A8E0EE003AA16E /* position_based_rigid_body_dynamics.cpp */,
+				040CBE8B28A8E0EF003AA16E /* position_based_rigid_body_dynamics.h */,
+				040CBE6828A8E0EE003AA16E /* rigid_body_geometry.cpp */,
+				040CBE9228A8E0EF003AA16E /* rigid_body_geometry.h */,
+				040CBE5828A8E0EE003AA16E /* rigid_body.h */,
+				040CBE7528A8E0EE003AA16E /* scene_loader.cpp */,
+				040CBE8828A8E0EF003AA16E /* scene_loader.h */,
+				040CBE7D28A8E0EE003AA16E /* simulation_model.cpp */,
+				040CBE5128A8E0EE003AA16E /* simulation_model.h */,
+				040CBE7928A8E0EE003AA16E /* simulation.cpp */,
+				040CBE9428A8E0EF003AA16E /* simulation.h */,
+				040CBE5228A8E0EE003AA16E /* sph_kernels.cpp */,
+				040CBE5728A8E0EE003AA16E /* sph_kernels.h */,
+				040CBE9728A8E0EF003AA16E /* string_tools.h */,
+				040CBE6428A8E0EE003AA16E /* system_info.h */,
+				040CBE6B28A8E0EE003AA16E /* tet_gen_loader.cpp */,
+				040CBE9028A8E0EF003AA16E /* tet_gen_loader.h */,
+				040CBE8528A8E0EF003AA16E /* tet_model.cpp */,
+				040CBE5428A8E0EE003AA16E /* tet_model.h */,
+				040CBE5E28A8E0EE003AA16E /* time_integration.cpp */,
+				040CBE6228A8E0EE003AA16E /* time_integration.h */,
+				040CBE9128A8E0EF003AA16E /* time_manager.cpp */,
+				040CBE5A28A8E0EE003AA16E /* time_manager.h */,
+				040CBE5928A8E0EE003AA16E /* time_step_controller.cpp */,
+				040CBE5C28A8E0EE003AA16E /* time_step_controller.h */,
+				040CBE6628A8E0EE003AA16E /* time_step.cpp */,
+				040CBE7128A8E0EE003AA16E /* time_step.h */,
+				040CBE8428A8E0EF003AA16E /* timing.h */,
+				040CBE8628A8E0EF003AA16E /* triangle_model.cpp */,
+				040CBE7228A8E0EE003AA16E /* triangle_model.h */,
+				040CBE7428A8E0EE003AA16E /* volume_integration.cpp */,
+				040CBE6128A8E0EE003AA16E /* volume_integration.h */,
+				040CBE9528A8E0EF003AA16E /* xpbd.cpp */,
+				040CBE8A28A8E0EF003AA16E /* xpbd.h */,
 			);
 			path = vox.pbd;
 			sourceTree = "<group>";
@@ -151,6 +993,63 @@
 		043A98D428A7418E00BCFAB0 /* vox.sph */ = {
 			isa = PBXGroup;
 			children = (
+				040CBF2E28A8E26D003AA16E /* timing.h */,
+				040CBF3B28A8E26E003AA16E /* common.h */,
+				040CBF4228A8E26E003AA16E /* counting.h */,
+				040CBF2828A8E26D003AA16E /* file_system.h */,
+				040CBF4628A8E26E003AA16E /* string_tools.h */,
+				040CBF4B28A8E26E003AA16E /* system_info.h */,
+				040CBF4428A8E26E003AA16E /* binary_file_reader_writer.h */,
+				040CBF3728A8E26E003AA16E /* neighborhood_search.h */,
+				040CBF8428A8E30D003AA16E /* utilities */,
+				040CBF2028A8E26D003AA16E /* boundary_model.h */,
+				040CBF3E28A8E26E003AA16E /* boundary_model.cpp */,
+				040CBF4828A8E26E003AA16E /* boundary_model_akinci2012.cpp */,
+				040CBF2528A8E26D003AA16E /* boundary_model_akinci2012.h */,
+				040CBF2728A8E26D003AA16E /* boundary_model_bender2019.cpp */,
+				040CBF2428A8E26D003AA16E /* boundary_model_bender2019.h */,
+				040CBF3228A8E26D003AA16E /* boundary_model_koschier2017.cpp */,
+				040CBF2228A8E26D003AA16E /* boundary_model_koschier2017.h */,
+				040CBF3528A8E26D003AA16E /* sph_kernels.h */,
+				040CBF3928A8E26E003AA16E /* sph_kernels.cpp */,
+				040CBF3D28A8E26E003AA16E /* time_step.h */,
+				040CBF2D28A8E26D003AA16E /* time_step.cpp */,
+				040CBF8728A8E324003AA16E /* wcsph */,
+				040CBF8228A8E2EF003AA16E /* projective_fluids */,
+				040CBF8128A8E2E4003AA16E /* pcisph */,
+				040CBF8028A8E2DA003AA16E /* pbf */,
+				040CBF7F28A8E2D2003AA16E /* iisph */,
+				040CBF7E28A8E2CB003AA16E /* icsph */,
+				040CBF7B28A8E29C003AA16E /* dfsph */,
+				040CBF2A28A8E26D003AA16E /* non_pressure_force_base.h */,
+				040CBF4728A8E26E003AA16E /* non_pressure_force_base.cpp */,
+				040CBF4328A8E26E003AA16E /* non_pressure_force_registration.cpp */,
+				040CBF8628A8E31C003AA16E /* vorticity */,
+				040CBF8528A8E314003AA16E /* viscosity */,
+				040CBF8328A8E303003AA16E /* surface_tension */,
+				040CBF7D28A8E2BD003AA16E /* elasticity */,
+				040CBF7C28A8E2A0003AA16E /* drag */,
+				040CBF3428A8E26D003AA16E /* animation_field.h */,
+				040CBF4528A8E26E003AA16E /* animation_field.cpp */,
+				040CBF2328A8E26D003AA16E /* animation_field_system.h */,
+				040CBF3828A8E26E003AA16E /* animation_field_system.cpp */,
+				040CBF4928A8E26E003AA16E /* emitter.h */,
+				040CBF3628A8E26E003AA16E /* emitter.cpp */,
+				040CBF3328A8E26D003AA16E /* emitter_system.h */,
+				040CBF2128A8E26D003AA16E /* emitter_system.cpp */,
+				040CBF2628A8E26D003AA16E /* fluid_model.h */,
+				040CBF4A28A8E26E003AA16E /* fluid_model.cpp */,
+				040CBF4028A8E26E003AA16E /* obj_loader.h */,
+				040CBF2928A8E26D003AA16E /* rigid_body_object.h */,
+				040CBF2C28A8E26D003AA16E /* static_rigid_body.h */,
+				040CBF2B28A8E26D003AA16E /* scene_configuration.h */,
+				040CBF3128A8E26D003AA16E /* scene_configuration.cpp */,
+				040CBF2F28A8E26D003AA16E /* simulation.h */,
+				040CBF3F28A8E26E003AA16E /* simulation.cpp */,
+				040CBF3C28A8E26E003AA16E /* time_manager.h */,
+				040CBF3A28A8E26E003AA16E /* time_manager.cpp */,
+				040CBF3028A8E26D003AA16E /* triangle_mesh.h */,
+				040CBF4128A8E26E003AA16E /* triangle_mesh.cpp */,
 			);
 			path = vox.sph;
 			sourceTree = "<group>";
@@ -172,12 +1071,30 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				040CBEFE28A8E12D003AA16E /* data_structures.h in Headers */,
+				040CBEF528A8E12D003AA16E /* logging.h in Headers */,
+				040CBF1F28A8E182003AA16E /* triangle_mesh_distance.h in Headers */,
 				040CBE4D28A7460F003AA16E /* function_parameter.h in Headers */,
+				040CBF0E28A8E173003AA16E /* serialize.h in Headers */,
 				040CBE4E28A7460F003AA16E /* numeric_parameter.h in Headers */,
+				040CBF1828A8E17C003AA16E /* entity_containers.h in Headers */,
+				040CBF1728A8E17C003AA16E /* entity_iterators.h in Headers */,
 				040CBE4B28A7460F003AA16E /* parameter.h in Headers */,
+				040CBEF728A8E12D003AA16E /* compact_search.h in Headers */,
+				040CBEF928A8E12D003AA16E /* version.h in Headers */,
+				040CBEF628A8E12D003AA16E /* config.h in Headers */,
 				040CBE4C28A7460F003AA16E /* enum_parameter.h in Headers */,
 				040CBE4A28A7460F003AA16E /* parameter_object.h in Headers */,
+				040CBEFC28A8E12D003AA16E /* md5.h in Headers */,
+				040CBF1A28A8E17C003AA16E /* halfedge.h in Headers */,
+				040CBEFD28A8E12D003AA16E /* point_set.h in Headers */,
+				040CBF0728A8E16D003AA16E /* z_sort_table.h in Headers */,
+				040CBEFF28A8E12D003AA16E /* cubic_lagrange_discrete_grid.h in Headers */,
 				040CBE4F28A7460F003AA16E /* vector_parameter.h in Headers */,
+				040CBF1D28A8E17C003AA16E /* triangle_mesh.h in Headers */,
+				040CBF0F28A8E173003AA16E /* timing.h in Headers */,
+				040CBF0C28A8E173003AA16E /* spinlock.h in Headers */,
+				040CBEFB28A8E12D003AA16E /* discrete_grid.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,6 +1102,50 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				040CBEB928A8E0EF003AA16E /* line_model.h in Headers */,
+				040CBE9E28A8E0EF003AA16E /* tet_model.h in Headers */,
+				040CBEE028A8E0EF003AA16E /* string_tools.h in Headers */,
+				040CBED528A8E0EF003AA16E /* constraints.h in Headers */,
+				040CBEDD28A8E0EF003AA16E /* simulation.h in Headers */,
+				040CBECA28A8E0EF003AA16E /* aabb.h in Headers */,
+				040CBEC228A8E0EF003AA16E /* particle_data.h in Headers */,
+				040CBECD28A8E0EF003AA16E /* timing.h in Headers */,
+				040CBED828A8E0EF003AA16E /* math_functions.h in Headers */,
+				040CBED328A8E0EF003AA16E /* xpbd.h in Headers */,
+				040CBEA528A8E0EF003AA16E /* hashmap.h in Headers */,
+				040CBEB728A8E0EF003AA16E /* direct_position_based_solver_for_stiff_rods_interface.h in Headers */,
+				040CBEC728A8E0EF003AA16E /* position_based_dynamics.h in Headers */,
+				040CBED128A8E0EF003AA16E /* scene_loader.h in Headers */,
+				040CBEAC28A8E0EF003AA16E /* time_integration.h in Headers */,
+				040CBEAF28A8E0EF003AA16E /* obj_loader.h in Headers */,
+				040CBEBD28A8E0EF003AA16E /* file_system.h in Headers */,
+				040CBEA928A8E0EF003AA16E /* cubic_sdf_collision_detection.h in Headers */,
+				040CBEBB28A8E0EF003AA16E /* time_step.h in Headers */,
+				040CBED728A8E0EF003AA16E /* collision_detection.h in Headers */,
+				040CBEA028A8E0EF003AA16E /* position_based_elastic_rods.h in Headers */,
+				040CBE9F28A8E0EF003AA16E /* position_based_generic_constraints.h in Headers */,
+				040CBEE228A8E0EF003AA16E /* neighborhood_search_spatial_hashing.h in Headers */,
+				040CBEC028A8E0EF003AA16E /* bounding_sphere.h in Headers */,
+				040CBEA628A8E0EF003AA16E /* time_step_controller.h in Headers */,
+				040CBED028A8E0EF003AA16E /* id_factory.h in Headers */,
+				040CBED928A8E0EF003AA16E /* tet_gen_loader.h in Headers */,
+				040CBED628A8E0EF003AA16E /* object_array.h in Headers */,
+				040CBECC28A8E0EF003AA16E /* kdtree.h in Headers */,
+				040CBEDB28A8E0EF003AA16E /* rigid_body_geometry.h in Headers */,
+				040CBED428A8E0EF003AA16E /* position_based_rigid_body_dynamics.h in Headers */,
+				040CBEA128A8E0EF003AA16E /* sph_kernels.h in Headers */,
+				040CBEAE28A8E0EF003AA16E /* system_info.h in Headers */,
+				040CBEA728A8E0EF003AA16E /* position_based_fluids.h in Headers */,
+				040CBECB28A8E0EF003AA16E /* common.h in Headers */,
+				040CBEBA28A8E0EF003AA16E /* distance_field_collision_detection.h in Headers */,
+				040CBEA228A8E0EF003AA16E /* rigid_body.h in Headers */,
+				040CBEAB28A8E0EF003AA16E /* volume_integration.h in Headers */,
+				040CBEB628A8E0EF003AA16E /* indexed_tet_mesh.h in Headers */,
+				040CBEDC28A8E0EF003AA16E /* bounding_sphere_hierarchy.h in Headers */,
+				040CBEBC28A8E0EF003AA16E /* triangle_model.h in Headers */,
+				040CBE9B28A8E0EF003AA16E /* simulation_model.h in Headers */,
+				040CBEAD28A8E0EF003AA16E /* indexed_face_mesh.h in Headers */,
+				040CBEA428A8E0EF003AA16E /* time_manager.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -192,6 +1153,85 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				040CBFB828A8E349003AA16E /* viscosity_weiler2018.h in Headers */,
+				040CBF9928A8E342003AA16E /* micropolar_model_bender2017.h in Headers */,
+				040CBF5128A8E26E003AA16E /* boundary_model_akinci2012.h in Headers */,
+				040CC01128A8E365003AA16E /* simulation_data_pcisph.h in Headers */,
+				040CC00028A8E356003AA16E /* surface_tension_base.h in Headers */,
+				040CBF5028A8E26E003AA16E /* boundary_model_bender2019.h in Headers */,
+				040CC01A28A8E36B003AA16E /* time_step_pbf.h in Headers */,
+				040CBF7228A8E26E003AA16E /* string_tools.h in Headers */,
+				040CBF9728A8E342003AA16E /* vorticity_confinement.h in Headers */,
+				040CC02528A8E371003AA16E /* time_step_iisph.h in Headers */,
+				040CBF4E28A8E26E003AA16E /* boundary_model_koschier2017.h in Headers */,
+				040CBF5528A8E26E003AA16E /* rigid_body_object.h in Headers */,
+				040CBFDF28A8E350003AA16E /* simple_quadrature.h in Headers */,
+				040CBFB428A8E349003AA16E /* viscosity_peer2016.h in Headers */,
+				040CC00828A8E35F003AA16E /* time_step_pf.h in Headers */,
+				040CBFE328A8E350003AA16E /* gauss_quadrature.h in Headers */,
+				040CBFFA28A8E356003AA16E /* surface_tension_halton_vec323.h in Headers */,
+				040CBFE028A8E350003AA16E /* sdf_functions.h in Headers */,
+				040CBF5728A8E26E003AA16E /* scene_configuration.h in Headers */,
+				040CBFBB28A8E349003AA16E /* viscosity_peer2015.h in Headers */,
+				040CBFAD28A8E349003AA16E /* viscosity_takahashi2015.h in Headers */,
+				040CBF6E28A8E26E003AA16E /* counting.h in Headers */,
+				040CBFE728A8E350003AA16E /* regular_sampling_2d.h in Headers */,
+				040CBFDB28A8E350003AA16E /* regular_triangle_sampling.h in Headers */,
+				040CBFB228A8E349003AA16E /* viscosity_base.h in Headers */,
+				040CC04928A8E384003AA16E /* drag_force_macklin2014.h in Headers */,
+				040CBFE128A8E350003AA16E /* debug_tools.h in Headers */,
+				040CBFD528A8E350003AA16E /* math_functions.h in Headers */,
+				040CBFFC28A8E356003AA16E /* surface_tension_akinci2013.h in Headers */,
+				040CBF6828A8E26E003AA16E /* time_manager.h in Headers */,
+				040CBF6128A8E26E003AA16E /* sph_kernels.h in Headers */,
+				040CBFDD28A8E350003AA16E /* scene_loader.h in Headers */,
+				040CBFD828A8E350003AA16E /* poisson_disk_sampling.h in Headers */,
+				040CBFB528A8E349003AA16E /* viscosity_standard.h in Headers */,
+				040CC02D28A8E377003AA16E /* time_step_icsph.h in Headers */,
+				040CBF6928A8E26E003AA16E /* time_step.h in Headers */,
+				040CBF4C28A8E26E003AA16E /* boundary_model.h in Headers */,
+				040CC01C28A8E36B003AA16E /* time_integration.h in Headers */,
+				040CBF9A28A8E342003AA16E /* vorticity_base.h in Headers */,
+				040CBFD728A8E350003AA16E /* surface_sampling.h in Headers */,
+				040CC03A28A8E37E003AA16E /* elasticity_kugelstadt2021.h in Headers */,
+				040CC04628A8E384003AA16E /* drag_force_gissler2017.h in Headers */,
+				040CBF5F28A8E26E003AA16E /* emitter_system.h in Headers */,
+				040CBF5828A8E26E003AA16E /* static_rigid_body.h in Headers */,
+				040CBF5428A8E26E003AA16E /* file_system.h in Headers */,
+				040CBF5628A8E26E003AA16E /* non_pressure_force_base.h in Headers */,
+				040CC02228A8E371003AA16E /* simulation_data_iisph.h in Headers */,
+				040CBF6728A8E26E003AA16E /* common.h in Headers */,
+				040CC02B28A8E377003AA16E /* simulation_data_icsph.h in Headers */,
+				040CBF6028A8E26E003AA16E /* animation_field.h in Headers */,
+				040CBF8D28A8E334003AA16E /* simulation_data_wcsph.h in Headers */,
+				040CBF8C28A8E334003AA16E /* time_step_wcsph.h in Headers */,
+				040CBF7728A8E26E003AA16E /* system_info.h in Headers */,
+				040CC03728A8E37E003AA16E /* elasticity_peer2018.h in Headers */,
+				040CBFE928A8E350003AA16E /* matrix_free_solver.h in Headers */,
+				040CBFFB28A8E356003AA16E /* surface_tension_zorillaRitter2020.h in Headers */,
+				040CC04528A8E384003AA16E /* drag_base.h in Headers */,
+				040CBFE228A8E350003AA16E /* volume_sampling.h in Headers */,
+				040CBFFD28A8E356003AA16E /* surface_tension_becker2007.h in Headers */,
+				040CC05128A8E389003AA16E /* simulation_data_dfsph.h in Headers */,
+				040CBF5C28A8E26E003AA16E /* triangle_mesh.h in Headers */,
+				040CC01028A8E365003AA16E /* time_step_pcisph.h in Headers */,
+				040CBF4F28A8E26E003AA16E /* animation_field_system.h in Headers */,
+				040CC00928A8E35F003AA16E /* simulation_data_pf.h in Headers */,
+				040CC03D28A8E37E003AA16E /* elasticity_base.h in Headers */,
+				040CBF6328A8E26E003AA16E /* neighborhood_search.h in Headers */,
+				040CC05028A8E389003AA16E /* time_step_dfsph.h in Headers */,
+				040CBF7028A8E26E003AA16E /* binary_file_reader_writer.h in Headers */,
+				040CBF7528A8E26E003AA16E /* emitter.h in Headers */,
+				040CC03928A8E37E003AA16E /* elasticity_becker2009.h in Headers */,
+				040CBF5B28A8E26E003AA16E /* simulation.h in Headers */,
+				040CBFDA28A8E350003AA16E /* winding_numbers.h in Headers */,
+				040CBF6C28A8E26E003AA16E /* obj_loader.h in Headers */,
+				040CBFFF28A8E356003AA16E /* surface_tension_he2014.h in Headers */,
+				040CBF5A28A8E26E003AA16E /* timing.h in Headers */,
+				040CBF5228A8E26E003AA16E /* fluid_model.h in Headers */,
+				040CC01B28A8E36B003AA16E /* simulation_data_pbf.h in Headers */,
+				040CBFB728A8E349003AA16E /* viscosity_bender2017.h in Headers */,
+				040CBFB028A8E349003AA16E /* viscosity_xsph.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,6 +1283,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				040CBEE428A8E11A003AA16E /* PBXTargetDependency */,
 			);
 			name = vox.pbd;
 			productName = vox.pbd;
@@ -260,6 +1301,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				040CBF7928A8E27F003AA16E /* PBXTargetDependency */,
 			);
 			name = vox.sph;
 			productName = vox.sph;
@@ -344,6 +1386,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				040CBF1C28A8E17C003AA16E /* entity_containers.cpp in Sources */,
+				040CBF0028A8E12D003AA16E /* discrete_grid.cpp in Sources */,
+				040CBEFA28A8E12D003AA16E /* cubic_lagrange_discrete_grid.cpp in Sources */,
+				040CBF0128A8E12D003AA16E /* md5.cpp in Sources */,
+				040CBF0D28A8E173003AA16E /* timing.cpp in Sources */,
+				040CBF1B28A8E17C003AA16E /* entity_iterators.cpp in Sources */,
+				040CBF1928A8E17C003AA16E /* triangle_mesh.cpp in Sources */,
+				040CBEF828A8E12D003AA16E /* compact_search.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -351,6 +1401,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				040CBEC528A8E0EF003AA16E /* position_based_rigid_body_dynamics.cpp in Sources */,
+				040CBEAA28A8E0EF003AA16E /* distance_field_collision_detection.cpp in Sources */,
+				040CBEDE28A8E0EF003AA16E /* xpbd.cpp in Sources */,
+				040CBEB328A8E0EF003AA16E /* id_factory.cpp in Sources */,
+				040CBEB828A8E0EF003AA16E /* position_based_elastic_rods.cpp in Sources */,
+				040CBE9C28A8E0EF003AA16E /* sph_kernels.cpp in Sources */,
+				040CBEB128A8E0EF003AA16E /* collision_detection.cpp in Sources */,
+				040CBEC428A8E0EF003AA16E /* cubic_sdf_collision_detection.cpp in Sources */,
+				040CBE9D28A8E0EF003AA16E /* indexed_tet_mesh.cpp in Sources */,
+				040CBED228A8E0EF003AA16E /* constraints.cpp in Sources */,
+				040CBEE128A8E0EF003AA16E /* line_model.cpp in Sources */,
+				040CBEC328A8E0EF003AA16E /* simulation.cpp in Sources */,
+				040CBEC928A8E0EF003AA16E /* math_functions.cpp in Sources */,
+				040CBEC128A8E0EF003AA16E /* position_based_dynamics.cpp in Sources */,
+				040CBEBE28A8E0EF003AA16E /* volume_integration.cpp in Sources */,
+				040CBEB428A8E0EF003AA16E /* bounding_sphere_hierarchy.cpp in Sources */,
+				040CBEBF28A8E0EF003AA16E /* scene_loader.cpp in Sources */,
+				040CBEB028A8E0EF003AA16E /* time_step.cpp in Sources */,
+				040CBEC628A8E0EF003AA16E /* simulation_model.cpp in Sources */,
+				040CBEC828A8E0EF003AA16E /* indexed_face_mesh.cpp in Sources */,
+				040CBECF28A8E0EF003AA16E /* triangle_model.cpp in Sources */,
+				040CBEB528A8E0EF003AA16E /* tet_gen_loader.cpp in Sources */,
+				040CBEA328A8E0EF003AA16E /* time_step_controller.cpp in Sources */,
+				040CBEB228A8E0EF003AA16E /* rigid_body_geometry.cpp in Sources */,
+				040CBEDA28A8E0EF003AA16E /* time_manager.cpp in Sources */,
+				040CBECE28A8E0EF003AA16E /* tet_model.cpp in Sources */,
+				040CBEA828A8E0EF003AA16E /* time_integration.cpp in Sources */,
+				040CBE9A28A8E0EF003AA16E /* position_based_fluids.cpp in Sources */,
+				040CBEDF28A8E0EF003AA16E /* neighborhood_search_spatial_hashing.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,6 +1437,72 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				040CBF6228A8E26E003AA16E /* emitter.cpp in Sources */,
+				040CBFD928A8E350003AA16E /* winding_numbers.cpp in Sources */,
+				040CBFAF28A8E349003AA16E /* viscosity_standard.cpp in Sources */,
+				040CBFDC28A8E350003AA16E /* regular_sampling_2d.cpp in Sources */,
+				040CC03828A8E37E003AA16E /* elasticity_kugelstadt2021.cpp in Sources */,
+				040CBFB628A8E349003AA16E /* viscosity_takahashi2015.cpp in Sources */,
+				040CBFE628A8E350003AA16E /* regular_triangle_sampling.cpp in Sources */,
+				040CC03C28A8E37E003AA16E /* elasticity_peer2018.cpp in Sources */,
+				040CBF6B28A8E26E003AA16E /* simulation.cpp in Sources */,
+				040CBF9828A8E342003AA16E /* micropolar_model_bender2017.cpp in Sources */,
+				040CBFD628A8E350003AA16E /* gauss_quadrature.cpp in Sources */,
+				040CBFEB28A8E350003AA16E /* simple_quadrature.cpp in Sources */,
+				040CBF5928A8E26E003AA16E /* time_step.cpp in Sources */,
+				040CBFE428A8E350003AA16E /* math_functions.cpp in Sources */,
+				040CBF5D28A8E26E003AA16E /* scene_configuration.cpp in Sources */,
+				040CBF6D28A8E26E003AA16E /* triangle_mesh.cpp in Sources */,
+				040CBFEA28A8E350003AA16E /* scene_loader.cpp in Sources */,
+				040CC03628A8E37E003AA16E /* elasticity_becker2009.cpp in Sources */,
+				040CBF7428A8E26E003AA16E /* boundary_model_akinci2012.cpp in Sources */,
+				040CBF9628A8E342003AA16E /* vorticity_base.cpp in Sources */,
+				040CC02C28A8E377003AA16E /* simulation_data_icsph.cpp in Sources */,
+				040CBFB128A8E349003AA16E /* viscosity_bender2017.cpp in Sources */,
+				040CC03B28A8E37E003AA16E /* elasticity_base.cpp in Sources */,
+				040CC02428A8E371003AA16E /* simulation_data_iisph.cpp in Sources */,
+				040CC04728A8E384003AA16E /* drag_base.cpp in Sources */,
+				040CBF6A28A8E26E003AA16E /* boundary_model.cpp in Sources */,
+				040CC04428A8E384003AA16E /* drag_force_gissler2017.cpp in Sources */,
+				040CC01828A8E36B003AA16E /* simulation_data_pbf.cpp in Sources */,
+				040CC04828A8E384003AA16E /* drag_force_macklin2014.cpp in Sources */,
+				040CBFF828A8E356003AA16E /* surface_tension_base.cpp in Sources */,
+				040CBF6628A8E26E003AA16E /* time_manager.cpp in Sources */,
+				040CBF7328A8E26E003AA16E /* non_pressure_force_base.cpp in Sources */,
+				040CBFB928A8E349003AA16E /* viscosity_weiler2018.cpp in Sources */,
+				040CBFE828A8E350003AA16E /* poisson_disk_sampling.cpp in Sources */,
+				040CC04E28A8E389003AA16E /* time_step_dfsph.cpp in Sources */,
+				040CC00128A8E356003AA16E /* surface_tension_zorillaRitter2020.cpp in Sources */,
+				040CBF4D28A8E26E003AA16E /* emitter_system.cpp in Sources */,
+				040CC02A28A8E377003AA16E /* time_step_icsph.cpp in Sources */,
+				040CC01928A8E36B003AA16E /* time_step_pbf.cpp in Sources */,
+				040CBFD428A8E350003AA16E /* sdf_functions.cpp in Sources */,
+				040CBFF928A8E356003AA16E /* surface_tension_he2014.cpp in Sources */,
+				040CBFF728A8E356003AA16E /* surface_tension_becker2007.cpp in Sources */,
+				040CBFFE28A8E356003AA16E /* surface_tension_akinci2013.cpp in Sources */,
+				040CBF8F28A8E334003AA16E /* simulation_data_wcsph.cpp in Sources */,
+				040CBF8E28A8E334003AA16E /* time_step_wcsph.cpp in Sources */,
+				040CC00728A8E35F003AA16E /* time_step_pf.cpp in Sources */,
+				040CBF5328A8E26E003AA16E /* boundary_model_bender2019.cpp in Sources */,
+				040CBF6F28A8E26E003AA16E /* non_pressure_force_registration.cpp in Sources */,
+				040CC00E28A8E365003AA16E /* time_step_pcisph.cpp in Sources */,
+				040CBFAE28A8E349003AA16E /* viscosity_peer2016.cpp in Sources */,
+				040CBF9B28A8E342003AA16E /* vorticity_confinement.cpp in Sources */,
+				040CBF6428A8E26E003AA16E /* animation_field_system.cpp in Sources */,
+				040CBF7628A8E26E003AA16E /* fluid_model.cpp in Sources */,
+				040CBF7128A8E26E003AA16E /* animation_field.cpp in Sources */,
+				040CC00F28A8E365003AA16E /* simulation_data_pcisph.cpp in Sources */,
+				040CBF6528A8E26E003AA16E /* sph_kernels.cpp in Sources */,
+				040CBFAC28A8E349003AA16E /* viscosity_xsph.cpp in Sources */,
+				040CBF5E28A8E26E003AA16E /* boundary_model_koschier2017.cpp in Sources */,
+				040CC04F28A8E389003AA16E /* simulation_data_dfsph.cpp in Sources */,
+				040CBFBA28A8E349003AA16E /* viscosity_base.cpp in Sources */,
+				040CBFE528A8E350003AA16E /* debug_tools.cpp in Sources */,
+				040CBFDE28A8E350003AA16E /* volume_sampling.cpp in Sources */,
+				040CC02328A8E371003AA16E /* time_step_iisph.cpp in Sources */,
+				040CC01D28A8E36B003AA16E /* time_integration.cpp in Sources */,
+				040CBFB328A8E349003AA16E /* viscosity_peer2015.cpp in Sources */,
+				040CC00628A8E35F003AA16E /* simulation_data_pf.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,6 +1516,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		040CBEE428A8E11A003AA16E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 043A98B428A7416D00BCFAB0 /* vox.base */;
+			targetProxy = 040CBEE328A8E11A003AA16E /* PBXContainerItemProxy */;
+		};
+		040CBF7928A8E27F003AA16E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 043A98B428A7416D00BCFAB0 /* vox.base */;
+			targetProxy = 040CBF7828A8E27F003AA16E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		043A98AC28A7410200BCFAB0 /* Debug */ = {
@@ -513,6 +1671,11 @@
 				HEADER_SEARCH_PATHS = /Users/yangfeng/Desktop/DigitalFlex2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SYSTEM_HEADER_SEARCH_PATHS = (
+					./third_party/eigen,
+					./third_party/libmorton/include,
+					./third_party/spdlog/include,
+				);
 			};
 			name = Debug;
 		};
@@ -527,6 +1690,11 @@
 				HEADER_SEARCH_PATHS = /Users/yangfeng/Desktop/DigitalFlex2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SYSTEM_HEADER_SEARCH_PATHS = (
+					./third_party/eigen,
+					./third_party/libmorton/include,
+					./third_party/spdlog/include,
+				);
 			};
 			name = Release;
 		};
@@ -538,8 +1706,16 @@
 				EXECUTABLE_PREFIX = lib;
 				GCC_ENABLE_CPP_EXCEPTIONS = YES;
 				GCC_ENABLE_CPP_RTTI = YES;
+				HEADER_SEARCH_PATHS = /Users/yangfeng/Desktop/DigitalFlex2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SYSTEM_HEADER_SEARCH_PATHS = (
+					./third_party/eigen,
+					./third_party/libmorton/include,
+					./third_party/spdlog/include,
+					./third_party/nlohmann/include,
+					/opt/homebrew/include,
+				);
 			};
 			name = Debug;
 		};
@@ -551,8 +1727,16 @@
 				EXECUTABLE_PREFIX = lib;
 				GCC_ENABLE_CPP_EXCEPTIONS = YES;
 				GCC_ENABLE_CPP_RTTI = YES;
+				HEADER_SEARCH_PATHS = /Users/yangfeng/Desktop/DigitalFlex2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SYSTEM_HEADER_SEARCH_PATHS = (
+					./third_party/eigen,
+					./third_party/libmorton/include,
+					./third_party/spdlog/include,
+					./third_party/nlohmann/include,
+					/opt/homebrew/include,
+				);
 			};
 			name = Release;
 		};
@@ -564,8 +1748,17 @@
 				EXECUTABLE_PREFIX = lib;
 				GCC_ENABLE_CPP_EXCEPTIONS = YES;
 				GCC_ENABLE_CPP_RTTI = YES;
+				HEADER_SEARCH_PATHS = /Users/yangfeng/Desktop/DigitalFlex2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SYSTEM_HEADER_SEARCH_PATHS = (
+					./third_party/eigen,
+					./third_party/libmorton/include,
+					./third_party/spdlog/include,
+					./third_party/nlohmann/include,
+					./third_party/tinyexpr,
+					/opt/homebrew/include,
+				);
 			};
 			name = Debug;
 		};
@@ -577,8 +1770,17 @@
 				EXECUTABLE_PREFIX = lib;
 				GCC_ENABLE_CPP_EXCEPTIONS = YES;
 				GCC_ENABLE_CPP_RTTI = YES;
+				HEADER_SEARCH_PATHS = /Users/yangfeng/Desktop/DigitalFlex2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SYSTEM_HEADER_SEARCH_PATHS = (
+					./third_party/eigen,
+					./third_party/libmorton/include,
+					./third_party/spdlog/include,
+					./third_party/nlohmann/include,
+					./third_party/tinyexpr,
+					/opt/homebrew/include,
+				);
 			};
 			name = Release;
 		};
