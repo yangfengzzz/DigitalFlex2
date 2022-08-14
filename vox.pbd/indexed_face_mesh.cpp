@@ -153,7 +153,7 @@ void IndexedFaceMesh::buildNeighbors() {
             }
             if (edge == 0xffffffff) {
                 // create new
-                Edge e;
+                Edge e{};
                 e.m_vert[0] = a;
                 e.m_vert[1] = b;
                 e.m_face[0] = i;

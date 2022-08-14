@@ -7,6 +7,8 @@
 #pragma once
 
 #include <array>
+#include <fstream>
+#include <sstream>
 #include <string>
 
 #include "vox.base/logging.h"
@@ -38,12 +40,12 @@ public:
                         std::vector<Vec3f> *normals,
                         std::vector<Vec2f> *texcoords,
                         const Vec3f &scale) {
-        LOG_INFO << "Loading " << filename;
+        LOGI("Loading {}", filename)
 
         std::ifstream filestream;
         filestream.open(filename.c_str());
         if (filestream.fail()) {
-            LOG_ERR << "Failed to open file: " << filename;
+            LOGE("Failed to open file: {}", filename)
             return;
         }
 

@@ -52,11 +52,11 @@ class BVHTest {
 public:
     using TraversalCallback = std::function<void(unsigned int node_index1, unsigned int node_index2)>;
 
-    static void traverse(PointCloudBSH const &b1, TetMeshBSH const &b2, const TraversalCallback& func);
+    static void traverse(PointCloudBSH const &b1, TetMeshBSH const &b2, const TraversalCallback &func);
     static void traverse(PointCloudBSH const &b1,
                          unsigned int node_index1,
                          TetMeshBSH const &b2,
                          unsigned int node_index2,
-                         const TraversalCallback& func);
+                         const TraversalCallback &func);
 };
 }  // namespace vox

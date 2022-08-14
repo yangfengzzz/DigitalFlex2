@@ -105,7 +105,7 @@ void TetMeshBSH::init(const Vector3r *vertices,
 
 void TetMeshBSH::updateVertices(const Vector3r *vertices) { m_vertices = vertices; }
 
-void BVHTest::traverse(PointCloudBSH const &b1, TetMeshBSH const &b2, const TraversalCallback& func) {
+void BVHTest::traverse(PointCloudBSH const &b1, TetMeshBSH const &b2, const TraversalCallback &func) {
     traverse(b1, 0, b2, 0, func);
 }
 
@@ -113,7 +113,7 @@ void BVHTest::traverse(PointCloudBSH const &b1,
                        const unsigned int node_index1,
                        TetMeshBSH const &b2,
                        const unsigned int node_index2,
-                       const TraversalCallback& func) {
+                       const TraversalCallback &func) {
     const bounding_sphere &bs1 = b1.hull(node_index1);
     const bounding_sphere &bs2 = b2.hull(node_index2);
     if (!bs1.overlaps(bs2)) return;
