@@ -31,20 +31,20 @@ protected:
     FORCE_INLINE void init() {
         m_hashMap = new KeyValueMap *[m_bucketCount];
         for (unsigned int i = 0; i < m_bucketCount; i++) {
-            m_hashMap[i] = NULL;
+            m_hashMap[i] = nullptr;
         }
     }
 
     FORCE_INLINE void cleanup() {
         if (m_hashMap) {
             for (unsigned int i = 0; i < m_bucketCount; i++) {
-                if (m_hashMap[i] != NULL) {
+                if (m_hashMap[i] != nullptr) {
                     m_hashMap[i]->clear();
                     delete m_hashMap[i];
                 }
             }
             delete[] m_hashMap;
-            m_hashMap = NULL;
+            m_hashMap = nullptr;
         }
     }
 
@@ -70,7 +70,7 @@ public:
 
     FORCE_INLINE void reset() {
         for (unsigned int i = 0; i < m_bucketCount; i++) {
-            if (m_hashMap[i] != NULL) {
+            if (m_hashMap[i] != nullptr) {
                 m_hashMap[i]->clear();
             }
         }
@@ -85,11 +85,11 @@ public:
     FORCE_INLINE ValueType *find(const KeyType &key) {
         const unsigned int hashValue = hashFunction<KeyType>(key);
         const unsigned int mapIndex = hashValue & m_moduloValue;
-        if (m_hashMap[mapIndex] != NULL) {
+        if (m_hashMap[mapIndex] != nullptr) {
             typename KeyValueMap::iterator &iter = (*m_hashMap[mapIndex]).find(hashValue);
             if (iter != (*m_hashMap[mapIndex]).end()) return &iter->second;
         }
-        return NULL;
+        return nullptr;
     }
 
     /** Insert element.
@@ -97,7 +97,7 @@ public:
     FORCE_INLINE void insert(const KeyType &key, const ValueType &value) {
         const unsigned int hashValue = hashFunction<KeyType>(key);
         const unsigned int mapIndex = hashValue & m_moduloValue;
-        if (m_hashMap[mapIndex] == NULL) {
+        if (m_hashMap[mapIndex] == nullptr) {
             m_hashMap[mapIndex] = new KeyValueMap();
         }
         (*m_hashMap[mapIndex])[hashValue] = value;
@@ -108,11 +108,11 @@ public:
     FORCE_INLINE void remove(const KeyType &key) {
         const unsigned int hashValue = hashFunction<KeyType>(key);
         const unsigned int mapIndex = hashValue & m_moduloValue;
-        if (m_hashMap[mapIndex] != NULL) {
+        if (m_hashMap[mapIndex] != nullptr) {
             m_hashMap[mapIndex]->erase(hashValue);
             if (m_hashMap[mapIndex]->size() == 0) {
                 delete m_hashMap[mapIndex];
-                m_hashMap[mapIndex] = NULL;
+                m_hashMap[mapIndex] = nullptr;
             }
         }
     }
@@ -120,7 +120,7 @@ public:
     FORCE_INLINE ValueType &operator[](const KeyType &key) {
         const int hashValue = hashFunction<KeyType>(key);
         const unsigned int mapIndex = hashValue & m_moduloValue;
-        if (m_hashMap[mapIndex] == NULL) {
+        if (m_hashMap[mapIndex] == nullptr) {
             m_hashMap[mapIndex] = new KeyValueMap();
         }
         return (*m_hashMap[mapIndex])[hashValue];
@@ -129,7 +129,7 @@ public:
     FORCE_INLINE const ValueType &operator[](const KeyType &key) const {
         const unsigned int hashValue = hashFunction<KeyType>(key, m_bucketCount);
         const unsigned int mapIndex = hashValue & m_moduloValue;
-        if (m_hashMap[mapIndex] == NULL) {
+        if (m_hashMap[mapIndex] == nullptr) {
             m_hashMap[mapIndex] = new KeyValueMap();
         }
         return (*m_hashMap[mapIndex])[hashValue];
@@ -138,23 +138,23 @@ public:
     FORCE_INLINE const ValueType *query(const KeyType &key) const {
         const unsigned int hashValue = hashFunction<KeyType>(key);
         const unsigned int mapIndex = hashValue & m_moduloValue;
-        if (m_hashMap[mapIndex] == NULL) {
-            return NULL;
+        if (m_hashMap[mapIndex] == nullptr) {
+            return nullptr;
         }
         typename KeyValueMap::iterator &it = m_hashMap[mapIndex]->find(hashValue);
         if (it != m_hashMap[mapIndex]->end()) return &it->second;
-        return NULL;
+        return nullptr;
     }
 
     FORCE_INLINE ValueType *query(const KeyType &key) {
         const unsigned int hashValue = hashFunction<KeyType>(key);
         const unsigned int mapIndex = hashValue & m_moduloValue;
-        if (m_hashMap[mapIndex] == NULL) {
-            return NULL;
+        if (m_hashMap[mapIndex] == nullptr) {
+            return nullptr;
         }
         const typename KeyValueMap::iterator &it = m_hashMap[mapIndex]->find(hashValue);
         if (it != m_hashMap[mapIndex]->end()) return &it->second;
-        return NULL;
+        return nullptr;
     }
 };
 }  // namespace vox::utility

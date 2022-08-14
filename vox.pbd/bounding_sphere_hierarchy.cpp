@@ -13,7 +13,7 @@ using namespace Eigen;
 using pool_set = std::set<unsigned int>;
 using namespace vox;
 
-PointCloudBSH::PointCloudBSH() : super(0, 10) {}
+PointCloudBSH::PointCloudBSH() : KDTree<bounding_sphere>(0, 10) {}
 
 Vector3r const &PointCloudBSH::entity_position(unsigned int i) const { return m_vertices[i]; }
 
@@ -51,7 +51,7 @@ void PointCloudBSH::init(const Vector3r *vertices, const unsigned int numVertice
 
 //////////////////////////////////////////////////////////////////////////
 
-TetMeshBSH::TetMeshBSH() : super(0) {}
+TetMeshBSH::TetMeshBSH() : KDTree<bounding_sphere>(0) {}
 
 Vector3r const &TetMeshBSH::entity_position(unsigned int i) const { return m_com[i]; }
 
@@ -105,7 +105,7 @@ void TetMeshBSH::init(const Vector3r *vertices,
 
 void TetMeshBSH::updateVertices(const Vector3r *vertices) { m_vertices = vertices; }
 
-void BVHTest::traverse(PointCloudBSH const &b1, TetMeshBSH const &b2, TraversalCallback func) {
+void BVHTest::traverse(PointCloudBSH const &b1, TetMeshBSH const &b2, const TraversalCallback& func) {
     traverse(b1, 0, b2, 0, func);
 }
 
@@ -113,7 +113,7 @@ void BVHTest::traverse(PointCloudBSH const &b1,
                        const unsigned int node_index1,
                        TetMeshBSH const &b2,
                        const unsigned int node_index2,
-                       TraversalCallback func) {
+                       const TraversalCallback& func) {
     const bounding_sphere &bs1 = b1.hull(node_index1);
     const bounding_sphere &bs2 = b2.hull(node_index2);
     if (!bs1.overlaps(bs2)) return;

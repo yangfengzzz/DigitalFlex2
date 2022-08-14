@@ -21,8 +21,8 @@ public:
     void compute_hull_approx(unsigned int b, unsigned int n, bounding_sphere &hull) const final;
 
 private:
-    const Vector3r *m_vertices;
-    unsigned int m_numVertices;
+    const Vector3r *m_vertices{};
+    unsigned int m_numVertices{};
 };
 
 class TetMeshBSH : public KDTree<bounding_sphere> {
@@ -40,11 +40,11 @@ public:
     void updateVertices(const Vector3r *vertices);
 
 private:
-    const Vector3r *m_vertices;
-    unsigned int m_numVertices;
-    const unsigned int *m_indices;
-    unsigned int m_numTets;
-    Real m_tolerance;
+    const Vector3r *m_vertices{};
+    unsigned int m_numVertices{};
+    const unsigned int *m_indices{};
+    unsigned int m_numTets{};
+    Real m_tolerance{};
     std::vector<Vector3r> m_com;
 };
 
@@ -52,11 +52,11 @@ class BVHTest {
 public:
     using TraversalCallback = std::function<void(unsigned int node_index1, unsigned int node_index2)>;
 
-    static void traverse(PointCloudBSH const &b1, TetMeshBSH const &b2, TraversalCallback func);
+    static void traverse(PointCloudBSH const &b1, TetMeshBSH const &b2, const TraversalCallback& func);
     static void traverse(PointCloudBSH const &b1,
                          unsigned int node_index1,
                          TetMeshBSH const &b2,
                          unsigned int node_index2,
-                         TraversalCallback func);
+                         const TraversalCallback& func);
 };
 }  // namespace vox

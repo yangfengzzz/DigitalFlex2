@@ -4,8 +4,6 @@
 //  personal capacity and am not conveying any rights to any intellectual
 //  property of any third parties.
 
-#pragma once
-
 #include "vox.pbd/position_based_fluids.h"
 
 #include "vox.pbd/sph_kernels.h"

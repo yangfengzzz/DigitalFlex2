@@ -44,6 +44,11 @@ include(global_options)
 include(sample_helper)
 include(check_atomic)
 
+find_package(OpenMP REQUIRED)
+if (OPENMP_FOUND)
+    message("OpenMP Found")
+endif ()
+
 ####################################################
 # Add base library
 add_subdirectory(vox.base)

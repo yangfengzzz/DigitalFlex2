@@ -36,7 +36,7 @@ public:
      *
      * \param a	3d coordinates of point a
      */
-    bounding_sphere(const Vector3r &a) {
+    explicit bounding_sphere(const Vector3r &a) {
         m_x = a;
         m_r = 0.0;
     }
@@ -107,7 +107,7 @@ public:
      *
      * \param p vertices of the points
      */
-    bounding_sphere(const std::vector<Vector3r> &p) {
+    explicit bounding_sphere(const std::vector<Vector3r> &p) {
         m_r = 0;
         m_x.setZero();
         setPoints(p);

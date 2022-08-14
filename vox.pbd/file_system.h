@@ -8,7 +8,7 @@
 
 #include <sys/stat.h>
 
-#include "extern/md5/md5.h"
+#include "vox.base/md5.h"
 #include "vox.pbd/string_tools.h"
 #ifdef WIN32
 #include <direct.h>

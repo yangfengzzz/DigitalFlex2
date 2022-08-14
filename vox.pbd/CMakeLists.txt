@@ -13,6 +13,8 @@ target_include_directories(${PROJECT_NAME} PUBLIC ../
         ../third_party/spdlog/include
         ${CMAKE_CURRENT_SOURCE_DIR})
 
+target_link_libraries(${PROJECT_NAME} OpenMP::OpenMP_CXX)
+
 # Link third party libraries
 #target_link_libraries(${PROJECT_NAME} PUBLIC
 #        volk
