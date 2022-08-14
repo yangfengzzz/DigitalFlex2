@@ -104,7 +104,7 @@ void CollisionDetection::updateAABBs(SimulationModel &model) {
     }
 }
 
-void CollisionDetection::updateAABB(SimulationModel &model, CollisionDetection::CollisionObject *co) const {
+void CollisionDetection::updateAABB(SimulationModel &model, CollisionDetection::CollisionObject *co) {
     const SimulationModel::RigidBodyVector &rigidBodies = model.getRigidBodies();
     const SimulationModel::TriangleModelVector &triModels = model.getTriangleModels();
     const SimulationModel::TetModelVector &tetModels = model.getTetModels();

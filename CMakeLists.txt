@@ -24,6 +24,7 @@ file(MAKE_DIRECTORY output)
 
 # Add path for local cmake scripts
 list(APPEND CMAKE_MODULE_PATH
+        ${CMAKE_CURRENT_SOURCE_DIR}/bldsys
     ${CMAKE_CURRENT_SOURCE_DIR}/bldsys/cmake
     ${CMAKE_CURRENT_SOURCE_DIR}/bldsys/cmake/module)
 
@@ -44,6 +45,9 @@ include(global_options)
 include(sample_helper)
 include(check_atomic)
 
+find_package(pybind11)
+include(pybind11Common)
+
 find_package(OpenMP REQUIRED)
 if (OPENMP_FOUND)
     message("OpenMP Found")
@@ -56,7 +60,7 @@ add_subdirectory(test.base)
 
 ## Add pbd library
 add_subdirectory(vox.pbd)
-#add_subdirectory(test.math)
+add_subdirectory(py.pbd)
 
 # Add sph library
 add_subdirectory(vox.sph)

@@ -14,31 +14,31 @@
 #include "vox.base/logging.h"
 
 namespace vox::utility {
-#define START_TIMING(timerName) utility::Timing::startTiming(timerName);
+#define START_TIMING(timerName) vox::utility::Timing::startTiming(timerName);
 
-#define STOP_TIMING utility::Timing::stopTiming(false);
+#define STOP_TIMING vox::utility::Timing::stopTiming(false);
 
-#define STOP_TIMING_PRINT utility::Timing::stopTiming(true);
+#define STOP_TIMING_PRINT vox::utility::Timing::stopTiming(true);
 
-#define STOP_TIMING_AVG                                     \
-    {                                                       \
-        static int timing_timerId = -1;                     \
-        utility::Timing::stopTiming(false, timing_timerId); \
+#define STOP_TIMING_AVG                                          \
+    {                                                            \
+        static int timing_timerId = -1;                          \
+        vox::utility::Timing::stopTiming(false, timing_timerId); \
     }
 
-#define STOP_TIMING_AVG_PRINT                              \
-    {                                                      \
-        static int timing_timerId = -1;                    \
-        utility::Timing::stopTiming(true, timing_timerId); \
+#define STOP_TIMING_AVG_PRINT                                   \
+    {                                                           \
+        static int timing_timerId = -1;                         \
+        vox::utility::Timing::stopTiming(true, timing_timerId); \
     }
 
-#define INIT_TIMING                                                                \
-    int utility::IDFactory::id = 0;                                                \
-    std::unordered_map<int, utility::AverageTime> utility::Timing::m_averageTimes; \
-    std::stack<utility::TimingHelper> utility::Timing::m_timingStack;              \
-    bool utility::Timing::m_dontPrintTimes = false;                                \
-    unsigned int utility::Timing::m_startCounter = 0;                              \
-    unsigned int utility::Timing::m_stopCounter = 0;
+#define INIT_TIMING                                                                          \
+    int vox::utility::IDFactory::id = 0;                                                     \
+    std::unordered_map<int, vox::utility::AverageTime> vox::utility::Timing::m_averageTimes; \
+    std::stack<vox::utility::TimingHelper> vox::utility::Timing::m_timingStack;                   \
+    bool vox::utility::Timing::m_dontPrintTimes = false;                                     \
+    unsigned int vox::utility::Timing::m_startCounter = 0;                                   \
+    unsigned int vox::utility::Timing::m_stopCounter = 0;
 
 /** \brief Struct to store a time measurement.
  */

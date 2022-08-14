@@ -118,6 +118,6 @@ public:
     void setContactCallback(CollisionDetection::ContactCallbackFunction val, void *userData);
     void setSolidContactCallback(CollisionDetection::SolidContactCallbackFunction val, void *userData);
     void updateAABBs(SimulationModel &model);
-    void updateAABB(SimulationModel &model, CollisionDetection::CollisionObject *co) const;
+    void updateAABB(SimulationModel &model, CollisionDetection::CollisionObject *co);
 };
 }  // namespace vox
