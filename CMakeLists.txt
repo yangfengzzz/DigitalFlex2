@@ -65,16 +65,4 @@ add_subdirectory(py.pbd)
 # Add sph library
 add_subdirectory(vox.sph)
 add_subdirectory(py.sph)
-
-## Add force library
-#add_subdirectory(vox.force)
-#add_subdirectory(test.force)
-#add_subdirectory(apps.force)
-#
-## Add render framework
-#add_subdirectory(vox.render)
-#add_subdirectory(apps)
-#
-## Add editor
-#add_subdirectory(vox.editor)
-#add_subdirectory(editor)
+add_subdirectory(test.sph)

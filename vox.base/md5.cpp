@@ -205,7 +205,7 @@ char *MD5::hex_digest() {
     if (!finalized) {
         cerr << "MD5::hex_digest:  Can't get digest if you haven't "
              << "finalized the digest!" << endl;
-        return "";
+        return s;
     }
 
     for (i = 0; i < 16; i++) sprintf(s + i * 2, "%02x", digest[i]);
