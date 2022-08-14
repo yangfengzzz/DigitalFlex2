@@ -58,10 +58,10 @@ add_subdirectory(test.base)
 add_subdirectory(vox.pbd)
 #add_subdirectory(test.math)
 
-## Add geometry library
-#add_subdirectory(vox.geometry)
+# Add sph library
+add_subdirectory(vox.sph)
 #add_subdirectory(test.geometry)
-#
+
 ## Add force library
 #add_subdirectory(vox.force)
 #add_subdirectory(test.force)
