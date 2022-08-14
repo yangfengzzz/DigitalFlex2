@@ -124,13 +124,11 @@
 		040CBF5428A8E26E003AA16E /* file_system.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF2828A8E26D003AA16E /* file_system.h */; };
 		040CBF5528A8E26E003AA16E /* rigid_body_object.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF2928A8E26D003AA16E /* rigid_body_object.h */; };
 		040CBF5628A8E26E003AA16E /* non_pressure_force_base.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF2A28A8E26D003AA16E /* non_pressure_force_base.h */; };
-		040CBF5728A8E26E003AA16E /* scene_configuration.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF2B28A8E26D003AA16E /* scene_configuration.h */; };
 		040CBF5828A8E26E003AA16E /* static_rigid_body.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF2C28A8E26D003AA16E /* static_rigid_body.h */; };
 		040CBF5928A8E26E003AA16E /* time_step.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBF2D28A8E26D003AA16E /* time_step.cpp */; };
 		040CBF5A28A8E26E003AA16E /* timing.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF2E28A8E26D003AA16E /* timing.h */; };
 		040CBF5B28A8E26E003AA16E /* simulation.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF2F28A8E26D003AA16E /* simulation.h */; };
 		040CBF5C28A8E26E003AA16E /* triangle_mesh.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF3028A8E26D003AA16E /* triangle_mesh.h */; };
-		040CBF5D28A8E26E003AA16E /* scene_configuration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBF3128A8E26D003AA16E /* scene_configuration.cpp */; };
 		040CBF5E28A8E26E003AA16E /* boundary_model_koschier2017.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBF3228A8E26D003AA16E /* boundary_model_koschier2017.cpp */; };
 		040CBF5F28A8E26E003AA16E /* emitter_system.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF3328A8E26D003AA16E /* emitter_system.h */; };
 		040CBF6028A8E26E003AA16E /* animation_field.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF3428A8E26D003AA16E /* animation_field.h */; };
@@ -259,6 +257,8 @@
 		040CC04F28A8E389003AA16E /* simulation_data_dfsph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CC04B28A8E389003AA16E /* simulation_data_dfsph.cpp */; };
 		040CC05028A8E389003AA16E /* time_step_dfsph.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CC04C28A8E389003AA16E /* time_step_dfsph.h */; };
 		040CC05128A8E389003AA16E /* simulation_data_dfsph.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CC04D28A8E389003AA16E /* simulation_data_dfsph.h */; };
+		040CC05428A91951003AA16E /* partio_reader_writer.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CC05228A91951003AA16E /* partio_reader_writer.h */; };
+		040CC05528A91951003AA16E /* partio_reader_writer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CC05328A91951003AA16E /* partio_reader_writer.cpp */; };
 		043A98AB28A7410200BCFAB0 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 043A98AA28A7410200BCFAB0 /* main.cpp */; };
 		043A98EC28A742D200BCFAB0 /* test_parameter_object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 043A98E928A742D200BCFAB0 /* test_parameter_object.cpp */; };
 		043A98ED28A742D200BCFAB0 /* parameter_tests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 043A98EA28A742D200BCFAB0 /* parameter_tests.cpp */; };
@@ -420,13 +420,11 @@
 		040CBF2828A8E26D003AA16E /* file_system.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = file_system.h; sourceTree = "<group>"; };
 		040CBF2928A8E26D003AA16E /* rigid_body_object.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rigid_body_object.h; sourceTree = "<group>"; };
 		040CBF2A28A8E26D003AA16E /* non_pressure_force_base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = non_pressure_force_base.h; sourceTree = "<group>"; };
-		040CBF2B28A8E26D003AA16E /* scene_configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scene_configuration.h; sourceTree = "<group>"; };
 		040CBF2C28A8E26D003AA16E /* static_rigid_body.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = static_rigid_body.h; sourceTree = "<group>"; };
 		040CBF2D28A8E26D003AA16E /* time_step.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = time_step.cpp; sourceTree = "<group>"; };
 		040CBF2E28A8E26D003AA16E /* timing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = timing.h; sourceTree = "<group>"; };
 		040CBF2F28A8E26D003AA16E /* simulation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = simulation.h; sourceTree = "<group>"; };
 		040CBF3028A8E26D003AA16E /* triangle_mesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = triangle_mesh.h; sourceTree = "<group>"; };
-		040CBF3128A8E26D003AA16E /* scene_configuration.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = scene_configuration.cpp; sourceTree = "<group>"; };
 		040CBF3228A8E26D003AA16E /* boundary_model_koschier2017.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = boundary_model_koschier2017.cpp; sourceTree = "<group>"; };
 		040CBF3328A8E26D003AA16E /* emitter_system.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = emitter_system.h; sourceTree = "<group>"; };
 		040CBF3428A8E26D003AA16E /* animation_field.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = animation_field.h; sourceTree = "<group>"; };
@@ -554,6 +552,8 @@
 		040CC04B28A8E389003AA16E /* simulation_data_dfsph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = simulation_data_dfsph.cpp; sourceTree = "<group>"; };
 		040CC04C28A8E389003AA16E /* time_step_dfsph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = time_step_dfsph.h; sourceTree = "<group>"; };
 		040CC04D28A8E389003AA16E /* simulation_data_dfsph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = simulation_data_dfsph.h; sourceTree = "<group>"; };
+		040CC05228A91951003AA16E /* partio_reader_writer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = partio_reader_writer.h; sourceTree = "<group>"; };
+		040CC05328A91951003AA16E /* partio_reader_writer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = partio_reader_writer.cpp; sourceTree = "<group>"; };
 		043A98A728A7410200BCFAB0 /* apps */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = apps; sourceTree = BUILT_PRODUCTS_DIR; };
 		043A98AA28A7410200BCFAB0 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		043A98B528A7416D00BCFAB0 /* libvox.base.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libvox.base.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -999,6 +999,8 @@
 				040CBF2828A8E26D003AA16E /* file_system.h */,
 				040CBF4628A8E26E003AA16E /* string_tools.h */,
 				040CBF4B28A8E26E003AA16E /* system_info.h */,
+				040CC05228A91951003AA16E /* partio_reader_writer.h */,
+				040CC05328A91951003AA16E /* partio_reader_writer.cpp */,
 				040CBF4428A8E26E003AA16E /* binary_file_reader_writer.h */,
 				040CBF3728A8E26E003AA16E /* neighborhood_search.h */,
 				040CBF8428A8E30D003AA16E /* utilities */,
@@ -1042,8 +1044,6 @@
 				040CBF4028A8E26E003AA16E /* obj_loader.h */,
 				040CBF2928A8E26D003AA16E /* rigid_body_object.h */,
 				040CBF2C28A8E26D003AA16E /* static_rigid_body.h */,
-				040CBF2B28A8E26D003AA16E /* scene_configuration.h */,
-				040CBF3128A8E26D003AA16E /* scene_configuration.cpp */,
 				040CBF2F28A8E26D003AA16E /* simulation.h */,
 				040CBF3F28A8E26E003AA16E /* simulation.cpp */,
 				040CBF3C28A8E26E003AA16E /* time_manager.h */,
@@ -1171,7 +1171,6 @@
 				040CBFE328A8E350003AA16E /* gauss_quadrature.h in Headers */,
 				040CBFFA28A8E356003AA16E /* surface_tension_halton_vec323.h in Headers */,
 				040CBFE028A8E350003AA16E /* sdf_functions.h in Headers */,
-				040CBF5728A8E26E003AA16E /* scene_configuration.h in Headers */,
 				040CBFBB28A8E349003AA16E /* viscosity_peer2015.h in Headers */,
 				040CBFAD28A8E349003AA16E /* viscosity_takahashi2015.h in Headers */,
 				040CBF6E28A8E26E003AA16E /* counting.h in Headers */,
@@ -1186,6 +1185,7 @@
 				040CBF6128A8E26E003AA16E /* sph_kernels.h in Headers */,
 				040CBFDD28A8E350003AA16E /* scene_loader.h in Headers */,
 				040CBFD828A8E350003AA16E /* poisson_disk_sampling.h in Headers */,
+				040CC05428A91951003AA16E /* partio_reader_writer.h in Headers */,
 				040CBFB528A8E349003AA16E /* viscosity_standard.h in Headers */,
 				040CC02D28A8E377003AA16E /* time_step_icsph.h in Headers */,
 				040CBF6928A8E26E003AA16E /* time_step.h in Headers */,
@@ -1451,7 +1451,6 @@
 				040CBFEB28A8E350003AA16E /* simple_quadrature.cpp in Sources */,
 				040CBF5928A8E26E003AA16E /* time_step.cpp in Sources */,
 				040CBFE428A8E350003AA16E /* math_functions.cpp in Sources */,
-				040CBF5D28A8E26E003AA16E /* scene_configuration.cpp in Sources */,
 				040CBF6D28A8E26E003AA16E /* triangle_mesh.cpp in Sources */,
 				040CBFEA28A8E350003AA16E /* scene_loader.cpp in Sources */,
 				040CC03628A8E37E003AA16E /* elasticity_becker2009.cpp in Sources */,
@@ -1496,6 +1495,7 @@
 				040CBFAC28A8E349003AA16E /* viscosity_xsph.cpp in Sources */,
 				040CBF5E28A8E26E003AA16E /* boundary_model_koschier2017.cpp in Sources */,
 				040CC04F28A8E389003AA16E /* simulation_data_dfsph.cpp in Sources */,
+				040CC05528A91951003AA16E /* partio_reader_writer.cpp in Sources */,
 				040CBFBA28A8E349003AA16E /* viscosity_base.cpp in Sources */,
 				040CBFE528A8E350003AA16E /* debug_tools.cpp in Sources */,
 				040CBFDE28A8E350003AA16E /* volume_sampling.cpp in Sources */,
@@ -1757,6 +1757,7 @@
 					./third_party/spdlog/include,
 					./third_party/nlohmann/include,
 					./third_party/tinyexpr,
+					./third_party/partio/src/lib,
 					/opt/homebrew/include,
 				);
 			};
@@ -1779,6 +1780,7 @@
 					./third_party/spdlog/include,
 					./third_party/nlohmann/include,
 					./third_party/tinyexpr,
+					./third_party/partio/src/lib,
 					/opt/homebrew/include,
 				);
 			};

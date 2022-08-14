@@ -27,6 +27,7 @@ target_include_directories(${PROJECT_NAME} PUBLIC ../
         ../third_party/nlohmann/include
         ../third_party/spdlog/include
         ../third_party/tinyexpr
+        ../third_party/partio/src/lib
         ${CMAKE_CURRENT_SOURCE_DIR})
 
 target_link_libraries(${PROJECT_NAME} OpenMP::OpenMP_CXX)
