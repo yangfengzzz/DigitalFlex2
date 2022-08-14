@@ -64,7 +64,7 @@ add_subdirectory(py.pbd)
 
 # Add sph library
 add_subdirectory(vox.sph)
-#add_subdirectory(test.geometry)
+add_subdirectory(py.sph)
 
 ## Add force library
 #add_subdirectory(vox.force)

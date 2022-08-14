@@ -9,7 +9,6 @@
 #include <pybind11/stl_bind.h>
 
 #include "py.pbd/common.h"
-#include "vox.pbd/simulation_model.h"
 
 namespace py = pybind11;
 

@@ -5,7 +5,6 @@
 //  property of any third parties.
 
 #include <pybind11/functional.h>
-#include <pybind11/numpy.h>
 #include <pybind11/stl_bind.h>
 
 #include "py.pbd/common.h"

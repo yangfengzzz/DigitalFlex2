@@ -36,7 +36,7 @@ void vector_pointer_modifiers(enable_if_t<is_copy_constructible<typename Vector:
             "append", [](Vector &v, const T &value) { v.push_back(new TNoPtr(*value)); }, arg("x"),
             "Add an item to the end of the list");
 
-    cl.def(init([](const iterable& it) {
+    cl.def(init([](const iterable &it) {
         auto v = std::unique_ptr<Vector>(new Vector());
         v->reserve(len_hint(it));
         for (handle h : it) v->push_back(new TNoPtr(*h.cast<T>()));
@@ -60,7 +60,7 @@ void vector_pointer_modifiers(enable_if_t<is_copy_constructible<typename Vector:
 
     cl.def(
             "extend",
-            [](Vector &v, const iterable& it) {
+            [](Vector &v, const iterable &it) {
                 const size_t old_size = v.size();
                 v.reserve(old_size + len_hint(it));
                 try {

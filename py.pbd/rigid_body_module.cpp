@@ -8,7 +8,6 @@
 #include <pybind11/stl_bind.h>
 
 #include "py.pbd/common.h"
-#include "vox.pbd/rigid_body.h"
 
 namespace py = pybind11;
 using namespace vox;

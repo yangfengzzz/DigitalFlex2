@@ -7,8 +7,8 @@
 #pragma once
 
 #include "vox.editor/simulator_base.h"
-#include "vox.sph/boundary_simulator.h"
-#include "vox.sph/position_based_dynamics_wrapper/pbd_wrapper.h"
+#include "vox.editor/boundary_simulator.h"
+#include "vox.editor/position_based_dynamics_wrapper/pbd_wrapper.h"
 
 namespace vox {
 class PBDBoundarySimulator : public BoundarySimulator {

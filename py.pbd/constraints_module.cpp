@@ -18,7 +18,7 @@ namespace py = pybind11;
 
 #define CONSTRAINT_JOINTINFO(name, base) CONSTRAINT(name, base).def_readwrite("jointInfo", &vox::name::m_jointInfo)
 
-void ConstraintsModule(py::module m_sub) {
+void ConstraintsModule(const py::module& m_sub) {
     py::class_<vox::Constraint>(m_sub, "Constraint")
             .def_readwrite("bodies", &vox::Constraint::m_bodies)
             .def("getTypeId", &vox::Constraint::getTypeId)

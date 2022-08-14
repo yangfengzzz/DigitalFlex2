@@ -11,7 +11,6 @@
 #include "py.pbd//bind_pointer_vector.h"
 #include "py.pbd/common.h"
 #include "vox.base/geometry/triangle_mesh_distance.h"
-#include "vox.base/mesh/triangle_mesh.h"
 #include "vox.pbd/cubic_sdf_collision_detection.h"
 #include "vox.pbd/simulation.h"
 
@@ -318,7 +317,7 @@ void SimulationModelModule(const py::module& m_sub) {
                     "addRigidBody",
                     [](vox::SimulationModel& model, const Real density, const vox::VertexData& vertices,
                        const vox::utility::IndexedFaceMesh& mesh, const Vector3r& translation, const Matrix3r& rotation,
-                       const Vector3r& scale, const bool testMesh, const vox::CubicSDFCollisionDetection::GridPtr sdf) {
+                       const Vector3r& scale, const bool testMesh, const vox::CubicSDFCollisionDetection::GridPtr& sdf) {
                         vox::SimulationModel::RigidBodyVector& rbs = model.getRigidBodies();
                         auto* rb = new vox::RigidBody();
                         rb->initBody(density, translation, Quaternionr(rotation), vertices, mesh, scale);

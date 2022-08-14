@@ -8,10 +8,7 @@
 
 #include "py.pbd/common.h"
 #include "vox.base/logging.h"
-#include "vox.pbd/indexed_face_mesh.h"
-#include "vox.pbd/indexed_tet_mesh.h"
 #include "vox.pbd/obj_loader.h"
-#include "vox.pbd/particle_data.h"
 #include "vox.pbd/tet_gen_loader.h"
 #include "vox.pbd/timing.h"
 
