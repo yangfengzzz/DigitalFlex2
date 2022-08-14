@@ -4,7 +4,7 @@
 //  personal capacity and am not conveying any rights to any intellectual
 //  property of any third parties.
 
-#include "vox.base/cubic_lagrange_discrete_grid.h"
+#include "vox.base/discrete_grid/cubic_lagrange_discrete_grid.h"
 
 #include <atomic>
 #include <chrono>
@@ -14,10 +14,10 @@
 #include <numeric>
 #include <set>
 
-#include "vox.base/data/z_sort_table.h"
-#include "vox.base/utility/serialize.h"
-#include "vox.base/utility/spinlock.h"
-#include "vox.base/utility/timing.h"
+#include "vox.base/serialize.h"
+#include "vox.base/spinlock.h"
+#include "vox.base/timing.h"
+#include "vox.base/z_sort_table.h"
 
 using namespace Eigen;
 

@@ -6,10 +6,10 @@
 
 #include "vox.sph/utilities/sdf_functions.h"
 
+#include "vox.base/discrete_grid/triangle_mesh_distance.h"
+#include "vox.base/mesh/triangle_mesh.h"
 #include "vox.sph/obj_loader.h"
 #include "vox.sph/timing.h"
-#include "vox.base/mesh/triangle_mesh.h"
-#include "vox.base/geometry/triangle_mesh_distance.h"
 
 using namespace Eigen;
 using namespace std;

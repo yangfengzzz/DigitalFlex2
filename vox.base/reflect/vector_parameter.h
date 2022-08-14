@@ -11,7 +11,7 @@
 #include <iostream>
 #include <memory>
 
-#include "vox.base/parameter.h"
+#include "vox.base/reflect/parameter.h"
 
 namespace vox {
 /** Class of a vector parameter.

@@ -7,9 +7,10 @@
 #pragma once
 
 #include <array>
-#include <Eigen/Dense>
 #include <fstream>
 #include <vector>
+
+#include <Eigen/Dense>
 
 namespace vox {
 

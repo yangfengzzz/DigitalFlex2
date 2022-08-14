@@ -9,11 +9,11 @@
 #include <utility>
 
 #include "script_object.h"
-#include "vox.base/parameter_object.h"
+#include "vox.base/reflect/parameter_object.h"
+#include "vox.editor/boundary_simulator.h"
 #include "vox.sph/boundary_model_akinci2012.h"
 #include "vox.sph/boundary_model_bender2019.h"
 #include "vox.sph/boundary_model_koschier2017.h"
-#include "vox.editor/boundary_simulator.h"
 #include "vox.sph/common.h"
 #include "vox.sph/fluid_model.h"
 #include "vox.sph/time_step.h"

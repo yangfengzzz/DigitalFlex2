@@ -4,9 +4,7 @@
 //  personal capacity and am not conveying any rights to any intellectual
 //  property of any third parties.
 
-#include "vox.base/compact_search.h"
-
-#include <libmorton/morton.h>
+#include "compact_search.h"
 
 #include <algorithm>
 #include <array>
@@ -14,6 +12,8 @@
 #include <iostream>
 #include <limits>
 #include <numeric>
+
+#include "third_party/libmorton/include/libmorton/morton.h"
 
 namespace CompactNSearch {
 namespace {

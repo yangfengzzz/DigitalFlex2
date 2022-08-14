@@ -10,7 +10,7 @@
 
 #include "py.pbd//bind_pointer_vector.h"
 #include "py.pbd/common.h"
-#include "vox.base/geometry/triangle_mesh_distance.h"
+#include "vox.base/discrete_grid/triangle_mesh_distance.h"
 #include "vox.pbd/cubic_sdf_collision_detection.h"
 #include "vox.pbd/simulation.h"
 

@@ -8,7 +8,7 @@
 
 #include <vector>
 
-#include "vox.base/parameter_object.h"
+#include "vox.base/reflect/parameter_object.h"
 #include "vox.pbd/common.h"
 #include "vox.pbd/line_model.h"
 #include "vox.pbd/particle_data.h"

@@ -6,7 +6,7 @@
 
 #pragma once
 
-#include "vox.base/cubic_lagrange_discrete_grid.h"
+#include "vox.base/discrete_grid/cubic_lagrange_discrete_grid.h"
 #include "vox.sph/common.h"
 
 namespace vox::utility {

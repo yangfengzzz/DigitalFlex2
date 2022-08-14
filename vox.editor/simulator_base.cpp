@@ -9,7 +9,7 @@
 #include "third_party/cxxopts/include/cxxopts.hpp"
 #include "third_party/partio/src/lib/Partio.h"
 #include "vox.base/logging.h"
-#include "vox.base/numeric_parameter.h"
+#include "vox.base/reflect/numeric_parameter.h"
 #include "vox.base/version.h"
 #include "vox.editor/gui/simulator_gui_base.h"
 #include "vox.sph/binary_file_reader_writer.h"

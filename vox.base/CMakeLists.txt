@@ -5,7 +5,9 @@ project(vox.base LANGUAGES C CXX)
 file(GLOB sources
         ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/mesh/*.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/utility/*.cpp)
+        ${CMAKE_CURRENT_SOURCE_DIR}/reflect/*.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/discrete_grid/*.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/compact_search/*.cpp)
 
 add_library(${PROJECT_NAME} STATIC ${sources})
 

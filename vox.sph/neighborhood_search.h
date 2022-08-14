@@ -15,6 +15,6 @@
 #include "cuNSearch.h"
 typedef cuNSearch::NeighborhoodSearch NeighborhoodSearch;
 #else
-#include "vox.base/compact_search.h"
+#include "vox.base/compact_search/compact_search.h"
 typedef CompactNSearch::NeighborhoodSearch NeighborhoodSearch;
 #endif

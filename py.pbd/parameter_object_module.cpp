@@ -9,7 +9,7 @@
 
 #include <utility>
 
-#include "vox.base/parameter_object.h"
+#include "vox.base/reflect/parameter_object.h"
 #include "vox.pbd/common.h"
 
 namespace py = pybind11;

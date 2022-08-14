@@ -6,7 +6,7 @@
 
 #pragma once
 
-#include "vox.base/parameter_object.h"
+#include "vox.base/reflect/parameter_object.h"
 #include "vox.sph/common.h"
 #include "vox.sph/fluid_model.h"
 

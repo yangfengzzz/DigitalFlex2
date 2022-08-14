@@ -8,9 +8,9 @@
 
 #include <unordered_map>
 
+#include "vox.base/compact_search/data_structures.h"
+#include "vox.base/compact_search/point_set.h"
 #include "vox.base/config.h"
-#include "vox.base/data_structures.h"
-#include "vox.base/point_set.h"
 
 namespace CompactNSearch {
 

@@ -10,10 +10,10 @@
 #include <utility>
 #include <vector>
 
-#include "vox.base/enum_parameter.h"
-#include "vox.base/function_parameter.h"
-#include "vox.base/numeric_parameter.h"
-#include "vox.base/vector_parameter.h"
+#include "vox.base/reflect/enum_parameter.h"
+#include "vox.base/reflect/function_parameter.h"
+#include "vox.base/reflect/numeric_parameter.h"
+#include "vox.base/reflect/vector_parameter.h"
 
 namespace vox {
 /** An object that uses generic parameters should be inherited from this class.

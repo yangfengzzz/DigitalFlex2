@@ -9,7 +9,7 @@
 #include <utility>
 
 #include "py.pbd/common.h"
-#include "vox.base/geometry/triangle_mesh_distance.h"
+#include "vox.base/discrete_grid/triangle_mesh_distance.h"
 #include "vox.pbd/collision_detection.h"
 #include "vox.pbd/cubic_sdf_collision_detection.h"
 

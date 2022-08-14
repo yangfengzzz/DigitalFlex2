@@ -8,7 +8,7 @@
 
 #include <memory>
 
-#include "vox.base/cubic_lagrange_discrete_grid.h"
+#include "vox.base/discrete_grid/cubic_lagrange_discrete_grid.h"
 #include "vox.pbd/common.h"
 #include "vox.pbd/distance_field_collision_detection.h"
 

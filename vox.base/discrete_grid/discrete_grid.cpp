@@ -4,7 +4,7 @@
 //  personal capacity and am not conveying any rights to any intellectual
 //  property of any third parties.
 
-#include "vox.base/discrete_grid.h"
+#include "vox.base/discrete_grid/discrete_grid.h"
 
 using namespace Eigen;
 

@@ -9,7 +9,7 @@
 #include <nlohmann/json.hpp>
 #include <vector>
 
-#include "vox.base/parameter_object.h"
+#include "vox.base/reflect/parameter_object.h"
 #include "vox.sph/common.h"
 
 namespace vox::utility {

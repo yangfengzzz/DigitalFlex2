@@ -6,7 +6,7 @@
 
 #pragma once
 
-#include "vox.base/parameter_object.h"
+#include "vox.base/reflect/parameter_object.h"
 #include "vox.sph/animation_field_system.h"
 #include "vox.sph/boundary_model.h"
 #include "vox.sph/common.h"

@@ -8,7 +8,7 @@
 
 #include <utility>
 
-#include "vox.base/parameter.h"
+#include "vox.base/reflect/parameter.h"
 
 namespace vox {
 /** Class of a function parameter. This parameter type contains a callback

@@ -11,7 +11,7 @@
 #include <utility>
 #include <vector>
 
-#include "vox.base/parameter.h"
+#include "vox.base/reflect/parameter.h"
 
 namespace vox {
 /** Class of an enum parameter. */

@@ -7,12 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		040CBE4A28A7460F003AA16E /* parameter_object.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE4428A7460E003AA16E /* parameter_object.h */; };
-		040CBE4B28A7460F003AA16E /* parameter.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE4528A7460F003AA16E /* parameter.h */; };
-		040CBE4C28A7460F003AA16E /* enum_parameter.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE4628A7460F003AA16E /* enum_parameter.h */; };
-		040CBE4D28A7460F003AA16E /* function_parameter.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE4728A7460F003AA16E /* function_parameter.h */; };
-		040CBE4E28A7460F003AA16E /* numeric_parameter.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE4828A7460F003AA16E /* numeric_parameter.h */; };
-		040CBE4F28A7460F003AA16E /* vector_parameter.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE4928A7460F003AA16E /* vector_parameter.h */; };
 		040CBE9A28A8E0EF003AA16E /* position_based_fluids.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBE5028A8E0EE003AA16E /* position_based_fluids.cpp */; };
 		040CBE9B28A8E0EF003AA16E /* simulation_model.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE5128A8E0EE003AA16E /* simulation_model.h */; };
 		040CBE9C28A8E0EF003AA16E /* sph_kernels.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBE5228A8E0EE003AA16E /* sph_kernels.cpp */; };
@@ -89,22 +83,9 @@
 		040CBEE628A8E11E003AA16E /* libvox.base.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 043A98B528A7416D00BCFAB0 /* libvox.base.a */; };
 		040CBEF528A8E12D003AA16E /* logging.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBEE828A8E12C003AA16E /* logging.h */; };
 		040CBEF628A8E12D003AA16E /* config.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBEE928A8E12C003AA16E /* config.h */; };
-		040CBEF728A8E12D003AA16E /* compact_search.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBEEA28A8E12C003AA16E /* compact_search.h */; };
-		040CBEF828A8E12D003AA16E /* compact_search.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBEEB28A8E12C003AA16E /* compact_search.cpp */; };
 		040CBEF928A8E12D003AA16E /* version.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBEEC28A8E12C003AA16E /* version.h */; };
-		040CBEFA28A8E12D003AA16E /* cubic_lagrange_discrete_grid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBEED28A8E12D003AA16E /* cubic_lagrange_discrete_grid.cpp */; };
-		040CBEFB28A8E12D003AA16E /* discrete_grid.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBEEE28A8E12D003AA16E /* discrete_grid.h */; };
 		040CBEFC28A8E12D003AA16E /* md5.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBEEF28A8E12D003AA16E /* md5.h */; };
-		040CBEFD28A8E12D003AA16E /* point_set.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBEF028A8E12D003AA16E /* point_set.h */; };
-		040CBEFE28A8E12D003AA16E /* data_structures.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBEF128A8E12D003AA16E /* data_structures.h */; };
-		040CBEFF28A8E12D003AA16E /* cubic_lagrange_discrete_grid.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBEF228A8E12D003AA16E /* cubic_lagrange_discrete_grid.h */; };
-		040CBF0028A8E12D003AA16E /* discrete_grid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBEF328A8E12D003AA16E /* discrete_grid.cpp */; };
 		040CBF0128A8E12D003AA16E /* md5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBEF428A8E12D003AA16E /* md5.cpp */; };
-		040CBF0728A8E16D003AA16E /* z_sort_table.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF0628A8E16D003AA16E /* z_sort_table.h */; };
-		040CBF0C28A8E173003AA16E /* spinlock.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF0828A8E173003AA16E /* spinlock.h */; };
-		040CBF0D28A8E173003AA16E /* timing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBF0928A8E173003AA16E /* timing.cpp */; };
-		040CBF0E28A8E173003AA16E /* serialize.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF0A28A8E173003AA16E /* serialize.h */; };
-		040CBF0F28A8E173003AA16E /* timing.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF0B28A8E173003AA16E /* timing.h */; };
 		040CBF1728A8E17C003AA16E /* entity_iterators.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF1028A8E17C003AA16E /* entity_iterators.h */; };
 		040CBF1828A8E17C003AA16E /* entity_containers.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF1128A8E17C003AA16E /* entity_containers.h */; };
 		040CBF1928A8E17C003AA16E /* triangle_mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBF1228A8E17C003AA16E /* triangle_mesh.cpp */; };
@@ -112,7 +93,6 @@
 		040CBF1B28A8E17C003AA16E /* entity_iterators.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBF1428A8E17C003AA16E /* entity_iterators.cpp */; };
 		040CBF1C28A8E17C003AA16E /* entity_containers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBF1528A8E17C003AA16E /* entity_containers.cpp */; };
 		040CBF1D28A8E17C003AA16E /* triangle_mesh.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF1628A8E17C003AA16E /* triangle_mesh.h */; };
-		040CBF1F28A8E182003AA16E /* triangle_mesh_distance.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF1E28A8E182003AA16E /* triangle_mesh_distance.h */; };
 		040CBF4C28A8E26E003AA16E /* boundary_model.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF2028A8E26D003AA16E /* boundary_model.h */; };
 		040CBF4D28A8E26E003AA16E /* emitter_system.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBF2128A8E26D003AA16E /* emitter_system.cpp */; };
 		040CBF4E28A8E26E003AA16E /* boundary_model_koschier2017.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF2228A8E26D003AA16E /* boundary_model_koschier2017.h */; };
@@ -266,6 +246,26 @@
 		043A98AB28A7410200BCFAB0 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 043A98AA28A7410200BCFAB0 /* main.cpp */; };
 		043A98EC28A742D200BCFAB0 /* test_parameter_object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 043A98E928A742D200BCFAB0 /* test_parameter_object.cpp */; };
 		043A98ED28A742D200BCFAB0 /* parameter_tests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 043A98EA28A742D200BCFAB0 /* parameter_tests.cpp */; };
+		049DB6BA28A92BE400D9C358 /* parameter_object.h in Headers */ = {isa = PBXBuildFile; fileRef = 049DB6B428A92BE400D9C358 /* parameter_object.h */; };
+		049DB6BB28A92BE400D9C358 /* numeric_parameter.h in Headers */ = {isa = PBXBuildFile; fileRef = 049DB6B528A92BE400D9C358 /* numeric_parameter.h */; };
+		049DB6BC28A92BE400D9C358 /* enum_parameter.h in Headers */ = {isa = PBXBuildFile; fileRef = 049DB6B628A92BE400D9C358 /* enum_parameter.h */; };
+		049DB6BD28A92BE400D9C358 /* function_parameter.h in Headers */ = {isa = PBXBuildFile; fileRef = 049DB6B728A92BE400D9C358 /* function_parameter.h */; };
+		049DB6BE28A92BE400D9C358 /* parameter.h in Headers */ = {isa = PBXBuildFile; fileRef = 049DB6B828A92BE400D9C358 /* parameter.h */; };
+		049DB6BF28A92BE400D9C358 /* vector_parameter.h in Headers */ = {isa = PBXBuildFile; fileRef = 049DB6B928A92BE400D9C358 /* vector_parameter.h */; };
+		049DB6C528A92BEA00D9C358 /* discrete_grid.h in Headers */ = {isa = PBXBuildFile; fileRef = 049DB6C028A92BEA00D9C358 /* discrete_grid.h */; };
+		049DB6C628A92BEA00D9C358 /* discrete_grid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 049DB6C128A92BEA00D9C358 /* discrete_grid.cpp */; };
+		049DB6C728A92BEA00D9C358 /* triangle_mesh_distance.h in Headers */ = {isa = PBXBuildFile; fileRef = 049DB6C228A92BEA00D9C358 /* triangle_mesh_distance.h */; };
+		049DB6C828A92BEA00D9C358 /* cubic_lagrange_discrete_grid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 049DB6C328A92BEA00D9C358 /* cubic_lagrange_discrete_grid.cpp */; };
+		049DB6C928A92BEA00D9C358 /* cubic_lagrange_discrete_grid.h in Headers */ = {isa = PBXBuildFile; fileRef = 049DB6C428A92BEA00D9C358 /* cubic_lagrange_discrete_grid.h */; };
+		049DB6CE28A92BEF00D9C358 /* point_set.h in Headers */ = {isa = PBXBuildFile; fileRef = 049DB6CA28A92BEF00D9C358 /* point_set.h */; };
+		049DB6CF28A92BEF00D9C358 /* data_structures.h in Headers */ = {isa = PBXBuildFile; fileRef = 049DB6CB28A92BEF00D9C358 /* data_structures.h */; };
+		049DB6D028A92BEF00D9C358 /* compact_search.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 049DB6CC28A92BEF00D9C358 /* compact_search.cpp */; };
+		049DB6D128A92BEF00D9C358 /* compact_search.h in Headers */ = {isa = PBXBuildFile; fileRef = 049DB6CD28A92BEF00D9C358 /* compact_search.h */; };
+		049DB6D728A92C6E00D9C358 /* spinlock.h in Headers */ = {isa = PBXBuildFile; fileRef = 049DB6D228A92C6E00D9C358 /* spinlock.h */; };
+		049DB6D828A92C6E00D9C358 /* serialize.h in Headers */ = {isa = PBXBuildFile; fileRef = 049DB6D328A92C6E00D9C358 /* serialize.h */; };
+		049DB6D928A92C6E00D9C358 /* timing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 049DB6D428A92C6E00D9C358 /* timing.cpp */; };
+		049DB6DA28A92C6E00D9C358 /* timing.h in Headers */ = {isa = PBXBuildFile; fileRef = 049DB6D528A92C6E00D9C358 /* timing.h */; };
+		049DB6DB28A92C6E00D9C358 /* z_sort_table.h in Headers */ = {isa = PBXBuildFile; fileRef = 049DB6D628A92C6E00D9C358 /* z_sort_table.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -330,12 +330,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		040CBE4428A7460E003AA16E /* parameter_object.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = parameter_object.h; sourceTree = "<group>"; };
-		040CBE4528A7460F003AA16E /* parameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = parameter.h; sourceTree = "<group>"; };
-		040CBE4628A7460F003AA16E /* enum_parameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = enum_parameter.h; sourceTree = "<group>"; };
-		040CBE4728A7460F003AA16E /* function_parameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = function_parameter.h; sourceTree = "<group>"; };
-		040CBE4828A7460F003AA16E /* numeric_parameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = numeric_parameter.h; sourceTree = "<group>"; };
-		040CBE4928A7460F003AA16E /* vector_parameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vector_parameter.h; sourceTree = "<group>"; };
 		040CBE5028A8E0EE003AA16E /* position_based_fluids.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = position_based_fluids.cpp; sourceTree = "<group>"; };
 		040CBE5128A8E0EE003AA16E /* simulation_model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = simulation_model.h; sourceTree = "<group>"; };
 		040CBE5228A8E0EE003AA16E /* sph_kernels.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sph_kernels.cpp; sourceTree = "<group>"; };
@@ -412,22 +406,9 @@
 		040CBE9928A8E0EF003AA16E /* neighborhood_search_spatial_hashing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = neighborhood_search_spatial_hashing.h; sourceTree = "<group>"; };
 		040CBEE828A8E12C003AA16E /* logging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = logging.h; sourceTree = "<group>"; };
 		040CBEE928A8E12C003AA16E /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
-		040CBEEA28A8E12C003AA16E /* compact_search.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = compact_search.h; sourceTree = "<group>"; };
-		040CBEEB28A8E12C003AA16E /* compact_search.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = compact_search.cpp; sourceTree = "<group>"; };
 		040CBEEC28A8E12C003AA16E /* version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = version.h; sourceTree = "<group>"; };
-		040CBEED28A8E12D003AA16E /* cubic_lagrange_discrete_grid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cubic_lagrange_discrete_grid.cpp; sourceTree = "<group>"; };
-		040CBEEE28A8E12D003AA16E /* discrete_grid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = discrete_grid.h; sourceTree = "<group>"; };
 		040CBEEF28A8E12D003AA16E /* md5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = md5.h; sourceTree = "<group>"; };
-		040CBEF028A8E12D003AA16E /* point_set.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = point_set.h; sourceTree = "<group>"; };
-		040CBEF128A8E12D003AA16E /* data_structures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = data_structures.h; sourceTree = "<group>"; };
-		040CBEF228A8E12D003AA16E /* cubic_lagrange_discrete_grid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cubic_lagrange_discrete_grid.h; sourceTree = "<group>"; };
-		040CBEF328A8E12D003AA16E /* discrete_grid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = discrete_grid.cpp; sourceTree = "<group>"; };
 		040CBEF428A8E12D003AA16E /* md5.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = md5.cpp; sourceTree = "<group>"; };
-		040CBF0628A8E16D003AA16E /* z_sort_table.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = z_sort_table.h; sourceTree = "<group>"; };
-		040CBF0828A8E173003AA16E /* spinlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = spinlock.h; sourceTree = "<group>"; };
-		040CBF0928A8E173003AA16E /* timing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = timing.cpp; sourceTree = "<group>"; };
-		040CBF0A28A8E173003AA16E /* serialize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = serialize.h; sourceTree = "<group>"; };
-		040CBF0B28A8E173003AA16E /* timing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = timing.h; sourceTree = "<group>"; };
 		040CBF1028A8E17C003AA16E /* entity_iterators.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = entity_iterators.h; sourceTree = "<group>"; };
 		040CBF1128A8E17C003AA16E /* entity_containers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = entity_containers.h; sourceTree = "<group>"; };
 		040CBF1228A8E17C003AA16E /* triangle_mesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = triangle_mesh.cpp; sourceTree = "<group>"; };
@@ -435,7 +416,6 @@
 		040CBF1428A8E17C003AA16E /* entity_iterators.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = entity_iterators.cpp; sourceTree = "<group>"; };
 		040CBF1528A8E17C003AA16E /* entity_containers.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = entity_containers.cpp; sourceTree = "<group>"; };
 		040CBF1628A8E17C003AA16E /* triangle_mesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = triangle_mesh.h; sourceTree = "<group>"; };
-		040CBF1E28A8E182003AA16E /* triangle_mesh_distance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = triangle_mesh_distance.h; sourceTree = "<group>"; };
 		040CBF2028A8E26D003AA16E /* boundary_model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = boundary_model.h; sourceTree = "<group>"; };
 		040CBF2128A8E26D003AA16E /* emitter_system.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = emitter_system.cpp; sourceTree = "<group>"; };
 		040CBF2228A8E26D003AA16E /* boundary_model_koschier2017.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = boundary_model_koschier2017.h; sourceTree = "<group>"; };
@@ -594,6 +574,26 @@
 		043A98E928A742D200BCFAB0 /* test_parameter_object.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = test_parameter_object.cpp; sourceTree = "<group>"; };
 		043A98EA28A742D200BCFAB0 /* parameter_tests.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = parameter_tests.cpp; sourceTree = "<group>"; };
 		043A98EB28A742D200BCFAB0 /* test_parameter_object.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = test_parameter_object.h; sourceTree = "<group>"; };
+		049DB6B428A92BE400D9C358 /* parameter_object.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = parameter_object.h; sourceTree = "<group>"; };
+		049DB6B528A92BE400D9C358 /* numeric_parameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = numeric_parameter.h; sourceTree = "<group>"; };
+		049DB6B628A92BE400D9C358 /* enum_parameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = enum_parameter.h; sourceTree = "<group>"; };
+		049DB6B728A92BE400D9C358 /* function_parameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = function_parameter.h; sourceTree = "<group>"; };
+		049DB6B828A92BE400D9C358 /* parameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = parameter.h; sourceTree = "<group>"; };
+		049DB6B928A92BE400D9C358 /* vector_parameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vector_parameter.h; sourceTree = "<group>"; };
+		049DB6C028A92BEA00D9C358 /* discrete_grid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = discrete_grid.h; sourceTree = "<group>"; };
+		049DB6C128A92BEA00D9C358 /* discrete_grid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = discrete_grid.cpp; sourceTree = "<group>"; };
+		049DB6C228A92BEA00D9C358 /* triangle_mesh_distance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = triangle_mesh_distance.h; sourceTree = "<group>"; };
+		049DB6C328A92BEA00D9C358 /* cubic_lagrange_discrete_grid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cubic_lagrange_discrete_grid.cpp; sourceTree = "<group>"; };
+		049DB6C428A92BEA00D9C358 /* cubic_lagrange_discrete_grid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cubic_lagrange_discrete_grid.h; sourceTree = "<group>"; };
+		049DB6CA28A92BEF00D9C358 /* point_set.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = point_set.h; sourceTree = "<group>"; };
+		049DB6CB28A92BEF00D9C358 /* data_structures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = data_structures.h; sourceTree = "<group>"; };
+		049DB6CC28A92BEF00D9C358 /* compact_search.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = compact_search.cpp; sourceTree = "<group>"; };
+		049DB6CD28A92BEF00D9C358 /* compact_search.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = compact_search.h; sourceTree = "<group>"; };
+		049DB6D228A92C6E00D9C358 /* spinlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = spinlock.h; sourceTree = "<group>"; };
+		049DB6D328A92C6E00D9C358 /* serialize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = serialize.h; sourceTree = "<group>"; };
+		049DB6D428A92C6E00D9C358 /* timing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = timing.cpp; sourceTree = "<group>"; };
+		049DB6D528A92C6E00D9C358 /* timing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = timing.h; sourceTree = "<group>"; };
+		049DB6D628A92C6E00D9C358 /* z_sort_table.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = z_sort_table.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -653,14 +653,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		040CBF0228A8E149003AA16E /* geometry */ = {
-			isa = PBXGroup;
-			children = (
-				040CBF1E28A8E182003AA16E /* triangle_mesh_distance.h */,
-			);
-			path = geometry;
-			sourceTree = "<group>";
-		};
 		040CBF0328A8E150003AA16E /* mesh */ = {
 			isa = PBXGroup;
 			children = (
@@ -673,25 +665,6 @@
 				040CBF1628A8E17C003AA16E /* triangle_mesh.h */,
 			);
 			path = mesh;
-			sourceTree = "<group>";
-		};
-		040CBF0428A8E156003AA16E /* utility */ = {
-			isa = PBXGroup;
-			children = (
-				040CBF0A28A8E173003AA16E /* serialize.h */,
-				040CBF0828A8E173003AA16E /* spinlock.h */,
-				040CBF0928A8E173003AA16E /* timing.cpp */,
-				040CBF0B28A8E173003AA16E /* timing.h */,
-			);
-			path = utility;
-			sourceTree = "<group>";
-		};
-		040CBF0528A8E15D003AA16E /* data */ = {
-			isa = PBXGroup;
-			children = (
-				040CBF0628A8E16D003AA16E /* z_sort_table.h */,
-			);
-			path = data;
 			sourceTree = "<group>";
 		};
 		040CBF7B28A8E29C003AA16E /* dfsph */ = {
@@ -896,17 +869,40 @@
 			path = test.sph;
 			sourceTree = "<group>";
 		};
-		040CC06C28A91B88003AA16E /* reflect */ = {
+		040CC06D28A92BA7003AA16E /* compact_search */ = {
 			isa = PBXGroup;
 			children = (
-				040CBE4528A7460F003AA16E /* parameter.h */,
-				040CBE4628A7460F003AA16E /* enum_parameter.h */,
-				040CBE4928A7460F003AA16E /* vector_parameter.h */,
-				040CBE4728A7460F003AA16E /* function_parameter.h */,
-				040CBE4828A7460F003AA16E /* numeric_parameter.h */,
-				040CBE4428A7460E003AA16E /* parameter_object.h */,
+				049DB6CA28A92BEF00D9C358 /* point_set.h */,
+				049DB6CB28A92BEF00D9C358 /* data_structures.h */,
+				049DB6CD28A92BEF00D9C358 /* compact_search.h */,
+				049DB6CC28A92BEF00D9C358 /* compact_search.cpp */,
 			);
-			name = reflect;
+			path = compact_search;
+			sourceTree = "<group>";
+		};
+		040CC06E28A92BB0003AA16E /* discrete_grid */ = {
+			isa = PBXGroup;
+			children = (
+				049DB6C028A92BEA00D9C358 /* discrete_grid.h */,
+				049DB6C128A92BEA00D9C358 /* discrete_grid.cpp */,
+				049DB6C428A92BEA00D9C358 /* cubic_lagrange_discrete_grid.h */,
+				049DB6C328A92BEA00D9C358 /* cubic_lagrange_discrete_grid.cpp */,
+				049DB6C228A92BEA00D9C358 /* triangle_mesh_distance.h */,
+			);
+			path = discrete_grid;
+			sourceTree = "<group>";
+		};
+		040CC06F28A92BBA003AA16E /* reflect */ = {
+			isa = PBXGroup;
+			children = (
+				049DB6B828A92BE400D9C358 /* parameter.h */,
+				049DB6B628A92BE400D9C358 /* enum_parameter.h */,
+				049DB6B928A92BE400D9C358 /* vector_parameter.h */,
+				049DB6B728A92BE400D9C358 /* function_parameter.h */,
+				049DB6B528A92BE400D9C358 /* numeric_parameter.h */,
+				049DB6B428A92BE400D9C358 /* parameter_object.h */,
+			);
+			path = reflect;
 			sourceTree = "<group>";
 		};
 		043A989E28A7410200BCFAB0 = {
@@ -947,21 +943,17 @@
 		043A98B628A7416D00BCFAB0 /* vox.base */ = {
 			isa = PBXGroup;
 			children = (
-				040CBEEE28A8E12D003AA16E /* discrete_grid.h */,
-				040CBEF328A8E12D003AA16E /* discrete_grid.cpp */,
-				040CBEF228A8E12D003AA16E /* cubic_lagrange_discrete_grid.h */,
-				040CBEED28A8E12D003AA16E /* cubic_lagrange_discrete_grid.cpp */,
-				040CBF0528A8E15D003AA16E /* data */,
-				040CBF0428A8E156003AA16E /* utility */,
+				040CC06F28A92BBA003AA16E /* reflect */,
+				040CC06E28A92BB0003AA16E /* discrete_grid */,
+				040CC06D28A92BA7003AA16E /* compact_search */,
 				040CBF0328A8E150003AA16E /* mesh */,
-				040CBF0228A8E149003AA16E /* geometry */,
 				040CBEE928A8E12C003AA16E /* config.h */,
-				040CBEF028A8E12D003AA16E /* point_set.h */,
-				040CBEF128A8E12D003AA16E /* data_structures.h */,
-				040CBEEA28A8E12C003AA16E /* compact_search.h */,
-				040CBEEB28A8E12C003AA16E /* compact_search.cpp */,
-				040CC06C28A91B88003AA16E /* reflect */,
 				040CBEE828A8E12C003AA16E /* logging.h */,
+				049DB6D328A92C6E00D9C358 /* serialize.h */,
+				049DB6D228A92C6E00D9C358 /* spinlock.h */,
+				049DB6D528A92C6E00D9C358 /* timing.h */,
+				049DB6D428A92C6E00D9C358 /* timing.cpp */,
+				049DB6D628A92C6E00D9C358 /* z_sort_table.h */,
 				040CBEEF28A8E12D003AA16E /* md5.h */,
 				040CBEF428A8E12D003AA16E /* md5.cpp */,
 				040CBEEC28A8E12C003AA16E /* version.h */,
@@ -1131,30 +1123,30 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				040CBEFE28A8E12D003AA16E /* data_structures.h in Headers */,
+				049DB6BD28A92BE400D9C358 /* function_parameter.h in Headers */,
+				049DB6BC28A92BE400D9C358 /* enum_parameter.h in Headers */,
 				040CBEF528A8E12D003AA16E /* logging.h in Headers */,
-				040CBF1F28A8E182003AA16E /* triangle_mesh_distance.h in Headers */,
-				040CBE4D28A7460F003AA16E /* function_parameter.h in Headers */,
-				040CBF0E28A8E173003AA16E /* serialize.h in Headers */,
-				040CBE4E28A7460F003AA16E /* numeric_parameter.h in Headers */,
 				040CBF1828A8E17C003AA16E /* entity_containers.h in Headers */,
 				040CBF1728A8E17C003AA16E /* entity_iterators.h in Headers */,
-				040CBE4B28A7460F003AA16E /* parameter.h in Headers */,
-				040CBEF728A8E12D003AA16E /* compact_search.h in Headers */,
 				040CBEF928A8E12D003AA16E /* version.h in Headers */,
+				049DB6D128A92BEF00D9C358 /* compact_search.h in Headers */,
+				049DB6D728A92C6E00D9C358 /* spinlock.h in Headers */,
 				040CBEF628A8E12D003AA16E /* config.h in Headers */,
-				040CBE4C28A7460F003AA16E /* enum_parameter.h in Headers */,
-				040CBE4A28A7460F003AA16E /* parameter_object.h in Headers */,
 				040CBEFC28A8E12D003AA16E /* md5.h in Headers */,
+				049DB6BB28A92BE400D9C358 /* numeric_parameter.h in Headers */,
+				049DB6C928A92BEA00D9C358 /* cubic_lagrange_discrete_grid.h in Headers */,
+				049DB6DB28A92C6E00D9C358 /* z_sort_table.h in Headers */,
+				049DB6BF28A92BE400D9C358 /* vector_parameter.h in Headers */,
+				049DB6C728A92BEA00D9C358 /* triangle_mesh_distance.h in Headers */,
 				040CBF1A28A8E17C003AA16E /* halfedge.h in Headers */,
-				040CBEFD28A8E12D003AA16E /* point_set.h in Headers */,
-				040CBF0728A8E16D003AA16E /* z_sort_table.h in Headers */,
-				040CBEFF28A8E12D003AA16E /* cubic_lagrange_discrete_grid.h in Headers */,
-				040CBE4F28A7460F003AA16E /* vector_parameter.h in Headers */,
+				049DB6BA28A92BE400D9C358 /* parameter_object.h in Headers */,
+				049DB6DA28A92C6E00D9C358 /* timing.h in Headers */,
+				049DB6CE28A92BEF00D9C358 /* point_set.h in Headers */,
+				049DB6CF28A92BEF00D9C358 /* data_structures.h in Headers */,
 				040CBF1D28A8E17C003AA16E /* triangle_mesh.h in Headers */,
-				040CBF0F28A8E173003AA16E /* timing.h in Headers */,
-				040CBF0C28A8E173003AA16E /* spinlock.h in Headers */,
-				040CBEFB28A8E12D003AA16E /* discrete_grid.h in Headers */,
+				049DB6BE28A92BE400D9C358 /* parameter.h in Headers */,
+				049DB6C528A92BEA00D9C358 /* discrete_grid.h in Headers */,
+				049DB6D828A92C6E00D9C358 /* serialize.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1479,13 +1471,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				040CBF1C28A8E17C003AA16E /* entity_containers.cpp in Sources */,
-				040CBF0028A8E12D003AA16E /* discrete_grid.cpp in Sources */,
-				040CBEFA28A8E12D003AA16E /* cubic_lagrange_discrete_grid.cpp in Sources */,
+				049DB6C628A92BEA00D9C358 /* discrete_grid.cpp in Sources */,
+				049DB6D028A92BEF00D9C358 /* compact_search.cpp in Sources */,
+				049DB6D928A92C6E00D9C358 /* timing.cpp in Sources */,
+				049DB6C828A92BEA00D9C358 /* cubic_lagrange_discrete_grid.cpp in Sources */,
 				040CBF0128A8E12D003AA16E /* md5.cpp in Sources */,
-				040CBF0D28A8E173003AA16E /* timing.cpp in Sources */,
 				040CBF1B28A8E17C003AA16E /* entity_iterators.cpp in Sources */,
 				040CBF1928A8E17C003AA16E /* triangle_mesh.cpp in Sources */,
-				040CBEF828A8E12D003AA16E /* compact_search.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

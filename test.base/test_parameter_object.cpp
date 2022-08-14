@@ -6,7 +6,7 @@
 
 #include "test_parameter_object.h"
 
-#include "vox.base/enum_parameter.h"
+#include "vox.base/reflect/enum_parameter.h"
 
 using namespace vox;
 

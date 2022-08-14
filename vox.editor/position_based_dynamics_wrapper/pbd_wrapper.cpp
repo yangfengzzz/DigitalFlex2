@@ -9,7 +9,7 @@
 #include <cmath>
 #include <iostream>
 
-#include "vox.base/geometry/triangle_mesh_distance.h"
+#include "vox.base/discrete_grid/triangle_mesh_distance.h"
 #include "vox.base/mesh/triangle_mesh.h"
 #include "vox.pbd/common.h"
 #include "vox.pbd/file_system.h"

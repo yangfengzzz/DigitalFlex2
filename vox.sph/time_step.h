@@ -6,8 +6,8 @@
 
 #pragma once
 
-#include "vox.base/discrete_grid.h"
-#include "vox.base/parameter_object.h"
+#include "vox.base/discrete_grid/discrete_grid.h"
+#include "vox.base/reflect/parameter_object.h"
 #include "vox.sph/boundary_model.h"
 #include "vox.sph/common.h"
 #include "vox.sph/fluid_model.h"

@@ -9,7 +9,7 @@
 #include <vector>
 
 #include "imgui.h"
-#include "vox.base/parameter_object.h"
+#include "vox.base/reflect/parameter_object.h"
 #include "vox.sph/common.h"
 
 #ifdef USE_DOUBLE
