@@ -10,7 +10,7 @@
 #include "vox.base/logging.h"
 #include "vox.pbd/obj_loader.h"
 #include "vox.pbd/tet_gen_loader.h"
-#include "vox.pbd/timing.h"
+#include "vox.base/timing.h"
 
 namespace py = pybind11;
 

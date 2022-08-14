@@ -8,7 +8,7 @@
 
 #include <vector>
 
-#include "vox.pbd/common.h"
+#include "vox.base/common.h"
 #include "vox.pbd/hashmap.h"
 
 typedef Eigen::Vector3i NeighborhoodSearchCellPos;

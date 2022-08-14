@@ -7,7 +7,7 @@
 #pragma once
 
 #include "mini_gl.h"
-#include "vox.sph/common.h"
+#include "vox.base/common.h"
 
 #ifdef WIN32
 #define NOMINMAX

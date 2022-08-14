@@ -9,9 +9,9 @@
 #include <iostream>
 #include <unordered_map>
 
+#include "vox.base/common.h"
 #include "vox.base/logging.h"
-#include "vox.sph/common.h"
-#include "vox.sph/timing.h"
+#include "vox.base/timing.h"
 
 namespace vox::utility {
 #define INCREASE_COUNTER(counterName, increaseBy) vox::utility::Counting::increaseCounter(counterName, increaseBy);

@@ -6,8 +6,8 @@
 
 #pragma once
 
+#include "vox.base/common.h"
 #include "vox.pbd/aabb.h"
-#include "vox.pbd/common.h"
 #include "vox.pbd/simulation_model.h"
 
 namespace vox {

@@ -11,7 +11,7 @@
 #include "vox.base/discrete_grid/cubic_lagrange_discrete_grid.h"
 #include "vox.pbd/cubic_sdf_collision_detection.h"
 #include "vox.pbd/simulation_model.h"
-#include "vox.sph/common.h"
+#include "vox.base/common.h"
 
 namespace vox {
 class TimeStepController;

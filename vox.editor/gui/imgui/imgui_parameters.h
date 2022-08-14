@@ -10,7 +10,7 @@
 
 #include "imgui.h"
 #include "vox.base/reflect/parameter_object.h"
-#include "vox.sph/common.h"
+#include "vox.base/common.h"
 
 #ifdef USE_DOUBLE
 #define InputReal ImGui::InputDouble

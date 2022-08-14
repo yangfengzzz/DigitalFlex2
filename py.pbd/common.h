@@ -11,7 +11,7 @@
 #include <pybind11/stl.h>
 #include <pybind11/stl_bind.h>
 
-#include "vox.pbd/common.h"
+#include "vox.base/common.h"
 #include "vox.pbd/simulation_model.h"
 
 // PYBIND11_MAKE_OPAQUE(std::vector<Vector3r>)

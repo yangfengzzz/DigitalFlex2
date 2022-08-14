@@ -6,12 +6,12 @@
 
 #include "vox.sph/pcisph/time_step_pcisph.h"
 
+#include "vox.base/timing.h"
 #include "vox.sph/boundary_model_akinci2012.h"
 #include "vox.sph/boundary_model_bender2019.h"
 #include "vox.sph/boundary_model_koschier2017.h"
 #include "vox.sph/simulation.h"
 #include "vox.sph/time_manager.h"
-#include "vox.sph/timing.h"
 
 using namespace vox;
 using namespace std;

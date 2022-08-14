@@ -8,7 +8,7 @@
 
 #include <memory.h>
 
-#include "vox.pbd/common.h"
+#include "vox.base/common.h"
 
 namespace vox::utility {
 template <class T, int growBy = 100, bool linearGrow = true>

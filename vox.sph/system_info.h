@@ -6,7 +6,7 @@
 
 #pragma once
 
-#include "vox.sph/common.h"
+#include "vox.base/common.h"
 #if WIN32
 #define NOMINMAX
 #include "windows.h"

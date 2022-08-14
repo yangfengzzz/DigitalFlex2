@@ -6,9 +6,9 @@
 
 #pragma once
 
+#include "vox.base/common.h"
 #include "vox.base/reflect/parameter_object.h"
 #include "vox.pbd/collision_detection.h"
-#include "vox.pbd/common.h"
 #include "vox.pbd/simulation_model.h"
 
 namespace vox {

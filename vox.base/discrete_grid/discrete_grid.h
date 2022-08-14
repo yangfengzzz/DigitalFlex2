@@ -7,10 +7,9 @@
 #pragma once
 
 #include <array>
+#include <Eigen/Dense>
 #include <fstream>
 #include <vector>
-
-#include <Eigen/Dense>
 
 namespace vox {
 
@@ -64,7 +63,7 @@ public:
                                          Eigen::Vector3d const &x,
                                          std::array<unsigned int, 32> &cell,
                                          Eigen::Vector3d &c0,
-                                         Eigen::Matrix<double, 32, 1> &N,
+                                         CoefficientVector &N,
                                          Eigen::Matrix<double, 32, 3> *dN = nullptr) const = 0;
 
     /**
@@ -86,7 +85,7 @@ public:
                                Eigen::Vector3d const &xi,
                                const std::array<unsigned int, 32> &cell,
                                const Eigen::Vector3d &c0,
-                               const Eigen::Matrix<double, 32, 1> &N,
+                               const CoefficientVector &N,
                                Eigen::Vector3d *gradient = nullptr,
                                Eigen::Matrix<double, 32, 3> *dN = nullptr) const = 0;
 
@@ -105,10 +104,10 @@ public:
 
 protected:
     Eigen::AlignedBox3d m_domain;
-    std::array<unsigned int, 3> m_resolution;
+    std::array<unsigned int, 3> m_resolution{};
     Eigen::Vector3d m_cell_size;
     Eigen::Vector3d m_inv_cell_size;
-    std::size_t m_n_cells;
-    std::size_t m_n_fields;
+    std::size_t m_n_cells{};
+    std::size_t m_n_fields{};
 };
 }  // namespace vox

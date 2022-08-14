@@ -6,7 +6,7 @@
 
 #pragma once
 
-#include "vox.pbd/common.h"
+#include "vox.base/common.h"
 
 namespace vox {
 // Implementation of "Direct Position-Based Solver for Stiff Rods" paper

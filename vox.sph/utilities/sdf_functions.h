@@ -6,8 +6,8 @@
 
 #pragma once
 
+#include "vox.base/common.h"
 #include "vox.base/discrete_grid/cubic_lagrange_discrete_grid.h"
-#include "vox.sph/common.h"
 
 namespace vox::utility {
 /** \brief Functions for generating and querying an SDF.

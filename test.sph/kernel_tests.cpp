@@ -6,7 +6,7 @@
 
 #include <gtest/gtest.h>
 
-#include "vox.sph/common.h"
+#include "vox.base/common.h"
 #include "vox.sph/sph_kernels.h"
 
 using namespace vox;

@@ -8,7 +8,7 @@
 
 #include "vox.base/reflect/parameter_object.h"
 #include "vox.editor/simulator_base.h"
-#include "vox.sph/common.h"
+#include "vox.base/common.h"
 
 namespace vox {
 class Simulator_GUI_Base {

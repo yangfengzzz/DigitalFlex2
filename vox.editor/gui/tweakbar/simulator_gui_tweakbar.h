@@ -10,7 +10,7 @@
 
 #include "extern/AntTweakBar/include/AntTweakBar.h"
 #include "vox.editor/gui/simulator_gui_base.h"
-#include "vox.sph/common.h"
+#include "vox.base/common.h"
 
 namespace vox {
 class Simulator_GUI_TweakBar : public Simulator_GUI_Base {

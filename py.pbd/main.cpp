@@ -9,7 +9,7 @@
 // Put this here for now
 #include "py.pbd/common.h"
 #include "vox.base/logging.h"
-#include "vox.pbd/timing.h"
+#include "vox.base/timing.h"
 
 INIT_TIMING
 

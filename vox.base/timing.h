@@ -11,37 +11,64 @@
 #include <stack>
 #include <unordered_map>
 
+#include "vox.base/common.h"
+#include "vox.base/logging.h"
+
 namespace vox {
+#define START_TIMING(timerName) vox::Timing::startTiming(timerName);
 
-#define START_TIMING(timerName) Timing::startTiming(timerName);
+#define STOP_TIMING vox::Timing::stopTiming(false);
 
-#define STOP_TIMING Timing::stopTiming(false);
+#define STOP_TIMING_PRINT vox::Timing::stopTiming(true);
 
-#define STOP_TIMING_PRINT Timing::stopTiming(true);
-
-#define STOP_TIMING_AVG                            \
-    {                                              \
-        static int timing_timerId = -1;            \
-        Timing::stopTiming(false, timing_timerId); \
+#define STOP_TIMING_AVG                                 \
+    {                                                   \
+        static int timing_timerId = -1;                 \
+        vox::Timing::stopTiming(false, timing_timerId); \
     }
 
-#define STOP_TIMING_AVG_PRINT                     \
-    {                                             \
-        static int timing_timerId = -1;           \
-        Timing::stopTiming(true, timing_timerId); \
+#define STOP_TIMING_AVG_PRINT                          \
+    {                                                  \
+        static int timing_timerId = -1;                \
+        vox::Timing::stopTiming(true, timing_timerId); \
     }
 
+#define INIT_TIMING                                                        \
+    int vox::IDFactory::id = 0;                                            \
+    std::unordered_map<int, vox::AverageTime> vox::Timing::m_averageTimes; \
+    std::stack<vox::TimingHelper> vox::Timing::m_timingStack;              \
+    bool vox::Timing::m_dontPrintTimes = false;                            \
+    unsigned int vox::Timing::m_startCounter = 0;                          \
+    unsigned int vox::Timing::m_stopCounter = 0;
+
+/** \brief Struct to store a time measurement.
+ */
 struct TimingHelper {
     std::chrono::time_point<std::chrono::high_resolution_clock> start;
     std::string name;
 };
 
+/** \brief Struct to store the total time and the number of steps in order to compute the average time.
+ */
 struct AverageTime {
-    double totalTime;
-    unsigned int counter;
+    double totalTime{};
+    unsigned int counter{};
     std::string name;
 };
 
+/** \brief Factory for unique ids.
+ */
+class IDFactory {
+private:
+    /** Current id */
+    static int id;
+
+public:
+    static int getId() { return id++; }
+};
+
+/** \brief Class for time measurements.
+ */
 class Timing {
 public:
     static bool m_dontPrintTimes;
@@ -49,7 +76,6 @@ public:
     static unsigned int m_stopCounter;
     static std::stack<TimingHelper> m_timingStack;
     static std::unordered_map<int, AverageTime> m_averageTimes;
-    static unsigned int m_id_counter;
 
     static void reset() {
         while (!m_timingStack.empty()) m_timingStack.pop();
@@ -58,7 +84,7 @@ public:
         m_stopCounter = 0;
     }
 
-    static void startTiming(const std::string &name = std::string("")) {
+    FORCE_INLINE static void startTiming(const std::string &name = std::string("")) {
         TimingHelper h;
         h.start = std::chrono::high_resolution_clock::now();
         h.name = name;
@@ -66,7 +92,7 @@ public:
         Timing::m_startCounter++;
     }
 
-    static double stopTiming(bool print = true) {
+    FORCE_INLINE static double stopTiming(bool print = true) {
         if (!Timing::m_timingStack.empty()) {
             Timing::m_stopCounter++;
             std::chrono::time_point<std::chrono::high_resolution_clock> stop =
@@ -76,14 +102,14 @@ public:
             std::chrono::duration<double> elapsed_seconds = stop - h.start;
             double t = elapsed_seconds.count() * 1000.0;
 
-            if (print) std::cout << "time " << h.name.c_str() << ": " << t << " ms\n" << std::flush;
+            if (print) LOGI("time {}: {}ms", h.name.c_str(), t)
             return t;
         }
         return 0;
     }
 
-    static double stopTiming(bool print, int &id) {
-        if (id == -1) id = m_id_counter++;
+    FORCE_INLINE static double stopTiming(bool print, int &id) {
+        if (id == -1) id = IDFactory::getId();
         if (!Timing::m_timingStack.empty()) {
             Timing::m_stopCounter++;
             std::chrono::time_point<std::chrono::high_resolution_clock> stop =
@@ -94,8 +120,7 @@ public:
             std::chrono::duration<double> elapsed_seconds = stop - h.start;
             double t = elapsed_seconds.count() * 1000.0;
 
-            if (print && !Timing::m_dontPrintTimes)
-                std::cout << "time " << h.name.c_str() << ": " << t << " ms\n" << std::flush;
+            if (print && !Timing::m_dontPrintTimes) LOGI("time {}: {}ms", h.name.c_str(), t)
 
             if (id >= 0) {
                 std::unordered_map<int, AverageTime>::iterator iter;
@@ -116,33 +141,30 @@ public:
         return 0;
     }
 
-    static void printAverageTimes() {
+    FORCE_INLINE static void printAverageTimes() {
         std::unordered_map<int, AverageTime>::iterator iter;
         for (iter = Timing::m_averageTimes.begin(); iter != Timing::m_averageTimes.end(); iter++) {
             AverageTime &at = iter->second;
             const double avgTime = at.totalTime / at.counter;
-            std::cout << "Average time " << at.name.c_str() << ": " << avgTime << " ms\n" << std::flush;
+            LOGI("Average time {}: {}ms", at.name.c_str(), avgTime)
         }
         if (Timing::m_startCounter != Timing::m_stopCounter)
-            std::cout << "Problem: " << Timing::m_startCounter << " calls of startTiming and " << Timing::m_stopCounter
-                      << " calls of stopTiming.\n " << std::flush;
-        std::cout << "-------------------------------------------------------------"
-                     "--------------\n\n";
+            LOGI("Problem: {} calls of startTiming and {} calls of stopTiming.", Timing::m_startCounter,
+                 Timing::m_stopCounter)
+        LOGI("---------------------------------------------------------------------------")
     }
 
-    static void printTimeSums() {
+    FORCE_INLINE static void printTimeSums() {
         std::unordered_map<int, AverageTime>::iterator iter;
         for (iter = Timing::m_averageTimes.begin(); iter != Timing::m_averageTimes.end(); iter++) {
             AverageTime &at = iter->second;
             const double timeSum = at.totalTime;
-            std::cout << "Time sum " << at.name.c_str() << ": " << timeSum << " ms\n" << std::flush;
+            LOGI("Time sum {}: {}ms", at.name.c_str(), timeSum)
         }
         if (Timing::m_startCounter != Timing::m_stopCounter)
-            std::cout << "Problem: " << Timing::m_startCounter << " calls of startTiming and " << Timing::m_stopCounter
-                      << " calls of stopTiming.\n " << std::flush;
-        std::cout << "-------------------------------------------------------------"
-                     "--------------\n\n";
+            LOGI("Problem: {} calls of startTiming and {} calls of stopTiming.", Timing::m_startCounter,
+                 Timing::m_stopCounter)
+        LOGI("---------------------------------------------------------------------------")
     }
 };
-
 }  // namespace vox

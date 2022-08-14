@@ -7,7 +7,7 @@
 #pragma once
 
 #include "vox.pbd/rigid_body.h"
-#include "vox.sph/common.h"
+#include "vox.base/common.h"
 #include "vox.sph/rigid_body_object.h"
 #include "vox.sph/time_manager.h"
 

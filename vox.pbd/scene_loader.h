@@ -9,8 +9,8 @@
 #include <nlohmann/json.hpp>
 #include <string>
 
+#include "vox.base/common.h"
 #include "vox.base/reflect/parameter_object.h"
-#include "vox.pbd/common.h"
 
 namespace vox::utility {
 class SceneLoader {

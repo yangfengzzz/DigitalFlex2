@@ -13,7 +13,7 @@
 #include "vox.sph/scene_configuration.h"
 #include "vox.sph/simulation.h"
 #include "vox.sph/static_rigid_body.h"
-#include "vox.sph/timing.h"
+#include "vox.base/timing.h"
 #include "vox.sph/utilities/surface_sampling.h"
 
 using namespace std;

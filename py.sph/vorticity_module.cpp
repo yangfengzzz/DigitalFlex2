@@ -7,7 +7,7 @@
 #include <pybind11/eigen.h>
 
 #include "common.h"
-#include "vox.sph/common.h"
+#include "vox.base/common.h"
 #include "vox.sph/non_pressure_force_base.h"
 #include "vox.sph/viscosity/viscosity_bender2017.h"
 #include "vox.sph/vorticity/micropolar_model_bender2017.h"

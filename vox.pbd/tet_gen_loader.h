@@ -9,7 +9,7 @@
 #include <string>
 #include <vector>
 
-#include "vox.pbd/common.h"
+#include "vox.base/common.h"
 
 namespace vox::utility {
 class TetGenLoader {

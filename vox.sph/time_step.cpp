@@ -12,7 +12,7 @@
 #include "vox.sph/emitter_system.h"
 #include "vox.sph/simulation.h"
 #include "vox.sph/time_manager.h"
-#include "vox.sph/timing.h"
+#include "vox.base/timing.h"
 
 using namespace vox;
 using namespace std;

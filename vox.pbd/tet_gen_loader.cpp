@@ -16,8 +16,8 @@ using namespace std;
 
 // Call this function to load a model from a *.tet file
 void TetGenLoader::loadTetFile(const std::string &filename,
-                                 std::vector<Vector3r> &vertices,
-                                 std::vector<unsigned int> &tets) {
+                               std::vector<Vector3r> &vertices,
+                               std::vector<unsigned int> &tets) {
     LOGI("Loading {}", filename)
 
     // variables
@@ -112,9 +112,9 @@ void TetGenLoader::loadTetFile(const std::string &filename,
 }
 
 void TetGenLoader::loadTetgenModel(const std::string &nodeFilename,
-                                     const std::string &eleFilename,
-                                     std::vector<Vector3r> &vertices,
-                                     std::vector<unsigned int> &tets) {
+                                   const std::string &eleFilename,
+                                   std::vector<Vector3r> &vertices,
+                                   std::vector<unsigned int> &tets) {
     LOGI("Loading {}", nodeFilename)
     LOGI("Loading {}", eleFilename)
 
@@ -188,8 +188,8 @@ void TetGenLoader::loadTetgenModel(const std::string &nodeFilename,
 }
 
 void TetGenLoader::loadMSHModel(const std::string &mshFilename,
-                                  std::vector<Vector3r> &vertices,
-                                  std::vector<unsigned int> &tets) {
+                                std::vector<Vector3r> &vertices,
+                                std::vector<unsigned int> &tets) {
     LOGI("Loading {}", mshFilename)
 
     // variables

@@ -8,7 +8,7 @@
 
 #include <vector>
 
-#include "vox.sph/common.h"
+#include "vox.base/common.h"
 
 namespace vox::utility {
 /** \brief Class for reading and writing partio files.

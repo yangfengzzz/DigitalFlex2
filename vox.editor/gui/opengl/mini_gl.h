@@ -8,7 +8,7 @@
 
 #include "shader.h"
 #include "third_party/eigen/Eigen/Geometry"
-#include "vox.sph/common.h"
+#include "vox.base/common.h"
 #include "vox.sph/triangle_mesh.h"
 
 #ifdef USE_DOUBLE

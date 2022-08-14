@@ -5,7 +5,7 @@
 //  property of any third parties.
 
 #include "vox.editor/simulator_base.h"
-#include "vox.sph/common.h"
+#include "vox.base/common.h"
 #include "vox.sph/gui/opengl/simulator_opengl.h"
 #include "vox.sph/position_based_dynamics_wrapper/pbd_boundary_simulator.h"
 #ifdef USE_IMGUI

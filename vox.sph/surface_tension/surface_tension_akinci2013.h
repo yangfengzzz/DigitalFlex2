@@ -6,7 +6,7 @@
 
 #pragma once
 
-#include "vox.sph/common.h"
+#include "vox.base/common.h"
 #include "vox.sph/fluid_model.h"
 #include "vox.sph/surface_tension/surface_tension_base.h"
 

@@ -6,7 +6,7 @@
 
 #pragma once
 
-#include "vox.sph/common.h"
+#include "vox.base/common.h"
 #include "vox.sph/gui/opengl/mini_gl.h"
 #include "vox.sph/gui/opengl/shader.h"
 #include "vox.sph/gui/tweakbar/simulator_gui_tweakbar.h"

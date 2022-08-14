@@ -6,10 +6,10 @@
 
 #pragma once
 
+#include "vox.base/common.h"
 #include "vox.pbd/aabb.h"
 #include "vox.pbd/bounding_sphere_hierarchy.h"
 #include "vox.pbd/collision_detection.h"
-#include "vox.pbd/common.h"
 
 namespace vox {
 /** Distance field collision detection. */

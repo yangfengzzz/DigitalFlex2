@@ -9,8 +9,8 @@
 #include <nlohmann/json.hpp>
 #include <vector>
 
+#include "vox.base/common.h"
 #include "vox.base/reflect/parameter_object.h"
-#include "vox.sph/common.h"
 
 namespace vox::utility {
 /** \brief Importer of SPlisHSPlasH scene files.

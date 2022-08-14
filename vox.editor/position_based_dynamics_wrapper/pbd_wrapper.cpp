@@ -11,7 +11,7 @@
 
 #include "vox.base/discrete_grid/triangle_mesh_distance.h"
 #include "vox.base/mesh/triangle_mesh.h"
-#include "vox.pbd/common.h"
+#include "vox.base/common.h"
 #include "vox.pbd/file_system.h"
 #include "vox.pbd/obj_loader.h"
 #include "vox.pbd/scene_loader.h"
@@ -20,7 +20,7 @@
 #include "vox.pbd/time_manager.h"
 #include "vox.pbd/time_step.h"
 #include "vox.pbd/time_step_controller.h"
-#include "vox.pbd/timing.h"
+#include "vox.base/timing.h"
 
 using namespace Eigen;
 using namespace std;

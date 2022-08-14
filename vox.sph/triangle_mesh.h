@@ -8,7 +8,7 @@
 
 #include <vector>
 
-#include "vox.sph/common.h"
+#include "vox.base/common.h"
 
 namespace vox {
 /** \brief Data structure for a triangle mesh with normals and vertex normals.

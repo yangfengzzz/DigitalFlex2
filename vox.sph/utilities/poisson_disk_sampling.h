@@ -10,7 +10,7 @@
 #include <string>
 #include <unordered_map>
 
-#include "vox.sph/common.h"
+#include "vox.base/common.h"
 
 namespace vox {
 /** \brief This class implements a Poisson disk sampling for the surface

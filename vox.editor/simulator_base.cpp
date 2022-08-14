@@ -26,7 +26,7 @@
 #include "vox.sph/static_boundary_simulator.h"
 #include "vox.sph/system_info.h"
 #include "vox.sph/time_manager.h"
-#include "vox.sph/timing.h"
+#include "vox.base/timing.h"
 #include "vox.sph/utilities/gauss_quadrature.h"
 #include "vox.sph/utilities/scene_loader.h"
 #include "vox.sph/utilities/simple_quadrature.h"

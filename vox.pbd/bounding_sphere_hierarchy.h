@@ -6,8 +6,8 @@
 
 #pragma once
 
+#include "vox.base/common.h"
 #include "vox.pbd/bounding_sphere.h"
-#include "vox.pbd/common.h"
 #include "vox.pbd/kdtree.h"
 
 namespace vox {

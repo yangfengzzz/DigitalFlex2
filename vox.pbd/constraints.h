@@ -12,7 +12,7 @@
 #include <memory>
 #include <vector>
 
-#include "vox.pbd/common.h"
+#include "vox.base/common.h"
 #include "vox.pbd/direct_position_based_solver_for_stiff_rods_interface.h"
 
 namespace vox {

@@ -6,7 +6,7 @@
 
 #pragma once
 
-#include "vox.sph/common.h"
+#include "vox.base/common.h"
 #include "vox.sph/rigid_body_object.h"
 #include "vox.sph/time_manager.h"
 #include "vox.sph/triangle_mesh.h"

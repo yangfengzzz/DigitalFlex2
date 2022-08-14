@@ -6,9 +6,9 @@
 
 #include "vox.pbd/simulation.h"
 
+#include "vox.base/timing.h"
 #include "vox.pbd/time_manager.h"
 #include "vox.pbd/time_step_controller.h"
-#include "vox.pbd/timing.h"
 
 using namespace vox;
 using namespace std;

@@ -9,7 +9,7 @@
 #include <algorithm>
 #include <cmath>
 
-#include "vox.pbd/common.h"
+#include "vox.base/common.h"
 
 #define NO_DISTANCE_TEST
 

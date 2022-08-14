@@ -8,7 +8,7 @@
 
 #include <vector>
 
-#include "vox.pbd/common.h"
+#include "vox.base/common.h"
 #include "vox.pbd/indexed_face_mesh.h"
 #include "vox.pbd/particle_data.h"
 

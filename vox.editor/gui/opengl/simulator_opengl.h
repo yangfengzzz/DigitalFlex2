@@ -9,7 +9,7 @@
 #include <vector>
 
 #include "shader.h"
-#include "vox.sph/common.h"
+#include "vox.base/common.h"
 
 namespace vox {
 class FluidModel;

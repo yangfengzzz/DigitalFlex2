@@ -6,7 +6,6 @@
 
 #include "vox.pbd/scene_loader.h"
 
-#include <fstream>
 #include <iostream>
 
 #include "vox.base/logging.h"
@@ -200,9 +199,9 @@ void SceneLoader::readSimulation(const nlohmann::json &j, const std::string &key
 }
 
 void SceneLoader::readRigidBodies(const nlohmann::json &j,
-                                   const std::string &key,
-                                   const std::string &basePath,
-                                   SceneData &sceneData) {
+                                  const std::string &key,
+                                  const std::string &basePath,
+                                  SceneData &sceneData) {
     const nlohmann::json &child = j[key];
 
     sceneData.m_rigidBodyData.reserve(5000);
@@ -298,9 +297,9 @@ void SceneLoader::readRigidBodies(const nlohmann::json &j,
 }
 
 void SceneLoader::readTriangleModels(const nlohmann::json &j,
-                                      const std::string &key,
-                                      const std::string &basePath,
-                                      SceneData &sceneData) {
+                                     const std::string &key,
+                                     const std::string &basePath,
+                                     SceneData &sceneData) {
     const nlohmann::json &child = j[key];
 
     for (auto &triModel : child) {
@@ -357,9 +356,9 @@ void SceneLoader::readTriangleModels(const nlohmann::json &j,
 }
 
 void SceneLoader::readTetModels(const nlohmann::json &j,
-                                 const std::string &key,
-                                 const std::string &basePath,
-                                 SceneData &sceneData) {
+                                const std::string &key,
+                                const std::string &basePath,
+                                SceneData &sceneData) {
     const nlohmann::json &child = j[key];
 
     for (auto &tetModel : child) {
@@ -515,8 +514,8 @@ void SceneLoader::readSliderJoints(const nlohmann::json &j, const std::string &k
 }
 
 void SceneLoader::readRigidBodyParticleBallJoints(const nlohmann::json &j,
-                                                   const std::string &key,
-                                                   SceneData &sceneData) {
+                                                  const std::string &key,
+                                                  SceneData &sceneData) {
     const nlohmann::json &child = j[key];
 
     for (auto &joint : child) {
@@ -528,8 +527,8 @@ void SceneLoader::readRigidBodyParticleBallJoints(const nlohmann::json &j,
 }
 
 void SceneLoader::readTargetAngleMotorHingeJoints(const nlohmann::json &j,
-                                                   const std::string &key,
-                                                   SceneData &sceneData) {
+                                                  const std::string &key,
+                                                  SceneData &sceneData) {
     const nlohmann::json &child = j[key];
 
     for (auto &joint : child) {
@@ -555,8 +554,8 @@ void SceneLoader::readTargetAngleMotorHingeJoints(const nlohmann::json &j,
 }
 
 void SceneLoader::readTargetVelocityMotorHingeJoints(const nlohmann::json &j,
-                                                      const std::string &key,
-                                                      SceneData &sceneData) {
+                                                     const std::string &key,
+                                                     SceneData &sceneData) {
     const nlohmann::json &child = j[key];
 
     for (auto &joint : child) {
@@ -582,8 +581,8 @@ void SceneLoader::readTargetVelocityMotorHingeJoints(const nlohmann::json &j,
 }
 
 void SceneLoader::readTargetPositionMotorSliderJoints(const nlohmann::json &j,
-                                                       const std::string &key,
-                                                       SceneData &sceneData) {
+                                                      const std::string &key,
+                                                      SceneData &sceneData) {
     const nlohmann::json &child = j[key];
 
     for (auto &joint : child) {
@@ -609,8 +608,8 @@ void SceneLoader::readTargetPositionMotorSliderJoints(const nlohmann::json &j,
 }
 
 void SceneLoader::readTargetVelocityMotorSliderJoints(const nlohmann::json &j,
-                                                       const std::string &key,
-                                                       SceneData &sceneData) {
+                                                      const std::string &key,
+                                                      SceneData &sceneData) {
     const nlohmann::json &child = j[key];
 
     for (auto &joint : child) {

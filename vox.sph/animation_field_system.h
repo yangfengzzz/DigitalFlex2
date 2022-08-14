@@ -9,7 +9,7 @@
 #include <vector>
 
 #include "vox.sph/animation_field.h"
-#include "vox.sph/common.h"
+#include "vox.base/common.h"
 
 namespace vox {
 class TimeStep;

@@ -6,7 +6,7 @@
 
 #pragma once
 
-#include "vox.sph/common.h"
+#include "vox.base/common.h"
 #include "vox.sph/pbf/simulation_data_pbf.h"
 #include "vox.sph/sph_kernels.h"
 #include "vox.sph/time_step.h"

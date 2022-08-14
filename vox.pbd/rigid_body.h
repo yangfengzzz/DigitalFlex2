@@ -8,7 +8,7 @@
 
 #include <vector>
 
-#include "vox.pbd/common.h"
+#include "vox.base/common.h"
 #include "vox.pbd/rigid_body_geometry.h"
 #include "vox.pbd/volume_integration.h"
 
