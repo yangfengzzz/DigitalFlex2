@@ -896,15 +896,28 @@
 			path = test.sph;
 			sourceTree = "<group>";
 		};
+		040CC06C28A91B88003AA16E /* reflect */ = {
+			isa = PBXGroup;
+			children = (
+				040CBE4528A7460F003AA16E /* parameter.h */,
+				040CBE4628A7460F003AA16E /* enum_parameter.h */,
+				040CBE4928A7460F003AA16E /* vector_parameter.h */,
+				040CBE4728A7460F003AA16E /* function_parameter.h */,
+				040CBE4828A7460F003AA16E /* numeric_parameter.h */,
+				040CBE4428A7460E003AA16E /* parameter_object.h */,
+			);
+			name = reflect;
+			sourceTree = "<group>";
+		};
 		043A989E28A7410200BCFAB0 = {
 			isa = PBXGroup;
 			children = (
-				043A98A928A7410200BCFAB0 /* apps */,
 				043A98B628A7416D00BCFAB0 /* vox.base */,
 				043A98E328A7421100BCFAB0 /* test.base */,
 				043A98C528A7418500BCFAB0 /* vox.pbd */,
 				043A98D428A7418E00BCFAB0 /* vox.sph */,
 				040CC05B28A91A3B003AA16E /* test.sph */,
+				043A98A928A7410200BCFAB0 /* apps */,
 				043A98A828A7410200BCFAB0 /* Products */,
 				040CBEE528A8E11E003AA16E /* Frameworks */,
 			);
@@ -934,29 +947,24 @@
 		043A98B628A7416D00BCFAB0 /* vox.base */ = {
 			isa = PBXGroup;
 			children = (
+				040CBEEE28A8E12D003AA16E /* discrete_grid.h */,
+				040CBEF328A8E12D003AA16E /* discrete_grid.cpp */,
+				040CBEF228A8E12D003AA16E /* cubic_lagrange_discrete_grid.h */,
+				040CBEED28A8E12D003AA16E /* cubic_lagrange_discrete_grid.cpp */,
 				040CBF0528A8E15D003AA16E /* data */,
 				040CBF0428A8E156003AA16E /* utility */,
 				040CBF0328A8E150003AA16E /* mesh */,
 				040CBF0228A8E149003AA16E /* geometry */,
-				040CBEEB28A8E12C003AA16E /* compact_search.cpp */,
-				040CBEEA28A8E12C003AA16E /* compact_search.h */,
 				040CBEE928A8E12C003AA16E /* config.h */,
-				040CBEED28A8E12D003AA16E /* cubic_lagrange_discrete_grid.cpp */,
-				040CBEF228A8E12D003AA16E /* cubic_lagrange_discrete_grid.h */,
-				040CBEF128A8E12D003AA16E /* data_structures.h */,
-				040CBEF328A8E12D003AA16E /* discrete_grid.cpp */,
-				040CBEEE28A8E12D003AA16E /* discrete_grid.h */,
-				040CBEE828A8E12C003AA16E /* logging.h */,
-				040CBEF428A8E12D003AA16E /* md5.cpp */,
-				040CBEEF28A8E12D003AA16E /* md5.h */,
 				040CBEF028A8E12D003AA16E /* point_set.h */,
+				040CBEF128A8E12D003AA16E /* data_structures.h */,
+				040CBEEA28A8E12C003AA16E /* compact_search.h */,
+				040CBEEB28A8E12C003AA16E /* compact_search.cpp */,
+				040CC06C28A91B88003AA16E /* reflect */,
+				040CBEE828A8E12C003AA16E /* logging.h */,
+				040CBEEF28A8E12D003AA16E /* md5.h */,
+				040CBEF428A8E12D003AA16E /* md5.cpp */,
 				040CBEEC28A8E12C003AA16E /* version.h */,
-				040CBE4528A7460F003AA16E /* parameter.h */,
-				040CBE4628A7460F003AA16E /* enum_parameter.h */,
-				040CBE4928A7460F003AA16E /* vector_parameter.h */,
-				040CBE4728A7460F003AA16E /* function_parameter.h */,
-				040CBE4828A7460F003AA16E /* numeric_parameter.h */,
-				040CBE4428A7460E003AA16E /* parameter_object.h */,
 			);
 			path = vox.base;
 			sourceTree = "<group>";
