@@ -47,7 +47,7 @@ public:
         static const unsigned int TriangleModelCollisionObjectType;  // = 1;
         static const unsigned int TetModelCollisionObjectType;       // = 2;
 
-        aabb m_aabb;
+        AABB m_aabb;
         unsigned int m_bodyIndex;
         unsigned int m_bodyType;
 
@@ -69,7 +69,7 @@ protected:
     void *m_solidContactCBUserData{};
     std::vector<CollisionObject *> m_collisionObjects;
 
-    static void updateAABB(const Vector3r &p, aabb &aabb);
+    static void updateAABB(const Vector3r &p, AABB &aabb);
 
 public:
     CollisionDetection();

@@ -13,21 +13,21 @@ using namespace Eigen;
 using pool_set = std::set<unsigned int>;
 using namespace vox;
 
-PointCloudBSH::PointCloudBSH() : KDTree<bounding_sphere>(0, 10) {}
+PointCloudBSH::PointCloudBSH() : KDTree<BoundingSphere>(0, 10) {}
 
 Vector3r const &PointCloudBSH::entity_position(unsigned int i) const { return m_vertices[i]; }
 
-void PointCloudBSH::compute_hull(unsigned int b, unsigned int n, bounding_sphere &hull) const {
+void PointCloudBSH::compute_hull(unsigned int b, unsigned int n, BoundingSphere &hull) const {
     auto vertices_subset = std::vector<Vector3r>(n);
     for (unsigned int i = b; i < b + n; ++i) vertices_subset[i - b] = m_vertices[m_lst[i]];
 
-    const bounding_sphere s(vertices_subset);
+    const BoundingSphere s(vertices_subset);
 
     hull.x() = s.x();
     hull.r() = s.r();
 }
 
-void PointCloudBSH::compute_hull_approx(unsigned int b, unsigned int n, bounding_sphere &hull) const {
+void PointCloudBSH::compute_hull_approx(unsigned int b, unsigned int n, BoundingSphere &hull) const {
     // compute center
     Vector3r x;
     x.setZero();
@@ -51,15 +51,15 @@ void PointCloudBSH::init(const Vector3r *vertices, const unsigned int numVertice
 
 //////////////////////////////////////////////////////////////////////////
 
-TetMeshBSH::TetMeshBSH() : KDTree<bounding_sphere>(0) {}
+TetMeshBSH::TetMeshBSH() : KDTree<BoundingSphere>(0) {}
 
 Vector3r const &TetMeshBSH::entity_position(unsigned int i) const { return m_com[i]; }
 
-void TetMeshBSH::compute_hull(unsigned int b, unsigned int n, bounding_sphere &hull) const {
+void TetMeshBSH::compute_hull(unsigned int b, unsigned int n, BoundingSphere &hull) const {
     compute_hull_approx(b, n, hull);
 }
 
-void TetMeshBSH::compute_hull_approx(unsigned int b, unsigned int n, bounding_sphere &hull) const {
+void TetMeshBSH::compute_hull_approx(unsigned int b, unsigned int n, BoundingSphere &hull) const {
     // compute center
     Vector3r x;
     x.setZero();
@@ -114,8 +114,8 @@ void BVHTest::traverse(PointCloudBSH const &b1,
                        TetMeshBSH const &b2,
                        const unsigned int node_index2,
                        const TraversalCallback &func) {
-    const bounding_sphere &bs1 = b1.hull(node_index1);
-    const bounding_sphere &bs2 = b2.hull(node_index2);
+    const BoundingSphere &bs1 = b1.hull(node_index1);
+    const BoundingSphere &bs2 = b2.hull(node_index2);
     if (!bs1.overlaps(bs2)) return;
 
     auto const &node1 = b1.node(node_index1);

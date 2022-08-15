@@ -12,9 +12,9 @@
 #include "vox.base/timing.h"
 #include "vox.sph/binary_file_reader_writer.h"
 #include "vox.sph/counting.h"
-#include "vox.sph/file_system.h"
+#include "vox.base/file_system.h"
 #include "vox.sph/simulation.h"
-#include "vox.sph/string_tools.h"
+#include "vox.base/string_tools.h"
 #include "vox.sph/time_manager.h"
 #include "vox.sph/utilities/math_functions.h"
 

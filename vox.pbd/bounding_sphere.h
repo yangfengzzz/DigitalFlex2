@@ -16,12 +16,12 @@ namespace vox {
  * \brief Computes smallest enclosing spheres of pointsets using Welzl's
  * algorithm \Author: Tassilo Kugelstadt
  */
-class bounding_sphere {
+class BoundingSphere {
 public:
     /**
      * \brief default constructor sets the center and radius to zero.
      */
-    bounding_sphere() : m_x(Vector3r::Zero()), m_r(0.0) {}
+    BoundingSphere() : m_x(Vector3r::Zero()), m_r(0.0) {}
 
     /**
      * \brief constructor which sets the center and radius
@@ -29,14 +29,14 @@ public:
      * \param x	3d coordiantes of the center point
      * \param r radius of the sphere
      */
-    bounding_sphere(Vector3r x, const Real r) : m_x(std::move(x)), m_r(r) {}
+    BoundingSphere(Vector3r x, const Real r) : m_x(std::move(x)), m_r(r) {}
 
     /**
      * \brief	constructs a sphere for one point (with radius 0)
      *
      * \param a	3d coordinates of point a
      */
-    explicit bounding_sphere(const Vector3r &a) {
+    explicit BoundingSphere(const Vector3r &a) {
         m_x = a;
         m_r = 0.0;
     }
@@ -47,7 +47,7 @@ public:
      * \param a 3d coordinates of point a
      * \param b 3d coordinates of point b
      */
-    bounding_sphere(const Vector3r &a, const Vector3r &b) {
+    BoundingSphere(const Vector3r &a, const Vector3r &b) {
         const Vector3r ba = b - a;
 
         m_x = (a + b) * static_cast<Real>(0.5);
@@ -61,7 +61,7 @@ public:
      * \param b 3d coordinates of point b
      * \param c 3d coordinates of point c
      */
-    bounding_sphere(const Vector3r &a, const Vector3r &b, const Vector3r &c) {
+    BoundingSphere(const Vector3r &a, const Vector3r &b, const Vector3r &c) {
         const Vector3r ba = b - a;
         const Vector3r ca = c - a;
         const Vector3r baxca = ba.cross(ca);
@@ -86,7 +86,7 @@ public:
      * \param c 3d coordinates of point c
      * \param d 3d coordinates of point d
      */
-    bounding_sphere(const Vector3r &a, const Vector3r &b, const Vector3r &c, const Vector3r &d) {
+    BoundingSphere(const Vector3r &a, const Vector3r &b, const Vector3r &c, const Vector3r &d) {
         const Vector3r ba = b - a;
         const Vector3r ca = c - a;
         const Vector3r da = d - a;
@@ -107,7 +107,7 @@ public:
      *
      * \param p vertices of the points
      */
-    explicit bounding_sphere(const std::vector<Vector3r> &p) {
+    explicit BoundingSphere(const std::vector<Vector3r> &p) {
         m_r = 0;
         m_x.setZero();
         setPoints(p);
@@ -172,7 +172,7 @@ public:
             v[j] = d;
         }
 
-        bounding_sphere S = bounding_sphere(v[0], v[1]);
+        BoundingSphere S = BoundingSphere(v[0], v[1]);
 
         for (int i = 2; i < n; i++) {
             // SES0
@@ -192,7 +192,7 @@ public:
      * \return		returns true when this sphere and the other sphere are
      * intersecting
      */
-    [[nodiscard]] bool overlaps(bounding_sphere const &other) const {
+    [[nodiscard]] bool overlaps(BoundingSphere const &other) const {
         double rr = m_r + other.m_r;
         return (m_x - other.m_x).squaredNorm() < rr * rr;
     }
@@ -205,7 +205,7 @@ public:
      * \return		returns true when the other is contained in this sphere
      * or vice versa
      */
-    [[nodiscard]] bool contains(bounding_sphere const &other) const {
+    [[nodiscard]] bool contains(BoundingSphere const &other) const {
         double rr = r() - other.r();
         return (x() - other.x()).squaredNorm() < rr * rr;
     }
@@ -231,12 +231,12 @@ private:
      * \param q3	3d coordinates of a third point on the surface
      * \return		smallest enclosing sphere
      */
-    bounding_sphere ses3(int n, std::vector<Vector3r> &p, Vector3r &q1, Vector3r &q2, Vector3r &q3) {
-        bounding_sphere S(q1, q2, q3);
+    BoundingSphere ses3(int n, std::vector<Vector3r> &p, Vector3r &q1, Vector3r &q2, Vector3r &q3) {
+        BoundingSphere S(q1, q2, q3);
 
         for (int i = 0; i < n; i++) {
             Vector3r d = p[i] - S.x();
-            if (d.squaredNorm() > S.r() * S.r()) S = bounding_sphere(q1, q2, q3, p[i]);
+            if (d.squaredNorm() > S.r() * S.r()) S = BoundingSphere(q1, q2, q3, p[i]);
         }
         return S;
     }
@@ -251,8 +251,8 @@ private:
      * \param q2	3d coordinates of a second point on the surface
      * \return		smallest enclosing sphere
      */
-    bounding_sphere ses2(int n, std::vector<Vector3r> &p, Vector3r &q1, Vector3r &q2) {
-        bounding_sphere S(q1, q2);
+    BoundingSphere ses2(int n, std::vector<Vector3r> &p, Vector3r &q1, Vector3r &q2) {
+        BoundingSphere S(q1, q2);
 
         for (int i = 0; i < n; i++) {
             Vector3r d = p[i] - S.x();
@@ -269,8 +269,8 @@ private:
      * \param q1	3d coordinates of a point on the surface
      * \return		smallest enclosing sphere
      */
-    bounding_sphere ses1(int n, std::vector<Vector3r> &p, Vector3r &q1) {
-        bounding_sphere S(p[0], q1);
+    BoundingSphere ses1(int n, std::vector<Vector3r> &p, Vector3r &q1) {
+        BoundingSphere S(p[0], q1);
 
         for (int i = 1; i < n; i++) {
             Vector3r d = p[i] - S.x();

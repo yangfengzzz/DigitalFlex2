@@ -8,7 +8,7 @@
 #include <omp.h>
 #include "vox.base/logging.h"
 #include "vox.editor/simulator_base.h"
-#include "vox.sph/file_system.h"
+#include "vox.base/file_system.h"
 #include "vox.sph/simulation.h"
 #include "vox.sph/time_manager.h"
 #include "vox.sph/viscosity/viscosity_weiler2018.h"

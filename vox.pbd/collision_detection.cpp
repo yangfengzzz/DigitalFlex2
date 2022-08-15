@@ -154,7 +154,7 @@ void CollisionDetection::updateAABB(SimulationModel &model, CollisionDetection::
     co->m_aabb.m_p[1][2] += m_tolerance;
 }
 
-void CollisionDetection::updateAABB(const Vector3r &p, aabb &aabb) {
+void CollisionDetection::updateAABB(const Vector3r &p, AABB &aabb) {
     if (aabb.m_p[0][0] > p[0]) aabb.m_p[0][0] = p[0];
     if (aabb.m_p[0][1] > p[1]) aabb.m_p[0][1] = p[1];
     if (aabb.m_p[0][2] > p[2]) aabb.m_p[0][2] = p[2];

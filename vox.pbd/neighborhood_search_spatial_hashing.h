@@ -24,13 +24,13 @@ inline unsigned int hashFunction<NeighborhoodSearchCellPos *>(NeighborhoodSearch
 }  // namespace vox::utility
 
 namespace vox {
-class neighborhood_search_spatial_hashing {
+class NeighborhoodSearchSpatialHashing {
 public:
-    explicit neighborhood_search_spatial_hashing(unsigned int numParticles = 0,
+    explicit NeighborhoodSearchSpatialHashing(unsigned int numParticles = 0,
                                                  Real radius = 0.1,
                                                  unsigned int maxNeighbors = 60u,
                                                  unsigned int maxParticlesPerCell = 50u);
-    ~neighborhood_search_spatial_hashing();
+    ~NeighborhoodSearchSpatialHashing();
 
     // Spatial hashing
     struct HashEntry {

@@ -9,23 +9,23 @@
 #include "vox.base/common.h"
 
 namespace vox {
-class aabb {
+class AABB {
 public:
     Vector3r m_p[2];
 
-    aabb &operator=(const aabb &aabb) {
+    AABB &operator=(const AABB &aabb) {
         m_p[0] = aabb.m_p[0];
         m_p[1] = aabb.m_p[1];
         return *this;
     }
 
-    static bool pointInAABB(const aabb &a, const Vector3r &p) {
+    static bool pointInAABB(const AABB &a, const Vector3r &p) {
         if ((p[0] < a.m_p[0][0]) || (p[1] < a.m_p[0][1]) || (p[2] < a.m_p[0][2])) return false;
         if ((p[0] > a.m_p[1][0]) || (p[1] > a.m_p[1][1]) || (p[2] > a.m_p[1][2])) return false;
         return true;
     }
 
-    static void getEdge(const aabb &a, char i, Vector3r &p1, Vector3r &p2) {
+    static void getEdge(const AABB &a, char i, Vector3r &p1, Vector3r &p2) {
         char c1, c2;
         getEdgeIndex(i, c1, c2);
         cornerPoint(a, c1, p1);
@@ -40,7 +40,7 @@ public:
         p2 = index[2 * i + 1];
     }
 
-    static void cornerPoint(const aabb &a, char i, Vector3r &p) {
+    static void cornerPoint(const AABB &a, char i, Vector3r &p) {
         switch (i) {
             case 0:
                 p = Vector3r(a.m_p[0][0], a.m_p[0][1], a.m_p[0][2]);
@@ -69,7 +69,7 @@ public:
         }
     }
 
-    static FORCE_INLINE bool intersection(const aabb &a1, const aabb &a2) {
+    static FORCE_INLINE bool intersection(const AABB &a1, const AABB &a2) {
         for (char i = 0; i < 3; i++) {
             const Real min0 = a1.m_p[0][i];
             const Real max0 = a1.m_p[1][i];

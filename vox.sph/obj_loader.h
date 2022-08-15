@@ -10,7 +10,7 @@
 #include <string>
 
 #include "vox.base/logging.h"
-#include "vox.sph/string_tools.h"
+#include "vox.base/string_tools.h"
 
 namespace vox::utility {
 /** \brief Struct to store the position and normal indices

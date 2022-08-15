@@ -94,7 +94,7 @@ void DistanceFieldCollisionDetection::collisionDetection(SimulationModel &model)
             if (((co2->m_bodyType != CollisionDetection::CollisionObject::RigidBodyCollisionObjectType) &&
                  (co2->m_bodyType != CollisionDetection::CollisionObject::TetModelCollisionObjectType)) ||
                 !isDistanceFieldCollisionObject(co1) || !isDistanceFieldCollisionObject(co2) ||
-                !aabb::intersection(co1->m_aabb, co2->m_aabb))
+                !AABB::intersection(co1->m_aabb, co2->m_aabb))
                 continue;
 
             if ((co1->m_bodyType == CollisionDetection::CollisionObject::RigidBodyCollisionObjectType) &&
@@ -196,7 +196,7 @@ void DistanceFieldCollisionDetection::collisionDetectionRigidBodies(
 
     const PointCloudBSH &bvh = ((DistanceFieldCollisionDetection::DistanceFieldCollisionObject *)co1)->m_bvh;
     std::function<bool(unsigned int, unsigned int)> predicate = [&](unsigned int node_index, unsigned int depth) {
-        const bounding_sphere &bs = bvh.hull(node_index);
+        const BoundingSphere &bs = bvh.hull(node_index);
         const Vector3r &sphere_x = bs.x();
         const Vector3r sphere_x_w = rb1->getRotation() * sphere_x + rb1->getPosition();
 
@@ -272,7 +272,7 @@ void DistanceFieldCollisionDetection::collisionDetectionRBSolid(const ParticleDa
     const PointCloudBSH &bvh = ((DistanceFieldCollisionDetection::DistanceFieldCollisionObject *)co1)->m_bvh;
 
     std::function<bool(unsigned int, unsigned int)> predicate = [&](unsigned int node_index, unsigned int depth) {
-        const bounding_sphere &bs = bvh.hull(node_index);
+        const BoundingSphere &bs = bvh.hull(node_index);
         const Vector3r &sphere_x_w = bs.x();
 
         AlignedBox3r box3f;
@@ -742,7 +742,7 @@ bool DistanceFieldCollisionDetection::findRefTetAt(
     tets.reserve(100);
 
     std::function<bool(unsigned int, unsigned int)> predicate = [&](unsigned int node_index, unsigned int depth) {
-        const bounding_sphere &bs = bvh0.hull(node_index);
+        const BoundingSphere &bs = bvh0.hull(node_index);
         return bs.contains(X);
     };
     std::function<void(unsigned int, unsigned int)> cb = [&](unsigned int node_index, unsigned int depth) {

@@ -11,21 +11,21 @@
 #include "vox.pbd/kdtree.h"
 
 namespace vox {
-class PointCloudBSH : public KDTree<bounding_sphere> {
+class PointCloudBSH : public KDTree<BoundingSphere> {
 public:
     PointCloudBSH();
 
     void init(const Vector3r *vertices, unsigned int numVertices);
     [[nodiscard]] Vector3r const &entity_position(unsigned int i) const final;
-    void compute_hull(unsigned int b, unsigned int n, bounding_sphere &hull) const final;
-    void compute_hull_approx(unsigned int b, unsigned int n, bounding_sphere &hull) const final;
+    void compute_hull(unsigned int b, unsigned int n, BoundingSphere &hull) const final;
+    void compute_hull_approx(unsigned int b, unsigned int n, BoundingSphere &hull) const final;
 
 private:
     const Vector3r *m_vertices{};
     unsigned int m_numVertices{};
 };
 
-class TetMeshBSH : public KDTree<bounding_sphere> {
+class TetMeshBSH : public KDTree<BoundingSphere> {
 public:
     TetMeshBSH();
 
@@ -35,8 +35,8 @@ public:
               unsigned int numTets,
               Real tolerance);
     [[nodiscard]] Vector3r const &entity_position(unsigned int i) const final;
-    void compute_hull(unsigned int b, unsigned int n, bounding_sphere &hull) const final;
-    void compute_hull_approx(unsigned int b, unsigned int n, bounding_sphere &hull) const final;
+    void compute_hull(unsigned int b, unsigned int n, BoundingSphere &hull) const final;
+    void compute_hull_approx(unsigned int b, unsigned int n, BoundingSphere &hull) const final;
     void updateVertices(const Vector3r *vertices);
 
 private:
