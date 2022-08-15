@@ -6,6 +6,7 @@
 
 #include "vox.sph/simulation.h"
 
+#include "vox.base/time_manager.h"
 #include "vox.base/timing.h"
 #include "vox.sph/boundary_model_akinci2012.h"
 #include "vox.sph/boundary_model_bender2019.h"
@@ -17,7 +18,6 @@
 #include "vox.sph/pbf/time_step_pbf.h"
 #include "vox.sph/pcisph/time_step_pcisph.h"
 #include "vox.sph/projective_fluids/time_step_pf.h"
-#include "vox.base/time_manager.h"
 #include "vox.sph/viscosity/viscosity_bender2017.h"
 #include "vox.sph/wcsph/time_step_wcsph.h"
 
@@ -272,11 +272,6 @@ void Simulation::initKernels() const {
     AdhesionKernel::setRadius(m_supportRadius);
     CubicKernel2D::setRadius(m_supportRadius);
     WendlandQuinticC2Kernel2D::setRadius(m_supportRadius);
-#ifdef USE_AVX
-    CubicKernel_AVX::setRadius(m_supportRadius, m_sim2D);
-    // 	Poly6Kernel_AVX::setRadius(m_supportRadius);
-    // 	SpikyKernel_AVX::setRadius(m_supportRadius);
-#endif
 }
 
 void Simulation::setGradKernel(int val) {

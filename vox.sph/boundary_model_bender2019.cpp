@@ -8,8 +8,8 @@
 
 #include <iostream>
 
-#include "vox.base/logging.h"
 #include "vox.base/compact_search/compact_search.h"
+#include "vox.base/logging.h"
 #include "vox.sph/simulation.h"
 #include "vox.sph/time_step.h"
 

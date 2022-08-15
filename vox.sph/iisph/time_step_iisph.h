@@ -8,7 +8,7 @@
 
 #include "vox.base/common.h"
 #include "vox.sph/iisph/simulation_data_iisph.h"
-#include "vox.sph/sph_kernels.h"
+#include "vox.base/sph_kernels.h"
 #include "vox.sph/time_step.h"
 
 namespace vox {

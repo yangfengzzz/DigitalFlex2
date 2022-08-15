@@ -58,9 +58,5 @@ public:
 
     virtual void saveState(BinaryFileWriter &binWriter){};
     virtual void loadState(BinaryFileReader &binReader){};
-
-#ifdef USE_PERFORMANCE_OPTIMIZATION
-    void precomputeValues();
-#endif
 };
 }  // namespace vox

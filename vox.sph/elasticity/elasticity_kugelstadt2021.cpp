@@ -8,15 +8,15 @@
 
 #include <array>
 
-#include "vox.base/file_system.h"
-#include "vox.base/md5.h"
-#include "vox.base/string_tools.h"
-#include "vox.base/timing.h"
 #include "vox.base/binary_file_reader_writer.h"
 #include "vox.base/counting.h"
-#include "vox.sph/simulation.h"
-#include "vox.base/time_manager.h"
+#include "vox.base/file_system.h"
 #include "vox.base/math_functions.h"
+#include "vox.base/md5.h"
+#include "vox.base/string_tools.h"
+#include "vox.base/time_manager.h"
+#include "vox.base/timing.h"
+#include "vox.sph/simulation.h"
 
 using namespace vox;
 
@@ -461,43 +461,22 @@ void Elasticity_Kugelstadt2021::initSystem() {
                 binReader.read(obj->m_factorization->m_dt);
                 binReader.read(obj->m_factorization->m_mu);
                 binReader.readSparseMatrix(obj->m_factorization->m_matHTH);
-#ifdef USE_AVX
-                delete obj->m_factorization->m_cholesky;
-                obj->m_factorization->m_cholesky = new CholeskyAVXSolver();
-                obj->m_factorization->m_cholesky->load(binReader);
-#else
                 binReader.readSparseMatrix(obj->m_factorization->m_matL);
                 binReader.readSparseMatrix(obj->m_factorization->m_matLT);
                 binReader.readMatrixX(obj->m_factorization->m_permInd);
                 binReader.readMatrixX(obj->m_factorization->m_permInvInd);
-#endif
                 binReader.closeFile();
             }
 
             // init vectors
             int numParticles = (int)obj->m_particleIndices.size();
             obj->m_RHS.resize(numParticles - obj->m_nFixed);
-#ifdef USE_AVX
-            obj->m_rhs.resize(3 * numParticles - obj->m_nFixed);
-            obj->m_sol.resize(3 * numParticles - obj->m_nFixed);
-            obj->m_f_avx.resize(3 * numParticles);
-            obj->m_sol_avx.resize(numParticles);
-
-            int vecSize;
-            if (numParticles % 8 == 0)
-                vecSize = numParticles / 8;
-            else
-                vecSize = numParticles / 8 + 1;
-            obj->m_quats_avx.resize(vecSize);
-            for (int i = 0; i < vecSize; i++) obj->m_quats_avx[i] = Quaternion8f();
-#else
             obj->m_f.resize(3 * numParticles);
             obj->m_sol.resize(numParticles);
             obj->m_quats.resize(numParticles, Quaternionr::Identity());
             obj->m_RHS_perm.resize(numParticles - obj->m_nFixed);
-#endif
-        } else  // no cache found
-        {
+        } else {
+            // no cache found
             ElasticObject* obj = m_objects[objIndex];
 
             // compute new factorization if no factorization can be reused
@@ -507,25 +486,10 @@ void Elasticity_Kugelstadt2021::initSystem() {
             // init vectors
             int numParticles = (int)obj->m_particleIndices.size();
             obj->m_RHS.resize(numParticles - obj->m_nFixed);
-#ifdef USE_AVX
-            obj->m_rhs.resize(3 * numParticles - obj->m_nFixed);
-            obj->m_sol.resize(3 * numParticles - obj->m_nFixed);
-            obj->m_f_avx.resize(3 * numParticles);
-            obj->m_sol_avx.resize(numParticles);
-
-            int vecSize;
-            if (numParticles % 8 == 0)
-                vecSize = numParticles / 8;
-            else
-                vecSize = numParticles / 8 + 1;
-            obj->m_quats_avx.resize(vecSize);
-            for (int i = 0; i < vecSize; i++) obj->m_quats_avx[i] = Quaternion8f();
-#else
             obj->m_f.resize(3 * numParticles);
             obj->m_sol.resize(numParticles);
             obj->m_quats.resize(numParticles, Quaternionr::Identity());
             obj->m_RHS_perm.resize(numParticles - obj->m_nFixed);
-#endif
 
             // write cache file
             if (sim->getUseCache() && (utility::FileSystem::makeDir(sim->getCachePath()) == 0)) {
@@ -536,14 +500,10 @@ void Elasticity_Kugelstadt2021::initSystem() {
                 binWriter.write(obj->m_factorization->m_dt);
                 binWriter.write(obj->m_factorization->m_mu);
                 binWriter.writeSparseMatrix(obj->m_factorization->m_matHTH);
-#ifdef USE_AVX
-                obj->m_factorization->m_cholesky->save(binWriter);
-#else
                 binWriter.writeSparseMatrix(obj->m_factorization->m_matL);
                 binWriter.writeSparseMatrix(obj->m_factorization->m_matLT);
                 binWriter.writeMatrixX(obj->m_factorization->m_permInd);
                 binWriter.writeMatrixX(obj->m_factorization->m_permInvInd);
-#endif
                 binWriter.closeFile();
             }
         }
@@ -711,11 +671,6 @@ void Elasticity_Kugelstadt2021::initFactorization(std::shared_ptr<Factorization>
 
     M_plus_DT_K_D.makeCompressed();
 
-#ifdef USE_AVX
-    // compute factorization of the matrix
-    delete factorization->m_cholesky;
-    factorization->m_cholesky = new CholeskyAVXSolver(M_plus_DT_K_D);
-#else
     SolverLLT* solverLLT = new SolverLLT();
     solverLLT->compute(M_plus_DT_K_D);
 
@@ -730,7 +685,6 @@ void Elasticity_Kugelstadt2021::initFactorization(std::shared_ptr<Factorization>
     factorization->m_matLT = Eigen::SparseMatrix<Real, Eigen::ColMajor>(solverLLT->matrixU().cast<Real>());
 
     delete solverLLT;
-#endif
 
     LOGI("Non zero elements (A): {}", M_plus_DT_K_D.nonZeros())
 }
@@ -774,11 +728,6 @@ void Elasticity_Kugelstadt2021::performNeighborhoodSearchSort() {
     d.sort_field(&m_restVolumes[0]);
 
     for (unsigned int i = 0; i < numPart; i++) m_initial_to_current_index[m_current_to_initial_index[i]] = i;
-
-#ifdef USE_AVX
-    // update quaterions which are needed for warmstart
-    rotationMatricesToAVXQuaternions();
-#endif
 }
 
 /** Compute kernel gradient correction matrices (Eq. 8).
@@ -847,11 +796,6 @@ void Elasticity_Kugelstadt2021::loadState(BinaryFileReader& binReader) {
     binReader.readBuffer((char*)m_L.data(), m_L.size() * sizeof(Matrix3r));
     binReader.readBuffer((char*)m_rotations.data(), m_rotations.size() * sizeof(Matrix3r));
     binReader.readBuffer((char*)m_vDiff.data(), m_vDiff.size() * sizeof(Vector3r));
-
-#ifdef USE_AVX
-    // update quaternions which are needed for warmstart
-    rotationMatricesToAVXQuaternions();
-#endif
 }
 
 /** Solver for the volume conservation forces (Eq. 30).
@@ -923,611 +867,6 @@ void Elasticity_Kugelstadt2021::stepVolumeSolver() {
     }
     STOP_TIMING_AVG;
 }
-
-#ifdef USE_AVX
-
-/** Convert all rotation matrices to AVX quaternions.
- */
-void Elasticity_Kugelstadt2021::rotationMatricesToAVXQuaternions() {
-    size_t numObjects = m_objects.size();
-    for (auto objIndex = 0; objIndex < numObjects; objIndex++) {
-        ElasticObject* obj = m_objects[objIndex];
-        const std::vector<unsigned int>& group = obj->m_particleIndices;
-        int numParticles = (int)group.size();
-
-        int vecSize;
-        if (numParticles % 8 == 0)
-            vecSize = numParticles / 8;
-        else
-            vecSize = numParticles / 8 + 1;
-
-        auto& quats = obj->m_quats_avx;
-
-#pragma omp parallel default(shared)
-        {
-#pragma omp for schedule(static)
-            for (int i = 0; i < vecSize; i++) {
-                const int count = std::min(numParticles - i * 8, 8);
-
-                // store the deformation gradient of 8 particles in avx vectors
-                int idx[8];
-                for (int j = 0; j < count; j++) idx[j] = m_initial_to_current_index[group[8 * i + j]];
-                for (int j = count; j < 8; j++) idx[j] = 0;
-
-                Quaternionr q[8];
-                for (auto j = 0; j < count; j++) q[j] = Quaternionr(m_rotations[idx[j]].transpose());
-                for (auto j = count; j < 8; j++) q[j] = Quaternionr();
-
-                Quaternion8f& q_avx = quats[i];
-                q_avx.set(q);
-            }
-        }
-    }
-}
-
-/** Extract rotation matrices from deformation gradients.
- */
-void Elasticity_Kugelstadt2021::computeRotations() {
-    const Real dt = TimeManager::getCurrent()->getTimeStepSize();
-
-    size_t numObjects = m_objects.size();
-    for (auto objIndex = 0; objIndex < numObjects; objIndex++) {
-        ElasticObject* obj = m_objects[objIndex];
-        const std::vector<unsigned int>& group = obj->m_particleIndices;
-        int numParticles = (int)group.size();
-
-        int vecSize;
-        if (numParticles % 8 == 0)
-            vecSize = numParticles / 8;
-        else
-            vecSize = numParticles / 8 + 1;
-
-        auto& D = obj->m_factorization->m_D;
-        auto& f_avx = obj->m_f_avx;
-        auto& sol_avx = obj->m_sol_avx;
-        auto& quats = obj->m_quats_avx;
-
-//////////////////////////////////////////////////////////////////////////
-// advect particles
-//////////////////////////////////////////////////////////////////////////
-#pragma omp parallel default(shared)
-        {
-#pragma omp for schedule(static)
-            for (int i = 0; i < (int)numParticles; i++) {
-                const unsigned int i0 = group[i];
-                const unsigned int particleIndex = m_initial_to_current_index[i0];
-
-                const Vector3r& xi0 = m_model->getPosition0(i0);
-                const size_t numNeighbors = m_initialNeighbors[i0].size();
-
-                Vector3r xNew = m_model->getPosition(particleIndex);
-                xNew += dt * m_model->getVelocity(particleIndex);
-
-                // copy the 3 coordinates to sol_avx
-                sol_avx[i] = Scalarf8(xNew[0], xNew[1], xNew[2], 0, 0, 0, 0, 0);
-                f_avx[3 * i].setZero();
-                f_avx[3 * i + 1].setZero();
-                f_avx[3 * i + 2].setZero();
-            }
-
-// compute sparse matrix-vector product in parallel
-#pragma omp for schedule(static)
-            for (int k = 0; k < D.outerSize(); ++k) {
-                for (Eigen::SparseMatrix<float, Eigen::RowMajor>::InnerIterator it(D, k); it; ++it) {
-                    f_avx[it.row()] += Scalarf8(it.value()) * sol_avx[it.col()];
-                }
-            }
-
-#pragma omp for schedule(static)
-            for (int i = 0; i < (int)numParticles; i++) {
-                const unsigned int i0 = group[i];
-                const unsigned int particleIndex = m_initial_to_current_index[i0];
-
-                // copy data from f_avx to m_F
-                float x0[8], x1[8], x2[8];
-                f_avx[3 * i].store(x0);
-                f_avx[3 * i + 1].store(x1);
-                f_avx[3 * i + 2].store(x2);
-
-                m_F[particleIndex] << x0[0], x0[1], x0[2], x1[0], x1[1], x1[2], x2[0], x2[1], x2[2];
-            }
-
-#pragma omp for schedule(static)
-            for (int i = 0; i < vecSize; i++) {
-                const int count = std::min(numParticles - i * 8, 8);
-
-                // store the deformation gradient of 8 particles in avx vectors
-                int idx[8];
-                for (int j = 0; j < count; j++) idx[j] = m_initial_to_current_index[group[8 * i + j]];
-                for (int j = count; j < 8; j++) idx[j] = 0;
-
-                Vector3f8 F1, F2, F3;  // columns of the deformation gradient
-                F1 = Vector3f8(m_F[idx[0]].col(0), m_F[idx[1]].col(0), m_F[idx[2]].col(0), m_F[idx[3]].col(0),
-                               m_F[idx[4]].col(0), m_F[idx[5]].col(0), m_F[idx[6]].col(0), m_F[idx[7]].col(0));
-                F2 = Vector3f8(m_F[idx[0]].col(1), m_F[idx[1]].col(1), m_F[idx[2]].col(1), m_F[idx[3]].col(1),
-                               m_F[idx[4]].col(1), m_F[idx[5]].col(1), m_F[idx[6]].col(1), m_F[idx[7]].col(1));
-                F3 = Vector3f8(m_F[idx[0]].col(2), m_F[idx[1]].col(2), m_F[idx[2]].col(2), m_F[idx[3]].col(2),
-                               m_F[idx[4]].col(2), m_F[idx[5]].col(2), m_F[idx[6]].col(2), m_F[idx[7]].col(2));
-
-                // perform analytic polar decomposition
-                Quaternion8f& q = quats[i];
-                MathFunctions_AVX::APD_Newton_AVX(F1, F2, F3, q);
-                // transform quaternion to rotation matrix
-                Vector3f8 R1, R2, R3;  // columns of the rotation matrix
-                quats[i].toRotationMatrix(R1, R2, R3);
-
-                std::array<Vector3r, 8> r0, r1, r2;
-                R1.store(r0.data());
-                R2.store(r1.data());
-                R3.store(r2.data());
-                for (auto j = 0; j < count; j++) {
-                    m_rotations[idx[j]].row(0) = r0[j];
-                    m_rotations[idx[j]].row(1) = r1[j];
-                    m_rotations[idx[j]].row(2) = r2[j];
-                }
-            }
-        }
-    }
-}
-
-/** Solve the linear system for the stretching forces including zero energy mode control
- * using the precomputed matrix factorization.
- */
-void Elasticity_Kugelstadt2021::stepElasticitySolver() {
-    START_TIMING("Elasticity_Kugelstadt2021")
-    const unsigned int numActiveParticles = m_model->numActiveParticles();
-    if (numActiveParticles == 0) return;
-    const Real dt = TimeManager::getCurrent()->getTimeStepSize();
-    Simulation* sim = Simulation::getCurrent();
-
-    size_t numObjects = m_objects.size();
-
-    // solve the systems for each object separately
-    for (auto objIndex = 0; objIndex < numObjects; objIndex++) {
-        ElasticObject* obj = m_objects[objIndex];
-        const std::vector<unsigned int>& group = obj->m_particleIndices;
-        int numParticles = (int)group.size();
-
-        auto& D = obj->m_factorization->m_D;
-        auto& DT_K = obj->m_factorization->m_DT_K;
-        auto& HT_K_H = obj->m_factorization->m_matHTH;
-
-        auto& RHS = obj->m_RHS;
-        auto& f_avx = obj->m_f_avx;
-        auto& sol_avx = obj->m_sol_avx;
-        auto& quats = obj->m_quats_avx;
-
-        START_TIMING("advect x & Dx")
-#pragma omp parallel default(shared)
-        {
-//////////////////////////////////////////////////////////////////////////
-// advect particles to get \tilde x in Eq. 29:
-// store the 3 components of the advected positions in f_avx
-// store the 3 components of dt*velocity in v_avx
-//////////////////////////////////////////////////////////////////////////
-#pragma omp for schedule(static)
-            for (int i = 0; i < (int)numParticles; i++) {
-                const unsigned int i0 = group[i];
-                const unsigned int particleIndex = m_initial_to_current_index[i0];
-                const size_t numNeighbors = m_initialNeighbors[i0].size();
-
-                const Real fdt = obj->m_factorization->m_dt;
-                const Vector3r x = m_model->getPosition(particleIndex);
-                const Vector3r dv = fdt * m_model->getVelocity(particleIndex);
-                const Vector3r xNew = x + dv;
-                // copy the 3 coordinates to sol_avx
-                sol_avx[i] = Scalarf8(xNew[0], xNew[1], xNew[2], 0, 0, 0, 0, 0);
-                f_avx[3 * i].setZero();
-                f_avx[3 * i + 1].setZero();
-                f_avx[3 * i + 2].setZero();
-            }
-
-//////////////////////////////////////////////////////////////////////////
-// compute deformation gradient F by sparse matrix-vector product in parallel:
-//
-// f_avx = D * x_advected		(Eq. 12 and Eq. 29)
-//////////////////////////////////////////////////////////////////////////
-#pragma omp for schedule(static)
-            for (int k = 0; k < D.outerSize(); ++k) {
-                for (Eigen::SparseMatrix<float, Eigen::RowMajor>::InnerIterator it(D, k); it; ++it) {
-                    f_avx[it.row()] += Scalarf8(it.value()) * sol_avx[it.col()];
-                }
-            }
-        }
-        STOP_TIMING_AVG;
-
-        int vecSize;
-        if (numParticles % 8 == 0)
-            vecSize = numParticles / 8;
-        else
-            vecSize = numParticles / 8 + 1;
-
-        START_TIMING("extract rot");
-#pragma omp parallel default(shared)
-        {
-//////////////////////////////////////////////////////////////////////////
-// extract deformation gradient from avx values f_avx
-//////////////////////////////////////////////////////////////////////////
-#pragma omp for schedule(static)
-            for (int i = 0; i < (int)numParticles; i++) {
-                const unsigned int i0 = group[i];
-                const unsigned int particleIndex = m_initial_to_current_index[i0];
-
-                // copy data from f_avx to m_F
-                float x0[8], x1[8], x2[8];
-                f_avx[3 * i].store(x0);
-                f_avx[3 * i + 1].store(x1);
-                f_avx[3 * i + 2].store(x2);
-
-                m_F[particleIndex] << x0[0], x0[1], x0[2], x1[0], x1[1], x1[2], x2[0], x2[1], x2[2];
-            }
-
-//////////////////////////////////////////////////////////////////////////
-// extract rotation from F by analytic polar decomposition (Kugelstadt et al. 2018)
-//////////////////////////////////////////////////////////////////////////
-#pragma omp for schedule(static)
-            for (int i = 0; i < vecSize; i++) {
-                const int count = std::min(numParticles - i * 8, 8);
-
-                // store the deformation gradient of 8 particles in avx vectors
-                int idx[8];
-                for (int j = 0; j < count; j++) idx[j] = m_initial_to_current_index[group[8 * i + j]];
-                for (int j = count; j < 8; j++) idx[j] = 0;
-
-                Vector3f8 F1, F2, F3;  // columns of the deformation gradient
-                F1 = Vector3f8(m_F[idx[0]].col(0), m_F[idx[1]].col(0), m_F[idx[2]].col(0), m_F[idx[3]].col(0),
-                               m_F[idx[4]].col(0), m_F[idx[5]].col(0), m_F[idx[6]].col(0), m_F[idx[7]].col(0));
-                F2 = Vector3f8(m_F[idx[0]].col(1), m_F[idx[1]].col(1), m_F[idx[2]].col(1), m_F[idx[3]].col(1),
-                               m_F[idx[4]].col(1), m_F[idx[5]].col(1), m_F[idx[6]].col(1), m_F[idx[7]].col(1));
-                F3 = Vector3f8(m_F[idx[0]].col(2), m_F[idx[1]].col(2), m_F[idx[2]].col(2), m_F[idx[3]].col(2),
-                               m_F[idx[4]].col(2), m_F[idx[5]].col(2), m_F[idx[6]].col(2), m_F[idx[7]].col(2));
-
-                // perform polar decomposition
-                Quaternion8f& q = quats[i];
-                MathFunctions_AVX::APD_Newton_AVX(F1, F2, F3, q);
-
-                // transform quaternion to rotation matrix
-                Vector3f8 R1, R2, R3;  // columns of the rotation matrix
-                quats[i].toRotationMatrix(R1, R2, R3);
-
-                //////////////////////////////////////////////////////////////////////////
-                // R := R-F
-                //////////////////////////////////////////////////////////////////////////
-                R1 -= F1;
-                R2 -= F2;
-                R3 -= F3;
-
-                //////////////////////////////////////////////////////////////////////////
-                // store result in f_avx
-                // f_avx has size 3*n and 3 rows contain F-R
-                //////////////////////////////////////////////////////////////////////////
-                std::array<Vector3r, 8> v0, v1, v2;
-                R1.store(v0.data());
-                R2.store(v1.data());
-                R3.store(v2.data());
-                for (auto j = 0; j < count; j++) {
-                    f_avx[24 * i + 3 * j] = Scalarf8(v0[j][0], v1[j][0], v2[j][0], 0, 0, 0, 0, 0);
-                    f_avx[24 * i + 3 * j + 1] = Scalarf8(v0[j][1], v1[j][1], v2[j][1], 0, 0, 0, 0, 0);
-                    f_avx[24 * i + 3 * j + 2] = Scalarf8(v0[j][2], v1[j][2], v2[j][2], 0, 0, 0, 0, 0);
-                    if (8 * i + j < RHS.size()) RHS[8 * i + j] = Scalarf8(0.0f);
-                }
-            }
-        }
-        STOP_TIMING_AVG
-
-        //////////////////////////////////////////////////////////////////////////
-        // Compute right hand side
-        //////////////////////////////////////////////////////////////////////////
-
-        START_TIMING("rhs")
-#pragma omp parallel default(shared)
-        {
-//////////////////////////////////////////////////////////////////////////
-// Compute D^T K * (R-F)		(Eq. 29)
-// Note: K already contains the factor: 2 dt^2
-//////////////////////////////////////////////////////////////////////////
-#pragma omp for schedule(static)
-            for (int k = 0; k < DT_K.outerSize(); ++k) {
-                for (Eigen::SparseMatrix<float, Eigen::RowMajor>::InnerIterator it(DT_K, k); it; ++it) {
-                    if (it.row() < (int)RHS.size()) RHS[it.row()] += Scalarf8(it.value()) * f_avx[it.col()];
-                }
-            }
-        }
-
-        //////////////////////////////////////////////////////////////////////////
-        // If zero energy model control is turned on,
-        // add the following term to the right hand side (Eq. 29):
-        // H^T * K2 * H * x_advected
-        // Note: K2 already contains the factor: dt^2
-        //////////////////////////////////////////////////////////////////////////
-        if (m_alpha != 0.0) {
-#pragma omp parallel default(shared)
-            {
-#pragma omp for schedule(static)
-                for (int k = 0; k < HT_K_H.outerSize(); ++k) {
-                    for (Eigen::SparseMatrix<Real, Eigen::ColMajor>::InnerIterator it(HT_K_H, k); it; ++it) {
-                        if (it.col() < (int)RHS.size())
-                            RHS[it.col()] -= Scalarf8(static_cast<float>(it.value())) * sol_avx[it.row()];
-                    }
-                }
-            }
-        }
-
-//////////////////////////////////////////////////////////////////////////
-// Copy the right hand side in a vector for the cholesky solver
-//////////////////////////////////////////////////////////////////////////
-#pragma omp parallel default(shared)
-        {
-#pragma omp for schedule(static)
-            for (int i = 0; i < (int)RHS.size(); i++) {
-                float x[8];
-                RHS[i].store(x);
-                obj->m_rhs[3 * i] = x[0];
-                obj->m_rhs[3 * i + 1] = x[1];
-                obj->m_rhs[3 * i + 2] = x[2];
-            }
-        }
-
-        STOP_TIMING_AVG;
-    }
-
-    //////////////////////////////////////////////////////////////////////////
-    // Solve linear system
-    //////////////////////////////////////////////////////////////////////////
-    START_TIMING("solve SLE")
-#pragma omp parallel default(shared)
-    {
-#pragma omp for schedule(static)
-        for (int i = 0; i < 3 * numObjects; i++) {
-            int objIndex = i / 3;
-            int index = i % 3;
-            ElasticObject* obj = m_objects[objIndex];
-            obj->m_factorization->m_cholesky->solve(&obj->m_sol[index], &obj->m_rhs[index], /* stride = */ 3);
-        }
-    }
-    for (auto objIndex = 0; objIndex < numObjects; objIndex++) {
-        ElasticObject* obj = m_objects[objIndex];
-        const std::vector<unsigned int>& group = obj->m_particleIndices;
-#pragma omp parallel default(shared)
-        {
-#pragma omp for schedule(static)
-            for (int i = 0; i < (int)obj->m_sol.size() / 3; i++) {
-                const unsigned int i0 = group[i];
-                const unsigned int particleIndex = m_initial_to_current_index[i0];
-                if (m_model->getParticleState(particleIndex) == ParticleState::Active) {
-                    Vector3r& vi = m_model->getVelocity(particleIndex);
-                    const Vector3r& dx = obj->m_sol.segment<3>(3 * i);
-                    const Real fdt = obj->m_factorization->m_dt;
-                    vi += (1.0 / fdt) * dx;
-                }
-            }
-        }
-    }
-    STOP_TIMING_AVG
-
-    STOP_TIMING_AVG
-}
-
-/** Matrix vector product used by the matrix-free conjugate gradient
- * solver to solve the system in Eq. 30.
- */
-void Elasticity_Kugelstadt2021::matrixVecProd(const Real* vec, Real* result, void* userData) {
-    Simulation* sim = Simulation::getCurrent();
-    Elasticity_Kugelstadt2021* elasticity = static_cast<Elasticity_Kugelstadt2021*>(userData);
-    FluidModel* model = elasticity->getModel();
-    const unsigned int numParticles = model->numActiveParticles();
-    const Real dt = TimeManager::getCurrent()->getTimeStepSize();
-
-    const auto& current_to_initial_index = elasticity->m_current_to_initial_index;
-    const auto& initial_to_current_index = elasticity->m_initial_to_current_index;
-    const auto& initialNeighbors = elasticity->m_initialNeighbors;
-    const auto& restVolumes = elasticity->m_restVolumes;
-    auto& stress = elasticity->m_stress;
-    const auto& precomp_RL_gradW8 = elasticity->m_precomp_RL_gradW8;
-    const auto& precomp_RLj_gradW8 = elasticity->m_precomp_RLj_gradW8;
-    const auto& precomputed_indices8 = elasticity->m_precomputed_indices8;
-
-#pragma omp parallel default(shared)
-    {
-#pragma omp for schedule(static)
-        for (int i = 0; i < (int)numParticles; i++) {
-            if (model->getParticleState(i) == ParticleState::Active) {
-                const unsigned int i0 = current_to_initial_index[i];
-                const Vector3r& pi = Eigen::Map<const Vector3r>(&vec[3 * i], 3);
-                const unsigned int numNeighbors = (unsigned int)initialNeighbors[i0].size();
-
-                const Vector3f8 pi_avx(pi);
-
-                //////////////////////////////////////////////////////////////////////////
-                // compute corotated deformation gradient
-                //////////////////////////////////////////////////////////////////////////
-                Scalarf8 trace_avx;
-                trace_avx.setZero();
-                for (unsigned int j = 0; j < numNeighbors; j += 8) {
-                    const unsigned int count = std::min(numNeighbors - j, 8u);
-                    unsigned int nIndices[8];
-                    for (auto k = 0u; k < count; k++)
-                        nIndices[k] = initial_to_current_index[initialNeighbors[i0][j + k]];
-                    const Vector3f8 pj_avx = convertVec_zero(nIndices, &vec[0], count);
-                    const Vector3f8 pj_pi = pj_avx - pi_avx;
-
-                    const Vector3f8& correctedRotatedKernel = precomp_RL_gradW8[precomputed_indices8[i] + j / 8];
-
-                    // We need the trace of the strain tensor. Therefore, we are only interested in the
-                    // diagonal elements which are F_ii-1. However, instead of computing the trace
-                    // of a dyadic product, we can determine the dot product of the vectors to get the trace
-                    // of F. Then the trace of the strain is the result minus 3.
-                    trace_avx += pj_pi.dot(correctedRotatedKernel);
-                }
-                Real trace = trace_avx.reduce();
-                trace *= dt;
-
-                //////////////////////////////////////////////////////////////////////////
-                // First Piola Kirchhoff stress = lambda trace(epsilon) I
-                //////////////////////////////////////////////////////////////////////////
-                stress[i] = elasticity->m_lambda * trace;
-            } else
-                stress[i] = 0.0;
-        }
-    }
-
-#pragma omp parallel default(shared)
-    {
-#pragma omp for schedule(static)
-        for (int i = 0; i < (int)numParticles; i++) {
-            if (model->getParticleState(i) == ParticleState::Active) {
-                const unsigned int i0 = current_to_initial_index[i];
-                const unsigned int numNeighbors = (unsigned int)initialNeighbors[i0].size();
-                const Scalarf8 stress_i_avx(stress[i]);
-                const Scalarf8 restVolume_i_avx(restVolumes[i]);
-
-                //////////////////////////////////////////////////////////////////////////
-                // Compute elastic force f^l_i in Eq. 30
-                //////////////////////////////////////////////////////////////////////////
-                Vector3f8 force_avx;
-                force_avx.setZero();
-                for (unsigned int j = 0; j < numNeighbors; j += 8) {
-                    const unsigned int count = std::min(numNeighbors - j, 8u);
-
-                    unsigned int nIndices[8];
-                    for (auto k = 0u; k < count; k++)
-                        nIndices[k] = initial_to_current_index[initialNeighbors[i0][j + k]];
-
-                    const Scalarf8 stress_j_avx = convert_zero(nIndices, &stress[0], count);
-                    const Scalarf8 restVolume_j_avx = convert_zero(nIndices, &restVolumes[0], count);
-
-                    const Vector3f8& V_RL_gradWi = precomp_RL_gradW8[precomputed_indices8[i] + j / 8];
-                    const Vector3f8& V_RL_gradWj = precomp_RLj_gradW8[precomputed_indices8[i] + j / 8];
-                    force_avx += (V_RL_gradWi * (restVolume_i_avx * stress_i_avx) +
-                                  V_RL_gradWj * (restVolume_j_avx * stress_j_avx));
-                }
-
-                const Real factor = dt / model->getMass(i);
-                result[3 * i] = vec[3 * i] - factor * force_avx.x().reduce();
-                result[3 * i + 1] = vec[3 * i + 1] - factor * force_avx.y().reduce();
-                result[3 * i + 2] = vec[3 * i + 2] - factor * force_avx.z().reduce();
-            } else {
-                result[3 * i] = vec[3 * i];
-                result[3 * i + 1] = vec[3 * i + 1];
-                result[3 * i + 2] = vec[3 * i + 2];
-            }
-        }
-    }
-}
-
-/** Compute the deformation gradient for a particle i.
- */
-void Elasticity_Kugelstadt2021::computeF(const unsigned int i, const Real* x, Elasticity_Kugelstadt2021* e) {
-    const unsigned int i0 = e->m_current_to_initial_index[i];
-    const Vector3r& vi = Eigen::Map<const Vector3r>(&x[3 * i], 3);
-    const unsigned int numNeighbors = (unsigned int)e->m_initialNeighbors[i0].size();
-
-    const Vector3f8 vi_avx(vi);
-
-    //////////////////////////////////////////////////////////////////////////
-    // compute corotated deformation gradient (Eq. 12)
-    //////////////////////////////////////////////////////////////////////////
-    Matrix3f8 F_avx;
-    F_avx.setZero();
-
-    //////////////////////////////////////////////////////////////////////////
-    // Fluid
-    //////////////////////////////////////////////////////////////////////////
-    for (unsigned int j = 0; j < numNeighbors; j += 8) {
-        const unsigned int count = std::min(numNeighbors - j, 8u);
-        unsigned int nIndices[8];
-        for (auto k = 0u; k < count; k++) nIndices[k] = e->m_initial_to_current_index[e->m_initialNeighbors[i0][j + k]];
-        const Vector3f8 vj_avx = convertVec_zero(nIndices, &x[0], count);
-
-        const Vector3f8 vj_vi = vj_avx - vi_avx;
-        const Vector3f8& correctedKernel = e->m_precomp_L_gradW8[e->m_precomputed_indices8[i] + j / 8];
-        Matrix3f8 dyad;
-        dyadicProduct(vj_vi, correctedKernel, dyad);
-        F_avx += dyad;
-    }
-    e->m_F[i] = F_avx.reduce();
-
-    if (Simulation::getCurrent()->is2DSimulation()) e->m_F[i](2, 2) = 1.0;
-}
-
-/** Compute right hand side of the linear system of the volume solver (Eq. 30).
- */
-void Elasticity_Kugelstadt2021::computeRHS(VectorXr& rhs) {
-    Simulation* sim = Simulation::getCurrent();
-    const unsigned int numParticles = m_model->numActiveParticles();
-    const unsigned int fluidModelIndex = m_model->getPointSetIndex();
-    FluidModel* model = m_model;
-    const Real dt = TimeManager::getCurrent()->getTimeStepSize();
-
-#pragma omp parallel default(shared)
-    {
-// update the deformation gradient
-#pragma omp for schedule(static)
-        for (int i = 0; i < (int)numParticles; i++) {
-            if (model->getParticleState(i) == ParticleState::Active) computeF(i, &m_model->getPosition(0)[0], this);
-        }
-
-#pragma omp for schedule(static)
-        for (int i = 0; i < (int)numParticles; i++) {
-            if (m_model->getParticleState(i) == ParticleState::Active) {
-                // trace of R^T F - I
-                // const Matrix3r RTF = (m_rotations[i].transpose() * m_F[i]);
-                // const Real trace = RTF(0, 0) + RTF(1, 1) + RTF(2, 2) - 3.0;
-
-                // short form of: trace(R^T F - I)
-                const Real trace = m_rotations[i].col(0).dot(m_F[i].col(0)) + m_rotations[i].col(1).dot(m_F[i].col(1)) +
-                                   m_rotations[i].col(2).dot(m_F[i].col(2)) - static_cast<Real>(3.0);
-
-                m_stress[i] = m_lambda * trace;
-            } else
-                m_stress[i] = 0.0;
-        }
-    }
-
-#pragma omp parallel default(shared)
-    {
-#pragma omp for schedule(static)
-        for (int i = 0; i < (int)numParticles; i++) {
-            if (model->getParticleState(i) == ParticleState::Active) {
-                const unsigned int i0 = m_current_to_initial_index[i];
-                const unsigned int numNeighbors = (unsigned int)m_initialNeighbors[i0].size();
-                const Scalarf8 stress_i_avx(m_stress[i]);
-                const Scalarf8 restVolume_i_avx(m_restVolumes[i]);
-
-                //////////////////////////////////////////////////////////////////////////
-                // Compute elastic force (Eq. 30)
-                //////////////////////////////////////////////////////////////////////////
-                Vector3f8 force_avx;
-                force_avx.setZero();
-                for (unsigned int j = 0; j < numNeighbors; j += 8) {
-                    const unsigned int count = std::min(numNeighbors - j, 8u);
-                    unsigned int nIndices[8];
-                    for (auto k = 0u; k < count; k++)
-                        nIndices[k] = m_initial_to_current_index[m_initialNeighbors[i0][j + k]];
-
-                    const Scalarf8 stress_j_avx = convert_zero(nIndices, &m_stress[0], count);
-                    const Scalarf8 restVolume_j_avx = convert_zero(nIndices, &m_restVolumes[0], count);
-
-                    const Vector3f8& correctedRotatedKernel_i = m_precomp_RL_gradW8[m_precomputed_indices8[i] + j / 8];
-                    const Vector3f8& correctedRotatedKernel_j = m_precomp_RLj_gradW8[m_precomputed_indices8[i] + j / 8];
-                    const Vector3f8 PWi = correctedRotatedKernel_i * stress_i_avx;
-                    const Vector3f8 PWj = correctedRotatedKernel_j * stress_j_avx;
-                    force_avx += (PWi * restVolume_i_avx + PWj * restVolume_j_avx);
-                }
-                Vector3r force;
-                force[0] = force_avx.x().reduce();
-                force[1] = force_avx.y().reduce();
-                force[2] = force_avx.z().reduce();
-
-                rhs.segment<3>(3 * i) = model->getVelocity(i) + dt * (1.0 / model->getMass(i) * force);
-            } else {
-                rhs.segment<3>(3 * i) = model->getVelocity(i);
-            }
-        }
-    }
-}
-
-#else
 
 /** Extract rotation matrices from deformation gradients.
  */
@@ -1978,8 +1317,6 @@ void Elasticity_Kugelstadt2021::computeRHS(VectorXr& rhs) {
     }
 }
 
-#endif
-
 /** Precompute some values and products to improve the performance of the solvers.
  */
 void Elasticity_Kugelstadt2021::precomputeValues() {
@@ -1988,19 +1325,11 @@ void Elasticity_Kugelstadt2021::precomputeValues() {
 
     const int numParticles = (int)m_model->numActiveParticles();
 
-#ifdef USE_AVX
-    m_precomputed_indices8.clear();
-    m_precomp_L_gradW8.clear();
-    m_precomp_RL_gradW8.clear();
-    m_precomp_RLj_gradW8.clear();
-    m_precomputed_indices8.resize(numParticles);
-#else
     m_precomputed_indices.clear();
     m_precomp_L_gradW.clear();
     m_precomp_RL_gradW.clear();
     m_precomp_RLj_gradW.clear();
     m_precomputed_indices.resize(numParticles);
-#endif
 
     unsigned int sumNeighborParticles = 0;
     unsigned int sumNeighborParticles8 = 0;
@@ -2008,27 +1337,13 @@ void Elasticity_Kugelstadt2021::precomputeValues() {
         const unsigned int i0 = m_current_to_initial_index[i];
         const size_t numNeighbors = m_initialNeighbors[i0].size();
 
-#ifdef USE_AVX
-        m_precomputed_indices8[i] = sumNeighborParticles8;
-
-        // steps of 8 values due to avx
-        sumNeighborParticles8 += (unsigned int)numNeighbors / 8u;
-        if (numNeighbors % 8 != 0) sumNeighborParticles8++;
-#else
         m_precomputed_indices[i] = sumNeighborParticles;
         sumNeighborParticles += numNeighbors;
-#endif
     }
 
-#ifdef USE_AVX
-    m_precomp_L_gradW8.resize(sumNeighborParticles8);
-    m_precomp_RL_gradW8.resize(sumNeighborParticles8);
-    m_precomp_RLj_gradW8.resize(sumNeighborParticles8);
-#else
     m_precomp_L_gradW.resize(sumNeighborParticles);
     m_precomp_RL_gradW.resize(sumNeighborParticles);
     m_precomp_RLj_gradW.resize(sumNeighborParticles);
-#endif
 
 #pragma omp parallel default(shared)
     {
@@ -2041,33 +1356,6 @@ void Elasticity_Kugelstadt2021::precomputeValues() {
             const unsigned int i0 = m_current_to_initial_index[i];
             const Vector3r& xi0 = m_model->getPosition0(i0);
             const unsigned int numNeighbors = (unsigned int)m_initialNeighbors[i0].size();
-
-#ifdef USE_AVX
-            const Vector3f8 xi0_avx(xi0);
-            Scalarf8 restVolume_i_avx(m_restVolumes[i]);
-
-            unsigned int base8 = m_precomputed_indices8[i];
-            unsigned int idx = 0;
-            Matrix3f8 L_avx(m_L[i]);
-            Matrix3f8 RL_avx(m_RL[i]);
-            for (unsigned int j = 0; j < numNeighbors; j += 8) {
-                const unsigned int count = std::min(numNeighbors - j, 8u);
-
-                unsigned int nIndices[8];
-                for (auto k = 0u; k < count; k++)
-                    nIndices[k] = m_initial_to_current_index[m_initialNeighbors[i0][j + k]];
-
-                const Scalarf8 restVolume_j_avx = convert_zero(nIndices, &m_restVolumes[0], count);
-                const Vector3f8 xj0_avx = convertVec_zero(&m_initialNeighbors[i0][j], &m_model->getPosition0(0), count);
-                const Matrix3f8 RLj_avx = convertMat_zero(nIndices, &m_RL[0], count);
-
-                const Vector3f8 gradW = CubicKernel_AVX::gradW(xi0_avx - xj0_avx);
-                m_precomp_L_gradW8[base8 + idx] = L_avx * gradW * restVolume_j_avx;
-                m_precomp_RL_gradW8[base8 + idx] = RL_avx * gradW * restVolume_j_avx;
-                m_precomp_RLj_gradW8[base8 + idx] = RLj_avx * gradW * restVolume_i_avx;
-                idx++;
-            }
-#else
             unsigned int base = m_precomputed_indices[i];
 
             for (unsigned int j = 0; j < numNeighbors; j++) {
@@ -2080,7 +1368,6 @@ void Elasticity_Kugelstadt2021::precomputeValues() {
                 m_precomp_RL_gradW[base + j] = m_restVolumes[neighborIndex] * m_RL[i] * gradW;
                 m_precomp_RLj_gradW[base + j] = m_restVolumes[i] * m_RL[neighborIndex] * gradW;
             }
-#endif
         }
     }
 }

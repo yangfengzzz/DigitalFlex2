@@ -89,10 +89,6 @@ void TimeStepPBF::step() {
     // Perform neighborhood search
     performNeighborhoodSearch();
 
-#ifdef USE_PERFORMANCE_OPTIMIZATION
-    precomputeValues();
-#endif
-
     // Solve density constraint
     START_TIMING("pressureSolve")
     pressureSolve();

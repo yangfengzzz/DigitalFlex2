@@ -6,7 +6,7 @@
 
 #include "vox.pbd/position_based_fluids.h"
 
-#include "vox.pbd/sph_kernels.h"
+#include "vox.base/sph_kernels.h"
 
 using namespace vox;
 

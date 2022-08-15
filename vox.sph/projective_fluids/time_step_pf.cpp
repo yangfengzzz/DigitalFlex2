@@ -8,12 +8,12 @@
 
 #include <atomic>
 
+#include "vox.base/time_manager.h"
 #include "vox.base/timing.h"
 #include "vox.sph/boundary_model_akinci2012.h"
 #include "vox.sph/boundary_model_bender2019.h"
 #include "vox.sph/boundary_model_koschier2017.h"
 #include "vox.sph/simulation.h"
-#include "vox.base/time_manager.h"
 
 using namespace vox;
 using namespace std;
@@ -102,10 +102,6 @@ void TimeStepPF::step() {
         initialGuessForPositions(fluidModelIndex);
     }
     performNeighborhoodSearch();
-
-#ifdef USE_PERFORMANCE_OPTIMIZATION
-    precomputeValues();
-#endif
 
     if (sim->getBoundaryHandlingMethod() == BoundaryHandlingMethods::Bender2019)
         computeVolumeAndBoundaryX();

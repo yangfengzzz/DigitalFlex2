@@ -6,8 +6,8 @@
 
 #include "vox.sph/vorticity/vorticity_confinement.h"
 
-#include "vox.sph/simulation.h"
 #include "vox.base/time_manager.h"
+#include "vox.sph/simulation.h"
 
 using namespace vox;
 

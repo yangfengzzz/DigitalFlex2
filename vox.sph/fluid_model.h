@@ -9,41 +9,11 @@
 #include <utility>
 #include <vector>
 
+#include "vox.base/binary_file_reader_writer.h"
 #include "vox.base/common.h"
 #include "vox.base/reflect/parameter_object.h"
-#include "vox.base/binary_file_reader_writer.h"
 #include "vox.sph/rigid_body_object.h"
-#include "vox.sph/sph_kernels.h"
-
-#ifdef USE_PERFORMANCE_OPTIMIZATION
-// compute the value xj (empty in the optimized version)
-#define compute_xj(fm_neighbor, pid)
-
-// compute the value Vj (empty in the optimized version)
-#define compute_Vj(fm_neighbor)
-
-// compute the value Vj * gradW
-#define compute_Vj_gradW() \
-    const Vector3f8 &V_gradW = model->get_precomputed_V_gradW()[model->get_precomputed_indices()[i] + idx];
-
-// compute the value Vj * gradW
-#define compute_Vj_gradW_samephase() \
-    const Vector3f8 &V_gradW = model->get_precomputed_V_gradW()[model->get_precomputed_indices_same_phase()[i] + j / 8];
-#else
-// compute the value xj
-#define compute_xj(fm_neighbor, pid) \
-    const Vector3f8 xj_avx =         \
-            convertVec_zero(&sim->getNeighborList(fluidModelIndex, pid, i)[j], &fm_neighbor->getPosition(0), count);
-
-// compute the value Vj
-#define compute_Vj(fm_neighbor) const Scalarf8 Vj_avx = convert_zero(fm_neighbor->getVolume(0), count);
-
-// compute the value Vj * gradW assuming that xj and Vj are already available
-#define compute_Vj_gradW() const Vector3f8 &V_gradW = CubicKernel_AVX::gradW(xi_avx - xj_avx) * Vj_avx;
-
-// compute the value Vj * gradW assuming that xj and Vj are already available
-#define compute_Vj_gradW_samephase() const Vector3f8 &V_gradW = CubicKernel_AVX::gradW(xi_avx - xj_avx) * Vj_avx;
-#endif
+#include "vox.base/sph_kernels.h"
 
 namespace vox {
 class TimeStep;
@@ -118,12 +88,6 @@ protected:
     std::vector<unsigned int> m_objectId0;
     std::vector<ParticleState> m_particleState;
     Real m_V{};
-
-#ifdef USE_PERFORMANCE_OPTIMIZATION
-    std::vector<Vector3f8, Eigen::aligned_allocator<Vector3f8>> m_precomp_V_gradW;
-    std::vector<unsigned int> m_precompIndices;
-    std::vector<unsigned int> m_precompIndicesSamePhase;
-#endif
 
     unsigned int m_surfaceTensionMethod;
     SurfaceTensionBase *m_surfaceTension;
@@ -234,14 +198,6 @@ public:
 
     void saveState(BinaryFileWriter &binWriter);
     void loadState(BinaryFileReader &binReader);
-
-#ifdef USE_PERFORMANCE_OPTIMIZATION
-    inline std::vector<Vector3f8, Eigen::aligned_allocator<Vector3f8>> &get_precomputed_V_gradW() {
-        return m_precomp_V_gradW;
-    }
-    inline std::vector<unsigned int> &get_precomputed_indices() { return m_precompIndices; }
-    inline std::vector<unsigned int> &get_precomputed_indices_same_phase() { return m_precompIndicesSamePhase; }
-#endif
 
     FORCE_INLINE Vector3r &getPosition0(const unsigned int i) { return m_x0[i]; }
 

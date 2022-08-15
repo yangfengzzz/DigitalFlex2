@@ -72,6 +72,7 @@ public:
     static Real W_zero() { return m_W_zero; }
 };
 
+//MARK: - Poly6Kernel
 /** \brief Poly6 kernel.
  */
 class Poly6Kernel {
@@ -156,6 +157,7 @@ public:
     static Real W_zero() { return m_W_zero; }
 };
 
+//MARK: - SpikyKernel
 /** \brief Spiky kernel.
  */
 class SpikyKernel {
@@ -223,6 +225,7 @@ public:
     static Real W_zero() { return m_W_zero; }
 };
 
+//MARK: - WendlandQuinticC2Kernel
 /** \brief quintic Wendland C2 kernel.
  */
 class WendlandQuinticC2Kernel {
@@ -272,6 +275,7 @@ public:
     static Real W_zero() { return m_W_zero; }
 };
 
+//MARK: - CohesionKernel
 /** \brief Cohesion kernel used for the surface tension method of Akinci el al. [ATT13].
  *
  * References:
@@ -333,6 +337,7 @@ public:
     static Real W_zero() { return m_W_zero; }
 };
 
+//MARK: - AdhesionKernel
 /** \brief Adhesion kernel used for the surface tension method of Akinci el al. [ATT13].
  *
  * References:
@@ -387,6 +392,7 @@ public:
     static Real W_zero() { return m_W_zero; }
 };
 
+//MARK: - CubicKernel2D
 /** \brief Cubic spline kernel (2D).
  */
 class CubicKernel2D {
@@ -450,6 +456,7 @@ public:
     static Real W_zero() { return m_W_zero; }
 };
 
+//MARK: - WendlandQuinticC2Kernel2D
 /** \brief Wendland Quintic C2 spline kernel (2D).
  */
 class WendlandQuinticC2Kernel2D {
@@ -500,6 +507,7 @@ public:
     static Real W_zero() { return m_W_zero; }
 };
 
+//MARK: - PrecomputedKernel
 /** \brief Precomputed kernel which is based on a lookup table as described by Bender and Koschier [BK15,BK17].
  *
  * The lookup tables can be used in combination with any kernel.
@@ -580,221 +588,6 @@ public:
     static Real W_zero() { return m_W_zero; }
 };
 
-#ifdef USE_AVX
-/** \brief Cubic spline kernel.
- */
-class CubicKernel_AVX {
-protected:
-    static Real m_r;
-    static Scalarf8 m_invRadius;
-    static Scalarf8 m_invRadius2;
-    static Scalarf8 m_k;
-    static Scalarf8 m_l;
-    static Real m_W_zero;
-    static Scalarf8 m_zero;
-    static Scalarf8 m_half;
-    static Scalarf8 m_one;
-    static Scalarf8 m_eps;
-
-public:
-    static Real getRadius() { return m_r; }
-    static void setRadius(Real val, bool is2D = false) {
-        m_r = val;
-        m_invRadius = Scalarf8(1.0f / val);
-        m_invRadius2 = m_invRadius * m_invRadius;
-        const Real pi = static_cast<Real>(M_PI);
-
-        if (!is2D) {
-            const Real h3 = m_r * m_r * m_r;
-            m_k = Scalarf8(8.0f / static_cast<float>(pi * h3));
-            m_l = Scalarf8(48.0f / static_cast<float>(pi * h3));
-        } else {
-            const Real h2 = m_r * m_r;
-            m_k = static_cast<Real>(40.0) / (static_cast<Real>(7.0) * (pi * h2));
-            m_l = static_cast<Real>(240.0) / (static_cast<Real>(7.0) * (pi * h2));
-        }
-        m_zero = Scalarf8(0.0f);
-        m_half = Scalarf8(0.5f);
-        m_one = Scalarf8(1.0f);
-        m_eps = Scalarf8(1.0e-5f);
-        Scalarf8 W_zero = W(m_zero);
-        float tmp[8];
-        W_zero.store(tmp);
-        m_W_zero = tmp[0];
-    }
-
-public:
-    static Scalarf8 W(const Scalarf8 r) {
-        Scalarf8 res;
-        const Scalarf8 q = r * m_invRadius;
-
-        const Scalarf8 v = m_one - q;
-
-        // q <= 0.5
-        const Scalarf8 res1 = m_k * (Scalarf8(-6.0f) * q * q * v + m_one);
-        // 0.5 <= q <= 1
-        const Scalarf8 res2 = (m_k * Scalarf8(2.0f) * (v * v * v));
-
-        res = blend(q <= m_one, res2, m_zero);
-        res = blend(q <= m_half, res1, res);
-
-        return res;
-    }
-
-    static Scalarf8 W(const Vector3f8 &r) { return W(r.norm()); }
-
-    static Vector3f8 gradW(const Vector3f8 &r) {
-        Scalarf8 res;
-        const Scalarf8 rl = r.norm();
-        const Scalarf8 q = rl * m_invRadius;
-
-        // q <= 0.5
-        const Scalarf8 res1 = (m_l * m_invRadius2 * (multiplyAndSubtract(Scalarf8(3.0f), q, Scalarf8(2.0f))));
-
-        // 0.5 <= q <= 1
-        const Scalarf8 v = m_one - q;
-        const Scalarf8 gradq = (m_invRadius / rl);
-        const Scalarf8 res2 = gradq * (-m_l * (v * v));
-
-        res = blend(q <= m_one, res2, m_zero);
-        res = blend(q <= m_half, res1, res);
-        res = blend(rl > m_eps, res, m_zero);
-
-        return r * res;
-    }
-
-    static const Real &W_zero() { return m_W_zero; }
-};
-
-/** \brief Poly6 kernel.
- */
-class Poly6Kernel_AVX {
-protected:
-    static Real m_radius;
-    static Real m_k;
-    static Real m_l;
-    static Scalarf8 m_radius_avx;
-    static Real m_W_zero;
-
-public:
-    static Real getRadius() { return m_radius; }
-    static void setRadius(Real val) {
-        m_radius = val;
-        const Real pi = static_cast<Real>(M_PI);
-        m_k = static_cast<Real>(315.0) / (static_cast<Real>(64.0) * pi * pow(m_radius, static_cast<Real>(9)));
-        m_l = -static_cast<Real>(945.0) / (static_cast<Real>(32.0) * pi * pow(m_radius, static_cast<Real>(9)));
-        m_radius_avx = Scalarf8(m_radius);
-        Scalarf8 W_zero = W(Scalarf8(0.0f));
-        float tmp[8];
-        W_zero.store(tmp);
-        m_W_zero = tmp[0];
-    }
-
-public:
-    /**
-     * W(r,h) = (315/(64 pi h^9))(h^2-|r|^2)^3
-     *        = (315/(64 pi h^9))(h^2-r*r)^3
-     */
-    static Scalarf8 W(const Scalarf8 r) {
-        Scalarf8 res;
-        const Scalarf8 r2 = r * r;
-        const Scalarf8 radius2 = m_radius_avx * m_radius_avx;
-        const Scalarf8 t = (radius2 - r2);
-        res = t * t * t * Scalarf8(m_k);
-        return blend(r2 <= radius2, res, Scalarf8(0.0f));
-    }
-
-    static Scalarf8 W(const Vector3f8 &r) {
-        Scalarf8 res;
-        const Scalarf8 r2 = r.squaredNorm();
-        const Scalarf8 radius2 = m_radius_avx * m_radius_avx;
-        const Scalarf8 t = (radius2 - r2);
-        res = t * t * t * Scalarf8(m_k);
-        return blend(r2 <= radius2, res, Scalarf8(0.0f));
-    }
-
-    /**
-     * grad(W(r,h)) = r(-945/(32 pi h^9))(h^2-|r|^2)^2
-     *              = r(-945/(32 pi h^9))(h^2-r*r)^2
-     */
-    static Vector3f8 gradW(const Vector3f8 &r) {
-        Vector3f8 res;
-        res.setZero();
-        const Scalarf8 r2 = r.squaredNorm();
-        const Scalarf8 radius2 = m_radius_avx * m_radius_avx;
-        const Scalarf8 t = (radius2 - r2);
-
-        const Vector3f8 res2 = r * (t * t * Scalarf8(m_l));
-        return Vector3f8::blend(r2 <= radius2, res2, res);
-    }
-
-    // static Scalarf8 W_zero()
-    //{
-    //	return m_W_zero;
-    // }
-
-    static const Real &W_zero() { return m_W_zero; }
-};
-
-/** \brief Spiky kernel.
- */
-class SpikyKernel_AVX {
-protected:
-    static Real m_radius;
-    static Real m_k;
-    static Real m_l;
-    static Scalarf8 m_radius_avx;
-    static Scalarf8 m_W_zero;
-    static Scalarf8 m_eps;
-
-public:
-    static Real getRadius() { return m_radius; }
-    static void setRadius(Real val) {
-        m_radius = val;
-        const Real radius6 = pow(m_radius, 6.0f);
-        const Real pi = static_cast<Real>(M_PI);
-        m_k = static_cast<Real>(15.0) / (pi * radius6);
-        m_l = -static_cast<Real>(45.0) / (pi * radius6);
-        m_radius_avx = Scalarf8(m_radius);
-        m_W_zero = W(Scalarf8(0.0f));
-        m_eps = Scalarf8(1.0e-5f);
-    }
-
-public:
-    /**
-     * W(r,h) = 15/(pi*h^6) * (h-r)^3
-     */
-    static Scalarf8 W(const Scalarf8 r) {
-        Scalarf8 res;
-        const Scalarf8 t = (m_radius_avx - r);
-        res = t * t * t * Scalarf8(m_k);
-        return blend(r <= m_radius_avx, res, Scalarf8(0.0f));
-    }
-
-    static Scalarf8 W(const Vector3f8 &r) { return W(r.norm()); }
-
-    /**
-     * grad(W(r,h)) = -r(45/(pi*h^6) * (h-r)^2)
-     */
-    static Vector3f8 gradW(const Vector3f8 &r) {
-        Vector3f8 res;
-        res.setZero();
-        const Scalarf8 r2 = r.squaredNorm();
-        const Scalarf8 radius2 = m_radius_avx * m_radius_avx;
-        const Scalarf8 r_l = r2.sqrt();
-        const Scalarf8 t = (m_radius_avx - r_l);
-
-        Vector3f8 res2 = r * (t * t * Scalarf8(m_l) / r_l);
-
-        res2 = Vector3f8::blend(r_l > m_eps, res2, res);
-        res = Vector3f8::blend(r2 <= radius2, res2, res);
-        return res;
-    }
-
-    static Scalarf8 W_zero() { return m_W_zero; }
-};
-
-#endif
 
 template <typename KernelType, unsigned int resolution>
 Real PrecomputedKernel<KernelType, resolution>::m_radius;

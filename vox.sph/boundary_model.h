@@ -8,10 +8,10 @@
 
 #include <vector>
 
-#include "vox.base/common.h"
 #include "vox.base/binary_file_reader_writer.h"
+#include "vox.base/common.h"
 #include "vox.sph/rigid_body_object.h"
-#include "vox.sph/sph_kernels.h"
+#include "vox.base/sph_kernels.h"
 
 namespace vox {
 class TimeStep;
@@ -49,28 +49,6 @@ public:
             m_torquePerThread[tid] += (pos - m_rigidBody->getPosition()).cross(f);
         }
     }
-
-#ifdef USE_AVX
-    FORCE_INLINE void addForce(const Vector3f8 &pos, const Vector3f8 &f, const unsigned int count) {
-        if (m_rigidBody->isDynamic()) {
-            float fx[8];
-            float fy[8];
-            float fz[8];
-            f.x().store(fx);
-            f.y().store(fy);
-            f.z().store(fz);
-            float px[8];
-            float py[8];
-            float pz[8];
-            pos.x().store(px);
-            pos.y().store(py);
-            pos.z().store(pz);
-            for (unsigned int l = 0; l < count; l++) {
-                addForce(Vector3r(px[l], py[l], pz[l]), Vector3r(fx[l], fy[l], fz[l]));
-            }
-        }
-    }
-#endif
 
     FORCE_INLINE void getPointVelocity(const Vector3r &x, Vector3r &res) {
         if (m_rigidBody->isDynamic() || m_rigidBody->isAnimated())

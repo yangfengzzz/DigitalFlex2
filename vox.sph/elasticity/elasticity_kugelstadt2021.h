@@ -7,9 +7,9 @@
 #pragma once
 
 #include "vox.base/common.h"
+#include "vox.base/matrix_free_solver.h"
 #include "vox.sph/elasticity/elasticity_base.h"
 #include "vox.sph/fluid_model.h"
-#include "vox.base/matrix_free_solver.h"
 
 namespace vox {
 /** \brief This class implements the implicit SPH formulation for
@@ -29,17 +29,10 @@ protected:
         Eigen::SparseMatrix<Real, Eigen::RowMajor> m_DT_K;
         Eigen::SparseMatrix<Real, Eigen::RowMajor> m_D;
         Eigen::SparseMatrix<Real, Eigen::ColMajor> m_matHTH;
-
-#ifdef USE_AVX
-        CholeskyAVXSolver* m_cholesky;
-        Factorization() { m_cholesky = nullptr; }
-        ~Factorization() { delete m_cholesky; }
-#else
         Eigen::SparseMatrix<Real, Eigen::ColMajor> m_matL;
         Eigen::SparseMatrix<Real, Eigen::ColMajor> m_matLT;
         Eigen::VectorXi m_permInd;
         Eigen::VectorXi m_permInvInd;
-#endif
     };
 
     struct ElasticObject {
@@ -48,20 +41,11 @@ protected:
         unsigned int m_nFixed{};
 
         std::shared_ptr<Factorization> m_factorization;
-#ifdef USE_AVX
-        VectorXr m_rhs;
-        VectorXr m_sol;
-        std::vector<Scalarf8, AlignmentAllocator<Scalarf8, 32>> m_RHS;
-        std::vector<Scalarf8, AlignmentAllocator<Scalarf8, 32>> m_f_avx;
-        std::vector<Scalarf8, AlignmentAllocator<Scalarf8, 32>> m_sol_avx;
-        std::vector<Quaternion8f, AlignmentAllocator<Quaternion8f, 32>> m_quats_avx;
-#else
         std::vector<Vector3r, Eigen::aligned_allocator<Vector3r>> m_f;
         std::vector<Vector3r, Eigen::aligned_allocator<Vector3r>> m_sol;
         std::vector<Vector3r, Eigen::aligned_allocator<Vector3r>> m_RHS;
         std::vector<Vector3r, Eigen::aligned_allocator<Vector3r>> m_RHS_perm;
         std::vector<Quaternionr, Eigen::aligned_allocator<Quaternionr>> m_quats;
-#endif
 
         ElasticObject() { m_factorization = nullptr; }
         ~ElasticObject() { m_factorization = nullptr; }
@@ -90,24 +74,13 @@ protected:
     Real m_lambda;
     Real m_mu;
 
-#ifdef USE_AVX
-    std::vector<Vector3f8, Eigen::aligned_allocator<Vector3f8>> m_precomp_RL_gradW8;
-    std::vector<Vector3f8, Eigen::aligned_allocator<Vector3f8>> m_precomp_L_gradW8;
-    std::vector<Vector3f8, Eigen::aligned_allocator<Vector3f8>> m_precomp_RLj_gradW8;
-    std::vector<unsigned int> m_precomputed_indices8;
-
-    inline static void computeF(const unsigned int i, const Real* x, Elasticity_Kugelstadt2021* e);
-#else
     std::vector<Vector3r, Eigen::aligned_allocator<Vector3r>> m_precomp_RL_gradW;
     std::vector<Vector3r, Eigen::aligned_allocator<Vector3r>> m_precomp_L_gradW;
     std::vector<Vector3r, Eigen::aligned_allocator<Vector3r>> m_precomp_RLj_gradW;
     std::vector<unsigned int> m_precomputed_indices;
 
     typedef Eigen::SimplicialLLT<Eigen::SparseMatrix<double>, Eigen::Lower, Eigen::AMDOrdering<int>> SolverLLT;
-#endif
-
-    typedef Eigen::ConjugateGradient<MatrixReplacement, Eigen::Lower | Eigen::Upper, Eigen::IdentityPreconditioner>
-            Solver;
+    typedef Eigen::ConjugateGradient<MatrixReplacement, Eigen::Lower | Eigen::Upper, Eigen::IdentityPreconditioner> Solver;
 
     Solver m_solver;
     void computeRHS(VectorXr& rhs);
