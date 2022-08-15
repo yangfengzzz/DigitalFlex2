@@ -4,7 +4,7 @@
 //  personal capacity and am not conveying any rights to any intellectual
 //  property of any third parties.
 
-#include "rigid_body_geometry.h"
+#include "vox.pbd/rigid_body_geometry.h"
 
 using namespace vox;
 

@@ -28,9 +28,9 @@ public:
     static void setCurrent(TimeManager *tm);
     static bool hasCurrent();
 
-    Real getTime() const;
+    [[nodiscard]] Real getTime() const;
     void setTime(Real t);
-    Real getTimeStepSize() const;
+    [[nodiscard]] Real getTimeStepSize() const;
     void setTimeStepSize(Real tss);
 
     void saveState(BinaryFileWriter &binWriter) const;
