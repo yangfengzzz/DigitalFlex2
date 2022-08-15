@@ -36,7 +36,7 @@ Please get in contact for feedback/support.
 #include "vox.sph/simulation.h"
 #include "vox.sph/surface_tension/surface_tension_halton_vec323.h"
 #include "vox.sph/time_manager.h"
-#include "vox.sph/utilities/math_functions.h"
+#include "vox.base/math_functions.h"
 
 using namespace vox;
 using namespace std;

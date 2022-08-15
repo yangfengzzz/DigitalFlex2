@@ -8,8 +8,8 @@
 
 #include <iostream>
 
-#include "vox.base/logging.h"
 #include "vox.base/file_system.h"
+#include "vox.base/logging.h"
 
 using namespace vox::utility;
 using namespace std;

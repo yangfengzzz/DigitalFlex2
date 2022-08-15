@@ -10,7 +10,7 @@
 #include "vox.sph/boundary_model_bender2019.h"
 #include "vox.sph/boundary_model_koschier2017.h"
 #include "vox.sph/simulation.h"
-#include "vox.sph/utilities/math_functions.h"
+#include "vox.base/math_functions.h"
 
 using namespace vox;
 

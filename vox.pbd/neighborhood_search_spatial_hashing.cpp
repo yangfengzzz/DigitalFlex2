@@ -10,9 +10,9 @@ using namespace vox;
 using namespace vox::utility;
 
 NeighborhoodSearchSpatialHashing::NeighborhoodSearchSpatialHashing(const unsigned int numParticles,
-                                                                         const Real radius,
-                                                                         const unsigned int maxNeighbors,
-                                                                         const unsigned int maxParticlesPerCell)
+                                                                   const Real radius,
+                                                                   const unsigned int maxNeighbors,
+                                                                   const unsigned int maxParticlesPerCell)
     : m_gridMap(numParticles * 2) {
     m_cellGridSize = radius;
     m_radius2 = radius * radius;
@@ -128,8 +128,8 @@ void NeighborhoodSearchSpatialHashing::neighborhoodSearch(Vector3r *x) {
 }
 
 void NeighborhoodSearchSpatialHashing::neighborhoodSearch(Vector3r *x,
-                                                             const unsigned int numBoundaryParticles,
-                                                             Vector3r *boundaryX) {
+                                                          const unsigned int numBoundaryParticles,
+                                                          Vector3r *boundaryX) {
     const Real factor = static_cast<Real>(1.0) / m_cellGridSize;
     for (int i = 0; i < (int)m_numParticles; i++) {
         const int cellPos1 = NeighborhoodSearchSpatialHashing::floor(x[i][0] * factor) + 1;

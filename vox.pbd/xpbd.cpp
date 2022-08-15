@@ -6,7 +6,7 @@
 
 #include "vox.pbd/xpbd.h"
 
-#include "vox.pbd/math_functions.h"
+#include "vox.base/math_functions.h"
 
 using namespace vox;
 

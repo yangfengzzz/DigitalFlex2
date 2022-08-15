@@ -11,7 +11,7 @@
 #include <cmath>
 #include <iostream>
 
-#include "vox.pbd/math_functions.h"
+#include "vox.base/math_functions.h"
 
 using namespace vox;
 

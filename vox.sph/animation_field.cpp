@@ -6,10 +6,11 @@
 
 #include "vox.sph/animation_field.h"
 
+#include <tinyexpr.h>
+
 #include <iostream>
 #include <utility>
 
-#include <tinyexpr.h>
 #include "vox.base/logging.h"
 #include "vox.sph/simulation.h"
 #include "vox.sph/time_manager.h"

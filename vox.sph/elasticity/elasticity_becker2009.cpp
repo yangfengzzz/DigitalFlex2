@@ -7,7 +7,7 @@
 #include "elasticity_becker2009.h"
 
 #include "vox.sph/simulation.h"
-#include "vox.sph/utilities/math_functions.h"
+#include "vox.base/math_functions.h"
 
 using namespace vox;
 

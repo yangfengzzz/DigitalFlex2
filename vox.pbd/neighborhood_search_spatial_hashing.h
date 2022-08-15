@@ -27,9 +27,9 @@ namespace vox {
 class NeighborhoodSearchSpatialHashing {
 public:
     explicit NeighborhoodSearchSpatialHashing(unsigned int numParticles = 0,
-                                                 Real radius = 0.1,
-                                                 unsigned int maxNeighbors = 60u,
-                                                 unsigned int maxParticlesPerCell = 50u);
+                                              Real radius = 0.1,
+                                              unsigned int maxNeighbors = 60u,
+                                              unsigned int maxParticlesPerCell = 50u);
     ~NeighborhoodSearchSpatialHashing();
 
     // Spatial hashing

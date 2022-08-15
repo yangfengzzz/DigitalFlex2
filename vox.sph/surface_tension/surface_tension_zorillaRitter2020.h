@@ -39,8 +39,8 @@ Please get in contact for feedback/support.
 #include <chrono>
 
 #include "vox.base/common.h"
-#include "vox.sph/fluid_model.h"
 #include "vox.base/string_tools.h"
+#include "vox.sph/fluid_model.h"
 #include "vox.sph/surface_tension/surface_tension_base.h"
 
 namespace vox {
