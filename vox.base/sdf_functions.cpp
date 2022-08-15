@@ -4,8 +4,7 @@
 //  personal capacity and am not conveying any rights to any intellectual
 //  property of any third parties.
 
-#include "vox.sph/utilities/sdf_functions.h"
-
+#include "vox.base/sdf_functions.h"
 #include "vox.base/discrete_grid/triangle_mesh_distance.h"
 #include "vox.base/mesh/triangle_mesh.h"
 #include "vox.base/timing.h"

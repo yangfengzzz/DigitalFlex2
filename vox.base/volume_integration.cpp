@@ -4,7 +4,7 @@
 //  personal capacity and am not conveying any rights to any intellectual
 //  property of any third parties.
 
-#include "vox.pbd/volume_integration.h"
+#include "vox.base/volume_integration.h"
 
 using namespace std;
 using namespace Eigen;

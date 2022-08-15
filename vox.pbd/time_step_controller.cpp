@@ -7,7 +7,7 @@
 #include "vox.pbd/time_step_controller.h"
 
 #include "vox.base/timing.h"
-#include "vox.pbd/time_integration.h"
+#include "vox.base/time_integration.h"
 #include "vox.base/time_manager.h"
 
 using namespace vox;

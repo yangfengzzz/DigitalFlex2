@@ -9,7 +9,7 @@
 #include "vox.base/common.h"
 #include "vox.sph/elasticity/elasticity_base.h"
 #include "vox.sph/fluid_model.h"
-#include "vox.sph/utilities/matrix_free_solver.h"
+#include "vox.base/matrix_free_solver.h"
 
 namespace vox {
 /** \brief This class implements the implicit SPH formulation for

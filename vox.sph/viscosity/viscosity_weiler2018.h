@@ -8,7 +8,7 @@
 
 #include "vox.base/common.h"
 #include "vox.sph/fluid_model.h"
-#include "vox.sph/utilities/matrix_free_solver.h"
+#include "vox.base/matrix_free_solver.h"
 #include "vox.sph/viscosity/viscosity_base.h"
 
 #define USE_BLOCKDIAGONAL_PRECONDITIONER

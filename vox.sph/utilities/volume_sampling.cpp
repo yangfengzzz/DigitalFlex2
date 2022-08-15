@@ -6,8 +6,8 @@
 
 #include "vox.sph/utilities/volume_sampling.h"
 
+#include "vox.base/sdf_functions.h"
 #include "vox.base/timing.h"
-#include "vox.sph/utilities/sdf_functions.h"
 
 using namespace Eigen;
 using namespace std;

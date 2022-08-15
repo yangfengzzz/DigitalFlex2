@@ -4,8 +4,7 @@
 //  personal capacity and am not conveying any rights to any intellectual
 //  property of any third parties.
 
-#include "vox.sph/utilities/simple_quadrature.h"
-
+#include "vox.base/simple_quadrature.h"
 #include "vox.base/logging.h"
 
 using namespace vox;

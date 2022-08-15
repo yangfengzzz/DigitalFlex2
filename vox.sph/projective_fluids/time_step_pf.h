@@ -10,7 +10,7 @@
 #include "vox.sph/projective_fluids/simulation_data_pf.h"
 #include "vox.sph/sph_kernels.h"
 #include "vox.sph/time_step.h"
-#include "vox.sph/utilities/matrix_free_solver.h"
+#include "vox.base/matrix_free_solver.h"
 
 // since all diagonal blocks are 3x3 diagonal matrices, a diagonal preconditioner does suffice
 #define PD_USE_DIAGONAL_PRECONDITIONER
