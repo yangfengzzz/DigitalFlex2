@@ -6,7 +6,7 @@
 
 #include "vox.sph/elasticity/elasticity_peer2018.h"
 
-#include "vox.sph/counting.h"
+#include "vox.base/counting.h"
 #include "vox.sph/simulation.h"
 #include "vox.sph/time_manager.h"
 #include "vox.base/math_functions.h"

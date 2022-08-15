@@ -11,7 +11,7 @@
 
 #include "vox.base/common.h"
 #include "vox.base/reflect/parameter_object.h"
-#include "vox.sph/binary_file_reader_writer.h"
+#include "vox.base/binary_file_reader_writer.h"
 #include "vox.sph/rigid_body_object.h"
 #include "vox.sph/sph_kernels.h"
 

@@ -9,7 +9,7 @@
 #include "vox.sph/boundary_model_akinci2012.h"
 #include "vox.sph/boundary_model_bender2019.h"
 #include "vox.sph/boundary_model_koschier2017.h"
-#include "vox.sph/counting.h"
+#include "vox.base/counting.h"
 #include "vox.sph/simulation.h"
 #include "vox.sph/time_manager.h"
 #include "vox.base/math_functions.h"

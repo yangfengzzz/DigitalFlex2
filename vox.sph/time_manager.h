@@ -7,7 +7,7 @@
 #pragma once
 
 #include "vox.base/common.h"
-#include "vox.sph/binary_file_reader_writer.h"
+#include "vox.base/binary_file_reader_writer.h"
 
 namespace vox {
 /** \brief Class to manage the current simulation time and the time step size.

@@ -4,7 +4,7 @@
 //  personal capacity and am not conveying any rights to any intellectual
 //  property of any third parties.
 
-#include "vox.sph/partio_reader_writer.h"
+#include "vox.base/partio_reader_writer.h"
 
 #include <Partio.h>
 

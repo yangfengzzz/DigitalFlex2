@@ -27,7 +27,6 @@
 		040CBEAB28A8E0EF003AA16E /* volume_integration.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE6128A8E0EE003AA16E /* volume_integration.h */; };
 		040CBEAC28A8E0EF003AA16E /* time_integration.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE6228A8E0EE003AA16E /* time_integration.h */; };
 		040CBEAD28A8E0EF003AA16E /* indexed_face_mesh.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE6328A8E0EE003AA16E /* indexed_face_mesh.h */; };
-		040CBEAE28A8E0EF003AA16E /* system_info.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE6428A8E0EE003AA16E /* system_info.h */; };
 		040CBEB028A8E0EF003AA16E /* time_step.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBE6628A8E0EE003AA16E /* time_step.cpp */; };
 		040CBEB128A8E0EF003AA16E /* collision_detection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBE6728A8E0EE003AA16E /* collision_detection.cpp */; };
 		040CBEB228A8E0EF003AA16E /* rigid_body_geometry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBE6828A8E0EE003AA16E /* rigid_body_geometry.cpp */; };
@@ -109,15 +108,12 @@
 		040CBF6A28A8E26E003AA16E /* boundary_model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBF3E28A8E26E003AA16E /* boundary_model.cpp */; };
 		040CBF6B28A8E26E003AA16E /* simulation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBF3F28A8E26E003AA16E /* simulation.cpp */; };
 		040CBF6D28A8E26E003AA16E /* triangle_mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBF4128A8E26E003AA16E /* triangle_mesh.cpp */; };
-		040CBF6E28A8E26E003AA16E /* counting.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF4228A8E26E003AA16E /* counting.h */; };
 		040CBF6F28A8E26E003AA16E /* non_pressure_force_registration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBF4328A8E26E003AA16E /* non_pressure_force_registration.cpp */; };
-		040CBF7028A8E26E003AA16E /* binary_file_reader_writer.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF4428A8E26E003AA16E /* binary_file_reader_writer.h */; };
 		040CBF7128A8E26E003AA16E /* animation_field.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBF4528A8E26E003AA16E /* animation_field.cpp */; };
 		040CBF7328A8E26E003AA16E /* non_pressure_force_base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBF4728A8E26E003AA16E /* non_pressure_force_base.cpp */; };
 		040CBF7428A8E26E003AA16E /* boundary_model_akinci2012.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBF4828A8E26E003AA16E /* boundary_model_akinci2012.cpp */; };
 		040CBF7528A8E26E003AA16E /* emitter.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF4928A8E26E003AA16E /* emitter.h */; };
 		040CBF7628A8E26E003AA16E /* fluid_model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBF4A28A8E26E003AA16E /* fluid_model.cpp */; };
-		040CBF7728A8E26E003AA16E /* system_info.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF4B28A8E26E003AA16E /* system_info.h */; };
 		040CBF7A28A8E282003AA16E /* libvox.base.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 043A98B528A7416D00BCFAB0 /* libvox.base.a */; };
 		040CBF8C28A8E334003AA16E /* time_step_wcsph.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF8828A8E334003AA16E /* time_step_wcsph.h */; };
 		040CBF8D28A8E334003AA16E /* simulation_data_wcsph.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF8928A8E334003AA16E /* simulation_data_wcsph.h */; };
@@ -218,8 +214,6 @@
 		040CC04F28A8E389003AA16E /* simulation_data_dfsph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CC04B28A8E389003AA16E /* simulation_data_dfsph.cpp */; };
 		040CC05028A8E389003AA16E /* time_step_dfsph.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CC04C28A8E389003AA16E /* time_step_dfsph.h */; };
 		040CC05128A8E389003AA16E /* simulation_data_dfsph.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CC04D28A8E389003AA16E /* simulation_data_dfsph.h */; };
-		040CC05428A91951003AA16E /* partio_reader_writer.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CC05228A91951003AA16E /* partio_reader_writer.h */; };
-		040CC05528A91951003AA16E /* partio_reader_writer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CC05328A91951003AA16E /* partio_reader_writer.cpp */; };
 		040CC06328A91A50003AA16E /* kernel_tests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CC06128A91A50003AA16E /* kernel_tests.cpp */; };
 		040CC06428A91A50003AA16E /* read_write_state_tests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CC06228A91A50003AA16E /* read_write_state_tests.cpp */; };
 		040CC06A28A91A92003AA16E /* libvox.base.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 043A98B528A7416D00BCFAB0 /* libvox.base.a */; };
@@ -251,6 +245,7 @@
 		049DB6E128A9458000D9C358 /* neighborhood_search_spatial_hashing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 049DB6DF28A9458000D9C358 /* neighborhood_search_spatial_hashing.cpp */; };
 		049DB6E228A9458000D9C358 /* neighborhood_search_spatial_hashing.h in Headers */ = {isa = PBXBuildFile; fileRef = 049DB6E028A9458000D9C358 /* neighborhood_search_spatial_hashing.h */; };
 		049DB6E328A9D09100D9C358 /* math_functions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBE8028A8E0EE003AA16E /* math_functions.cpp */; };
+		049DB6E428A9D22700D9C358 /* partio_reader_writer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CC05328A91951003AA16E /* partio_reader_writer.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -335,7 +330,6 @@
 		040CBE6128A8E0EE003AA16E /* volume_integration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = volume_integration.h; sourceTree = "<group>"; };
 		040CBE6228A8E0EE003AA16E /* time_integration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = time_integration.h; sourceTree = "<group>"; };
 		040CBE6328A8E0EE003AA16E /* indexed_face_mesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = indexed_face_mesh.h; sourceTree = "<group>"; };
-		040CBE6428A8E0EE003AA16E /* system_info.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = system_info.h; sourceTree = "<group>"; };
 		040CBE6528A8E0EE003AA16E /* obj_loader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = obj_loader.h; sourceTree = "<group>"; };
 		040CBE6628A8E0EE003AA16E /* time_step.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = time_step.cpp; sourceTree = "<group>"; };
 		040CBE6728A8E0EE003AA16E /* collision_detection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = collision_detection.cpp; sourceTree = "<group>"; };
@@ -918,6 +912,7 @@
 			children = (
 				040CBEEC28A8E12C003AA16E /* version.h */,
 				040CBF3B28A8E26E003AA16E /* common.h */,
+				040CBF4B28A8E26E003AA16E /* system_info.h */,
 				040CBEE928A8E12C003AA16E /* config.h */,
 				040CC06F28A92BBA003AA16E /* reflect */,
 				040CC06E28A92BB0003AA16E /* discrete_grid */,
@@ -927,10 +922,14 @@
 				040CBF2828A8E26D003AA16E /* file_system.h */,
 				040CBF4628A8E26E003AA16E /* string_tools.h */,
 				040CBE6528A8E0EE003AA16E /* obj_loader.h */,
+				040CC05228A91951003AA16E /* partio_reader_writer.h */,
+				040CC05328A91951003AA16E /* partio_reader_writer.cpp */,
+				040CBF4428A8E26E003AA16E /* binary_file_reader_writer.h */,
 				049DB6D328A92C6E00D9C358 /* serialize.h */,
 				049DB6D228A92C6E00D9C358 /* spinlock.h */,
 				049DB6D528A92C6E00D9C358 /* timing.h */,
 				049DB6D428A92C6E00D9C358 /* timing.cpp */,
+				040CBF4228A8E26E003AA16E /* counting.h */,
 				040CBEEF28A8E12D003AA16E /* md5.h */,
 				040CBEF428A8E12D003AA16E /* md5.cpp */,
 				049DB6D628A92C6E00D9C358 /* z_sort_table.h */,
@@ -998,7 +997,6 @@
 				040CBE9428A8E0EF003AA16E /* simulation.h */,
 				040CBE5228A8E0EE003AA16E /* sph_kernels.cpp */,
 				040CBE5728A8E0EE003AA16E /* sph_kernels.h */,
-				040CBE6428A8E0EE003AA16E /* system_info.h */,
 				040CBE6B28A8E0EE003AA16E /* tet_gen_loader.cpp */,
 				040CBE9028A8E0EF003AA16E /* tet_gen_loader.h */,
 				040CBE8528A8E0EF003AA16E /* tet_model.cpp */,
@@ -1016,11 +1014,6 @@
 		043A98D428A7418E00BCFAB0 /* vox.sph */ = {
 			isa = PBXGroup;
 			children = (
-				040CBF4228A8E26E003AA16E /* counting.h */,
-				040CBF4B28A8E26E003AA16E /* system_info.h */,
-				040CC05228A91951003AA16E /* partio_reader_writer.h */,
-				040CC05328A91951003AA16E /* partio_reader_writer.cpp */,
-				040CBF4428A8E26E003AA16E /* binary_file_reader_writer.h */,
 				040CBF3728A8E26E003AA16E /* neighborhood_search.h */,
 				040CBF8428A8E30D003AA16E /* utilities */,
 				040CBF2028A8E26D003AA16E /* boundary_model.h */,
@@ -1152,7 +1145,6 @@
 				040CBEDB28A8E0EF003AA16E /* rigid_body_geometry.h in Headers */,
 				040CBED428A8E0EF003AA16E /* position_based_rigid_body_dynamics.h in Headers */,
 				040CBEA128A8E0EF003AA16E /* sph_kernels.h in Headers */,
-				040CBEAE28A8E0EF003AA16E /* system_info.h in Headers */,
 				040CBEA728A8E0EF003AA16E /* position_based_fluids.h in Headers */,
 				040CBEBA28A8E0EF003AA16E /* distance_field_collision_detection.h in Headers */,
 				040CBEA228A8E0EF003AA16E /* rigid_body.h in Headers */,
@@ -1190,7 +1182,6 @@
 				040CBFE028A8E350003AA16E /* sdf_functions.h in Headers */,
 				040CBFBB28A8E349003AA16E /* viscosity_peer2015.h in Headers */,
 				040CBFAD28A8E349003AA16E /* viscosity_takahashi2015.h in Headers */,
-				040CBF6E28A8E26E003AA16E /* counting.h in Headers */,
 				040CBFE728A8E350003AA16E /* regular_sampling_2d.h in Headers */,
 				040CBFDB28A8E350003AA16E /* regular_triangle_sampling.h in Headers */,
 				040CBFB228A8E349003AA16E /* viscosity_base.h in Headers */,
@@ -1201,7 +1192,6 @@
 				040CBF6128A8E26E003AA16E /* sph_kernels.h in Headers */,
 				040CBFDD28A8E350003AA16E /* scene_loader.h in Headers */,
 				040CBFD828A8E350003AA16E /* poisson_disk_sampling.h in Headers */,
-				040CC05428A91951003AA16E /* partio_reader_writer.h in Headers */,
 				040CBFB528A8E349003AA16E /* viscosity_standard.h in Headers */,
 				040CC02D28A8E377003AA16E /* time_step_icsph.h in Headers */,
 				040CBF6928A8E26E003AA16E /* time_step.h in Headers */,
@@ -1219,7 +1209,6 @@
 				040CBF6028A8E26E003AA16E /* animation_field.h in Headers */,
 				040CBF8D28A8E334003AA16E /* simulation_data_wcsph.h in Headers */,
 				040CBF8C28A8E334003AA16E /* time_step_wcsph.h in Headers */,
-				040CBF7728A8E26E003AA16E /* system_info.h in Headers */,
 				040CC03728A8E37E003AA16E /* elasticity_peer2018.h in Headers */,
 				040CBFE928A8E350003AA16E /* matrix_free_solver.h in Headers */,
 				040CBFFB28A8E356003AA16E /* surface_tension_zorillaRitter2020.h in Headers */,
@@ -1234,7 +1223,6 @@
 				040CC03D28A8E37E003AA16E /* elasticity_base.h in Headers */,
 				040CBF6328A8E26E003AA16E /* neighborhood_search.h in Headers */,
 				040CC05028A8E389003AA16E /* time_step_dfsph.h in Headers */,
-				040CBF7028A8E26E003AA16E /* binary_file_reader_writer.h in Headers */,
 				040CBF7528A8E26E003AA16E /* emitter.h in Headers */,
 				040CC03928A8E37E003AA16E /* elasticity_becker2009.h in Headers */,
 				040CBF5B28A8E26E003AA16E /* simulation.h in Headers */,
@@ -1438,6 +1426,7 @@
 				049DB6C828A92BEA00D9C358 /* cubic_lagrange_discrete_grid.cpp in Sources */,
 				040CBF0128A8E12D003AA16E /* md5.cpp in Sources */,
 				040CBF1B28A8E17C003AA16E /* entity_iterators.cpp in Sources */,
+				049DB6E428A9D22700D9C358 /* partio_reader_writer.cpp in Sources */,
 				040CBF1928A8E17C003AA16E /* triangle_mesh.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1537,7 +1526,6 @@
 				040CBFAC28A8E349003AA16E /* viscosity_xsph.cpp in Sources */,
 				040CBF5E28A8E26E003AA16E /* boundary_model_koschier2017.cpp in Sources */,
 				040CC04F28A8E389003AA16E /* simulation_data_dfsph.cpp in Sources */,
-				040CC05528A91951003AA16E /* partio_reader_writer.cpp in Sources */,
 				040CBFBA28A8E349003AA16E /* viscosity_base.cpp in Sources */,
 				040CBFE528A8E350003AA16E /* debug_tools.cpp in Sources */,
 				040CBFDE28A8E350003AA16E /* volume_sampling.cpp in Sources */,
@@ -1785,6 +1773,7 @@
 					./third_party/eigen,
 					./third_party/libmorton/include,
 					./third_party/spdlog/include,
+					./third_party/partio/src/lib,
 				);
 			};
 			name = Debug;
@@ -1804,6 +1793,7 @@
 					./third_party/eigen,
 					./third_party/libmorton/include,
 					./third_party/spdlog/include,
+					./third_party/partio/src/lib,
 				);
 			};
 			name = Release;
