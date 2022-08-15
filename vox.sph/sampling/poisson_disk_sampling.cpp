@@ -4,7 +4,7 @@
 //  personal capacity and am not conveying any rights to any intellectual
 //  property of any third parties.
 
-#include "vox.sph/utilities/poisson_disk_sampling.h"
+#include "vox.sph/sampling/poisson_disk_sampling.h"
 
 #include <algorithm>
 #include <cmath>

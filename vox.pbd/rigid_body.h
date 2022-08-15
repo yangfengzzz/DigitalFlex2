@@ -9,8 +9,8 @@
 #include <vector>
 
 #include "vox.base/common.h"
+#include "vox.base/volume_integration.h"
 #include "vox.pbd/rigid_body_geometry.h"
-#include "vox.pbd/volume_integration.h"
 
 namespace vox {
 /** This class encapsulates the state of a rigid body.

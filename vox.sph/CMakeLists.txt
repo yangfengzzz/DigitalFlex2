@@ -18,7 +18,7 @@ file(GLOB sources
 
         ${CMAKE_CURRENT_SOURCE_DIR}/pbf/*.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/projective_fluids/*.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/utilities/*.cpp)
+        ${CMAKE_CURRENT_SOURCE_DIR}/sampling/*.cpp)
 
 add_library(${PROJECT_NAME} STATIC ${sources})
 

@@ -93,7 +93,6 @@
 		040CBF6028A8E26E003AA16E /* animation_field.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF3428A8E26D003AA16E /* animation_field.h */; };
 		040CBF6128A8E26E003AA16E /* sph_kernels.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF3528A8E26D003AA16E /* sph_kernels.h */; };
 		040CBF6228A8E26E003AA16E /* emitter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBF3628A8E26E003AA16E /* emitter.cpp */; };
-		040CBF6328A8E26E003AA16E /* neighborhood_search.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF3728A8E26E003AA16E /* neighborhood_search.h */; };
 		040CBF6428A8E26E003AA16E /* animation_field_system.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBF3828A8E26E003AA16E /* animation_field_system.cpp */; };
 		040CBF6528A8E26E003AA16E /* sph_kernels.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBF3928A8E26E003AA16E /* sph_kernels.cpp */; };
 		040CBF6928A8E26E003AA16E /* time_step.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF3D28A8E26E003AA16E /* time_step.h */; };
@@ -393,7 +392,6 @@
 		040CBF3428A8E26D003AA16E /* animation_field.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = animation_field.h; sourceTree = "<group>"; };
 		040CBF3528A8E26D003AA16E /* sph_kernels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sph_kernels.h; sourceTree = "<group>"; };
 		040CBF3628A8E26E003AA16E /* emitter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = emitter.cpp; sourceTree = "<group>"; };
-		040CBF3728A8E26E003AA16E /* neighborhood_search.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = neighborhood_search.h; sourceTree = "<group>"; };
 		040CBF3828A8E26E003AA16E /* animation_field_system.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = animation_field_system.cpp; sourceTree = "<group>"; };
 		040CBF3928A8E26E003AA16E /* sph_kernels.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sph_kernels.cpp; sourceTree = "<group>"; };
 		040CBF3A28A8E26E003AA16E /* time_manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = time_manager.cpp; sourceTree = "<group>"; };
@@ -733,28 +731,6 @@
 			path = surface_tension;
 			sourceTree = "<group>";
 		};
-		040CBF8428A8E30D003AA16E /* utilities */ = {
-			isa = PBXGroup;
-			children = (
-				040CBFBF28A8E34F003AA16E /* surface_sampling.h */,
-				040CBFCF28A8E350003AA16E /* regular_sampling_2d.h */,
-				040CBFC428A8E34F003AA16E /* regular_sampling_2d.cpp */,
-				040CBFC028A8E34F003AA16E /* poisson_disk_sampling.h */,
-				040CBFD028A8E350003AA16E /* poisson_disk_sampling.cpp */,
-				040CBFC328A8E34F003AA16E /* regular_triangle_sampling.h */,
-				040CBFCE28A8E34F003AA16E /* regular_triangle_sampling.cpp */,
-				040CBFCA28A8E34F003AA16E /* volume_sampling.h */,
-				040CBFC628A8E34F003AA16E /* volume_sampling.cpp */,
-				040CBFC928A8E34F003AA16E /* debug_tools.h */,
-				040CBFCD28A8E34F003AA16E /* debug_tools.cpp */,
-				040CBFC528A8E34F003AA16E /* scene_loader.h */,
-				040CBFD228A8E350003AA16E /* scene_loader.cpp */,
-				040CBFC228A8E34F003AA16E /* winding_numbers.h */,
-				040CBFC128A8E34F003AA16E /* winding_numbers.cpp */,
-			);
-			path = utilities;
-			sourceTree = "<group>";
-		};
 		040CBF8528A8E314003AA16E /* viscosity */ = {
 			isa = PBXGroup;
 			children = (
@@ -997,8 +973,13 @@
 		043A98D428A7418E00BCFAB0 /* vox.sph */ = {
 			isa = PBXGroup;
 			children = (
-				040CBF3728A8E26E003AA16E /* neighborhood_search.h */,
-				040CBF8428A8E30D003AA16E /* utilities */,
+				040CBFC928A8E34F003AA16E /* debug_tools.h */,
+				040CBFCD28A8E34F003AA16E /* debug_tools.cpp */,
+				040CBFC528A8E34F003AA16E /* scene_loader.h */,
+				040CBFD228A8E350003AA16E /* scene_loader.cpp */,
+				040CBFC228A8E34F003AA16E /* winding_numbers.h */,
+				040CBFC128A8E34F003AA16E /* winding_numbers.cpp */,
+				049DB6EB28A9D6BA00D9C358 /* sampling */,
 				040CBF2028A8E26D003AA16E /* boundary_model.h */,
 				040CBF3E28A8E26E003AA16E /* boundary_model.cpp */,
 				040CBF4828A8E26E003AA16E /* boundary_model_akinci2012.cpp */,
@@ -1061,6 +1042,22 @@
 			children = (
 			);
 			name = tmp;
+			sourceTree = "<group>";
+		};
+		049DB6EB28A9D6BA00D9C358 /* sampling */ = {
+			isa = PBXGroup;
+			children = (
+				040CBFBF28A8E34F003AA16E /* surface_sampling.h */,
+				040CBFCF28A8E350003AA16E /* regular_sampling_2d.h */,
+				040CBFC428A8E34F003AA16E /* regular_sampling_2d.cpp */,
+				040CBFC028A8E34F003AA16E /* poisson_disk_sampling.h */,
+				040CBFD028A8E350003AA16E /* poisson_disk_sampling.cpp */,
+				040CBFC328A8E34F003AA16E /* regular_triangle_sampling.h */,
+				040CBFCE28A8E34F003AA16E /* regular_triangle_sampling.cpp */,
+				040CBFCA28A8E34F003AA16E /* volume_sampling.h */,
+				040CBFC628A8E34F003AA16E /* volume_sampling.cpp */,
+			);
+			path = sampling;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1193,7 +1190,6 @@
 				040CBF4F28A8E26E003AA16E /* animation_field_system.h in Headers */,
 				040CC00928A8E35F003AA16E /* simulation_data_pf.h in Headers */,
 				040CC03D28A8E37E003AA16E /* elasticity_base.h in Headers */,
-				040CBF6328A8E26E003AA16E /* neighborhood_search.h in Headers */,
 				040CC05028A8E389003AA16E /* time_step_dfsph.h in Headers */,
 				040CBF7528A8E26E003AA16E /* emitter.h in Headers */,
 				040CC03928A8E37E003AA16E /* elasticity_becker2009.h in Headers */,

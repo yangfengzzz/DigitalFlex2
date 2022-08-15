@@ -11,7 +11,7 @@
 #include "vox.sph/drag/drag_base.h"
 #include "vox.sph/elasticity/elasticity_base.h"
 #include "vox.sph/emitter_system.h"
-#include "vox.sph/neighborhood_search.h"
+#include "vox.base/compact_search/compact_search.h"
 #include "vox.sph/simulation.h"
 #include "vox.sph/surface_tension/surface_tension_base.h"
 #include "vox.sph/time_step.h"

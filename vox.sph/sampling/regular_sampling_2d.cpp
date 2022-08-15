@@ -4,7 +4,7 @@
 //  personal capacity and am not conveying any rights to any intellectual
 //  property of any third parties.
 
-#include "vox.sph/utilities/regular_sampling_2d.h"
+#include "vox.sph/sampling/regular_sampling_2d.h"
 
 #include <vector>
 

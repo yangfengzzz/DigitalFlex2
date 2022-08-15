@@ -6,11 +6,11 @@
 
 #include "vox.sph/viscosity/viscosity_standard.h"
 
+#include "vox.base/math_functions.h"
 #include "vox.sph/boundary_model_akinci2012.h"
 #include "vox.sph/boundary_model_bender2019.h"
 #include "vox.sph/boundary_model_koschier2017.h"
 #include "vox.sph/simulation.h"
-#include "vox.base/math_functions.h"
 
 using namespace vox;
 

@@ -4,7 +4,7 @@
 //  personal capacity and am not conveying any rights to any intellectual
 //  property of any third parties.
 
-#include "vox.sph/utilities/debug_tools.h"
+#include "vox.sph/debug_tools.h"
 
 #include "vox.base/logging.h"
 #include "vox.sph/simulation.h"

@@ -4,7 +4,7 @@
 //  personal capacity and am not conveying any rights to any intellectual
 //  property of any third parties.
 
-#include "vox.sph/utilities/regular_triangle_sampling.h"
+#include "vox.sph/sampling/regular_triangle_sampling.h"
 
 #include <vector>
 
