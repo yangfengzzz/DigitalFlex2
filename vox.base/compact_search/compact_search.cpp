@@ -4,7 +4,9 @@
 //  personal capacity and am not conveying any rights to any intellectual
 //  property of any third parties.
 
-#include "compact_search.h"
+#include "vox.base/compact_search/compact_search.h"
+
+#include <libmorton/morton.h>
 
 #include <algorithm>
 #include <array>
@@ -13,7 +15,7 @@
 #include <limits>
 #include <numeric>
 
-#include "third_party/libmorton/include/libmorton/morton.h"
+#include "vox.base/spinlock.h"
 
 namespace vox {
 namespace {
@@ -147,7 +149,7 @@ void NeighborhoodSearch::resize_point_set(unsigned int index, Real const *x, std
         }
     }
 
-    // Resize spinlock arrays.
+    // Resize SpinLock arrays.
     for (auto &l : point_set.m_locks) l.resize(point_set.n_points());
 }
 
@@ -362,7 +364,7 @@ void NeighborhoodSearch::query() {
             });
 
     std::vector<std::array<bool, 27>> visited(m_entries.size(), {false});
-    std::vector<Spinlock> entry_locks(m_entries.size());
+    std::vector<SpinLock> entry_locks(m_entries.size());
 
 #ifdef _MSC_VER
     concurrency::parallel_for_each

@@ -51,7 +51,6 @@
 		040CBED328A8E0EF003AA16E /* xpbd.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE8A28A8E0EF003AA16E /* xpbd.h */; };
 		040CBED428A8E0EF003AA16E /* position_based_rigid_body_dynamics.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE8B28A8E0EF003AA16E /* position_based_rigid_body_dynamics.h */; };
 		040CBED528A8E0EF003AA16E /* constraints.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE8C28A8E0EF003AA16E /* constraints.h */; };
-		040CBED628A8E0EF003AA16E /* object_array.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE8D28A8E0EF003AA16E /* object_array.h */; };
 		040CBED728A8E0EF003AA16E /* collision_detection.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE8E28A8E0EF003AA16E /* collision_detection.h */; };
 		040CBED928A8E0EF003AA16E /* tet_gen_loader.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE9028A8E0EF003AA16E /* tet_gen_loader.h */; };
 		040CBEDB28A8E0EF003AA16E /* rigid_body_geometry.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE9228A8E0EF003AA16E /* rigid_body_geometry.h */; };
@@ -346,7 +345,6 @@
 		040CBE8A28A8E0EF003AA16E /* xpbd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xpbd.h; sourceTree = "<group>"; };
 		040CBE8B28A8E0EF003AA16E /* position_based_rigid_body_dynamics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = position_based_rigid_body_dynamics.h; sourceTree = "<group>"; };
 		040CBE8C28A8E0EF003AA16E /* constraints.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = constraints.h; sourceTree = "<group>"; };
-		040CBE8D28A8E0EF003AA16E /* object_array.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = object_array.h; sourceTree = "<group>"; };
 		040CBE8E28A8E0EF003AA16E /* collision_detection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = collision_detection.h; sourceTree = "<group>"; };
 		040CBE8F28A8E0EF003AA16E /* math_functions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = math_functions.h; sourceTree = "<group>"; };
 		040CBE9028A8E0EF003AA16E /* tet_gen_loader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tet_gen_loader.h; sourceTree = "<group>"; };
@@ -926,41 +924,39 @@
 				040CBE6D28A8E0EE003AA16E /* direct_position_based_solver_for_stiff_rods_interface.h */,
 				040CBE8C28A8E0EF003AA16E /* constraints.h */,
 				040CBE8928A8E0EF003AA16E /* constraints.cpp */,
+				040CBE8A28A8E0EF003AA16E /* xpbd.h */,
+				040CBE9528A8E0EF003AA16E /* xpbd.cpp */,
 				040CBE7E28A8E0EE003AA16E /* position_based_dynamics.h */,
 				040CBE7728A8E0EE003AA16E /* position_based_dynamics.cpp */,
 				040CBE5628A8E0EE003AA16E /* position_based_elastic_rods.h */,
 				040CBE6E28A8E0EE003AA16E /* position_based_elastic_rods.cpp */,
 				040CBE8B28A8E0EF003AA16E /* position_based_rigid_body_dynamics.h */,
 				040CBE7B28A8E0EE003AA16E /* position_based_rigid_body_dynamics.cpp */,
-				049DB6DC28A9440D00D9C358 /* tmp */,
-				040CBE7F28A8E0EE003AA16E /* indexed_face_mesh.cpp */,
-				040CBE6328A8E0EE003AA16E /* indexed_face_mesh.h */,
-				040CBE5328A8E0EE003AA16E /* indexed_tet_mesh.cpp */,
-				040CBE6C28A8E0EE003AA16E /* indexed_tet_mesh.h */,
-				040CBE9828A8E0EF003AA16E /* line_model.cpp */,
-				040CBE6F28A8E0EE003AA16E /* line_model.h */,
-				040CBE8D28A8E0EF003AA16E /* object_array.h */,
-				040CBE7828A8E0EE003AA16E /* particle_data.h */,
-				040CBE5028A8E0EE003AA16E /* position_based_fluids.cpp */,
 				040CBE5D28A8E0EE003AA16E /* position_based_fluids.h */,
+				040CBE5028A8E0EE003AA16E /* position_based_fluids.cpp */,
 				040CBE5528A8E0EE003AA16E /* position_based_generic_constraints.h */,
-				040CBE6828A8E0EE003AA16E /* rigid_body_geometry.cpp */,
-				040CBE9228A8E0EF003AA16E /* rigid_body_geometry.h */,
-				040CBE5828A8E0EE003AA16E /* rigid_body.h */,
-				040CBE7528A8E0EE003AA16E /* scene_loader.cpp */,
-				040CBE8828A8E0EF003AA16E /* scene_loader.h */,
-				040CBE7D28A8E0EE003AA16E /* simulation_model.cpp */,
+				040CBE7828A8E0EE003AA16E /* particle_data.h */,
 				040CBE5128A8E0EE003AA16E /* simulation_model.h */,
-				040CBE7928A8E0EE003AA16E /* simulation.cpp */,
-				040CBE9428A8E0EF003AA16E /* simulation.h */,
-				040CBE6B28A8E0EE003AA16E /* tet_gen_loader.cpp */,
-				040CBE9028A8E0EF003AA16E /* tet_gen_loader.h */,
-				040CBE5428A8E0EE003AA16E /* tet_model.h */,
-				040CBE8528A8E0EF003AA16E /* tet_model.cpp */,
+				040CBE7D28A8E0EE003AA16E /* simulation_model.cpp */,
+				040CBE6F28A8E0EE003AA16E /* line_model.h */,
+				040CBE9828A8E0EF003AA16E /* line_model.cpp */,
 				040CBE7228A8E0EE003AA16E /* triangle_model.h */,
 				040CBE8628A8E0EF003AA16E /* triangle_model.cpp */,
-				040CBE9528A8E0EF003AA16E /* xpbd.cpp */,
-				040CBE8A28A8E0EF003AA16E /* xpbd.h */,
+				040CBE5428A8E0EE003AA16E /* tet_model.h */,
+				040CBE8528A8E0EF003AA16E /* tet_model.cpp */,
+				040CBE9028A8E0EF003AA16E /* tet_gen_loader.h */,
+				040CBE6B28A8E0EE003AA16E /* tet_gen_loader.cpp */,
+				040CBE6328A8E0EE003AA16E /* indexed_face_mesh.h */,
+				040CBE7F28A8E0EE003AA16E /* indexed_face_mesh.cpp */,
+				040CBE6C28A8E0EE003AA16E /* indexed_tet_mesh.h */,
+				040CBE5328A8E0EE003AA16E /* indexed_tet_mesh.cpp */,
+				040CBE5828A8E0EE003AA16E /* rigid_body.h */,
+				040CBE9228A8E0EF003AA16E /* rigid_body_geometry.h */,
+				040CBE6828A8E0EE003AA16E /* rigid_body_geometry.cpp */,
+				040CBE8828A8E0EF003AA16E /* scene_loader.h */,
+				040CBE7528A8E0EE003AA16E /* scene_loader.cpp */,
+				040CBE7928A8E0EE003AA16E /* simulation.cpp */,
+				040CBE9428A8E0EF003AA16E /* simulation.h */,
 			);
 			path = vox.pbd;
 			sourceTree = "<group>";
@@ -972,6 +968,8 @@
 				040CBFCD28A8E34F003AA16E /* debug_tools.cpp */,
 				040CBFC528A8E34F003AA16E /* scene_loader.h */,
 				040CBFD228A8E350003AA16E /* scene_loader.cpp */,
+				040CBF2F28A8E26D003AA16E /* simulation.h */,
+				040CBF3F28A8E26E003AA16E /* simulation.cpp */,
 				040CBF3028A8E26D003AA16E /* triangle_mesh.h */,
 				040CBF4128A8E26E003AA16E /* triangle_mesh.cpp */,
 				040CBFC228A8E34F003AA16E /* winding_numbers.h */,
@@ -1014,8 +1012,6 @@
 				040CBF4A28A8E26E003AA16E /* fluid_model.cpp */,
 				040CBF2928A8E26D003AA16E /* rigid_body_object.h */,
 				040CBF2C28A8E26D003AA16E /* static_rigid_body.h */,
-				040CBF2F28A8E26D003AA16E /* simulation.h */,
-				040CBF3F28A8E26E003AA16E /* simulation.cpp */,
 			);
 			path = vox.sph;
 			sourceTree = "<group>";
@@ -1028,13 +1024,6 @@
 				043A98E928A742D200BCFAB0 /* test_parameter_object.cpp */,
 			);
 			path = test.base;
-			sourceTree = "<group>";
-		};
-		049DB6DC28A9440D00D9C358 /* tmp */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = tmp;
 			sourceTree = "<group>";
 		};
 		049DB6EB28A9D6BA00D9C358 /* sampling */ = {
@@ -1109,7 +1098,6 @@
 				040CBE9F28A8E0EF003AA16E /* position_based_generic_constraints.h in Headers */,
 				040CBEA628A8E0EF003AA16E /* time_step_controller.h in Headers */,
 				040CBED928A8E0EF003AA16E /* tet_gen_loader.h in Headers */,
-				040CBED628A8E0EF003AA16E /* object_array.h in Headers */,
 				049DB6E228A9458000D9C358 /* neighborhood_search_spatial_hashing.h in Headers */,
 				040CBECC28A8E0EF003AA16E /* kdtree.h in Headers */,
 				040CBEDB28A8E0EF003AA16E /* rigid_body_geometry.h in Headers */,

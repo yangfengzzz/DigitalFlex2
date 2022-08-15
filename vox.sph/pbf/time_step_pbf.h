@@ -7,8 +7,8 @@
 #pragma once
 
 #include "vox.base/common.h"
-#include "vox.sph/pbf/simulation_data_pbf.h"
 #include "vox.base/sph_kernels.h"
+#include "vox.sph/pbf/simulation_data_pbf.h"
 #include "vox.sph/time_step.h"
 
 namespace vox {

@@ -5,6 +5,7 @@
 //  property of any third parties.
 
 #include "vox.base/simple_quadrature.h"
+
 #include "vox.base/logging.h"
 
 using namespace vox;

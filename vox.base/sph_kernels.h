@@ -72,7 +72,7 @@ public:
     static Real W_zero() { return m_W_zero; }
 };
 
-//MARK: - Poly6Kernel
+// MARK: - Poly6Kernel
 /** \brief Poly6 kernel.
  */
 class Poly6Kernel {
@@ -157,7 +157,7 @@ public:
     static Real W_zero() { return m_W_zero; }
 };
 
-//MARK: - SpikyKernel
+// MARK: - SpikyKernel
 /** \brief Spiky kernel.
  */
 class SpikyKernel {
@@ -225,7 +225,7 @@ public:
     static Real W_zero() { return m_W_zero; }
 };
 
-//MARK: - WendlandQuinticC2Kernel
+// MARK: - WendlandQuinticC2Kernel
 /** \brief quintic Wendland C2 kernel.
  */
 class WendlandQuinticC2Kernel {
@@ -275,7 +275,7 @@ public:
     static Real W_zero() { return m_W_zero; }
 };
 
-//MARK: - CohesionKernel
+// MARK: - CohesionKernel
 /** \brief Cohesion kernel used for the surface tension method of Akinci el al. [ATT13].
  *
  * References:
@@ -337,7 +337,7 @@ public:
     static Real W_zero() { return m_W_zero; }
 };
 
-//MARK: - AdhesionKernel
+// MARK: - AdhesionKernel
 /** \brief Adhesion kernel used for the surface tension method of Akinci el al. [ATT13].
  *
  * References:
@@ -392,7 +392,7 @@ public:
     static Real W_zero() { return m_W_zero; }
 };
 
-//MARK: - CubicKernel2D
+// MARK: - CubicKernel2D
 /** \brief Cubic spline kernel (2D).
  */
 class CubicKernel2D {
@@ -456,7 +456,7 @@ public:
     static Real W_zero() { return m_W_zero; }
 };
 
-//MARK: - WendlandQuinticC2Kernel2D
+// MARK: - WendlandQuinticC2Kernel2D
 /** \brief Wendland Quintic C2 spline kernel (2D).
  */
 class WendlandQuinticC2Kernel2D {
@@ -507,7 +507,7 @@ public:
     static Real W_zero() { return m_W_zero; }
 };
 
-//MARK: - PrecomputedKernel
+// MARK: - PrecomputedKernel
 /** \brief Precomputed kernel which is based on a lookup table as described by Bender and Koschier [BK15,BK17].
  *
  * The lookup tables can be used in combination with any kernel.
@@ -587,7 +587,6 @@ public:
 
     static Real W_zero() { return m_W_zero; }
 };
-
 
 template <typename KernelType, unsigned int resolution>
 Real PrecomputedKernel<KernelType, resolution>::m_radius;

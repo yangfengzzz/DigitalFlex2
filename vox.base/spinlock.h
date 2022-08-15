@@ -12,13 +12,17 @@ namespace vox {
 class SpinLock {
 public:
     void lock() {
-        while (m_flag.test_and_set(std::memory_order_acquire)) {
+        while (m_lock.test_and_set(std::memory_order_acquire)) {
         }
     }
 
-    void unlock() { m_flag.clear(std::memory_order_release); }
+    void unlock() { m_lock.clear(std::memory_order_release); }
+
+    SpinLock() = default;
+    SpinLock(SpinLock const &other){};
+    SpinLock &operator=(SpinLock const &other) { return *this; }
 
 private:
-    std::atomic_flag m_flag = ATOMIC_FLAG_INIT;
+    std::atomic_flag m_lock = ATOMIC_FLAG_INIT;
 };
 }  // namespace vox

@@ -15,7 +15,7 @@
 #include <set>
 
 #include "vox.base/serialize.h"
-#include "vox.base/spinlock.h"
+#include "vox.base/SpinLock.h"
 #include "vox.base/timing.h"
 #include "vox.base/z_sort_table.h"
 

@@ -8,9 +8,7 @@
 
 #include <streambuf>
 
-namespace vox {
-
-namespace serialize {
+namespace vox::serialize {
 namespace details {
 template <class T>
 bool write(std::streambuf &buf, const T &val) {
@@ -36,5 +34,4 @@ bool write(std::streambuf &buf, T const &val) {
     using details::write;
     return write(buf, val);
 }
-}  // namespace serialize
-}  // namespace vox
+}  // namespace vox::serialize

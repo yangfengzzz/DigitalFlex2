@@ -22,7 +22,7 @@ public:
      * Return the one norm of the matrix.
      */
     static Real oneNorm(const Matrix3r &A);
-    
+
     /**
      * Implementation of the paper: \n
      * Matthias M�ller, Jan Bender, Nuttapong Chentanez and Miles Macklin,
@@ -30,7 +30,7 @@ public:
      * ACM SIGGRAPH Motion in Games, 2016
      */
     static void extractRotation(const Matrix3r &A, Quaternionr &q, unsigned int maxIter);
-    
+
     static void pseudoInverse(const Matrix3r &a, Matrix3r &res);
 
     /**
@@ -40,7 +40,7 @@ public:
      * proposed by Irving et al. 2004.
      */
     static void svdWithInversionHandling(const Matrix3r &A, Vector3r &sigma, Matrix3r &U, Matrix3r &VT);
-    
+
     static void eigenDecomposition(const Matrix3r &A, Matrix3r &eigenVecs, Vector3r &eigenVals);
 
     /**
@@ -53,7 +53,7 @@ public:
      * Operator Splitting", CGF 2018)
      */
     static void APD_Newton(const Matrix3r &F, Quaternionr &q);
-    
+
     /**
      * Perform polar decomposition A = (U D U^T) R
      */
@@ -72,7 +72,5 @@ public:
      * @param  v_hat	resulting cross product matrix
      */
     static void crossProductMatrix(const Vector3r &v, Matrix3r &v_hat);
-
-
 };
 }  // namespace vox

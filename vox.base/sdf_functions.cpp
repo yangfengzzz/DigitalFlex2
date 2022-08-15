@@ -5,10 +5,11 @@
 //  property of any third parties.
 
 #include "vox.base/sdf_functions.h"
+
 #include "vox.base/discrete_grid/triangle_mesh_distance.h"
 #include "vox.base/mesh/triangle_mesh.h"
-#include "vox.base/timing.h"
 #include "vox.base/obj_loader.h"
+#include "vox.base/timing.h"
 
 using namespace Eigen;
 using namespace std;

@@ -9,6 +9,7 @@
 #include <iostream>
 
 #include "vox.base/config.h"
+#include "vox.base/spinlock.h"
 
 namespace vox {
 class NeighborhoodSearch;
@@ -143,7 +144,7 @@ private:
     std::vector<std::vector<std::vector<unsigned int>>> m_neighbors;
 
     std::vector<HashKey> m_keys, m_old_keys;
-    std::vector<std::vector<Spinlock>> m_locks;
+    std::vector<std::vector<SpinLock>> m_locks;
     std::vector<unsigned int> m_sort_table;
 };
 

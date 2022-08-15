@@ -84,7 +84,7 @@ public:
     }
 };
 
-//MARK: - BinaryFileReader
+// MARK: - BinaryFileReader
 class BinaryFileReader {
 public:
     std::ifstream m_file;

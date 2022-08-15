@@ -80,7 +80,8 @@ protected:
     std::vector<unsigned int> m_precomputed_indices;
 
     typedef Eigen::SimplicialLLT<Eigen::SparseMatrix<double>, Eigen::Lower, Eigen::AMDOrdering<int>> SolverLLT;
-    typedef Eigen::ConjugateGradient<MatrixReplacement, Eigen::Lower | Eigen::Upper, Eigen::IdentityPreconditioner> Solver;
+    typedef Eigen::ConjugateGradient<MatrixReplacement, Eigen::Lower | Eigen::Upper, Eigen::IdentityPreconditioner>
+            Solver;
 
     Solver m_solver;
     void computeRHS(VectorXr& rhs);

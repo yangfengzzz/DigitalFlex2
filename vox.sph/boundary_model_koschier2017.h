@@ -10,8 +10,8 @@
 
 #include "vox.base/common.h"
 #include "vox.base/discrete_grid/discrete_grid.h"
-#include "vox.sph/boundary_model.h"
 #include "vox.base/sph_kernels.h"
+#include "vox.sph/boundary_model.h"
 
 namespace vox {
 class TimeStep;

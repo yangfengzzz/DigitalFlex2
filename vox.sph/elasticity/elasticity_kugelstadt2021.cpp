@@ -1033,7 +1033,6 @@ void Elasticity_Kugelstadt2021::stepElasticitySolver() {
         //////////////////////////////////////////////////////////////////////////
 
         START_TIMING("rhs")
-
 #pragma omp parallel default(shared)
         {
 //////////////////////////////////////////////////////////////////////////
@@ -1080,7 +1079,6 @@ void Elasticity_Kugelstadt2021::stepElasticitySolver() {
     // Solve linear system
     //////////////////////////////////////////////////////////////////////////
     START_TIMING("solve SLE")
-
 #pragma omp parallel default(shared)
     {
 #pragma omp for schedule(static)
