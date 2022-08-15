@@ -8,7 +8,7 @@
 
 #include "vox.base/timing.h"
 #include "vox.pbd/time_integration.h"
-#include "vox.pbd/time_manager.h"
+#include "vox.base/time_manager.h"
 
 using namespace vox;
 using namespace std;

@@ -17,7 +17,6 @@
 		040CBEA128A8E0EF003AA16E /* sph_kernels.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE5728A8E0EE003AA16E /* sph_kernels.h */; };
 		040CBEA228A8E0EF003AA16E /* rigid_body.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE5828A8E0EE003AA16E /* rigid_body.h */; };
 		040CBEA328A8E0EF003AA16E /* time_step_controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBE5928A8E0EE003AA16E /* time_step_controller.cpp */; };
-		040CBEA428A8E0EF003AA16E /* time_manager.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE5A28A8E0EE003AA16E /* time_manager.h */; };
 		040CBEA528A8E0EF003AA16E /* hashmap.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE5B28A8E0EE003AA16E /* hashmap.h */; };
 		040CBEA628A8E0EF003AA16E /* time_step_controller.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE5C28A8E0EE003AA16E /* time_step_controller.h */; };
 		040CBEA728A8E0EF003AA16E /* position_based_fluids.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE5D28A8E0EE003AA16E /* position_based_fluids.h */; };
@@ -61,7 +60,6 @@
 		040CBED628A8E0EF003AA16E /* object_array.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE8D28A8E0EF003AA16E /* object_array.h */; };
 		040CBED728A8E0EF003AA16E /* collision_detection.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE8E28A8E0EF003AA16E /* collision_detection.h */; };
 		040CBED928A8E0EF003AA16E /* tet_gen_loader.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE9028A8E0EF003AA16E /* tet_gen_loader.h */; };
-		040CBEDA28A8E0EF003AA16E /* time_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBE9128A8E0EF003AA16E /* time_manager.cpp */; };
 		040CBEDB28A8E0EF003AA16E /* rigid_body_geometry.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE9228A8E0EF003AA16E /* rigid_body_geometry.h */; };
 		040CBEDC28A8E0EF003AA16E /* bounding_sphere_hierarchy.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE9328A8E0EF003AA16E /* bounding_sphere_hierarchy.h */; };
 		040CBEDD28A8E0EF003AA16E /* simulation.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBE9428A8E0EF003AA16E /* simulation.h */; };
@@ -102,8 +100,6 @@
 		040CBF6328A8E26E003AA16E /* neighborhood_search.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF3728A8E26E003AA16E /* neighborhood_search.h */; };
 		040CBF6428A8E26E003AA16E /* animation_field_system.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBF3828A8E26E003AA16E /* animation_field_system.cpp */; };
 		040CBF6528A8E26E003AA16E /* sph_kernels.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBF3928A8E26E003AA16E /* sph_kernels.cpp */; };
-		040CBF6628A8E26E003AA16E /* time_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBF3A28A8E26E003AA16E /* time_manager.cpp */; };
-		040CBF6828A8E26E003AA16E /* time_manager.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF3C28A8E26E003AA16E /* time_manager.h */; };
 		040CBF6928A8E26E003AA16E /* time_step.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CBF3D28A8E26E003AA16E /* time_step.h */; };
 		040CBF6A28A8E26E003AA16E /* boundary_model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBF3E28A8E26E003AA16E /* boundary_model.cpp */; };
 		040CBF6B28A8E26E003AA16E /* simulation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBF3F28A8E26E003AA16E /* simulation.cpp */; };
@@ -246,6 +242,7 @@
 		049DB6E228A9458000D9C358 /* neighborhood_search_spatial_hashing.h in Headers */ = {isa = PBXBuildFile; fileRef = 049DB6E028A9458000D9C358 /* neighborhood_search_spatial_hashing.h */; };
 		049DB6E328A9D09100D9C358 /* math_functions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBE8028A8E0EE003AA16E /* math_functions.cpp */; };
 		049DB6E428A9D22700D9C358 /* partio_reader_writer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CC05328A91951003AA16E /* partio_reader_writer.cpp */; };
+		049DB6E528A9D37C00D9C358 /* time_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBF3A28A8E26E003AA16E /* time_manager.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -320,7 +317,6 @@
 		040CBE5728A8E0EE003AA16E /* sph_kernels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sph_kernels.h; sourceTree = "<group>"; };
 		040CBE5828A8E0EE003AA16E /* rigid_body.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rigid_body.h; sourceTree = "<group>"; };
 		040CBE5928A8E0EE003AA16E /* time_step_controller.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = time_step_controller.cpp; sourceTree = "<group>"; };
-		040CBE5A28A8E0EE003AA16E /* time_manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = time_manager.h; sourceTree = "<group>"; };
 		040CBE5B28A8E0EE003AA16E /* hashmap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hashmap.h; sourceTree = "<group>"; };
 		040CBE5C28A8E0EE003AA16E /* time_step_controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = time_step_controller.h; sourceTree = "<group>"; };
 		040CBE5D28A8E0EE003AA16E /* position_based_fluids.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = position_based_fluids.h; sourceTree = "<group>"; };
@@ -368,7 +364,6 @@
 		040CBE8E28A8E0EF003AA16E /* collision_detection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = collision_detection.h; sourceTree = "<group>"; };
 		040CBE8F28A8E0EF003AA16E /* math_functions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = math_functions.h; sourceTree = "<group>"; };
 		040CBE9028A8E0EF003AA16E /* tet_gen_loader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tet_gen_loader.h; sourceTree = "<group>"; };
-		040CBE9128A8E0EF003AA16E /* time_manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = time_manager.cpp; sourceTree = "<group>"; };
 		040CBE9228A8E0EF003AA16E /* rigid_body_geometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rigid_body_geometry.h; sourceTree = "<group>"; };
 		040CBE9328A8E0EF003AA16E /* bounding_sphere_hierarchy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bounding_sphere_hierarchy.h; sourceTree = "<group>"; };
 		040CBE9428A8E0EF003AA16E /* simulation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = simulation.h; sourceTree = "<group>"; };
@@ -935,6 +930,8 @@
 				049DB6D628A92C6E00D9C358 /* z_sort_table.h */,
 				040CBE8F28A8E0EF003AA16E /* math_functions.h */,
 				040CBE8028A8E0EE003AA16E /* math_functions.cpp */,
+				040CBF3C28A8E26E003AA16E /* time_manager.h */,
+				040CBF3A28A8E26E003AA16E /* time_manager.cpp */,
 			);
 			path = vox.base;
 			sourceTree = "<group>";
@@ -1001,8 +998,6 @@
 				040CBE9028A8E0EF003AA16E /* tet_gen_loader.h */,
 				040CBE8528A8E0EF003AA16E /* tet_model.cpp */,
 				040CBE5428A8E0EE003AA16E /* tet_model.h */,
-				040CBE5A28A8E0EE003AA16E /* time_manager.h */,
-				040CBE9128A8E0EF003AA16E /* time_manager.cpp */,
 				040CBE8628A8E0EF003AA16E /* triangle_model.cpp */,
 				040CBE7228A8E0EE003AA16E /* triangle_model.h */,
 				040CBE9528A8E0EF003AA16E /* xpbd.cpp */,
@@ -1057,8 +1052,6 @@
 				040CBF2C28A8E26D003AA16E /* static_rigid_body.h */,
 				040CBF2F28A8E26D003AA16E /* simulation.h */,
 				040CBF3F28A8E26E003AA16E /* simulation.cpp */,
-				040CBF3C28A8E26E003AA16E /* time_manager.h */,
-				040CBF3A28A8E26E003AA16E /* time_manager.cpp */,
 				040CBF3028A8E26D003AA16E /* triangle_mesh.h */,
 				040CBF4128A8E26E003AA16E /* triangle_mesh.cpp */,
 			);
@@ -1155,7 +1148,6 @@
 				040CBEBC28A8E0EF003AA16E /* triangle_model.h in Headers */,
 				040CBE9B28A8E0EF003AA16E /* simulation_model.h in Headers */,
 				040CBEAD28A8E0EF003AA16E /* indexed_face_mesh.h in Headers */,
-				040CBEA428A8E0EF003AA16E /* time_manager.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1188,7 +1180,6 @@
 				040CC04928A8E384003AA16E /* drag_force_macklin2014.h in Headers */,
 				040CBFE128A8E350003AA16E /* debug_tools.h in Headers */,
 				040CBFFC28A8E356003AA16E /* surface_tension_akinci2013.h in Headers */,
-				040CBF6828A8E26E003AA16E /* time_manager.h in Headers */,
 				040CBF6128A8E26E003AA16E /* sph_kernels.h in Headers */,
 				040CBFDD28A8E350003AA16E /* scene_loader.h in Headers */,
 				040CBFD828A8E350003AA16E /* poisson_disk_sampling.h in Headers */,
@@ -1426,6 +1417,7 @@
 				049DB6C828A92BEA00D9C358 /* cubic_lagrange_discrete_grid.cpp in Sources */,
 				040CBF0128A8E12D003AA16E /* md5.cpp in Sources */,
 				040CBF1B28A8E17C003AA16E /* entity_iterators.cpp in Sources */,
+				049DB6E528A9D37C00D9C358 /* time_manager.cpp in Sources */,
 				049DB6E428A9D22700D9C358 /* partio_reader_writer.cpp in Sources */,
 				040CBF1928A8E17C003AA16E /* triangle_mesh.cpp in Sources */,
 			);
@@ -1457,7 +1449,6 @@
 				040CBEB528A8E0EF003AA16E /* tet_gen_loader.cpp in Sources */,
 				040CBEA328A8E0EF003AA16E /* time_step_controller.cpp in Sources */,
 				040CBEB228A8E0EF003AA16E /* rigid_body_geometry.cpp in Sources */,
-				040CBEDA28A8E0EF003AA16E /* time_manager.cpp in Sources */,
 				040CBECE28A8E0EF003AA16E /* tet_model.cpp in Sources */,
 				040CBEA828A8E0EF003AA16E /* time_integration.cpp in Sources */,
 				040CBE9A28A8E0EF003AA16E /* position_based_fluids.cpp in Sources */,
@@ -1497,7 +1488,6 @@
 				040CC01828A8E36B003AA16E /* simulation_data_pbf.cpp in Sources */,
 				040CC04828A8E384003AA16E /* drag_force_macklin2014.cpp in Sources */,
 				040CBFF828A8E356003AA16E /* surface_tension_base.cpp in Sources */,
-				040CBF6628A8E26E003AA16E /* time_manager.cpp in Sources */,
 				040CBF7328A8E26E003AA16E /* non_pressure_force_base.cpp in Sources */,
 				040CBFB928A8E349003AA16E /* viscosity_weiler2018.cpp in Sources */,
 				040CBFE828A8E350003AA16E /* poisson_disk_sampling.cpp in Sources */,

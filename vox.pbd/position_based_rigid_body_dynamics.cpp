@@ -4,8 +4,6 @@
 //  personal capacity and am not conveying any rights to any intellectual
 //  property of any third parties.
 
-#pragma once
-
 #include "vox.pbd/position_based_rigid_body_dynamics.h"
 
 #include <cmath>

@@ -10,7 +10,7 @@
 #include "vox.editor/simulator_base.h"
 #include "vox.base/file_system.h"
 #include "vox.sph/simulation.h"
-#include "vox.sph/time_manager.h"
+#include "vox.base/time_manager.h"
 #include "vox.sph/viscosity/viscosity_weiler2018.h"
 #include "vox.sph/vorticity/micropolar_model_bender2017.h"
 

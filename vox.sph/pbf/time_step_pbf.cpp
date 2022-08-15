@@ -12,7 +12,7 @@
 #include "vox.base/counting.h"
 #include "vox.sph/pbf/time_integration.h"
 #include "vox.sph/simulation.h"
-#include "vox.sph/time_manager.h"
+#include "vox.base/time_manager.h"
 
 using namespace vox;
 using namespace std;

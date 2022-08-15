@@ -9,7 +9,7 @@
 #include <utility>
 
 #include "vox.sph/simulation.h"
-#include "vox.sph/time_manager.h"
+#include "vox.base/time_manager.h"
 #include "vox.sph/time_step.h"
 
 using namespace vox;

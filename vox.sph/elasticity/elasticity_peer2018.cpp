@@ -8,7 +8,7 @@
 
 #include "vox.base/counting.h"
 #include "vox.sph/simulation.h"
-#include "vox.sph/time_manager.h"
+#include "vox.base/time_manager.h"
 #include "vox.base/math_functions.h"
 
 using namespace vox;

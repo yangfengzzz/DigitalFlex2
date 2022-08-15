@@ -14,7 +14,7 @@
 #include "vox.pbd/position_based_elastic_rods.h"
 #include "vox.pbd/position_based_rigid_body_dynamics.h"
 #include "vox.pbd/simulation_model.h"
-#include "vox.pbd/time_manager.h"
+#include "vox.base/time_manager.h"
 #include "vox.pbd/xpbd.h"
 
 using namespace vox;
