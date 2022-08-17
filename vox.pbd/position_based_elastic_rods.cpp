@@ -90,7 +90,7 @@ bool PositionBasedCosseratRods::solve_BendTwistConstraint(const Quaternionr &q0,
 }
 
 // ----------------------------------------------------------------------------------------------
-bool position_based_elastic_rods::solve_PerpendiculaBisectorConstraint(const Vector3r &p0,
+bool PositionBasedElasticRods::solve_PerpendiculaBisectorConstraint(const Vector3r &p0,
                                                                        Real invMass0,
                                                                        const Vector3r &p1,
                                                                        Real invMass1,
@@ -119,7 +119,7 @@ bool position_based_elastic_rods::solve_PerpendiculaBisectorConstraint(const Vec
 }
 
 // ----------------------------------------------------------------------------------------------
-bool position_based_elastic_rods::solve_GhostPointEdgeDistanceConstraint(const Vector3r &p0,
+bool PositionBasedElasticRods::solve_GhostPointEdgeDistanceConstraint(const Vector3r &p0,
                                                                          Real invMass0,
                                                                          const Vector3r &p1,
                                                                          Real invMass1,
@@ -151,7 +151,7 @@ bool position_based_elastic_rods::solve_GhostPointEdgeDistanceConstraint(const V
 }
 
 // ----------------------------------------------------------------------------------------------
-bool position_based_elastic_rods::solve_DarbouxVectorConstraint(const Vector3r &p0,
+bool PositionBasedElasticRods::solve_DarbouxVectorConstraint(const Vector3r &p0,
                                                                 Real invMass0,
                                                                 const Vector3r &p1,
                                                                 Real invMass1,
@@ -177,10 +177,10 @@ bool position_based_elastic_rods::solve_DarbouxVectorConstraint(const Vector3r &
     Vector3r darboux_vector;
     Matrix3r d0, d1;
 
-    position_based_elastic_rods::computeMaterialFrame(p0, p1, p3, d0);
-    position_based_elastic_rods::computeMaterialFrame(p1, p2, p4, d1);
+    PositionBasedElasticRods::computeMaterialFrame(p0, p1, p3, d0);
+    PositionBasedElasticRods::computeMaterialFrame(p1, p2, p4, d1);
 
-    position_based_elastic_rods::computeDarbouxVector(d0, d1, midEdgeLength, darboux_vector);
+    PositionBasedElasticRods::computeDarbouxVector(d0, d1, midEdgeLength, darboux_vector);
 
     Matrix3r dajpi[3][3];
     computeMaterialFrameDerivative(p0, p1, p3, d0, dajpi[0][0], dajpi[0][1], dajpi[0][2], dajpi[1][0], dajpi[1][1],
@@ -234,7 +234,7 @@ bool position_based_elastic_rods::solve_DarbouxVectorConstraint(const Vector3r &
 }
 
 // ----------------------------------------------------------------------------------------------
-bool position_based_elastic_rods::computeMaterialFrame(const Vector3r &p0,
+bool PositionBasedElasticRods::computeMaterialFrame(const Vector3r &p0,
                                                        const Vector3r &p1,
                                                        const Vector3r &p2,
                                                        Matrix3r &frame) {
@@ -249,7 +249,7 @@ bool position_based_elastic_rods::computeMaterialFrame(const Vector3r &p0,
 }
 
 // ----------------------------------------------------------------------------------------------
-bool position_based_elastic_rods::computeDarbouxVector(const Matrix3r &dA,
+bool PositionBasedElasticRods::computeDarbouxVector(const Matrix3r &dA,
                                                        const Matrix3r &dB,
                                                        const Real mid_edge_length,
                                                        Vector3r &darboux_vector) {
@@ -269,7 +269,7 @@ bool position_based_elastic_rods::computeDarbouxVector(const Matrix3r &dA,
 }
 
 // ----------------------------------------------------------------------------------------------
-bool position_based_elastic_rods::computeMaterialFrameDerivative(const Vector3r &p0,
+bool PositionBasedElasticRods::computeMaterialFrameDerivative(const Vector3r &p0,
                                                                  const Vector3r &p1,
                                                                  const Vector3r &p2,
                                                                  const Matrix3r &d,
@@ -354,7 +354,7 @@ bool position_based_elastic_rods::computeMaterialFrameDerivative(const Vector3r 
 }
 
 // ----------------------------------------------------------------------------------------------
-bool position_based_elastic_rods::computeDarbouxGradient(const Vector3r &darboux_vector,
+bool PositionBasedElasticRods::computeDarbouxGradient(const Vector3r &darboux_vector,
                                                          const Real length,
                                                          const Matrix3r &da,
                                                          const Matrix3r &db,

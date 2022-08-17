@@ -8,16 +8,16 @@
 
 using namespace vox;
 
-line_model::line_model() {
+LineModel::LineModel() {
     m_restitutionCoeff = static_cast<Real>(0.6);
     m_frictionCoeff = static_cast<Real>(0.2);
 }
 
-line_model::~line_model(void) = default;
+LineModel::~LineModel(void) = default;
 
-line_model::Edges &line_model::getEdges() { return m_edges; }
+LineModel::Edges &LineModel::getEdges() { return m_edges; }
 
-void line_model::initMesh(const unsigned int nPoints,
+void LineModel::initMesh(const unsigned int nPoints,
                           const unsigned int nQuaternions,
                           const unsigned int indexOffset,
                           const unsigned int indexOffsetQuaternions,
@@ -35,6 +35,6 @@ void line_model::initMesh(const unsigned int nPoints,
     }
 }
 
-unsigned int line_model::getIndexOffset() const { return m_indexOffset; }
+unsigned int LineModel::getIndexOffset() const { return m_indexOffset; }
 
-unsigned line_model::getIndexOffsetQuaternions() const { return m_indexOffsetQuaternions; }
+unsigned LineModel::getIndexOffsetQuaternions() const { return m_indexOffsetQuaternions; }

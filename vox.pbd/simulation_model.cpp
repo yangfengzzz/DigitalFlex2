@@ -771,7 +771,7 @@ void SimulationModel::addLineModel(const unsigned int nPoints,
                                    Quaternionr *quaternions,
                                    unsigned int *indices,
                                    unsigned int *indicesQuaternions) {
-    auto *lineModel = new line_model();
+    auto *lineModel = new LineModel();
     m_lineModels.push_back(lineModel);
 
     unsigned int startIndex = m_particles.size();

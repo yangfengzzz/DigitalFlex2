@@ -15,7 +15,7 @@
 #include "vox.pbd/rigid_body.h"
 
 namespace vox {
-class line_model {
+class LineModel {
     struct OrientedEdge {
         OrientedEdge() = default;
         OrientedEdge(unsigned int p0, unsigned int p1, unsigned int q0) {
@@ -30,8 +30,8 @@ class line_model {
 public:
     typedef std::vector<OrientedEdge> Edges;
 
-    line_model();
-    virtual ~line_model();
+    LineModel();
+    virtual ~LineModel();
 
 protected:
     /** offset which must be added to get the correct index in the particles array

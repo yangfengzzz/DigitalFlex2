@@ -471,7 +471,7 @@ public:
 //	http://github.com/korzen/PositionBasedDynamics-ElasticRod
 //  korzenio[at] gmail.com
 //
-class position_based_elastic_rods {
+class PositionBasedElasticRods {
 public:
     /** Determine the position corrections for a perpendicular bisector
      * constraint:\n\n \f$C(\mathbf{p}_0, \mathbf{p}_1, \mathbf{p}_2) = (

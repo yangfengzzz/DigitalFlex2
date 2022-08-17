@@ -35,7 +35,7 @@ public:
     typedef std::vector<RigidBody *> RigidBodyVector;
     typedef std::vector<TriangleModel *> TriangleModelVector;
     typedef std::vector<TetModel *> TetModelVector;
-    typedef std::vector<line_model *> LineModelVector;
+    typedef std::vector<LineModel *> LineModelVector;
     typedef std::vector<unsigned int> ConstraintGroup;
     typedef std::vector<ConstraintGroup> ConstraintGroupVector;
 
