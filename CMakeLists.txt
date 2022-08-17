@@ -54,6 +54,8 @@ if (OPENMP_FOUND)
 endif ()
 
 ####################################################
+# Add third party libraries
+add_subdirectory(third_party)
 add_subdirectory(third_party/AntTweakBar)
 
 # Add base library

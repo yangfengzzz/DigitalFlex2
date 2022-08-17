@@ -6,13 +6,7 @@
 
 #pragma once
 
-#ifdef __APPLE__
-#include <OpenGL/GL.h>
-#include <OpenGL/GLU.h>
-#else
-#include "GL/gl.h"
-#include "GL/glu.h"
-#endif
+#include "apps.pbd/common/glad.h"
 
 #include <map>
 #include <string>

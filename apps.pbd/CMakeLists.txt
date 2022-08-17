@@ -3,6 +3,7 @@ cmake_minimum_required(VERSION 3.12)
 project(apps.pbd LANGUAGES C CXX)
 
 file(GLOB sources
+        ${CMAKE_CURRENT_SOURCE_DIR}/common/*.c
         ${CMAKE_CURRENT_SOURCE_DIR}/common/*.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp)
 
@@ -16,7 +17,10 @@ target_include_directories(${PROJECT_NAME} PUBLIC ../
         ../third_party/spdlog/include
         ${CMAKE_CURRENT_SOURCE_DIR})
 
-target_link_libraries(${PROJECT_NAME} OpenMP::OpenMP_CXX)
+include_directories ( /System/Library/Frameworks )
+find_library(APPKIT_LIBRARY AppKit)
+find_package(OpenGL REQUIRED)
+target_link_libraries(${PROJECT_NAME} ${APPKIT_LIBRARY} ${OPENGL_LIBRARIES} glfw vox.base vox.pbd AntTweakBar OpenMP::OpenMP_CXX)
 
 # Link third party libraries
 #target_link_libraries(${PROJECT_NAME} PUBLIC

@@ -5,6 +5,7 @@
 //  property of any third parties.
 
 #include "apps.pbd/common/mini_gl.h"
+#include "apps.pbd/common/glad.h"
 
 #ifdef WIN32
 #include "windows.h"
@@ -433,7 +434,7 @@ void MiniGL::init(int argc, char **argv, const int width, const int height, cons
     }
 
     glfwMakeContextCurrent(m_glfw_window);
-    gladLoadGL(glfwGetProcAddress);
+    gladLoadGL();
     glfwSwapInterval(0);
 
     glfwSetFramebufferSizeCallback(m_glfw_window, reshape);
