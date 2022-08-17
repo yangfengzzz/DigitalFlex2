@@ -230,6 +230,30 @@
 		049DB6E928A9D57900D9C358 /* simple_quadrature.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBFD328A8E350003AA16E /* simple_quadrature.cpp */; };
 		049DB6EA28A9D57900D9C358 /* gauss_quadrature.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBFBE28A8E34F003AA16E /* gauss_quadrature.cpp */; };
 		049DB6EC28A9DAB600D9C358 /* sph_kernels.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CBF3928A8E26E003AA16E /* sph_kernels.cpp */; };
+		049DB6F728ACDFCC00D9C358 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 049DB6F628ACDFCC00D9C358 /* main.cpp */; };
+		049DB70B28ACEA9400D9C358 /* AntTweakBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 049DB70A28ACEA9400D9C358 /* AntTweakBar.h */; };
+		049DB72B28ACEAB800D9C358 /* TwPrecomp.h in Headers */ = {isa = PBXBuildFile; fileRef = 049DB70D28ACEAB700D9C358 /* TwPrecomp.h */; };
+		049DB72C28ACEAB800D9C358 /* TwFonts.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 049DB70E28ACEAB700D9C358 /* TwFonts.cpp */; };
+		049DB72D28ACEAB800D9C358 /* TwMgr.h in Headers */ = {isa = PBXBuildFile; fileRef = 049DB70F28ACEAB700D9C358 /* TwMgr.h */; };
+		049DB72E28ACEAB800D9C358 /* LoadOGLCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 049DB71028ACEAB700D9C358 /* LoadOGLCore.h */; };
+		049DB73028ACEAB800D9C358 /* TwOpenGLCore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 049DB71228ACEAB800D9C358 /* TwOpenGLCore.cpp */; };
+		049DB73228ACEAB800D9C358 /* TwFonts.h in Headers */ = {isa = PBXBuildFile; fileRef = 049DB71428ACEAB800D9C358 /* TwFonts.h */; };
+		049DB73328ACEAB800D9C358 /* AntPerfTimer.h in Headers */ = {isa = PBXBuildFile; fileRef = 049DB71528ACEAB800D9C358 /* AntPerfTimer.h */; };
+		049DB73428ACEAB800D9C358 /* MiniGLFW.h in Headers */ = {isa = PBXBuildFile; fileRef = 049DB71628ACEAB800D9C358 /* MiniGLFW.h */; };
+		049DB73528ACEAB800D9C358 /* TwBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 049DB71728ACEAB800D9C358 /* TwBar.cpp */; };
+		049DB73628ACEAB800D9C358 /* TwEventGLFW.c in Sources */ = {isa = PBXBuildFile; fileRef = 049DB71828ACEAB800D9C358 /* TwEventGLFW.c */; };
+		049DB73728ACEAB800D9C358 /* TwGraph.h in Headers */ = {isa = PBXBuildFile; fileRef = 049DB71928ACEAB800D9C358 /* TwGraph.h */; };
+		049DB73928ACEAB800D9C358 /* TwColors.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 049DB71B28ACEAB800D9C358 /* TwColors.cpp */; };
+		049DB73A28ACEAB800D9C358 /* LoadOGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 049DB71C28ACEAB800D9C358 /* LoadOGL.cpp */; };
+		049DB73C28ACEAB800D9C358 /* TwPrecomp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 049DB71E28ACEAB800D9C358 /* TwPrecomp.cpp */; };
+		049DB73D28ACEAB800D9C358 /* TwBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 049DB71F28ACEAB800D9C358 /* TwBar.h */; };
+		049DB73E28ACEAB800D9C358 /* LoadOGLCore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 049DB72028ACEAB800D9C358 /* LoadOGLCore.cpp */; };
+		049DB73F28ACEAB800D9C358 /* TwOpenGL.h in Headers */ = {isa = PBXBuildFile; fileRef = 049DB72128ACEAB800D9C358 /* TwOpenGL.h */; };
+		049DB74128ACEAB800D9C358 /* LoadOGL.h in Headers */ = {isa = PBXBuildFile; fileRef = 049DB72328ACEAB800D9C358 /* LoadOGL.h */; };
+		049DB74228ACEAB800D9C358 /* TwColors.h in Headers */ = {isa = PBXBuildFile; fileRef = 049DB72428ACEAB800D9C358 /* TwColors.h */; };
+		049DB74428ACEAB800D9C358 /* TwOpenGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 049DB72628ACEAB800D9C358 /* TwOpenGL.cpp */; };
+		049DB74528ACEAB800D9C358 /* TwOpenGLCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 049DB72728ACEAB800D9C358 /* TwOpenGLCore.h */; };
+		049DB74628ACEAB800D9C358 /* TwMgr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 049DB72828ACEAB800D9C358 /* TwMgr.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -283,6 +307,15 @@
 			runOnlyForDeploymentPostprocessing = 1;
 		};
 		043A98E028A7421100BCFAB0 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		049DB6F228ACDFCC00D9C358 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -539,6 +572,32 @@
 		049DB6DD28A944F500D9C358 /* bounding_sphere.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bounding_sphere.h; sourceTree = "<group>"; };
 		049DB6DF28A9458000D9C358 /* neighborhood_search_spatial_hashing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = neighborhood_search_spatial_hashing.cpp; sourceTree = "<group>"; };
 		049DB6E028A9458000D9C358 /* neighborhood_search_spatial_hashing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = neighborhood_search_spatial_hashing.h; sourceTree = "<group>"; };
+		049DB6F428ACDFCC00D9C358 /* apps.pbd */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = apps.pbd; sourceTree = BUILT_PRODUCTS_DIR; };
+		049DB6F628ACDFCC00D9C358 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		049DB6FF28ACEA4F00D9C358 /* libthird_party.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libthird_party.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		049DB70A28ACEA9400D9C358 /* AntTweakBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AntTweakBar.h; path = AntTweakBar/include/AntTweakBar.h; sourceTree = "<group>"; };
+		049DB70D28ACEAB700D9C358 /* TwPrecomp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TwPrecomp.h; path = AntTweakBar/src/TwPrecomp.h; sourceTree = "<group>"; };
+		049DB70E28ACEAB700D9C358 /* TwFonts.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; name = TwFonts.cpp; path = AntTweakBar/src/TwFonts.cpp; sourceTree = "<group>"; };
+		049DB70F28ACEAB700D9C358 /* TwMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TwMgr.h; path = AntTweakBar/src/TwMgr.h; sourceTree = "<group>"; };
+		049DB71028ACEAB700D9C358 /* LoadOGLCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoadOGLCore.h; path = AntTweakBar/src/LoadOGLCore.h; sourceTree = "<group>"; };
+		049DB71228ACEAB800D9C358 /* TwOpenGLCore.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; name = TwOpenGLCore.cpp; path = AntTweakBar/src/TwOpenGLCore.cpp; sourceTree = "<group>"; };
+		049DB71428ACEAB800D9C358 /* TwFonts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TwFonts.h; path = AntTweakBar/src/TwFonts.h; sourceTree = "<group>"; };
+		049DB71528ACEAB800D9C358 /* AntPerfTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AntPerfTimer.h; path = AntTweakBar/src/AntPerfTimer.h; sourceTree = "<group>"; };
+		049DB71628ACEAB800D9C358 /* MiniGLFW.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MiniGLFW.h; path = AntTweakBar/src/MiniGLFW.h; sourceTree = "<group>"; };
+		049DB71728ACEAB800D9C358 /* TwBar.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; name = TwBar.cpp; path = AntTweakBar/src/TwBar.cpp; sourceTree = "<group>"; };
+		049DB71828ACEAB800D9C358 /* TwEventGLFW.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = TwEventGLFW.c; path = AntTweakBar/src/TwEventGLFW.c; sourceTree = "<group>"; };
+		049DB71928ACEAB800D9C358 /* TwGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TwGraph.h; path = AntTweakBar/src/TwGraph.h; sourceTree = "<group>"; };
+		049DB71B28ACEAB800D9C358 /* TwColors.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; name = TwColors.cpp; path = AntTweakBar/src/TwColors.cpp; sourceTree = "<group>"; };
+		049DB71C28ACEAB800D9C358 /* LoadOGL.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; name = LoadOGL.cpp; path = AntTweakBar/src/LoadOGL.cpp; sourceTree = "<group>"; };
+		049DB71E28ACEAB800D9C358 /* TwPrecomp.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; name = TwPrecomp.cpp; path = AntTweakBar/src/TwPrecomp.cpp; sourceTree = "<group>"; };
+		049DB71F28ACEAB800D9C358 /* TwBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TwBar.h; path = AntTweakBar/src/TwBar.h; sourceTree = "<group>"; };
+		049DB72028ACEAB800D9C358 /* LoadOGLCore.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; name = LoadOGLCore.cpp; path = AntTweakBar/src/LoadOGLCore.cpp; sourceTree = "<group>"; };
+		049DB72128ACEAB800D9C358 /* TwOpenGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TwOpenGL.h; path = AntTweakBar/src/TwOpenGL.h; sourceTree = "<group>"; };
+		049DB72328ACEAB800D9C358 /* LoadOGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoadOGL.h; path = AntTweakBar/src/LoadOGL.h; sourceTree = "<group>"; };
+		049DB72428ACEAB800D9C358 /* TwColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TwColors.h; path = AntTweakBar/src/TwColors.h; sourceTree = "<group>"; };
+		049DB72628ACEAB800D9C358 /* TwOpenGL.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; name = TwOpenGL.cpp; path = AntTweakBar/src/TwOpenGL.cpp; sourceTree = "<group>"; };
+		049DB72728ACEAB800D9C358 /* TwOpenGLCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TwOpenGLCore.h; path = AntTweakBar/src/TwOpenGLCore.h; sourceTree = "<group>"; };
+		049DB72828ACEAB800D9C358 /* TwMgr.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; name = TwMgr.cpp; path = AntTweakBar/src/TwMgr.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -582,6 +641,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		043A98DF28A7421100BCFAB0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		049DB6F128ACDFCC00D9C358 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		049DB6FD28ACEA4F00D9C358 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -823,9 +896,11 @@
 				043A98B628A7416D00BCFAB0 /* vox.base */,
 				043A98E328A7421100BCFAB0 /* test.base */,
 				043A98C528A7418500BCFAB0 /* vox.pbd */,
+				049DB6F528ACDFCC00D9C358 /* apps.pbd */,
 				043A98D428A7418E00BCFAB0 /* vox.sph */,
 				040CC05B28A91A3B003AA16E /* test.sph */,
 				043A98A928A7410200BCFAB0 /* apps */,
+				049DB70028ACEA4F00D9C358 /* third_party */,
 				043A98A828A7410200BCFAB0 /* Products */,
 				040CBEE528A8E11E003AA16E /* Frameworks */,
 			);
@@ -840,6 +915,8 @@
 				043A98D328A7418E00BCFAB0 /* libvox.sph.a */,
 				043A98E228A7421100BCFAB0 /* test.base */,
 				040CC05A28A91A3B003AA16E /* test.sph */,
+				049DB6F428ACDFCC00D9C358 /* apps.pbd */,
+				049DB6FF28ACEA4F00D9C358 /* libthird_party.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1066,6 +1143,44 @@
 			name = collision_detections;
 			sourceTree = "<group>";
 		};
+		049DB6F528ACDFCC00D9C358 /* apps.pbd */ = {
+			isa = PBXGroup;
+			children = (
+				049DB6F628ACDFCC00D9C358 /* main.cpp */,
+			);
+			path = apps.pbd;
+			sourceTree = "<group>";
+		};
+		049DB70028ACEA4F00D9C358 /* third_party */ = {
+			isa = PBXGroup;
+			children = (
+				049DB70A28ACEA9400D9C358 /* AntTweakBar.h */,
+				049DB71528ACEAB800D9C358 /* AntPerfTimer.h */,
+				049DB72328ACEAB800D9C358 /* LoadOGL.h */,
+				049DB71C28ACEAB800D9C358 /* LoadOGL.cpp */,
+				049DB71028ACEAB700D9C358 /* LoadOGLCore.h */,
+				049DB72028ACEAB800D9C358 /* LoadOGLCore.cpp */,
+				049DB71628ACEAB800D9C358 /* MiniGLFW.h */,
+				049DB71F28ACEAB800D9C358 /* TwBar.h */,
+				049DB71728ACEAB800D9C358 /* TwBar.cpp */,
+				049DB72428ACEAB800D9C358 /* TwColors.h */,
+				049DB71B28ACEAB800D9C358 /* TwColors.cpp */,
+				049DB71828ACEAB800D9C358 /* TwEventGLFW.c */,
+				049DB71428ACEAB800D9C358 /* TwFonts.h */,
+				049DB70E28ACEAB700D9C358 /* TwFonts.cpp */,
+				049DB71928ACEAB800D9C358 /* TwGraph.h */,
+				049DB70F28ACEAB700D9C358 /* TwMgr.h */,
+				049DB72828ACEAB800D9C358 /* TwMgr.cpp */,
+				049DB72128ACEAB800D9C358 /* TwOpenGL.h */,
+				049DB72628ACEAB800D9C358 /* TwOpenGL.cpp */,
+				049DB72728ACEAB800D9C358 /* TwOpenGLCore.h */,
+				049DB71228ACEAB800D9C358 /* TwOpenGLCore.cpp */,
+				049DB70D28ACEAB700D9C358 /* TwPrecomp.h */,
+				049DB71E28ACEAB800D9C358 /* TwPrecomp.cpp */,
+			);
+			path = third_party;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -1206,6 +1321,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		049DB6FB28ACEA4F00D9C358 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				049DB72E28ACEAB800D9C358 /* LoadOGLCore.h in Headers */,
+				049DB74128ACEAB800D9C358 /* LoadOGL.h in Headers */,
+				049DB73428ACEAB800D9C358 /* MiniGLFW.h in Headers */,
+				049DB70B28ACEA9400D9C358 /* AntTweakBar.h in Headers */,
+				049DB73F28ACEAB800D9C358 /* TwOpenGL.h in Headers */,
+				049DB73728ACEAB800D9C358 /* TwGraph.h in Headers */,
+				049DB73228ACEAB800D9C358 /* TwFonts.h in Headers */,
+				049DB73D28ACEAB800D9C358 /* TwBar.h in Headers */,
+				049DB73328ACEAB800D9C358 /* AntPerfTimer.h in Headers */,
+				049DB74228ACEAB800D9C358 /* TwColors.h in Headers */,
+				049DB72D28ACEAB800D9C358 /* TwMgr.h in Headers */,
+				049DB72B28ACEAB800D9C358 /* TwPrecomp.h in Headers */,
+				049DB74528ACEAB800D9C358 /* TwOpenGLCore.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
@@ -1315,6 +1450,40 @@
 			productReference = 043A98E228A7421100BCFAB0 /* test.base */;
 			productType = "com.apple.product-type.tool";
 		};
+		049DB6F328ACDFCC00D9C358 /* apps.pbd */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 049DB6FA28ACDFCC00D9C358 /* Build configuration list for PBXNativeTarget "apps.pbd" */;
+			buildPhases = (
+				049DB6F028ACDFCC00D9C358 /* Sources */,
+				049DB6F128ACDFCC00D9C358 /* Frameworks */,
+				049DB6F228ACDFCC00D9C358 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = apps.pbd;
+			productName = apps.pbd;
+			productReference = 049DB6F428ACDFCC00D9C358 /* apps.pbd */;
+			productType = "com.apple.product-type.tool";
+		};
+		049DB6FE28ACEA4F00D9C358 /* third_party */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 049DB70728ACEA4F00D9C358 /* Build configuration list for PBXNativeTarget "third_party" */;
+			buildPhases = (
+				049DB6FB28ACEA4F00D9C358 /* Headers */,
+				049DB6FC28ACEA4F00D9C358 /* Sources */,
+				049DB6FD28ACEA4F00D9C358 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = third_party;
+			productName = third_party;
+			productReference = 049DB6FF28ACEA4F00D9C358 /* libthird_party.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -1342,6 +1511,12 @@
 					043A98E128A7421100BCFAB0 = {
 						CreatedOnToolsVersion = 13.4.1;
 					};
+					049DB6F328ACDFCC00D9C358 = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+					049DB6FE28ACEA4F00D9C358 = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
 				};
 			};
 			buildConfigurationList = 043A98A228A7410200BCFAB0 /* Build configuration list for PBXProject "DigitalFlex2" */;
@@ -1363,6 +1538,8 @@
 				043A98D228A7418E00BCFAB0 /* vox.sph */,
 				040CC05928A91A3B003AA16E /* test.sph */,
 				043A98A628A7410200BCFAB0 /* apps */,
+				049DB6F328ACDFCC00D9C358 /* apps.pbd */,
+				049DB6FE28ACEA4F00D9C358 /* third_party */,
 			);
 		};
 /* End PBXProject section */
@@ -1510,6 +1687,31 @@
 			files = (
 				043A98EC28A742D200BCFAB0 /* test_parameter_object.cpp in Sources */,
 				043A98ED28A742D200BCFAB0 /* parameter_tests.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		049DB6F028ACDFCC00D9C358 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				049DB6F728ACDFCC00D9C358 /* main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		049DB6FC28ACEA4F00D9C358 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				049DB73A28ACEAB800D9C358 /* LoadOGL.cpp in Sources */,
+				049DB74628ACEAB800D9C358 /* TwMgr.cpp in Sources */,
+				049DB73528ACEAB800D9C358 /* TwBar.cpp in Sources */,
+				049DB73028ACEAB800D9C358 /* TwOpenGLCore.cpp in Sources */,
+				049DB72C28ACEAB800D9C358 /* TwFonts.cpp in Sources */,
+				049DB73628ACEAB800D9C358 /* TwEventGLFW.c in Sources */,
+				049DB73928ACEAB800D9C358 /* TwColors.cpp in Sources */,
+				049DB73E28ACEAB800D9C358 /* LoadOGLCore.cpp in Sources */,
+				049DB74428ACEAB800D9C358 /* TwOpenGL.cpp in Sources */,
+				049DB73C28ACEAB800D9C358 /* TwPrecomp.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1896,6 +2098,54 @@
 			};
 			name = Release;
 		};
+		049DB6F828ACDFCC00D9C358 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4SL5L673UU;
+				ENABLE_HARDENED_RUNTIME = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		049DB6F928ACDFCC00D9C358 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4SL5L673UU;
+				ENABLE_HARDENED_RUNTIME = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		049DB70828ACEA4F00D9C358 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4SL5L673UU;
+				EXECUTABLE_PREFIX = lib;
+				GCC_ENABLE_CPP_EXCEPTIONS = YES;
+				GCC_ENABLE_CPP_RTTI = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		049DB70928ACEA4F00D9C358 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4SL5L673UU;
+				EXECUTABLE_PREFIX = lib;
+				GCC_ENABLE_CPP_EXCEPTIONS = YES;
+				GCC_ENABLE_CPP_RTTI = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1958,6 +2208,24 @@
 			buildConfigurations = (
 				043A98E728A7421100BCFAB0 /* Debug */,
 				043A98E828A7421100BCFAB0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		049DB6FA28ACDFCC00D9C358 /* Build configuration list for PBXNativeTarget "apps.pbd" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				049DB6F828ACDFCC00D9C358 /* Debug */,
+				049DB6F928ACDFCC00D9C358 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		049DB70728ACEA4F00D9C358 /* Build configuration list for PBXNativeTarget "third_party" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				049DB70828ACEA4F00D9C358 /* Debug */,
+				049DB70928ACEA4F00D9C358 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

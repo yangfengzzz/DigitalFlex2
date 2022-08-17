@@ -54,6 +54,8 @@ if (OPENMP_FOUND)
 endif ()
 
 ####################################################
+add_subdirectory(third_party/AntTweakBar)
+
 # Add base library
 add_subdirectory(vox.base)
 add_subdirectory(test.base)
@@ -61,6 +63,7 @@ add_subdirectory(test.base)
 ## Add pbd library
 add_subdirectory(vox.pbd)
 add_subdirectory(py.pbd)
+add_subdirectory(apps.pbd)
 
 # Add sph library
 add_subdirectory(vox.sph)
