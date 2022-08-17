@@ -254,6 +254,17 @@
 		049DB74428ACEAB800D9C358 /* TwOpenGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 049DB72628ACEAB800D9C358 /* TwOpenGL.cpp */; };
 		049DB74528ACEAB800D9C358 /* TwOpenGLCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 049DB72728ACEAB800D9C358 /* TwOpenGLCore.h */; };
 		049DB74628ACEAB800D9C358 /* TwMgr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 049DB72828ACEAB800D9C358 /* TwMgr.cpp */; };
+		049DB75628AD07C700D9C358 /* mini_gl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 049DB74B28AD07C700D9C358 /* mini_gl.cpp */; };
+		049DB75728AD07C700D9C358 /* shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 049DB74D28AD07C700D9C358 /* shader.cpp */; };
+		049DB75828AD07C700D9C358 /* demo_base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 049DB75128AD07C700D9C358 /* demo_base.cpp */; };
+		049DB75928AD07C700D9C358 /* glad.c in Sources */ = {isa = PBXBuildFile; fileRef = 049DB75328AD07C700D9C358 /* glad.c */; };
+		049DB75A28AD07C700D9C358 /* tweakbar_parameters.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 049DB75428AD07C700D9C358 /* tweakbar_parameters.cpp */; };
+		049DB76128AD085500D9C358 /* libthird_party.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 049DB6FF28ACEA4F00D9C358 /* libthird_party.a */; };
+		049DB76228AD085500D9C358 /* libvox.base.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 043A98B528A7416D00BCFAB0 /* libvox.base.a */; };
+		049DB76328AD085500D9C358 /* libvox.pbd.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 043A98C428A7418500BCFAB0 /* libvox.pbd.a */; };
+		049DB76528AD086B00D9C358 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049DB76428AD086B00D9C358 /* Cocoa.framework */; };
+		049DB76728AD087800D9C358 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049DB76628AD087800D9C358 /* OpenGL.framework */; };
+		049DB76928AD08B900D9C358 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049DB76828AD08B900D9C358 /* IOKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -284,6 +295,27 @@
 			proxyType = 1;
 			remoteGlobalIDString = 043A98D228A7418E00BCFAB0;
 			remoteInfo = vox.sph;
+		};
+		049DB75B28AD084E00D9C358 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 043A989F28A7410200BCFAB0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 049DB6FE28ACEA4F00D9C358;
+			remoteInfo = third_party;
+		};
+		049DB75D28AD084E00D9C358 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 043A989F28A7410200BCFAB0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 043A98B428A7416D00BCFAB0;
+			remoteInfo = vox.base;
+		};
+		049DB75F28AD084E00D9C358 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 043A989F28A7410200BCFAB0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 043A98C328A7418500BCFAB0;
+			remoteInfo = vox.pbd;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -598,6 +630,22 @@
 		049DB72628ACEAB800D9C358 /* TwOpenGL.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; name = TwOpenGL.cpp; path = AntTweakBar/src/TwOpenGL.cpp; sourceTree = "<group>"; };
 		049DB72728ACEAB800D9C358 /* TwOpenGLCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TwOpenGLCore.h; path = AntTweakBar/src/TwOpenGLCore.h; sourceTree = "<group>"; };
 		049DB72828ACEAB800D9C358 /* TwMgr.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; name = TwMgr.cpp; path = AntTweakBar/src/TwMgr.cpp; sourceTree = "<group>"; };
+		049DB74928AD07C700D9C358 /* tweakbar_parameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tweakbar_parameters.h; sourceTree = "<group>"; };
+		049DB74A28AD07C700D9C358 /* selection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = selection.h; sourceTree = "<group>"; };
+		049DB74B28AD07C700D9C358 /* mini_gl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mini_gl.cpp; sourceTree = "<group>"; };
+		049DB74C28AD07C700D9C358 /* mini_gl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mini_gl.h; sourceTree = "<group>"; };
+		049DB74D28AD07C700D9C358 /* shader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = shader.cpp; sourceTree = "<group>"; };
+		049DB74E28AD07C700D9C358 /* khrplatform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = khrplatform.h; sourceTree = "<group>"; };
+		049DB74F28AD07C700D9C358 /* shader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shader.h; sourceTree = "<group>"; };
+		049DB75028AD07C700D9C358 /* demo_base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = demo_base.h; sourceTree = "<group>"; };
+		049DB75128AD07C700D9C358 /* demo_base.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = demo_base.cpp; sourceTree = "<group>"; };
+		049DB75228AD07C700D9C358 /* glad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glad.h; sourceTree = "<group>"; };
+		049DB75328AD07C700D9C358 /* glad.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = glad.c; sourceTree = "<group>"; };
+		049DB75428AD07C700D9C358 /* tweakbar_parameters.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tweakbar_parameters.cpp; sourceTree = "<group>"; };
+		049DB75528AD07C700D9C358 /* visualization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = visualization.h; sourceTree = "<group>"; };
+		049DB76428AD086B00D9C358 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		049DB76628AD087800D9C358 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		049DB76828AD08B900D9C358 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -651,6 +699,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				049DB76928AD08B900D9C358 /* IOKit.framework in Frameworks */,
+				049DB76728AD087800D9C358 /* OpenGL.framework in Frameworks */,
+				049DB76528AD086B00D9C358 /* Cocoa.framework in Frameworks */,
+				049DB76128AD085500D9C358 /* libthird_party.a in Frameworks */,
+				049DB76228AD085500D9C358 /* libvox.base.a in Frameworks */,
+				049DB76328AD085500D9C358 /* libvox.pbd.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -667,6 +721,9 @@
 		040CBEE528A8E11E003AA16E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				049DB76828AD08B900D9C358 /* IOKit.framework */,
+				049DB76628AD087800D9C358 /* OpenGL.framework */,
+				049DB76428AD086B00D9C358 /* Cocoa.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1146,6 +1203,7 @@
 		049DB6F528ACDFCC00D9C358 /* apps.pbd */ = {
 			isa = PBXGroup;
 			children = (
+				049DB74828AD07BA00D9C358 /* common */,
 				049DB6F628ACDFCC00D9C358 /* main.cpp */,
 			);
 			path = apps.pbd;
@@ -1179,6 +1237,26 @@
 				049DB71E28ACEAB800D9C358 /* TwPrecomp.cpp */,
 			);
 			path = third_party;
+			sourceTree = "<group>";
+		};
+		049DB74828AD07BA00D9C358 /* common */ = {
+			isa = PBXGroup;
+			children = (
+				049DB74E28AD07C700D9C358 /* khrplatform.h */,
+				049DB75228AD07C700D9C358 /* glad.h */,
+				049DB75328AD07C700D9C358 /* glad.c */,
+				049DB75028AD07C700D9C358 /* demo_base.h */,
+				049DB75128AD07C700D9C358 /* demo_base.cpp */,
+				049DB74C28AD07C700D9C358 /* mini_gl.h */,
+				049DB74B28AD07C700D9C358 /* mini_gl.cpp */,
+				049DB74F28AD07C700D9C358 /* shader.h */,
+				049DB74D28AD07C700D9C358 /* shader.cpp */,
+				049DB74A28AD07C700D9C358 /* selection.h */,
+				049DB75528AD07C700D9C358 /* visualization.h */,
+				049DB74928AD07C700D9C358 /* tweakbar_parameters.h */,
+				049DB75428AD07C700D9C358 /* tweakbar_parameters.cpp */,
+			);
+			path = common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1461,6 +1539,9 @@
 			buildRules = (
 			);
 			dependencies = (
+				049DB75C28AD084E00D9C358 /* PBXTargetDependency */,
+				049DB75E28AD084E00D9C358 /* PBXTargetDependency */,
+				049DB76028AD084E00D9C358 /* PBXTargetDependency */,
 			);
 			name = apps.pbd;
 			productName = apps.pbd;
@@ -1535,10 +1616,10 @@
 				043A98B428A7416D00BCFAB0 /* vox.base */,
 				043A98E128A7421100BCFAB0 /* test.base */,
 				043A98C328A7418500BCFAB0 /* vox.pbd */,
+				049DB6F328ACDFCC00D9C358 /* apps.pbd */,
 				043A98D228A7418E00BCFAB0 /* vox.sph */,
 				040CC05928A91A3B003AA16E /* test.sph */,
 				043A98A628A7410200BCFAB0 /* apps */,
-				049DB6F328ACDFCC00D9C358 /* apps.pbd */,
 				049DB6FE28ACEA4F00D9C358 /* third_party */,
 			);
 		};
@@ -1694,7 +1775,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				049DB75A28AD07C700D9C358 /* tweakbar_parameters.cpp in Sources */,
+				049DB75928AD07C700D9C358 /* glad.c in Sources */,
+				049DB75728AD07C700D9C358 /* shader.cpp in Sources */,
+				049DB75828AD07C700D9C358 /* demo_base.cpp in Sources */,
 				049DB6F728ACDFCC00D9C358 /* main.cpp in Sources */,
+				049DB75628AD07C700D9C358 /* mini_gl.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1737,6 +1823,21 @@
 			isa = PBXTargetDependency;
 			target = 043A98D228A7418E00BCFAB0 /* vox.sph */;
 			targetProxy = 040CC06828A91A8D003AA16E /* PBXContainerItemProxy */;
+		};
+		049DB75C28AD084E00D9C358 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 049DB6FE28ACEA4F00D9C358 /* third_party */;
+			targetProxy = 049DB75B28AD084E00D9C358 /* PBXContainerItemProxy */;
+		};
+		049DB75E28AD084E00D9C358 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 043A98B428A7416D00BCFAB0 /* vox.base */;
+			targetProxy = 049DB75D28AD084E00D9C358 /* PBXContainerItemProxy */;
+		};
+		049DB76028AD084E00D9C358 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 043A98C328A7418500BCFAB0 /* vox.pbd */;
+			targetProxy = 049DB75F28AD084E00D9C358 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -2104,7 +2205,19 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4SL5L673UU;
 				ENABLE_HARDENED_RUNTIME = YES;
+				HEADER_SEARCH_PATHS = /Users/yangfeng/Desktop/DigitalFlex2;
+				LIBRARY_SEARCH_PATHS = third_party/glfw/build/src;
+				OTHER_LDFLAGS = "-lglfw3";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SYSTEM_HEADER_SEARCH_PATHS = (
+					./third_party/eigen,
+					./third_party/libmorton/include,
+					./third_party/spdlog/include,
+					./third_party/nlohmann/include,
+					./third_party/AntTweakBar/include,
+					./third_party/glfw/include,
+					/opt/homebrew/include,
+				);
 			};
 			name = Debug;
 		};
@@ -2114,7 +2227,19 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4SL5L673UU;
 				ENABLE_HARDENED_RUNTIME = YES;
+				HEADER_SEARCH_PATHS = /Users/yangfeng/Desktop/DigitalFlex2;
+				LIBRARY_SEARCH_PATHS = third_party/glfw/build/src;
+				OTHER_LDFLAGS = "-lglfw3";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SYSTEM_HEADER_SEARCH_PATHS = (
+					./third_party/eigen,
+					./third_party/libmorton/include,
+					./third_party/spdlog/include,
+					./third_party/nlohmann/include,
+					./third_party/AntTweakBar/include,
+					./third_party/glfw/include,
+					/opt/homebrew/include,
+				);
 			};
 			name = Release;
 		};

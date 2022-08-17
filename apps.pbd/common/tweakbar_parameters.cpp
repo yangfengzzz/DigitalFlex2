@@ -4,8 +4,6 @@
 //  personal capacity and am not conveying any rights to any intellectual
 //  property of any third parties.
 
-#pragma once
-
 #include "apps.pbd/common/tweakbar_parameters.h"
 
 #include <memory>
