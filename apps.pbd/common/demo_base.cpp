@@ -17,8 +17,6 @@
 #include "vox.pbd/distance_field_collision_detection.h"
 #include "vox.pbd/simulation.h"
 
-INIT_TIMING
-
 using namespace vox;
 using namespace std;
 

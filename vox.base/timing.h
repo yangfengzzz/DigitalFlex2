@@ -33,14 +33,6 @@ namespace vox {
         vox::Timing::stopTiming(true, timing_timerId); \
     }
 
-#define INIT_TIMING                                                        \
-    int vox::IDFactory::id = 0;                                            \
-    std::unordered_map<int, vox::AverageTime> vox::Timing::m_averageTimes; \
-    std::stack<vox::TimingHelper> vox::Timing::m_timingStack;              \
-    bool vox::Timing::m_dontPrintTimes = false;                            \
-    unsigned int vox::Timing::m_startCounter = 0;                          \
-    unsigned int vox::Timing::m_stopCounter = 0;
-
 /** \brief Struct to store a time measurement.
  */
 struct TimingHelper {

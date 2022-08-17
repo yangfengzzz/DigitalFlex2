@@ -11,8 +11,6 @@
 #include "vox.base/logging.h"
 #include "vox.base/timing.h"
 
-INIT_TIMING
-
 namespace py = pybind11;
 
 void CollisionDetectionModule(py::module);

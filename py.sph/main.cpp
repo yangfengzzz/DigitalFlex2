@@ -6,8 +6,6 @@
 
 #include <pybind11/pybind11.h>
 
-// INIT_LOGGING
-// INIT_TIMING
 // INIT_COUNTING
 // TODO: Move this to simulator base class
 

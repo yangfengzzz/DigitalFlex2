@@ -37,7 +37,6 @@
 #include "pySPlisHSPlasH/Embedded.h"
 #endif
 
-INIT_TIMING
 INIT_COUNTING
 
 using namespace vox;

@@ -20,8 +20,6 @@
 #define new DEBUG_NEW
 #endif
 
-INIT_TIMING
-
 using namespace vox;
 using namespace std;
 

@@ -191,6 +191,7 @@
 		040CC06428A91A50003AA16E /* read_write_state_tests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 040CC06228A91A50003AA16E /* read_write_state_tests.cpp */; };
 		040CC06A28A91A92003AA16E /* libvox.base.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 043A98B528A7416D00BCFAB0 /* libvox.base.a */; };
 		040CC06B28A91A92003AA16E /* libvox.sph.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 043A98D328A7418E00BCFAB0 /* libvox.sph.a */; };
+		0429EDA728AD3E2D00250E4F /* fluid_app.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 049DB78528AD3BEF00D9C358 /* fluid_app.cpp */; };
 		043A98AB28A7410200BCFAB0 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 043A98AA28A7410200BCFAB0 /* main.cpp */; };
 		043A98EC28A742D200BCFAB0 /* test_parameter_object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 043A98E928A742D200BCFAB0 /* test_parameter_object.cpp */; };
 		043A98ED28A742D200BCFAB0 /* parameter_tests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 043A98EA28A742D200BCFAB0 /* parameter_tests.cpp */; };
@@ -260,27 +261,11 @@
 		049DB76528AD086B00D9C358 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049DB76428AD086B00D9C358 /* Cocoa.framework */; };
 		049DB76728AD087800D9C358 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049DB76628AD087800D9C358 /* OpenGL.framework */; };
 		049DB76928AD08B900D9C358 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049DB76828AD08B900D9C358 /* IOKit.framework */; };
-		049DB77828AD3BEA00D9C358 /* bar_app.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 049DB76E28AD3BE900D9C358 /* bar_app.cpp */; };
-		049DB77928AD3BEA00D9C358 /* cloth_app.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 049DB76F28AD3BE900D9C358 /* cloth_app.cpp */; };
-		049DB77A28AD3BEA00D9C358 /* cloth_collision_app.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 049DB77028AD3BE900D9C358 /* cloth_collision_app.cpp */; };
-		049DB77B28AD3BEA00D9C358 /* cosserat_rods_app.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 049DB77128AD3BE900D9C358 /* cosserat_rods_app.cpp */; };
-		049DB77C28AD3BEA00D9C358 /* deformable_collision_app.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 049DB77228AD3BE900D9C358 /* deformable_collision_app.cpp */; };
-		049DB77D28AD3BEA00D9C358 /* rigid_body_cloth_coupling_app.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 049DB77328AD3BEA00D9C358 /* rigid_body_cloth_coupling_app.cpp */; };
-		049DB77E28AD3BEA00D9C358 /* rigid_body_collision_app.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 049DB77428AD3BEA00D9C358 /* rigid_body_collision_app.cpp */; };
-		049DB77F28AD3BEA00D9C358 /* chain_app.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 049DB77528AD3BEA00D9C358 /* chain_app.cpp */; };
-		049DB78028AD3BEA00D9C358 /* joint_app.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 049DB77628AD3BEA00D9C358 /* joint_app.cpp */; };
-		049DB78128AD3BEA00D9C358 /* scene_loader_app.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 049DB77728AD3BEA00D9C358 /* scene_loader_app.cpp */; };
 		049DB78728AD3BEF00D9C358 /* fluid_model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 049DB78428AD3BEF00D9C358 /* fluid_model.cpp */; };
-		049DB78828AD3BEF00D9C358 /* fluid_app.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 049DB78528AD3BEF00D9C358 /* fluid_app.cpp */; };
 		049DB78928AD3BEF00D9C358 /* fluid_model_ts.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 049DB78628AD3BEF00D9C358 /* fluid_model_ts.cpp */; };
-		049DB79028AD3BF500D9C358 /* generic_particle_constraints_app.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 049DB78A28AD3BF400D9C358 /* generic_particle_constraints_app.cpp */; };
-		049DB79128AD3BF500D9C358 /* generic_rigid_body_constraints_app.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 049DB78B28AD3BF400D9C358 /* generic_rigid_body_constraints_app.cpp */; };
 		049DB79228AD3BF500D9C358 /* generic_constraints_model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 049DB78C28AD3BF400D9C358 /* generic_constraints_model.cpp */; };
 		049DB79328AD3BF500D9C358 /* generic_constraints.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 049DB78F28AD3BF500D9C358 /* generic_constraints.cpp */; };
-		049DB79828AD3BFA00D9C358 /* stretch_bending_twisting_app.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 049DB79428AD3BFA00D9C358 /* stretch_bending_twisting_app.cpp */; };
 		049DB79928AD3BFA00D9C358 /* stiff_rods_scene_loader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 049DB79528AD3BFA00D9C358 /* stiff_rods_scene_loader.cpp */; };
-		049DB79A28AD3BFA00D9C358 /* direct_position_based_solver_for_stiff_rods_app.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 049DB79728AD3BFA00D9C358 /* direct_position_based_solver_for_stiff_rods_app.cpp */; };
-		049DB7A228AD3C0000D9C358 /* position_based_elastic_rods_app.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 049DB79B28AD3C0000D9C358 /* position_based_elastic_rods_app.cpp */; };
 		049DB7A328AD3C0000D9C358 /* position_based_elastic_rods_model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 049DB79C28AD3C0000D9C358 /* position_based_elastic_rods_model.cpp */; };
 		049DB7A428AD3C0000D9C358 /* position_based_elastic_rods_tsc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 049DB79D28AD3C0000D9C358 /* position_based_elastic_rods_tsc.cpp */; };
 		049DB7A528AD3C0000D9C358 /* position_based_elastic_rods_constraints.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 049DB79E28AD3C0000D9C358 /* position_based_elastic_rods_constraints.cpp */; };
@@ -591,6 +576,7 @@
 		040CC06128A91A50003AA16E /* kernel_tests.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = kernel_tests.cpp; sourceTree = "<group>"; };
 		040CC06228A91A50003AA16E /* read_write_state_tests.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = read_write_state_tests.cpp; sourceTree = "<group>"; };
 		040CC06528A91A5B003AA16E /* test.sph.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = test.sph.entitlements; sourceTree = "<group>"; };
+		0429EDA828AD3E4100250E4F /* apps.pbd.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = apps.pbd.entitlements; sourceTree = "<group>"; };
 		043A98A728A7410200BCFAB0 /* apps */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = apps; sourceTree = BUILT_PRODUCTS_DIR; };
 		043A98AA28A7410200BCFAB0 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		043A98B528A7416D00BCFAB0 /* libvox.base.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libvox.base.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1258,6 +1244,7 @@
 			isa = PBXGroup;
 			children = (
 				049DB74828AD07BA00D9C358 /* common */,
+				0429EDA828AD3E4100250E4F /* apps.pbd.entitlements */,
 				049DB76E28AD3BE900D9C358 /* bar_app.cpp */,
 				049DB77528AD3BEA00D9C358 /* chain_app.cpp */,
 				049DB76F28AD3BE900D9C358 /* cloth_app.cpp */,
@@ -1343,10 +1330,10 @@
 		049DB76B28AD221000D9C358 /* stiff_rods */ = {
 			isa = PBXGroup;
 			children = (
+				049DB79428AD3BFA00D9C358 /* stretch_bending_twisting_app.cpp */,
 				049DB79728AD3BFA00D9C358 /* direct_position_based_solver_for_stiff_rods_app.cpp */,
 				049DB79528AD3BFA00D9C358 /* stiff_rods_scene_loader.cpp */,
 				049DB79628AD3BFA00D9C358 /* stiff_rods_scene_loader.h */,
-				049DB79428AD3BFA00D9C358 /* stretch_bending_twisting_app.cpp */,
 			);
 			path = stiff_rods;
 			sourceTree = "<group>";
@@ -1354,12 +1341,12 @@
 		049DB76C28AD222900D9C358 /* generic_constraints */ = {
 			isa = PBXGroup;
 			children = (
+				049DB78A28AD3BF400D9C358 /* generic_particle_constraints_app.cpp */,
+				049DB78B28AD3BF400D9C358 /* generic_rigid_body_constraints_app.cpp */,
 				049DB78C28AD3BF400D9C358 /* generic_constraints_model.cpp */,
 				049DB78D28AD3BF500D9C358 /* generic_constraints_model.h */,
 				049DB78F28AD3BF500D9C358 /* generic_constraints.cpp */,
 				049DB78E28AD3BF500D9C358 /* generic_constraints.h */,
-				049DB78A28AD3BF400D9C358 /* generic_particle_constraints_app.cpp */,
-				049DB78B28AD3BF400D9C358 /* generic_rigid_body_constraints_app.cpp */,
 			);
 			path = generic_constraints;
 			sourceTree = "<group>";
@@ -1892,34 +1879,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				049DB79A28AD3BFA00D9C358 /* direct_position_based_solver_for_stiff_rods_app.cpp in Sources */,
 				049DB7A328AD3C0000D9C358 /* position_based_elastic_rods_model.cpp in Sources */,
 				049DB79328AD3BF500D9C358 /* generic_constraints.cpp in Sources */,
-				049DB77928AD3BEA00D9C358 /* cloth_app.cpp in Sources */,
-				049DB78828AD3BEF00D9C358 /* fluid_app.cpp in Sources */,
-				049DB79128AD3BF500D9C358 /* generic_rigid_body_constraints_app.cpp in Sources */,
 				049DB7A528AD3C0000D9C358 /* position_based_elastic_rods_constraints.cpp in Sources */,
 				049DB75A28AD07C700D9C358 /* tweakbar_parameters.cpp in Sources */,
-				049DB77D28AD3BEA00D9C358 /* rigid_body_cloth_coupling_app.cpp in Sources */,
-				049DB77828AD3BEA00D9C358 /* bar_app.cpp in Sources */,
 				049DB78728AD3BEF00D9C358 /* fluid_model.cpp in Sources */,
-				049DB77E28AD3BEA00D9C358 /* rigid_body_collision_app.cpp in Sources */,
 				049DB75928AD07C700D9C358 /* glad.c in Sources */,
-				049DB77B28AD3BEA00D9C358 /* cosserat_rods_app.cpp in Sources */,
-				049DB7A228AD3C0000D9C358 /* position_based_elastic_rods_app.cpp in Sources */,
 				049DB78928AD3BEF00D9C358 /* fluid_model_ts.cpp in Sources */,
-				049DB79028AD3BF500D9C358 /* generic_particle_constraints_app.cpp in Sources */,
-				049DB78128AD3BEA00D9C358 /* scene_loader_app.cpp in Sources */,
-				049DB79828AD3BFA00D9C358 /* stretch_bending_twisting_app.cpp in Sources */,
 				049DB75728AD07C700D9C358 /* shader.cpp in Sources */,
-				049DB78028AD3BEA00D9C358 /* joint_app.cpp in Sources */,
-				049DB77F28AD3BEA00D9C358 /* chain_app.cpp in Sources */,
+				0429EDA728AD3E2D00250E4F /* fluid_app.cpp in Sources */,
 				049DB79928AD3BFA00D9C358 /* stiff_rods_scene_loader.cpp in Sources */,
 				049DB79228AD3BF500D9C358 /* generic_constraints_model.cpp in Sources */,
-				049DB77A28AD3BEA00D9C358 /* cloth_collision_app.cpp in Sources */,
 				049DB75828AD07C700D9C358 /* demo_base.cpp in Sources */,
 				049DB75628AD07C700D9C358 /* mini_gl.cpp in Sources */,
-				049DB77C28AD3BEA00D9C358 /* deformable_collision_app.cpp in Sources */,
 				049DB7A428AD3C0000D9C358 /* position_based_elastic_rods_tsc.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2342,6 +2314,7 @@
 		049DB6F828ACDFCC00D9C358 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = apps.pbd/apps.pbd.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4SL5L673UU;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -2370,6 +2343,7 @@
 		049DB6F928ACDFCC00D9C358 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = apps.pbd/apps.pbd.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4SL5L673UU;
 				ENABLE_HARDENED_RUNTIME = YES;
