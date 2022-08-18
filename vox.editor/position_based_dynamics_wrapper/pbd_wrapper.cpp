@@ -4,23 +4,23 @@
 //  personal capacity and am not conveying any rights to any intellectual
 //  property of any third parties.
 
-#include "vox.sph/position_based_dynamics_wrapper/pbd_wrapper.h"
+#include "vox.editor/position_based_dynamics_wrapper/pbd_wrapper.h"
 
 #include <cmath>
 #include <iostream>
 
-#include "vox.base/discrete_grid/triangle_mesh_distance.h"
-#include "vox.base/mesh/triangle_mesh.h"
 #include "vox.base/common.h"
-#include "vox.pbd/file_system.h"
-#include "vox.pbd/obj_loader.h"
+#include "vox.base/discrete_grid/triangle_mesh_distance.h"
+#include "vox.base/file_system.h"
+#include "vox.base/mesh/triangle_mesh.h"
+#include "vox.base/obj_loader.h"
+#include "vox.base/time_manager.h"
+#include "vox.base/timing.h"
 #include "vox.pbd/scene_loader.h"
 #include "vox.pbd/simulation.h"
 #include "vox.pbd/tet_gen_loader.h"
-#include "vox.pbd/time_manager.h"
 #include "vox.pbd/time_step.h"
 #include "vox.pbd/time_step_controller.h"
-#include "vox.base/timing.h"
 
 using namespace Eigen;
 using namespace std;
@@ -757,8 +757,7 @@ void PBDWrapper::initTetModelConstraints() {
         const unsigned int offset = m_model.getTetModels()[cm]->getIndexOffset();
         const unsigned int nTets = m_model.getTetModels()[cm]->getParticleMesh().numTets();
         const unsigned int *tets = m_model.getTetModels()[cm]->getParticleMesh().getTets().data();
-        const utility::IndexedTetMesh::VerticesTets *vTets =
-                m_model.getTetModels()[cm]->getParticleMesh().getVertexTets().data();
+        const utility::IndexedTetMesh::VerticesTets& vTets = m_model.getTetModels()[cm]->getParticleMesh().getVertexTets();
         if (m_solidSimulationMethod == 1) {
             const unsigned int offset = m_model.getTetModels()[cm]->getIndexOffset();
             const unsigned int nEdges = m_model.getTetModels()[cm]->getParticleMesh().numEdges();

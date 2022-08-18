@@ -4,17 +4,18 @@
 //  personal capacity and am not conveying any rights to any intellectual
 //  property of any third parties.
 
-#include "vox.sph/position_based_dynamics_wrapper/pbd_boundary_simulator.h"
+#include "vox.editor/position_based_dynamics_wrapper/pbd_boundary_simulator.h"
 
 #include "vox.base/logging.h"
-#include "vox.sph/emitter.h"
-#include "vox.sph/gui/simulator_gui_base.h"
-#include "vox.sph/partio_reader_writer.h"
-#include "vox.sph/position_based_dynamics_wrapper/pbd_rigid_body.h"
-#include "vox.sph/scene_configuration.h"
-#include "vox.sph/simulation.h"
+#include "vox.base/partio_reader_writer.h"
+#include "vox.base/time_manager.h"
 #include "vox.base/timing.h"
-#include "vox.sph/utilities/surface_sampling.h"
+#include "vox.editor/gui/simulator_gui_base.h"
+#include "vox.editor/position_based_dynamics_wrapper/pbd_rigid_body.h"
+#include "vox.editor/scene_configuration.h"
+#include "vox.sph/emitter.h"
+#include "vox.sph/sampling/surface_sampling.h"
+#include "vox.sph/simulation.h"
 
 using namespace std;
 using namespace vox;

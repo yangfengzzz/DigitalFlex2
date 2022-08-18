@@ -9,7 +9,7 @@
 #include "vox.pbd/rigid_body.h"
 #include "vox.base/common.h"
 #include "vox.sph/rigid_body_object.h"
-#include "vox.sph/time_manager.h"
+#include "vox.base/time_manager.h"
 
 namespace vox {
 class PBDRigidBody : public RigidBodyObject {
