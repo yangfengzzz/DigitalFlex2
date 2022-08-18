@@ -4,7 +4,7 @@
 //  personal capacity and am not conveying any rights to any intellectual
 //  property of any third parties.
 
-#include "vox.sph/scene_configuration.h"
+#include "vox.editor/scene_configuration.h"
 
 using namespace vox;
 using namespace std;

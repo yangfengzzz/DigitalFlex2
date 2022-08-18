@@ -6,7 +6,7 @@
 
 #pragma once
 
-#include "vox.sph/exporter/exporter_base.h"
+#include "vox.editor/exporter/exporter_base.h"
 
 namespace vox {
 /** \brief Rigid body exporter for the OBJ format.

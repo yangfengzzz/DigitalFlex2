@@ -10,13 +10,13 @@
 
 namespace vox {
 class SimulatorBase;
-class TriangleMesh;
+class SimpleTriangleMesh;
 
 class StaticBoundarySimulator : public BoundarySimulator {
 protected:
     SimulatorBase *m_base;
 
-    static void loadObj(const std::string &filename, TriangleMesh &mesh, const Vector3r &scale);
+    static void loadObj(const std::string &filename, SimpleTriangleMesh &mesh, const Vector3r &scale);
 
 public:
     explicit StaticBoundarySimulator(SimulatorBase *base);

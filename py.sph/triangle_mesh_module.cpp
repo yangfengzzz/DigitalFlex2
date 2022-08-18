@@ -7,8 +7,8 @@
 #include <pybind11/pybind11.h>
 
 #include "common.h"
+#include "vox.sph/simple_triangle_mesh.h"
 #include "vox.sph/time_manager.h"
-#include "vox.sph/triangle_mesh.h"
 
 namespace py = pybind11;
 
@@ -19,31 +19,31 @@ void TriangleMeshModule(const py::module& m_sub) {
     // ---------------------------------------
     // Class Time Manager
     // ---------------------------------------
-    using Faces = vox::TriangleMesh::Faces;
-    using Normals = vox::TriangleMesh::Normals;
-    using Vertices = vox::TriangleMesh::Vertices;
+    using Faces = vox::SimpleTriangleMesh::Faces;
+    using Normals = vox::SimpleTriangleMesh::Normals;
+    using Vertices = vox::SimpleTriangleMesh::Vertices;
 
-    py::class_<vox::TriangleMesh>(m_sub, "TriangleMesh")
+    py::class_<vox::SimpleTriangleMesh>(m_sub, "TriangleMesh")
             .def(py::init<>())
-            .def("release", &vox::TriangleMesh::release)
-            .def("initMesh", &vox::TriangleMesh::initMesh)
-            .def("addFace", overload_cast_<const unsigned int* const>()(&vox::TriangleMesh::addFace))
-            .def("addFace", overload_cast_<const unsigned int* const>()(&vox::TriangleMesh::addFace))
-            .def("addVertex", &vox::TriangleMesh::addVertex)
+            .def("release", &vox::SimpleTriangleMesh::release)
+            .def("initMesh", &vox::SimpleTriangleMesh::initMesh)
+            .def("addFace", overload_cast_<const unsigned int* const>()(&vox::SimpleTriangleMesh::addFace))
+            .def("addFace", overload_cast_<const unsigned int* const>()(&vox::SimpleTriangleMesh::addFace))
+            .def("addVertex", &vox::SimpleTriangleMesh::addVertex)
 
-            .def("getFaces", (const Faces& (vox::TriangleMesh::*)() const)(&vox::TriangleMesh::getFaces))
+            .def("getFaces", (const Faces& (vox::SimpleTriangleMesh::*)() const)(&vox::SimpleTriangleMesh::getFaces))
             // .def("getFaces", (Faces & (vox::TriangleMesh::*)())(&vox::TriangleMesh::getFaces)) // TODO: wont work by
             // reference
-            .def("getFaceNormals", (const Normals& (vox::TriangleMesh::*)() const)(&vox::TriangleMesh::getFaceNormals))
+            .def("getFaceNormals", (const Normals& (vox::SimpleTriangleMesh::*)() const)(&vox::SimpleTriangleMesh::getFaceNormals))
             // .def("getFaceNormals", (Normals & (vox::TriangleMesh::*)())(&vox::TriangleMesh::getFaceNormals)) // TODO:
             // wont work by reference
             .def("getVertexNormals",
-                 (const Normals& (vox::TriangleMesh::*)() const)(&vox::TriangleMesh::getVertexNormals))
+                 (const Normals& (vox::SimpleTriangleMesh::*)() const)(&vox::SimpleTriangleMesh::getVertexNormals))
             // .def("getVertexNormals", (Normals & (vox::TriangleMesh::*)())(&vox::TriangleMesh::getVertexNormals)) //
             // TODO: wont work by reference
-            .def("getVertices", (const Vertices& (vox::TriangleMesh::*)() const)(&vox::TriangleMesh::getVertices))
+            .def("getVertices", (const Vertices& (vox::SimpleTriangleMesh::*)() const)(&vox::SimpleTriangleMesh::getVertices))
             .def("getVertexBuffer",
-                 [](vox::TriangleMesh& obj) -> py::memoryview {
+                 [](vox::SimpleTriangleMesh& obj) -> py::memoryview {
                      auto vertices = obj.getVertices();
                      void* base_ptr = &vertices[0][0];
                      int num_vert = obj.numVertices();
@@ -51,7 +51,7 @@ void TriangleMeshModule(const py::module& m_sub) {
                                                         {sizeof(Real) * 3, sizeof(Real)});
                  })
             .def("getFaceBuffer",
-                 [](vox::TriangleMesh& obj) -> py::memoryview {
+                 [](vox::SimpleTriangleMesh& obj) -> py::memoryview {
                      auto faces = obj.getFaces();
                      void* base_ptr = faces.data();
                      int num_faces = obj.numFaces();
@@ -62,10 +62,10 @@ void TriangleMeshModule(const py::module& m_sub) {
             // .def("getVertices", (Vertices & (vox::TriangleMesh::*)())(&vox::TriangleMesh::getVertices)) // TODO: wont
             // work by reference
 
-            .def("numVertices", &vox::TriangleMesh::numVertices)
-            .def("numFaces", &vox::TriangleMesh::numFaces)
+            .def("numVertices", &vox::SimpleTriangleMesh::numVertices)
+            .def("numFaces", &vox::SimpleTriangleMesh::numFaces)
 
-            .def("updateMeshTransformation", &vox::TriangleMesh::updateMeshTransformation)
-            .def("updateNormals", &vox::TriangleMesh::updateNormals)
-            .def("updateVertexNormals", &vox::TriangleMesh::updateVertexNormals);
+            .def("updateMeshTransformation", &vox::SimpleTriangleMesh::updateMeshTransformation)
+            .def("updateNormals", &vox::SimpleTriangleMesh::updateNormals)
+            .def("updateVertexNormals", &vox::SimpleTriangleMesh::updateVertexNormals);
 }

@@ -4,11 +4,11 @@
 //  personal capacity and am not conveying any rights to any intellectual
 //  property of any third parties.
 
-#include "vox.sph/boundary_simulator.h"
+#include "vox.editor/boundary_simulator.h"
 
+#include "vox.base/time_manager.h"
 #include "vox.sph/boundary_model.h"
 #include "vox.sph/simulation.h"
-#include "vox.sph/time_manager.h"
 
 using namespace vox;
 

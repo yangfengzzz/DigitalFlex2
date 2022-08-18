@@ -6,14 +6,14 @@
 
 #include "vox.editor/simulator_base.h"
 #include "vox.base/common.h"
-#include "vox.sph/gui/opengl/simulator_opengl.h"
-#include "vox.sph/position_based_dynamics_wrapper/pbd_boundary_simulator.h"
+#include "vox.editor/gui/opengl/simulator_opengl.h"
+#include "vox.editor/position_based_dynamics_wrapper/pbd_boundary_simulator.h"
 #ifdef USE_IMGUI
-#include "vox.sph/gui/imgui/simulator_gui_imgui.h.h"
-#include "vox.sph/position_based_dynamics_wrapper/pbd_simulator_gui_imgui.h.h"
+#include "vox.editor/gui/imgui/simulator_gui_imgui.h.h"
+#include "vox.editor/position_based_dynamics_wrapper/pbd_simulator_gui_imgui.h.h"
 #else
-#include "vox.sph/gui/tweakbar/simulator_gui_tweakbar.h"
-#include "vox.sph/position_based_dynamics_wrapper/pbd_simulator_gui_tweakbar.h"
+#include "vox.editor/gui/tweakbar/simulator_gui_tweakbar.h"
+#include "vox.editor/position_based_dynamics_wrapper/pbd_simulator_gui_tweakbar.h"
 #endif
 
 // Enable memory leak detection

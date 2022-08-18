@@ -4,17 +4,18 @@
 //  personal capacity and am not conveying any rights to any intellectual
 //  property of any third parties.
 
-#include "vox.sph/static_boundary_simulator.h"
+#include "vox.editor/static_boundary_simulator.h"
 
+#include "vox.base/file_system.h"
 #include "vox.base/logging.h"
-#include "vox.sph/file_system.h"
-#include "vox.sph/obj_loader.h"
-#include "vox.sph/partio_reader_writer.h"
-#include "vox.sph/scene_configuration.h"
+#include "vox.base/obj_loader.h"
+#include "vox.base/partio_reader_writer.h"
+#include "vox.base/timing.h"
+#include "vox.editor/scene_configuration.h"
+#include "vox.editor/simulator_base.h"
+#include "vox.sph/sampling/surface_sampling.h"
 #include "vox.sph/simulation.h"
 #include "vox.sph/static_rigid_body.h"
-#include "vox.base/timing.h"
-#include "vox.sph/utilities/surface_sampling.h"
 
 using namespace std;
 using namespace vox;
@@ -24,7 +25,7 @@ StaticBoundarySimulator::StaticBoundarySimulator(SimulatorBase *base) { m_base =
 
 StaticBoundarySimulator::~StaticBoundarySimulator() = default;
 
-void StaticBoundarySimulator::loadObj(const std::string &filename, TriangleMesh &mesh, const Vector3r &scale) {
+void StaticBoundarySimulator::loadObj(const std::string &filename, SimpleTriangleMesh &mesh, const Vector3r &scale) {
     std::vector<OBJLoader::Vec3f> x;
     std::vector<OBJLoader::Vec3f> normals;
     std::vector<MeshFaceIndices> faces;
@@ -80,7 +81,7 @@ void StaticBoundarySimulator::initBoundaryData() {
 
         auto *rb = new StaticRigidBody();
         rb->setIsAnimated(scene.boundaryModels[i]->isAnimated);
-        TriangleMesh &geo = rb->getGeometry();
+        SimpleTriangleMesh &geo = rb->getGeometry();
         loadObj(meshFileName, geo, scene.boundaryModels[i]->scale);
 
         std::vector<Vector3r> boundaryParticles;
@@ -177,13 +178,13 @@ void StaticBoundarySimulator::initBoundaryData() {
             auto *bm = new BoundaryModel_Koschier2017();
             bm->initModel(rb);
             sim->addBoundaryModel(bm);
-            TriangleMesh &mesh = rb->getGeometry();
+            SimpleTriangleMesh &mesh = rb->getGeometry();
             m_base->initDensityMap(mesh.getVertices(), mesh.getFaces(), scene.boundaryModels[i], md5, false, bm);
         } else if (sim->getBoundaryHandlingMethod() == BoundaryHandlingMethods::Bender2019) {
             auto *bm = new BoundaryModel_Bender2019();
             bm->initModel(rb);
             sim->addBoundaryModel(bm);
-            TriangleMesh &mesh = rb->getGeometry();
+            SimpleTriangleMesh &mesh = rb->getGeometry();
             m_base->initVolumeMap(mesh.getVertices(), mesh.getFaces(), scene.boundaryModels[i], md5, false, bm);
         }
         if (useCache && !md5) FileSystem::writeMD5File(meshFileName, md5FileName);

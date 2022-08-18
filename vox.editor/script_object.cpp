@@ -6,12 +6,12 @@
 
 #include "script_object.h"
 
-#include "pySPlisHSPlasH/Embedded.h"
+#include "py.sph/embedded.h"
 #include "simulator_base.h"
+#include "vox.base/file_system.h"
 #include "vox.base/logging.h"
 #include "vox.editor/gui/simulator_gui_base.h"
-#include "vox.sph/file_system.h"
-#include "vox.sph/scene_configuration.h"
+#include "vox.editor/scene_configuration.h"
 
 using namespace vox;
 using namespace std;
@@ -36,7 +36,7 @@ void ScriptObject::initParameters() {
     ParameterObject::initParameters();
 
     auto tmp = createFunctionParameter("reload", "Reload script", [&]() {
-        if (m_scriptModule != "") Embedded::getCurrent()->reloadModule(m_scriptModule);
+        if (!m_scriptModule.empty()) Embedded::getCurrent()->reloadModule(m_scriptModule);
         updateFunctionParameters();
         m_base->updateGUI();
     });
@@ -75,8 +75,7 @@ void ScriptObject::updateFunctionParameters() {
 void ScriptObject::addFunctionParameters() {
     auto functions = Embedded::getCurrent()->getFunctions();
     int counter = 1;
-    for (auto iter = functions.begin(); iter != functions.end(); iter++) {
-        std::string command_name = *iter;
+    for (const auto& command_name : functions) {
         std::string name = "embedded_function_" + std::to_string(counter);
         auto tmp = createFunctionParameter(name, command_name, [&, command_name]() {
             if (m_scriptLoaded) Embedded::getCurrent()->exec_fct(m_scriptModule, command_name);
@@ -107,7 +106,7 @@ std::string ScriptObject::loadScriptFile(const std::string& fileName) {
 
         return Embedded::getCurrent()->import_script(fileName);
     } else {
-        LOG_ERR << "Error occurred while loading script: " << fileName;
+        LOGE("Error occurred while loading script: {}", fileName)
         return "";
     }
 }

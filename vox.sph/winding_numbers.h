@@ -7,7 +7,7 @@
 #pragma once
 
 #include "vox.base/common.h"
-#include "vox.sph/triangle_mesh.h"
+#include "vox.sph/simple_triangle_mesh.h"
 
 namespace vox::utility {
 class WindingNumbers {
@@ -21,6 +21,6 @@ public:
 
     /** Determine the winding number of a point p in a triangle mesh.
      */
-    static Real computeGeneralizedWindingNumber(const Vector3r& p, const TriangleMesh& mesh);
+    static Real computeGeneralizedWindingNumber(const Vector3r& p, const SimpleTriangleMesh& mesh);
 };
 }  // namespace vox::utility

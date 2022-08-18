@@ -14,12 +14,7 @@
 #include "vox.editor/gui/tweakbar/simulator_gui_tweakbar.h"
 #include "vox.editor/position_based_dynamics_wrapper/pbd_simulator_gui_tweakbar.h"
 #endif
-#include <pybind11/functional.h>
 #include <pybind11/pybind11.h>
-#include <pybind11/stl.h>
-#include <pybind11/stl_bind.h>
-
-#include <iostream>
 
 #include "vox.editor/gui/opengl/simulator_opengl.h"
 

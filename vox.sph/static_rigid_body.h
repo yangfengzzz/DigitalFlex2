@@ -9,7 +9,7 @@
 #include "vox.base/common.h"
 #include "vox.base/time_manager.h"
 #include "vox.sph/rigid_body_object.h"
-#include "vox.sph/triangle_mesh.h"
+#include "vox.sph/simple_triangle_mesh.h"
 
 namespace vox {
 /** \brief This class stores the information of a static rigid body which
@@ -23,7 +23,7 @@ protected:
     Quaternionr m_q0;
     Vector3r m_velocity;
     Vector3r m_angularVelocity;
-    TriangleMesh m_geometry;
+    SimpleTriangleMesh m_geometry;
 
 public:
     StaticRigidBody() {
@@ -72,7 +72,7 @@ public:
 
     void setWorldSpacePosition(const Vector3r& x) { m_x = x; }
     void setWorldSpaceRotation(const Matrix3r& r) { m_q = Quaternionr(r); }
-    TriangleMesh& getGeometry() { return m_geometry; }
+    SimpleTriangleMesh& getGeometry() { return m_geometry; }
 
     void updateMeshTransformation() override {
         m_geometry.updateMeshTransformation(m_x, m_q.toRotationMatrix());

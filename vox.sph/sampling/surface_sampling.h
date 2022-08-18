@@ -6,9 +6,9 @@
 
 #pragma once
 
-#include "vox.sph/utilities/poisson_disk_sampling.h"
-#include "vox.sph/utilities/regular_sampling_2d.h"
-#include "vox.sph/utilities/regular_triangle_sampling.h"
+#include "vox.sph/sampling/poisson_disk_sampling.h"
+#include "vox.sph/sampling/regular_sampling_2d.h"
+#include "vox.sph/sampling/regular_triangle_sampling.h"
 
 namespace vox {
 enum SurfaceSamplingMode { PoissonDisk, RegularTriangle, Regular2D };

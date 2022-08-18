@@ -4,10 +4,10 @@
 //  personal capacity and am not conveying any rights to any intellectual
 //  property of any third parties.
 
-#include "vox.sph/exporter/rigid_body_exporter_bin.h"
+#include "vox.editor/exporter/rigid_body_exporter_bin.h"
 
-#include "vox.sph/file_system.h"
-#include "vox.sph/scene_configuration.h"
+#include "vox.base/file_system.h"
+#include "vox.editor/scene_configuration.h"
 #include "vox.sph/simulation.h"
 
 using namespace vox;

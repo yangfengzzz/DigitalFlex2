@@ -35,7 +35,7 @@ Real WindingNumbers::computeGeneralizedWindingNumber(const Vector3r& p_,
     return std::atan2(det, divisor) / tau;  // Only divide by 2*pi instead of 4*pi because there was a 2 out front
 }
 
-Real WindingNumbers::computeGeneralizedWindingNumber(const Vector3r& p, const TriangleMesh& mesh) {
+Real WindingNumbers::computeGeneralizedWindingNumber(const Vector3r& p, const SimpleTriangleMesh& mesh) {
     const unsigned int* faces = mesh.getFaces().data();
     const unsigned int nFaces = mesh.numFaces();
     const Vector3r* v = mesh.getVertices().data();

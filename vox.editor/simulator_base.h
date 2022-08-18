@@ -9,16 +9,16 @@
 #include <utility>
 
 #include "script_object.h"
+#include "vox.base/common.h"
 #include "vox.base/reflect/parameter_object.h"
 #include "vox.editor/boundary_simulator.h"
 #include "vox.sph/boundary_model_akinci2012.h"
 #include "vox.sph/boundary_model_bender2019.h"
 #include "vox.sph/boundary_model_koschier2017.h"
-#include "vox.base/common.h"
 #include "vox.sph/fluid_model.h"
+#include "vox.sph/scene_loader.h"
+#include "vox.sph/simple_triangle_mesh.h"
 #include "vox.sph/time_step.h"
-#include "vox.sph/triangle_mesh.h"
-#include "vox.sph/utilities/scene_loader.h"
 
 namespace vox {
 class Simulator_GUI_Base;
@@ -53,8 +53,8 @@ protected:
     bool m_doPause;
     Real m_pauseAt;
     Real m_stopAt;
-    bool m_cmdLineStopAt;
-    bool m_cmdLineNoInitialPause;
+    bool m_cmdLineStopAt{};
+    bool m_cmdLineNoInitialPause{};
     bool m_enableRigidBodyVTKExport;
     bool m_enableRigidBodyExport;
     bool m_enableStateExport;
@@ -74,13 +74,13 @@ protected:
     std::vector<int> m_colorMapType;
     std::vector<Real> m_renderMaxValue;
     std::vector<Real> m_renderMinValue;
-    float const *m_colorMapBuffer;
-    unsigned int m_colorMapLength;
+    float const *m_colorMapBuffer{};
+    unsigned int m_colorMapLength{};
     BoundarySimulator *m_boundarySimulator;
     Simulator_GUI_Base *m_gui;
-    int m_argc;
+    int m_argc{};
     std::vector<char *> m_argv_vec;
-    char **m_argv;
+    char **m_argv{};
     std::string m_windowName;
     std::vector<std::string> m_paramTokens;
     std::function<void()> m_timeStepCB;
@@ -169,13 +169,13 @@ public:
                         const utility::SceneLoader::BoundaryData *boundaryData,
                         bool md5,
                         bool isDynamic,
-                        BoundaryModel_Koschier2017 *boundaryModel);
+                        BoundaryModel_Koschier2017 *boundaryModel) const;
     void initVolumeMap(std::vector<Vector3r> &x,
                        std::vector<unsigned int> &faces,
                        const utility::SceneLoader::BoundaryData *boundaryData,
                        bool md5,
                        bool isDynamic,
-                       BoundaryModel_Bender2019 *boundaryModel);
+                       BoundaryModel_Bender2019 *boundaryModel) const;
 
     void readParameters();
 
@@ -202,7 +202,7 @@ public:
     void updateScalarField();
     void determineMinMaxOfScalarField();
 
-    static void loadObj(const std::string &filename, TriangleMesh &mesh, const Vector3r &scale);
+    static void loadObj(const std::string &filename, SimpleTriangleMesh &mesh, const Vector3r &scale);
 
     utility::SceneLoader *getSceneLoader() { return m_sceneLoader.get(); }
 

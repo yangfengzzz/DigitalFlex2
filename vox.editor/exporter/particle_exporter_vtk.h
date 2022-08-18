@@ -8,7 +8,7 @@
 
 #include <fstream>
 
-#include "vox.sph/exporter/exporter_base.h"
+#include "vox.editor/exporter/exporter_base.h"
 #include "vox.sph/fluid_model.h"
 
 namespace vox {

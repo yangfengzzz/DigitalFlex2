@@ -6,7 +6,7 @@
 
 #pragma once
 
-#include "vox.sph/utilities/scene_loader.h"
+#include "vox.sph/scene_loader.h"
 
 namespace vox {
 /** \brief Class to store the scene configuration that is imported from the scene file.

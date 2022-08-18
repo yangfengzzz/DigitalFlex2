@@ -4,15 +4,15 @@
 //  personal capacity and am not conveying any rights to any intellectual
 //  property of any third parties.
 
-#include "vox.sph/triangle_mesh.h"
+#include "vox.sph/simple_triangle_mesh.h"
 
 using namespace vox;
 
-TriangleMesh::TriangleMesh() = default;
+SimpleTriangleMesh::SimpleTriangleMesh() = default;
 
-TriangleMesh::~TriangleMesh() { release(); }
+SimpleTriangleMesh::~SimpleTriangleMesh() { release(); }
 
-void TriangleMesh::initMesh(const unsigned int nPoints, const unsigned int nFaces) {
+void SimpleTriangleMesh::initMesh(const unsigned int nPoints, const unsigned int nFaces) {
     m_x0.reserve(nPoints);
     m_x.reserve(nPoints);
     m_indices.reserve(nFaces * 3);
@@ -20,7 +20,7 @@ void TriangleMesh::initMesh(const unsigned int nPoints, const unsigned int nFace
     m_vertexNormals.reserve(nPoints);
 }
 
-void TriangleMesh::release() {
+void SimpleTriangleMesh::release() {
     m_indices.clear();
     m_x0.clear();
     m_x.clear();
@@ -28,20 +28,20 @@ void TriangleMesh::release() {
     m_vertexNormals.clear();
 }
 
-void TriangleMesh::addFace(const unsigned int *const indices) {
+void SimpleTriangleMesh::addFace(const unsigned int *const indices) {
     for (unsigned int i = 0u; i < 3; i++) m_indices.push_back(indices[i]);
 }
 
-void TriangleMesh::addFace(const int *const indices) {
+void SimpleTriangleMesh::addFace(const int *const indices) {
     for (unsigned int i = 0u; i < 3; i++) m_indices.push_back((unsigned int)indices[i]);
 }
 
-void TriangleMesh::addVertex(const Vector3r &vertex) {
+void SimpleTriangleMesh::addVertex(const Vector3r &vertex) {
     m_x0.push_back(vertex);
     m_x.push_back(vertex);
 }
 
-void TriangleMesh::updateNormals() {
+void SimpleTriangleMesh::updateNormals() {
     m_normals.resize(numFaces());
 
 #pragma omp parallel default(shared)
@@ -63,7 +63,7 @@ void TriangleMesh::updateNormals() {
     }
 }
 
-void TriangleMesh::updateVertexNormals() {
+void SimpleTriangleMesh::updateVertexNormals() {
     m_vertexNormals.resize(numVertices());
 
     for (unsigned int i = 0; i < numVertices(); i++) {
@@ -82,6 +82,6 @@ void TriangleMesh::updateVertexNormals() {
     }
 }
 
-void TriangleMesh::updateMeshTransformation(const Vector3r &x, const Matrix3r &R) {
+void SimpleTriangleMesh::updateMeshTransformation(const Vector3r &x, const Matrix3r &R) {
     for (unsigned int j = 0; j < numVertices(); j++) m_x[j] = R * m_x0[j] + x;
 }

@@ -13,7 +13,7 @@
 namespace vox {
 /** \brief Data structure for a triangle mesh with normals and vertex normals.
  */
-class TriangleMesh {
+class SimpleTriangleMesh {
 public:
     typedef std::vector<unsigned int> Faces;
     typedef std::vector<Vector3r> Normals;
@@ -27,8 +27,8 @@ protected:
     Normals m_vertexNormals;
 
 public:
-    TriangleMesh();
-    ~TriangleMesh();
+    SimpleTriangleMesh();
+    ~SimpleTriangleMesh();
 
     void release();
     void initMesh(unsigned int nPoints, unsigned int nFaces);

@@ -9,7 +9,7 @@
 #include "shader.h"
 #include "third_party/eigen/Eigen/Geometry"
 #include "vox.base/common.h"
-#include "vox.sph/triangle_mesh.h"
+#include "vox.sph/simple_triangle_mesh.h"
 
 #ifdef USE_DOUBLE
 #define glNormal3v glNormal3dv

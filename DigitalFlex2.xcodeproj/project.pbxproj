@@ -771,13 +771,13 @@
 		040CBF0328A8E150003AA16E /* mesh */ = {
 			isa = PBXGroup;
 			children = (
-				040CBF1528A8E17C003AA16E /* entity_containers.cpp */,
-				040CBF1128A8E17C003AA16E /* entity_containers.h */,
-				040CBF1428A8E17C003AA16E /* entity_iterators.cpp */,
-				040CBF1028A8E17C003AA16E /* entity_iterators.h */,
-				040CBF1328A8E17C003AA16E /* halfedge.h */,
-				040CBF1228A8E17C003AA16E /* triangle_mesh.cpp */,
 				040CBF1628A8E17C003AA16E /* triangle_mesh.h */,
+				040CBF1228A8E17C003AA16E /* triangle_mesh.cpp */,
+				040CBF1328A8E17C003AA16E /* halfedge.h */,
+				040CBF1028A8E17C003AA16E /* entity_iterators.h */,
+				040CBF1428A8E17C003AA16E /* entity_iterators.cpp */,
+				040CBF1128A8E17C003AA16E /* entity_containers.h */,
+				040CBF1528A8E17C003AA16E /* entity_containers.cpp */,
 			);
 			path = mesh;
 			sourceTree = "<group>";
