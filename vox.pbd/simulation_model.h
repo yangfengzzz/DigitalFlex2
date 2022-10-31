@@ -205,6 +205,12 @@ public:
                              unsigned int particle4,
                              Real stiffness,
                              Real poissonRatio);
+    bool addFEMTetConstraint_XPBD(const unsigned int particle1,
+                                  const unsigned int particle2,
+                                  const unsigned int particle3,
+                                  const unsigned int particle4,
+                                  const Real stiffness,
+                                  const Real poissonRatio);
     bool addStrainTetConstraint(unsigned int particle1,
                                 unsigned int particle2,
                                 unsigned int particle3,

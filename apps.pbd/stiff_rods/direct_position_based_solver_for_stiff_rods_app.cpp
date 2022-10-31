@@ -112,12 +112,12 @@ Vector3r camLookat;
 int main(int argc, char **argv) {
     REPORT_MEMORY_LEAKS
 
-    std::string exePath = utility::FileSystem::getProgramPath();
+    std::string exePath = FileSystem::getProgramPath();
 
     if (argc > 1)
         sceneFileName = string(argv[1]);
     else
-        sceneFileName = utility::FileSystem::normalizePath(exePath + "/resources" + sceneFileName);
+        sceneFileName = FileSystem::normalizePath(exePath + "/resources" + sceneFileName);
 
     base = new DemoBase();
     base->init(argc, argv, sceneFileName.c_str());
@@ -174,11 +174,11 @@ int main(int argc, char **argv) {
     }
     if (!tetModels.empty()) {
         TwType enumType3 = TwDefineEnum("SolidSimulationMethodType", nullptr, 0);
-        TwAddVarCB(MiniGL::getTweakBar(), "SolidSimulationMethod", enumType3, setSolidSimulationMethod,
-                   getSolidSimulationMethod, &solidSimulationMethod,
-                   " label='Solid sim. method' enum='0 {None}, 1 {Volume constraints}, 2 {FEM based PBD}, 3 {Strain "
-                   "based dynamics (no inversion handling)}, 4 {Shape matching (no inversion handling)}, 5 {XPBD "
-                   "volume constraints}' group=Simulation");
+        TwAddVarCB(
+                MiniGL::getTweakBar(), "SolidSimulationMethod", enumType3, setSolidSimulationMethod,
+                getSolidSimulationMethod, &solidSimulationMethod,
+                " label='Solid sim. method' enum='0 {None}, 1 {Volume constraints}, 2 {FEM based PBD}, 3 {FEM based XPBD}, \
+			4 {Strain based dynamics (no inversion handling)}, 5 {Shape matching (no inversion handling)}, 6 {XPBD volume constraints}' group=Simulation");
         TwAddVarCB(MiniGL::getTweakBar(), "stiffness", TW_TYPE_REAL, setSolidStiffness, getSolidStiffness, model,
                    " label='Stiffness'  min=0.0 step=0.1 precision=4 group='Solid' ");
         TwAddVarCB(MiniGL::getTweakBar(), "poissonRatio", TW_TYPE_REAL, setSolidPoissonRatio, getSolidPoissonRatio,
@@ -234,11 +234,11 @@ void singleStep() {
 
     // Update visualization models
     const ParticleData &pd = model->getParticles();
-    for (auto & i : model->getTetModels()) {
+    for (auto &i : model->getTetModels()) {
         i->updateMeshNormals(pd);
         i->updateVisMesh(pd);
     }
-    for (auto & i : model->getTriangleModels()) {
+    for (auto &i : model->getTriangleModels()) {
         i->updateMeshNormals(pd);
     }
 }
@@ -260,11 +260,11 @@ void timeStep() {
 
     // Update visualization models
     const ParticleData &pd = model->getParticles();
-    for (auto & i : model->getTetModels()) {
+    for (auto &i : model->getTetModels()) {
         i->updateMeshNormals(pd);
         i->updateVisMesh(pd);
     }
-    for (auto & i : model->getTriangleModels()) {
+    for (auto &i : model->getTriangleModels()) {
         i->updateMeshNormals(pd);
     }
 }
@@ -300,23 +300,24 @@ void initTetModelConstraints() {
     // init constraints
     SimulationModel *model = Simulation::getCurrent()->getModel();
     solidStiffness = 1.0;
-    if (solidSimulationMethod == 5) solidStiffness = 100000;
+    if (solidSimulationMethod == 3) solidStiffness = 1000000;
+    if (solidSimulationMethod == 6) solidStiffness = 100000;
 
     volumeStiffness = 1.0;
-    if (solidSimulationMethod == 5) volumeStiffness = 100000;
+    if (solidSimulationMethod == 6) volumeStiffness = 100000;
     for (unsigned int cm = 0; cm < model->getTetModels().size(); cm++) {
         model->addSolidConstraints(model->getTetModels()[cm], solidSimulationMethod, solidStiffness, solidPoissonRatio,
                                    volumeStiffness, solidNormalizeStretch, solidNormalizeShear);
     }
 }
 
-void loadObj(const std::string &filename, VertexData &vd, utility::IndexedFaceMesh &mesh, const Vector3r &scale) {
-    std::vector<utility::OBJLoader::Vec3f> x;
-    std::vector<utility::OBJLoader::Vec3f> normals;
-    std::vector<utility::OBJLoader::Vec2f> texCoords;
-    std::vector<utility::MeshFaceIndices> faces;
-    utility::OBJLoader::Vec3f s = {(float)scale[0], (float)scale[1], (float)scale[2]};
-    utility::OBJLoader::loadObj(filename, &x, &faces, &normals, &texCoords, s);
+void loadObj(const std::string &filename, VertexData &vd, IndexedFaceMesh &mesh, const Vector3r &scale) {
+    std::vector<OBJLoader::Vec3f> x;
+    std::vector<OBJLoader::Vec3f> normals;
+    std::vector<OBJLoader::Vec2f> texCoords;
+    std::vector<MeshFaceIndices> faces;
+    OBJLoader::Vec3f s = {(float)scale[0], (float)scale[1], (float)scale[2]};
+    OBJLoader::loadObj(filename, &x, &faces, &normals, &texCoords, s);
 
     mesh.release();
     const auto nPoints = (unsigned int)x.size();
@@ -357,24 +358,23 @@ CubicSDFCollisionDetection::GridPtr generateSDF(const std::string &modelFile,
                                                 const std::string &collisionObjectFileName,
                                                 const Eigen::Matrix<unsigned int, 3, 1> &resolutionSDF,
                                                 VertexData &vd,
-                                                utility::IndexedFaceMesh &mesh) {
-    const std::string basePath = utility::FileSystem::getFilePath(base->getSceneFile());
+                                                IndexedFaceMesh &mesh) {
+    const std::string basePath = FileSystem::getFilePath(base->getSceneFile());
     const string cachePath = basePath + "/Cache";
-    const std::string modelFileName = utility::FileSystem::getFileNameWithExt(modelFile);
+    const std::string modelFileName = FileSystem::getFileNameWithExt(modelFile);
     CubicSDFCollisionDetection::GridPtr distanceField;
 
     if (collisionObjectFileName.empty()) {
-        std::string md5FileName = utility::FileSystem::normalizePath(cachePath + "/" + modelFileName + ".md5");
-        string md5Str = utility::FileSystem::getFileMD5(modelFile);
+        std::string md5FileName = FileSystem::normalizePath(cachePath + "/" + modelFileName + ".md5");
+        string md5Str = FileSystem::getFileMD5(modelFile);
         bool md5 = false;
-        if (utility::FileSystem::fileExists(md5FileName)) md5 = utility::FileSystem::checkMD5(md5Str, md5FileName);
+        if (FileSystem::fileExists(md5FileName)) md5 = FileSystem::checkMD5(md5Str, md5FileName);
 
         // check MD5 if cache file is available
         const string resStr =
                 to_string(resolutionSDF[0]) + "_" + to_string(resolutionSDF[1]) + "_" + to_string(resolutionSDF[2]);
-        const string sdfFileName =
-                utility::FileSystem::normalizePath(cachePath + "/" + modelFileName + "_" + resStr + ".csdf");
-        bool foundCacheFile = utility::FileSystem::fileExists(sdfFileName);
+        const string sdfFileName = FileSystem::normalizePath(cachePath + "/" + modelFileName + "_" + resStr + ".csdf");
+        bool foundCacheFile = FileSystem::fileExists(sdfFileName);
 
         if (foundCacheFile && md5) {
             LOGI("Load cached SDF: {}", sdfFileName)
@@ -410,13 +410,13 @@ CubicSDFCollisionDetection::GridPtr generateSDF(const std::string &modelFile,
             if (utility::FileSystem::makeDir(cachePath) == 0) {
                 LOGI("Save SDF: {}", sdfFileName)
                 distanceField->save(sdfFileName);
-                utility::FileSystem::writeMD5File(modelFile, md5FileName);
+                FileSystem::writeMD5File(modelFile, md5FileName);
             }
         }
     } else {
         std::string fileName = collisionObjectFileName;
-        if (utility::FileSystem::isRelativePath(fileName)) {
-            fileName = utility::FileSystem::normalizePath(basePath + "/" + fileName);
+        if (FileSystem::isRelativePath(fileName)) {
+            fileName = FileSystem::normalizePath(basePath + "/" + fileName);
         }
         LOGI("Load SDF: {}", fileName)
         distanceField = std::make_shared<CubicSDFCollisionDetection::Grid>(fileName);
@@ -474,9 +474,9 @@ void readScene() {
     // map file names to loaded geometry to prevent multiple imports of same files
     std::map<std::string, pair<VertexData, IndexedFaceMesh>> objFiles;
     std::map<std::string, CubicSDFCollisionDetection::GridPtr> distanceFields;
-    for (auto & rbd : data.m_rigidBodyData) {
+    for (auto &rbd : data.m_rigidBodyData) {
         // Check if already loaded
-        rbd.m_modelFile = utility::FileSystem::normalizePath(rbd.m_modelFile);
+        rbd.m_modelFile = FileSystem::normalizePath(rbd.m_modelFile);
         if (objFiles.find(rbd.m_modelFile) == objFiles.end()) {
             IndexedFaceMesh mesh;
             VertexData vd;
@@ -484,13 +484,12 @@ void readScene() {
             objFiles[rbd.m_modelFile] = {vd, mesh};
         }
 
-        const std::string basePath = utility::FileSystem::getFilePath(sceneFileName);
+        const std::string basePath = FileSystem::getFilePath(sceneFileName);
         const string cachePath = basePath + "/Cache";
         const string resStr = to_string(rbd.m_resolutionSDF[0]) + "_" + to_string(rbd.m_resolutionSDF[1]) + "_" +
                               to_string(rbd.m_resolutionSDF[2]);
-        const std::string modelFileName = utility::FileSystem::getFileNameWithExt(rbd.m_modelFile);
-        const string sdfFileName =
-                utility::FileSystem::normalizePath(cachePath + "/" + modelFileName + "_" + resStr + ".csdf");
+        const std::string modelFileName = FileSystem::getFileNameWithExt(rbd.m_modelFile);
+        const string sdfFileName = FileSystem::normalizePath(cachePath + "/" + modelFileName + "_" + resStr + ".csdf");
 
         std::string sdfKey = rbd.m_collisionObjectFileName;
         if (sdfKey.empty()) {
@@ -500,18 +499,17 @@ void readScene() {
             // Generate SDF
             if (rbd.m_collisionObjectType == SceneLoader::SDF) {
                 if (rbd.m_collisionObjectFileName.empty()) {
-                    std::string md5FileName =
-                            utility::FileSystem::normalizePath(cachePath + "/" + modelFileName + ".md5");
-                    string md5Str = utility::FileSystem::getFileMD5(rbd.m_modelFile);
+                    std::string md5FileName = FileSystem::normalizePath(cachePath + "/" + modelFileName + ".md5");
+                    string md5Str = FileSystem::getFileMD5(rbd.m_modelFile);
                     bool md5 = false;
-                    if (FileSystem::fileExists(md5FileName)) md5 = utility::FileSystem::checkMD5(md5Str, md5FileName);
+                    if (FileSystem::fileExists(md5FileName)) md5 = FileSystem::checkMD5(md5Str, md5FileName);
 
                     // check MD5 if cache file is available
                     const string resStr = to_string(rbd.m_resolutionSDF[0]) + "_" + to_string(rbd.m_resolutionSDF[1]) +
                                           "_" + to_string(rbd.m_resolutionSDF[2]);
-                    const string sdfFileName = utility::FileSystem::normalizePath(cachePath + "/" + modelFileName +
-                                                                                  "_" + resStr + ".csdf");
-                    bool foundCacheFile = utility::FileSystem::fileExists(sdfFileName);
+                    const string sdfFileName =
+                            FileSystem::normalizePath(cachePath + "/" + modelFileName + "_" + resStr + ".csdf");
+                    bool foundCacheFile = FileSystem::fileExists(sdfFileName);
 
                     if (foundCacheFile && md5) {
                         LOGI("Load cached SDF: {}", sdfFileName)
@@ -553,13 +551,13 @@ void readScene() {
                         if (FileSystem::makeDir(cachePath) == 0) {
                             LOGI("Save SDF: {}", sdfFileName)
                             distanceFields[sdfFileName]->save(sdfFileName);
-                            utility::FileSystem::writeMD5File(rbd.m_modelFile, md5FileName);
+                            FileSystem::writeMD5File(rbd.m_modelFile, md5FileName);
                         }
                     }
                 } else {
                     std::string fileName = rbd.m_collisionObjectFileName;
                     if (FileSystem::isRelativePath(fileName)) {
-                        fileName = utility::FileSystem::normalizePath(basePath + "/" + fileName);
+                        fileName = FileSystem::normalizePath(basePath + "/" + fileName);
                     }
                     LOGI("Load SDF: {}", fileName)
                     distanceFields[rbd.m_collisionObjectFileName] =
@@ -569,7 +567,7 @@ void readScene() {
         }
     }
 
-    for (auto & tmd : data.m_tetModelData) {
+    for (auto &tmd : data.m_tetModelData) {
         // Check if already loaded
         if ((!tmd.m_modelFileVis.empty()) && (objFiles.find(tmd.m_modelFileVis) == objFiles.end())) {
             IndexedFaceMesh mesh;
@@ -586,7 +584,7 @@ void readScene() {
     }
     // end stiff rods
 
-    for (auto & tmd : data.m_tetModelData) {
+    for (auto &tmd : data.m_tetModelData) {
         // Check if already loaded
         if ((!tmd.m_modelFileVis.empty()) && (objFiles.find(tmd.m_modelFileVis) == objFiles.end())) {
             IndexedFaceMesh mesh;
@@ -595,13 +593,12 @@ void readScene() {
             objFiles[tmd.m_modelFileVis] = {vd, mesh};
         }
 
-        const std::string basePath = utility::FileSystem::getFilePath(base->getSceneFile());
+        const std::string basePath = FileSystem::getFilePath(base->getSceneFile());
         const string cachePath = basePath + "/Cache";
         const string resStr = to_string(tmd.m_resolutionSDF[0]) + "_" + to_string(tmd.m_resolutionSDF[1]) + "_" +
                               to_string(tmd.m_resolutionSDF[2]);
-        const std::string modelFileName = utility::FileSystem::getFileNameWithExt(tmd.m_modelFileVis);
-        const string sdfFileName =
-                utility::FileSystem::normalizePath(cachePath + "/" + modelFileName + "_" + resStr + ".csdf");
+        const std::string modelFileName = FileSystem::getFileNameWithExt(tmd.m_modelFileVis);
+        const string sdfFileName = FileSystem::normalizePath(cachePath + "/" + modelFileName + "_" + resStr + ".csdf");
 
         std::string sdfKey = tmd.m_collisionObjectFileName;
         if (sdfKey.empty()) {
@@ -627,7 +624,7 @@ void readScene() {
     rb.resize(data.m_rigidBodyData.size());
     std::map<unsigned int, unsigned int> id_index;
     unsigned int rbIndex = 0;
-    for (auto & rbd : data.m_rigidBodyData) {
+    for (auto &rbd : data.m_rigidBodyData) {
         // Stiff rods: do not handle segments of rods here
         if (treeSegments.find(rbd.m_id) != treeSegments.end()) continue;
         // end stiff rods
@@ -656,23 +653,23 @@ void readScene() {
         const auto nVert = static_cast<unsigned int>(vertices.size());
 
         switch (rbd.m_collisionObjectType) {
-            case utility::SceneLoader::No_Collision_Object:
+            case SceneLoader::No_Collision_Object:
                 break;
-            case utility::SceneLoader::Sphere:
+            case SceneLoader::Sphere:
                 cd.addCollisionSphere(rbIndex, CollisionDetection::CollisionObject::RigidBodyCollisionObjectType,
                                       vertices.data(), nVert, rbd.m_collisionObjectScale[0], rbd.m_testMesh,
                                       rbd.m_invertSDF);
                 break;
-            case utility::SceneLoader::Box:
+            case SceneLoader::Box:
                 cd.addCollisionBox(rbIndex, CollisionDetection::CollisionObject::RigidBodyCollisionObjectType,
                                    vertices.data(), nVert, rbd.m_collisionObjectScale, rbd.m_testMesh, rbd.m_invertSDF);
                 break;
-            case utility::SceneLoader::Cylinder:
+            case SceneLoader::Cylinder:
                 cd.addCollisionCylinder(rbIndex, CollisionDetection::CollisionObject::RigidBodyCollisionObjectType,
                                         vertices.data(), nVert, rbd.m_collisionObjectScale.head<2>(), rbd.m_testMesh,
                                         rbd.m_invertSDF);
                 break;
-            case utility::SceneLoader::Torus:
+            case SceneLoader::Torus:
                 cd.addCollisionTorus(rbIndex, CollisionDetection::CollisionObject::RigidBodyCollisionObjectType,
                                      vertices.data(), nVert, rbd.m_collisionObjectScale.head<2>(), rbd.m_testMesh,
                                      rbd.m_invertSDF);
@@ -689,13 +686,13 @@ void readScene() {
                 break;
             case SceneLoader::SDF: {
                 if (rbd.m_collisionObjectFileName.empty()) {
-                    const std::string basePath = utility::FileSystem::getFilePath(sceneFileName);
+                    const std::string basePath = FileSystem::getFilePath(sceneFileName);
                     const string cachePath = basePath + "/Cache";
                     const string resStr = to_string(rbd.m_resolutionSDF[0]) + "_" + to_string(rbd.m_resolutionSDF[1]) +
                                           "_" + to_string(rbd.m_resolutionSDF[2]);
-                    const std::string modelFileName = utility::FileSystem::getFileNameWithExt(rbd.m_modelFile);
-                    const string sdfFileName = utility::FileSystem::normalizePath(cachePath + "/" + modelFileName +
-                                                                                  "_" + resStr + ".csdf");
+                    const std::string modelFileName = FileSystem::getFileNameWithExt(rbd.m_modelFile);
+                    const string sdfFileName =
+                            FileSystem::normalizePath(cachePath + "/" + modelFileName + "_" + resStr + ".csdf");
                     cd.addCubicSDFCollisionObject(rbIndex,
                                                   CollisionDetection::CollisionObject::RigidBodyCollisionObjectType,
                                                   vertices.data(), nVert, distanceFields[sdfFileName],
@@ -853,7 +850,7 @@ void readScene() {
                                                                   averageRadii, averageSegmentLengths, youngsModuli,
                                                                   torsionModuli);
 
-        STOP_TIMING_PRINT // load tree
+        STOP_TIMING_PRINT  // load tree
     }
 
     //////////////////////////////////////////////////////////////////////////
@@ -862,7 +859,7 @@ void readScene() {
 
     // map file names to loaded geometry to prevent multiple imports of same files
     std::map<std::string, pair<VertexData, IndexedFaceMesh>> triFiles;
-    for (auto & tmd : data.m_triangleModelData) {
+    for (auto &tmd : data.m_triangleModelData) {
         // Check if already loaded
         if (triFiles.find(tmd.m_modelFile) == triFiles.end()) {
             IndexedFaceMesh mesh;
@@ -913,14 +910,14 @@ void readScene() {
 
     // map file names to loaded geometry to prevent multiple imports of same files
     std::map<pair<string, string>, pair<vector<Vector3r>, vector<unsigned int>>> tetFiles;
-    for (auto & tmd : data.m_tetModelData) {
+    for (auto &tmd : data.m_tetModelData) {
         // Check if already loaded
         pair<string, string> fileNames = {tmd.m_modelFileNodes, tmd.m_modelFileElements};
         if (tetFiles.find(fileNames) == tetFiles.end()) {
             vector<Vector3r> vertices;
             vector<unsigned int> tets;
             TetGenLoader::loadTetgenModel(FileSystem::normalizePath(tmd.m_modelFileNodes),
-                                          utility::FileSystem::normalizePath(tmd.m_modelFileElements), vertices, tets);
+                                          FileSystem::normalizePath(tmd.m_modelFileElements), vertices, tets);
             tetFiles[fileNames] = {vertices, tets};
         }
     }
@@ -940,7 +937,7 @@ void readScene() {
         vector<unsigned int> &tets = geo->second.second;
 
         const Matrix3r R = tmd.m_q.matrix();
-        for (auto & vertice : vertices) {
+        for (auto &vertice : vertices) {
             vertice = R * (vertice.cwiseProduct(tmd.m_scale)) + tmd.m_x;
         }
 
@@ -1039,13 +1036,13 @@ void readScene() {
                 break;
             case SceneLoader::SDF: {
                 if (tmd.m_collisionObjectFileName.empty()) {
-                    const std::string basePath = utility::FileSystem::getFilePath(base->getSceneFile());
+                    const std::string basePath = FileSystem::getFilePath(base->getSceneFile());
                     const string cachePath = basePath + "/Cache";
                     const string resStr = to_string(tmd.m_resolutionSDF[0]) + "_" + to_string(tmd.m_resolutionSDF[1]) +
                                           "_" + to_string(tmd.m_resolutionSDF[2]);
-                    const std::string modelFileName = utility::FileSystem::getFileNameWithExt(tmd.m_modelFileVis);
-                    const string sdfFileName = utility::FileSystem::normalizePath(cachePath + "/" + modelFileName +
-                                                                                  "_" + resStr + ".csdf");
+                    const std::string modelFileName = FileSystem::getFileNameWithExt(tmd.m_modelFileVis);
+                    const string sdfFileName =
+                            FileSystem::normalizePath(cachePath + "/" + modelFileName + "_" + resStr + ".csdf");
                     cd.addCubicSDFCollisionObject(i, CollisionDetection::CollisionObject::TetModelCollisionObjectType,
                                                   &pd.getPosition(offset), nVert, distanceFields[sdfFileName],
                                                   tmd.m_collisionObjectScale, tmd.m_testMesh, tmd.m_invertSDF);
@@ -1063,32 +1060,32 @@ void readScene() {
     // joints
     //////////////////////////////////////////////////////////////////////////
 
-    for (auto & jd : data.m_ballJointData) {
+    for (auto &jd : data.m_ballJointData) {
         model->addBallJoint(id_index[jd.m_bodyID[0]], id_index[jd.m_bodyID[1]], jd.m_position);
     }
 
-    for (auto & jd : data.m_ballOnLineJointData) {
+    for (auto &jd : data.m_ballOnLineJointData) {
         model->addBallOnLineJoint(id_index[jd.m_bodyID[0]], id_index[jd.m_bodyID[1]], jd.m_position, jd.m_axis);
     }
 
-    for (auto & jd : data.m_hingeJointData) {
+    for (auto &jd : data.m_hingeJointData) {
         model->addHingeJoint(id_index[jd.m_bodyID[0]], id_index[jd.m_bodyID[1]], jd.m_position, jd.m_axis);
     }
 
-    for (auto & jd : data.m_universalJointData) {
+    for (auto &jd : data.m_universalJointData) {
         model->addUniversalJoint(id_index[jd.m_bodyID[0]], id_index[jd.m_bodyID[1]], jd.m_position, jd.m_axis[0],
                                  jd.m_axis[1]);
     }
 
-    for (auto & jd : data.m_sliderJointData) {
+    for (auto &jd : data.m_sliderJointData) {
         model->addSliderJoint(id_index[jd.m_bodyID[0]], id_index[jd.m_bodyID[1]], jd.m_axis);
     }
 
-    for (auto & jd : data.m_rigidBodyParticleBallJointData) {
+    for (auto &jd : data.m_rigidBodyParticleBallJointData) {
         model->addRigidBodyParticleBallJoint(id_index[jd.m_bodyID[0]], jd.m_bodyID[1]);
     }
 
-    for (auto & jd : data.m_targetAngleMotorHingeJointData) {
+    for (auto &jd : data.m_targetAngleMotorHingeJointData) {
         model->addTargetAngleMotorHingeJoint(id_index[jd.m_bodyID[0]], id_index[jd.m_bodyID[1]], jd.m_position,
                                              jd.m_axis);
         ((MotorJoint *)constraints[constraints.size() - 1])->setTarget(jd.m_target);
@@ -1096,7 +1093,7 @@ void readScene() {
         ((MotorJoint *)constraints[constraints.size() - 1])->setRepeatSequence(jd.m_repeat);
     }
 
-    for (auto & jd : data.m_targetVelocityMotorHingeJointData) {
+    for (auto &jd : data.m_targetVelocityMotorHingeJointData) {
         model->addTargetVelocityMotorHingeJoint(id_index[jd.m_bodyID[0]], id_index[jd.m_bodyID[1]], jd.m_position,
                                                 jd.m_axis);
         ((MotorJoint *)constraints[constraints.size() - 1])->setTarget(jd.m_target);
@@ -1104,30 +1101,30 @@ void readScene() {
         ((MotorJoint *)constraints[constraints.size() - 1])->setRepeatSequence(jd.m_repeat);
     }
 
-    for (auto & jd : data.m_targetPositionMotorSliderJointData) {
+    for (auto &jd : data.m_targetPositionMotorSliderJointData) {
         model->addTargetPositionMotorSliderJoint(id_index[jd.m_bodyID[0]], id_index[jd.m_bodyID[1]], jd.m_axis);
         ((MotorJoint *)constraints[constraints.size() - 1])->setTarget(jd.m_target);
         ((MotorJoint *)constraints[constraints.size() - 1])->setTargetSequence(jd.m_targetSequence);
         ((MotorJoint *)constraints[constraints.size() - 1])->setRepeatSequence(jd.m_repeat);
     }
 
-    for (auto & jd : data.m_targetVelocityMotorSliderJointData) {
+    for (auto &jd : data.m_targetVelocityMotorSliderJointData) {
         model->addTargetVelocityMotorSliderJoint(id_index[jd.m_bodyID[0]], id_index[jd.m_bodyID[1]], jd.m_axis);
         ((MotorJoint *)constraints[constraints.size() - 1])->setTarget(jd.m_target);
         ((MotorJoint *)constraints[constraints.size() - 1])->setTargetSequence(jd.m_targetSequence);
         ((MotorJoint *)constraints[constraints.size() - 1])->setRepeatSequence(jd.m_repeat);
     }
 
-    for (auto & jd : data.m_damperJointData) {
+    for (auto &jd : data.m_damperJointData) {
         model->addDamperJoint(id_index[jd.m_bodyID[0]], id_index[jd.m_bodyID[1]], jd.m_axis, jd.m_stiffness);
     }
 
-    for (auto & jd : data.m_rigidBodySpringData) {
+    for (auto &jd : data.m_rigidBodySpringData) {
         model->addRigidBodySpring(id_index[jd.m_bodyID[0]], id_index[jd.m_bodyID[1]], jd.m_position1, jd.m_position2,
                                   jd.m_stiffness);
     }
 
-    for (auto & jd : data.m_distanceJointData) {
+    for (auto &jd : data.m_distanceJointData) {
         model->addDistanceJoint(id_index[jd.m_bodyID[0]], id_index[jd.m_bodyID[1]], jd.m_position1, jd.m_position2);
     }
 }
@@ -1277,6 +1274,8 @@ void TW_CALL setSolidStiffness(const void *value, void *clientData) {
     ((SimulationModel *)clientData)
             ->setConstraintValue<FEMTetConstraint, Real, &FEMTetConstraint::m_stiffness>(solidStiffness);
     ((SimulationModel *)clientData)
+            ->setConstraintValue<XPBD_FEMTetConstraint, Real, &XPBD_FEMTetConstraint::m_stiffness>(solidStiffness);
+    ((SimulationModel *)clientData)
             ->setConstraintValue<StrainTetConstraint, Real, &StrainTetConstraint::m_stretchStiffness>(solidStiffness);
     ((SimulationModel *)clientData)
             ->setConstraintValue<StrainTetConstraint, Real, &StrainTetConstraint::m_shearStiffness>(solidStiffness);
@@ -1306,6 +1305,9 @@ void TW_CALL setSolidPoissonRatio(const void *value, void *clientData) {
     solidPoissonRatio = *(const Real *)(value);
     ((SimulationModel *)clientData)
             ->setConstraintValue<FEMTetConstraint, Real, &FEMTetConstraint::m_poissonRatio>(solidPoissonRatio);
+    ((SimulationModel *)clientData)
+            ->setConstraintValue<XPBD_FEMTetConstraint, Real, &XPBD_FEMTetConstraint::m_poissonRatio>(
+                    solidPoissonRatio);
 }
 
 void TW_CALL getSolidNormalizeStretch(void *value, void *clientData) { *(bool *)(value) = solidNormalizeStretch; }

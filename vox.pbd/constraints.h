@@ -461,6 +461,28 @@ public:
     bool solvePositionConstraint(SimulationModel &model, unsigned int iter) override;
 };
 
+class XPBD_FEMTetConstraint : public Constraint {
+public:
+    static int TYPE_ID;
+    Real m_stiffness{};
+    Real m_poissonRatio{};
+    Real m_volume{};
+    Matrix3r m_invRestMat;
+    Real m_lambda{};
+
+    XPBD_FEMTetConstraint() : Constraint(4) {}
+    [[nodiscard]] int &getTypeId() const override { return TYPE_ID; }
+
+    virtual bool initConstraint(SimulationModel &model,
+                                unsigned int particle1,
+                                unsigned int particle2,
+                                unsigned int particle3,
+                                unsigned int particle4,
+                                Real stiffness,
+                                Real poissonRatio);
+    bool solvePositionConstraint(SimulationModel &model, unsigned int iter) override;
+};
+
 class StrainTetConstraint : public Constraint {
 public:
     static int TYPE_ID;

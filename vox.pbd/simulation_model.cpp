@@ -460,6 +460,21 @@ bool SimulationModel::addFEMTetConstraint(const unsigned int particle1,
     return res;
 }
 
+bool SimulationModel::addFEMTetConstraint_XPBD(const unsigned int particle1,
+                                               const unsigned int particle2,
+                                               const unsigned int particle3,
+                                               const unsigned int particle4,
+                                               const Real stiffness,
+                                               const Real poissonRatio) {
+    XPBD_FEMTetConstraint *c = new XPBD_FEMTetConstraint();
+    const bool res = c->initConstraint(*this, particle1, particle2, particle3, particle4, stiffness, poissonRatio);
+    if (res) {
+        m_constraints.push_back(c);
+        m_groupsInitialized = false;
+    }
+    return res;
+}
+
 bool SimulationModel::addStrainTetConstraint(const unsigned int particle1,
                                              const unsigned int particle2,
                                              const unsigned int particle3,
