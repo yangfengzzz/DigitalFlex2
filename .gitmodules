@@ -34,3 +34,6 @@
 [submodule "third_party/tinyexpr"]
 	path = third_party/tinyexpr
 	url = https://github.com/codeplea/tinyexpr.git
+[submodule "third_party/jolt"]
+	path = third_party/jolt
+	url = https://github.com/jrouwe/JoltPhysics.git
